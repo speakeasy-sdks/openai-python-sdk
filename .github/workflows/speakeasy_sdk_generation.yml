@@ -12,7 +12,7 @@ jobs:
       speakeasy_version: latest
       openapi_doc_location: https://raw.githubusercontent.com/openai/openai-openapi/master/openapi.yaml
       languages: |-
-        - go: ./
+        - python: ./
        
       mode: pr
     secrets:
