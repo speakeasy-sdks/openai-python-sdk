@@ -8,8 +8,8 @@ except FileNotFoundError:
 
 setuptools.setup(
     name="<no value>",
-    version="1.1.1",
-    author="openai",
+    version="1.1.2",
+    author="speakeasy-api",
     description="<no value>",
     long_description=long_description,
     long_description_content_type="text/markdown",
