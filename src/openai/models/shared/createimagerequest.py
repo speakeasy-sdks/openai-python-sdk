@@ -1,7 +1,7 @@
 import dataclasses
-from companyname import utils
 from dataclasses_json import dataclass_json
 from enum import Enum
+from openai import utils
 from typing import Any, Optional
 
 class CreateImageRequestResponseFormatEnum(str, Enum):

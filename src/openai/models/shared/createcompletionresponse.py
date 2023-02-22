@@ -1,12 +1,12 @@
 import dataclasses
-from companyname import utils
 from dataclasses_json import dataclass_json
+from openai import utils
 from typing import Any, Optional
 
 
 @dataclass_json
 @dataclasses.dataclass
-class CreateEditResponseChoicesLogprobs:
+class CreateCompletionResponseChoicesLogprobs:
     text_offset: Optional[list[int]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('text_offset') }})
     token_logprobs: Optional[list[float]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('token_logprobs') }})
     tokens: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('tokens') }})
@@ -15,16 +15,16 @@ class CreateEditResponseChoicesLogprobs:
 
 @dataclass_json
 @dataclasses.dataclass
-class CreateEditResponseChoices:
+class CreateCompletionResponseChoices:
     finish_reason: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('finish_reason') }})
     index: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('index') }})
-    logprobs: Optional[CreateEditResponseChoicesLogprobs] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('logprobs') }})
+    logprobs: Optional[CreateCompletionResponseChoicesLogprobs] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('logprobs') }})
     text: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('text') }})
     
 
 @dataclass_json
 @dataclasses.dataclass
-class CreateEditResponseUsage:
+class CreateCompletionResponseUsage:
     completion_tokens: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('completion_tokens') }})
     prompt_tokens: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('prompt_tokens') }})
     total_tokens: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('total_tokens') }})
@@ -32,11 +32,11 @@ class CreateEditResponseUsage:
 
 @dataclass_json
 @dataclasses.dataclass
-class CreateEditResponse:
-    choices: list[CreateEditResponseChoices] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('choices') }})
+class CreateCompletionResponse:
+    choices: list[CreateCompletionResponseChoices] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('choices') }})
     created: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('created') }})
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('id') }})
     model: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('model') }})
     object: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('object') }})
-    usage: CreateEditResponseUsage = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('usage') }})
+    usage: Optional[CreateCompletionResponseUsage] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('usage') }})
     

@@ -8,8 +8,8 @@ except FileNotFoundError:
 
 setuptools.setup(
     name="<no value>",
-    version="0.1.0",
-    author="<no value>",
+    version="1.1.1",
+    author="openai",
     description="<no value>",
     long_description=long_description,
     long_description_content_type="text/markdown",

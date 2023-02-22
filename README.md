@@ -11,10 +11,10 @@ pip install <no value>
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
 ```python
-import companyname
-from companyname.models import operations, shared
+import openai
+from openai.models import operations, shared
 
-s = companyname.Companyname()
+s = openai.Openai()
    
 req = operations.CancelFineTuneRequest(
     path_params=operations.CancelFineTunePathParams(
