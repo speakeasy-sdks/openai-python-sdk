@@ -7,8 +7,8 @@ except FileNotFoundError:
     long_description = ""
 
 setuptools.setup(
-    name="<no value>",
-    version="1.1.2",
+    name="speakeasy-openai",
+    version="1.1.3",
     author="speakeasy-api",
     description="<no value>",
     long_description=long_description,
