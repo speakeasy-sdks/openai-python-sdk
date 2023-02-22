@@ -4,7 +4,7 @@
 ## SDK Installation
 
 ```bash
-pip install <no value>
+pip install speakeasy-openai
 ```
 <!-- End SDK Installation -->
 
