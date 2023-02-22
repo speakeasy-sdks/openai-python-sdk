@@ -5,7 +5,7 @@
 
 <div align="center">
    <p>The OpenAI API can be applied to virtually any task that involves understanding or generating natural language or code. We offer a spectrum of models with different levels of power suitable for different tasks, as well as the ability to fine-tune your own custom models. These models can be used for everything from content generation to semantic search and classification.</p>
-   <a href="https://github.com/speakeasy-sdks/openai-python-sdk/actions"><img src="https://img.shields.io/github/actions/workflow/status/Leonardo-Interactive/leonardo-ts-sdk/speakeasy_sdk_generate.yml?style=for-the-badge" /></a>
+   <a href="https://github.com/speakeasy-sdks/openai-python-sdk/actions"><img src="https://img.shields.io/github/actions/workflow/status/speakeasy-sdks/openai-python-sdk/speakeasy_sdk_generation.yml?style=for-the-badge" /></a>
    <a href="https://platform.openai.com/docs/introduction"><img src="https://img.shields.io/static/v1?label=Docs&message=API Ref&color=2ca47c&style=for-the-badge" /></a>
 </div>
 
@@ -16,6 +16,18 @@
 pip install speakeasy-openai
 ```
 <!-- End SDK Installation -->
+
+## Authentication
+
+The OpenAI API uses API keys for authentication. Visit your API Keys page to retrieve the API key you'll use in your requests.
+
+**Remember that your API key is a secret!** Do not share it with others or expose it in any client-side code (browsers, apps). Production requests must be routed through your own backend server where your API key can be securely loaded from an environment variable or key management service.
+
+All API requests should include your API key in an Authorization HTTP header as follows:
+
+```bash
+Authorization: Bearer YOUR_API_KEY
+```
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
