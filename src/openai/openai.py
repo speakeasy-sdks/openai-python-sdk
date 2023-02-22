@@ -1,6 +1,6 @@
 import requests
 from . import utils
-from companyname.models import operations, shared
+from openai.models import operations, shared
 from typing import Any, Optional
 
 class OpenAI:

@@ -1,6 +1,6 @@
 import dataclasses
-from companyname import utils
 from dataclasses_json import dataclass_json
+from openai import utils
 from typing import Any, Optional
 
 
