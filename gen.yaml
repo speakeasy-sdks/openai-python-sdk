@@ -5,9 +5,8 @@ management:
     speakeasyVersion: 1.4.7
 generation:
     telemetryEnabled: false
-    sdkClassName: companyname
-go:
-    version: 0.0.0
-    packageName: github.com/speakeasy-sdks/company-laguage-sdk
+    sdkClassName: Openai
 python:
-    version: 0.1.0
+    version: 1.1.0
+    packagename: openai
+    author: openai
