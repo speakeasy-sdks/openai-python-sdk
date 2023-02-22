@@ -2,11 +2,11 @@ configVersion: 1.0.0
 management:
     docChecksum: 070eea1a67c4e5af9e7dbad61d95fd37
     docVersion: 1.1.0
-    speakeasyVersion: 1.4.7
+    speakeasyVersion: 1.4.8
 generation:
     telemetryEnabled: false
     sdkClassName: Openai
 python:
-    version: 1.1.4
+    version: 1.1.5
     author: speakeasy-api
     packageName: speakeasy-openai
