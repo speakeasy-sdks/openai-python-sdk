@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import listmodelsresponse as shared_listmodelsresponse
 from typing import Optional

@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import createclassificationrequest as shared_createclassificationrequest
 from ..shared import createclassificationresponse as shared_createclassificationresponse

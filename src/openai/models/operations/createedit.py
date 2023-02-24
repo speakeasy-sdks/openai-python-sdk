@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import createeditrequest as shared_createeditrequest
 from ..shared import createeditresponse as shared_createeditresponse
