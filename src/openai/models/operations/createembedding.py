@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import createembeddingrequest as shared_createembeddingrequest
 from ..shared import createembeddingresponse as shared_createembeddingresponse

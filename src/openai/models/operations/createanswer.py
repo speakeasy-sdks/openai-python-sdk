@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import createanswerrequest as shared_createanswerrequest
 from ..shared import createanswerresponse as shared_createanswerresponse

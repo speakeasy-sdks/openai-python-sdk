@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import listenginesresponse as shared_listenginesresponse
 from typing import Optional

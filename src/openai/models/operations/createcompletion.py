@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import createcompletionrequest as shared_createcompletionrequest
 from ..shared import createcompletionresponse as shared_createcompletionresponse

@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import deletefileresponse as shared_deletefileresponse
 from typing import Optional
