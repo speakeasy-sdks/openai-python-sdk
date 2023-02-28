@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import listfinetuneeventsresponse as shared_listfinetuneeventsresponse
 from typing import Optional

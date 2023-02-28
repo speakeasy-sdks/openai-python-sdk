@@ -1,16 +1,17 @@
+from __future__ import annotations
 import dataclasses
-from dataclasses_json import dataclass_json
+from dataclasses_json import Undefined, dataclass_json
 from openai import utils
 from typing import Any, Optional
 
 
-@dataclass_json
+@dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateEditRequest:
     instruction: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('instruction') }})
     model: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.field_name('model') }})
-    input: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('input') }})
-    n: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('n') }})
-    temperature: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('temperature') }})
-    top_p: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('top_p') }})
+    input: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('input'), 'exclude': lambda f: f is None }})
+    n: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('n'), 'exclude': lambda f: f is None }})
+    temperature: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('temperature'), 'exclude': lambda f: f is None }})
+    top_p: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.field_name('top_p'), 'exclude': lambda f: f is None }})
     

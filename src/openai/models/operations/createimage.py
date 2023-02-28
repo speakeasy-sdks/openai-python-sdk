@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import createimagerequest as shared_createimagerequest
 from typing import Any, Optional

@@ -8,7 +8,7 @@ except FileNotFoundError:
 
 setuptools.setup(
     name="speakeasy-openai",
-    version="1.1.5",
+    version="1.2.0",
     author="speakeasy-api",
     description="<no value>",
     long_description=long_description,
@@ -17,7 +17,6 @@ setuptools.setup(
     install_requires=[
         "certifi==2022.12.07",
         "charset-normalizer==2.1.1",
-        "dacite==1.6.0",
         "dataclasses-json-speakeasy==0.5.8",
         "idna==3.3",
         "marshmallow==3.17.1",

@@ -57,15 +57,15 @@ class OpenAI:
         url = base_url.removesuffix("/") + "/answers"
         
         headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request)
         if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
             headers["content-type"] = req_content_type
-        if data is None and json is None:
+        if data is None and form is None:
            raise Exception('request body is required')
         
         client = self._client
         
-        r = client.request("POST", url, data=data, json=json, files=files, headers=headers)
+        r = client.request("POST", url, data=data, files=form, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.CreateAnswerResponse(status_code=r.status_code, content_type=content_type)
@@ -96,15 +96,15 @@ class OpenAI:
         url = base_url.removesuffix("/") + "/classifications"
         
         headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request)
         if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
             headers["content-type"] = req_content_type
-        if data is None and json is None:
+        if data is None and form is None:
            raise Exception('request body is required')
         
         client = self._client
         
-        r = client.request("POST", url, data=data, json=json, files=files, headers=headers)
+        r = client.request("POST", url, data=data, files=form, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.CreateClassificationResponse(status_code=r.status_code, content_type=content_type)
@@ -126,15 +126,15 @@ class OpenAI:
         url = base_url.removesuffix("/") + "/completions"
         
         headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request)
         if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
             headers["content-type"] = req_content_type
-        if data is None and json is None:
+        if data is None and form is None:
            raise Exception('request body is required')
         
         client = self._client
         
-        r = client.request("POST", url, data=data, json=json, files=files, headers=headers)
+        r = client.request("POST", url, data=data, files=form, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.CreateCompletionResponse(status_code=r.status_code, content_type=content_type)
@@ -156,15 +156,15 @@ class OpenAI:
         url = base_url.removesuffix("/") + "/edits"
         
         headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request)
         if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
             headers["content-type"] = req_content_type
-        if data is None and json is None:
+        if data is None and form is None:
            raise Exception('request body is required')
         
         client = self._client
         
-        r = client.request("POST", url, data=data, json=json, files=files, headers=headers)
+        r = client.request("POST", url, data=data, files=form, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.CreateEditResponse(status_code=r.status_code, content_type=content_type)
@@ -186,15 +186,15 @@ class OpenAI:
         url = base_url.removesuffix("/") + "/embeddings"
         
         headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request)
         if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
             headers["content-type"] = req_content_type
-        if data is None and json is None:
+        if data is None and form is None:
            raise Exception('request body is required')
         
         client = self._client
         
-        r = client.request("POST", url, data=data, json=json, files=files, headers=headers)
+        r = client.request("POST", url, data=data, files=form, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.CreateEmbeddingResponse(status_code=r.status_code, content_type=content_type)
@@ -217,15 +217,15 @@ class OpenAI:
         url = base_url.removesuffix("/") + "/files"
         
         headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request)
         if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
             headers["content-type"] = req_content_type
-        if data is None and json is None:
+        if data is None and form is None:
            raise Exception('request body is required')
         
         client = self._client
         
-        r = client.request("POST", url, data=data, json=json, files=files, headers=headers)
+        r = client.request("POST", url, data=data, files=form, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.CreateFileResponse(status_code=r.status_code, content_type=content_type)
@@ -252,15 +252,15 @@ class OpenAI:
         url = base_url.removesuffix("/") + "/fine-tunes"
         
         headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request)
         if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
             headers["content-type"] = req_content_type
-        if data is None and json is None:
+        if data is None and form is None:
            raise Exception('request body is required')
         
         client = self._client
         
-        r = client.request("POST", url, data=data, json=json, files=files, headers=headers)
+        r = client.request("POST", url, data=data, files=form, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.CreateFineTuneResponse(status_code=r.status_code, content_type=content_type)
@@ -282,15 +282,15 @@ class OpenAI:
         url = base_url.removesuffix("/") + "/images/generations"
         
         headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request)
         if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
             headers["content-type"] = req_content_type
-        if data is None and json is None:
+        if data is None and form is None:
            raise Exception('request body is required')
         
         client = self._client
         
-        r = client.request("POST", url, data=data, json=json, files=files, headers=headers)
+        r = client.request("POST", url, data=data, files=form, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.CreateImageResponse(status_code=r.status_code, content_type=content_type)
@@ -312,15 +312,15 @@ class OpenAI:
         url = base_url.removesuffix("/") + "/images/edits"
         
         headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request)
         if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
             headers["content-type"] = req_content_type
-        if data is None and json is None:
+        if data is None and form is None:
            raise Exception('request body is required')
         
         client = self._client
         
-        r = client.request("POST", url, data=data, json=json, files=files, headers=headers)
+        r = client.request("POST", url, data=data, files=form, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.CreateImageEditResponse(status_code=r.status_code, content_type=content_type)
@@ -342,15 +342,15 @@ class OpenAI:
         url = base_url.removesuffix("/") + "/images/variations"
         
         headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request)
         if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
             headers["content-type"] = req_content_type
-        if data is None and json is None:
+        if data is None and form is None:
            raise Exception('request body is required')
         
         client = self._client
         
-        r = client.request("POST", url, data=data, json=json, files=files, headers=headers)
+        r = client.request("POST", url, data=data, files=form, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.CreateImageVariationResponse(status_code=r.status_code, content_type=content_type)
@@ -372,15 +372,15 @@ class OpenAI:
         url = base_url.removesuffix("/") + "/moderations"
         
         headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request)
         if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
             headers["content-type"] = req_content_type
-        if data is None and json is None:
+        if data is None and form is None:
            raise Exception('request body is required')
         
         client = self._client
         
-        r = client.request("POST", url, data=data, json=json, files=files, headers=headers)
+        r = client.request("POST", url, data=data, files=form, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.CreateModerationResponse(status_code=r.status_code, content_type=content_type)
@@ -407,15 +407,15 @@ class OpenAI:
         url = utils.generate_url(base_url, "/engines/{engine_id}/search", request.path_params)
         
         headers = {}
-        req_content_type, data, json, files = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request)
         if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
             headers["content-type"] = req_content_type
-        if data is None and json is None:
+        if data is None and form is None:
            raise Exception('request body is required')
         
         client = self._client
         
-        r = client.request("POST", url, data=data, json=json, files=files, headers=headers)
+        r = client.request("POST", url, data=data, files=form, headers=headers)
         content_type = r.headers.get("Content-Type")
 
         res = operations.CreateSearchResponse(status_code=r.status_code, content_type=content_type)

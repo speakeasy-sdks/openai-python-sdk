@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import createmoderationrequest as shared_createmoderationrequest
 from ..shared import createmoderationresponse as shared_createmoderationresponse

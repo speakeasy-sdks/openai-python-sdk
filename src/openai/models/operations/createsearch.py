@@ -1,3 +1,4 @@
+from __future__ import annotations
 import dataclasses
 from ..shared import createsearchrequest as shared_createsearchrequest
 from ..shared import createsearchresponse as shared_createsearchresponse
