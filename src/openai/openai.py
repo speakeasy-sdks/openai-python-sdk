@@ -78,6 +78,36 @@ class OpenAI:
         return res
 
     
+    def create_chat_completion(self, request: operations.CreateChatCompletionRequest) -> operations.CreateChatCompletionResponse:
+        r"""Creates a completion for the chat message
+        """
+        
+        base_url = self._server_url
+        
+        url = base_url.removesuffix("/") + "/chat/completions"
+        
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request)
+        if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
+            headers["content-type"] = req_content_type
+        if data is None and form is None:
+           raise Exception('request body is required')
+        
+        client = self._client
+        
+        r = client.request("POST", url, data=data, files=form, headers=headers)
+        content_type = r.headers.get("Content-Type")
+
+        res = operations.CreateChatCompletionResponse(status_code=r.status_code, content_type=content_type)
+        
+        if r.status_code == 200:
+            if utils.match_content_type(content_type, "application/json"):
+                out = utils.unmarshal_json(r.text, Optional[shared.CreateChatCompletionResponse])
+                res.create_chat_completion_response = out
+
+        return res
+
+    
     def create_classification(self, request: operations.CreateClassificationRequest) -> operations.CreateClassificationResponse:
         r"""Classifies the specified `query` using provided examples.
         
@@ -148,7 +178,7 @@ class OpenAI:
 
     
     def create_edit(self, request: operations.CreateEditRequest) -> operations.CreateEditResponse:
-        r"""Creates a new edit for the provided input, instruction, and parameters
+        r"""Creates a new edit for the provided input, instruction, and parameters.
         """
         
         base_url = self._server_url
@@ -424,6 +454,66 @@ class OpenAI:
             if utils.match_content_type(content_type, "application/json"):
                 out = utils.unmarshal_json(r.text, Optional[shared.CreateSearchResponse])
                 res.create_search_response = out
+
+        return res
+
+    
+    def create_transcription(self, request: operations.CreateTranscriptionRequest) -> operations.CreateTranscriptionResponse:
+        r"""Transcribes audio into the input language.
+        """
+        
+        base_url = self._server_url
+        
+        url = base_url.removesuffix("/") + "/audio/transcriptions"
+        
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request)
+        if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
+            headers["content-type"] = req_content_type
+        if data is None and form is None:
+           raise Exception('request body is required')
+        
+        client = self._client
+        
+        r = client.request("POST", url, data=data, files=form, headers=headers)
+        content_type = r.headers.get("Content-Type")
+
+        res = operations.CreateTranscriptionResponse(status_code=r.status_code, content_type=content_type)
+        
+        if r.status_code == 200:
+            if utils.match_content_type(content_type, "application/json"):
+                out = utils.unmarshal_json(r.text, Optional[shared.CreateTranscriptionResponse])
+                res.create_transcription_response = out
+
+        return res
+
+    
+    def create_translation(self, request: operations.CreateTranslationRequest) -> operations.CreateTranslationResponse:
+        r"""Translates audio into into English.
+        """
+        
+        base_url = self._server_url
+        
+        url = base_url.removesuffix("/") + "/audio/translations"
+        
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request)
+        if req_content_type != "multipart/form-data" and req_content_type != "multipart/mixed":
+            headers["content-type"] = req_content_type
+        if data is None and form is None:
+           raise Exception('request body is required')
+        
+        client = self._client
+        
+        r = client.request("POST", url, data=data, files=form, headers=headers)
+        content_type = r.headers.get("Content-Type")
+
+        res = operations.CreateTranslationResponse(status_code=r.status_code, content_type=content_type)
+        
+        if r.status_code == 200:
+            if utils.match_content_type(content_type, "application/json"):
+                out = utils.unmarshal_json(r.text, Optional[shared.CreateTranslationResponse])
+                res.create_translation_response = out
 
         return res
 

@@ -1,5 +1,6 @@
 from .cancelfinetune import *
 from .createanswer import *
+from .createchatcompletion import *
 from .createclassification import *
 from .createcompletion import *
 from .createedit import *
@@ -11,6 +12,8 @@ from .createimageedit import *
 from .createimagevariation import *
 from .createmoderation import *
 from .createsearch import *
+from .createtranscription import *
+from .createtranslation import *
 from .deletefile import *
 from .deletemodel import *
 from .downloadfile import *
@@ -24,4 +27,4 @@ from .retrievefile import *
 from .retrievefinetune import *
 from .retrievemodel import *
 
-__all__ = ["CancelFineTunePathParams","CancelFineTuneRequest","CancelFineTuneResponse","CreateAnswerRequest","CreateAnswerResponse","CreateClassificationRequest","CreateClassificationResponse","CreateCompletionRequest","CreateCompletionResponse","CreateEditRequest","CreateEditResponse","CreateEmbeddingRequest","CreateEmbeddingResponse","CreateFileRequest","CreateFileResponse","CreateFineTuneRequest","CreateFineTuneResponse","CreateImageEditRequest","CreateImageEditResponse","CreateImageRequest","CreateImageResponse","CreateImageVariationRequest","CreateImageVariationResponse","CreateModerationRequest","CreateModerationResponse","CreateSearchPathParams","CreateSearchRequest","CreateSearchResponse","DeleteFilePathParams","DeleteFileRequest","DeleteFileResponse","DeleteModelPathParams","DeleteModelRequest","DeleteModelResponse","DownloadFilePathParams","DownloadFileRequest","DownloadFileResponse","ListEnginesResponse","ListFilesResponse","ListFineTuneEventsPathParams","ListFineTuneEventsQueryParams","ListFineTuneEventsRequest","ListFineTuneEventsResponse","ListFineTunesResponse","ListModelsResponse","RetrieveEnginePathParams","RetrieveEngineRequest","RetrieveEngineResponse","RetrieveFilePathParams","RetrieveFileRequest","RetrieveFileResponse","RetrieveFineTunePathParams","RetrieveFineTuneRequest","RetrieveFineTuneResponse","RetrieveModelPathParams","RetrieveModelRequest","RetrieveModelResponse"]
+__all__ = ["CancelFineTunePathParams","CancelFineTuneRequest","CancelFineTuneResponse","CreateAnswerRequest","CreateAnswerResponse","CreateChatCompletionRequest","CreateChatCompletionResponse","CreateClassificationRequest","CreateClassificationResponse","CreateCompletionRequest","CreateCompletionResponse","CreateEditRequest","CreateEditResponse","CreateEmbeddingRequest","CreateEmbeddingResponse","CreateFileRequest","CreateFileResponse","CreateFineTuneRequest","CreateFineTuneResponse","CreateImageEditRequest","CreateImageEditResponse","CreateImageRequest","CreateImageResponse","CreateImageVariationRequest","CreateImageVariationResponse","CreateModerationRequest","CreateModerationResponse","CreateSearchPathParams","CreateSearchRequest","CreateSearchResponse","CreateTranscriptionRequest","CreateTranscriptionResponse","CreateTranslationRequest","CreateTranslationResponse","DeleteFilePathParams","DeleteFileRequest","DeleteFileResponse","DeleteModelPathParams","DeleteModelRequest","DeleteModelResponse","DownloadFilePathParams","DownloadFileRequest","DownloadFileResponse","ListEnginesResponse","ListFilesResponse","ListFineTuneEventsPathParams","ListFineTuneEventsQueryParams","ListFineTuneEventsRequest","ListFineTuneEventsResponse","ListFineTunesResponse","ListModelsResponse","RetrieveEnginePathParams","RetrieveEngineRequest","RetrieveEngineResponse","RetrieveFilePathParams","RetrieveFileRequest","RetrieveFileResponse","RetrieveFineTunePathParams","RetrieveFineTuneRequest","RetrieveFineTuneResponse","RetrieveModelPathParams","RetrieveModelRequest","RetrieveModelResponse"]

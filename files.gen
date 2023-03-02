@@ -8,6 +8,7 @@ src/openai/utils/retries.py
 src/openai/utils/utils.py
 src/openai/models/operations/cancelfinetune.py
 src/openai/models/operations/createanswer.py
+src/openai/models/operations/createchatcompletion.py
 src/openai/models/operations/createclassification.py
 src/openai/models/operations/createcompletion.py
 src/openai/models/operations/createedit.py
@@ -19,6 +20,8 @@ src/openai/models/operations/createimageedit.py
 src/openai/models/operations/createimagevariation.py
 src/openai/models/operations/createmoderation.py
 src/openai/models/operations/createsearch.py
+src/openai/models/operations/createtranscription.py
+src/openai/models/operations/createtranslation.py
 src/openai/models/operations/deletefile.py
 src/openai/models/operations/deletemodel.py
 src/openai/models/operations/downloadfile.py
@@ -34,6 +37,10 @@ src/openai/models/operations/retrievemodel.py
 src/openai/models/operations/__init__.py
 src/openai/models/shared/createanswerresponse.py
 src/openai/models/shared/createanswerrequest.py
+src/openai/models/shared/createchatcompletionresponse.py
+src/openai/models/shared/chatcompletionresponsemessage.py
+src/openai/models/shared/createchatcompletionrequest.py
+src/openai/models/shared/chatcompletionrequestmessage.py
 src/openai/models/shared/createclassificationresponse.py
 src/openai/models/shared/createclassificationrequest.py
 src/openai/models/shared/createcompletionresponse.py
@@ -51,6 +58,10 @@ src/openai/models/shared/createmoderationresponse.py
 src/openai/models/shared/createmoderationrequest.py
 src/openai/models/shared/createsearchresponse.py
 src/openai/models/shared/createsearchrequest.py
+src/openai/models/shared/createtranscriptionresponse.py
+src/openai/models/shared/createtranscriptionrequest.py
+src/openai/models/shared/createtranslationresponse.py
+src/openai/models/shared/createtranslationrequest.py
 src/openai/models/shared/deletefileresponse.py
 src/openai/models/shared/deletemodelresponse.py
 src/openai/models/shared/listenginesresponse.py

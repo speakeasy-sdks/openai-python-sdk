@@ -62,6 +62,7 @@ if res.fine_tune is not None:
 
 The endpoint first [searches](/docs/api-reference/searches) over provided documents or files to find relevant context. The relevant context is combined with the provided examples and question to create the prompt for [completion](/docs/api-reference/completions).
 
+* `create_chat_completion` - Creates a completion for the chat message
 * `create_classification` - Classifies the specified `query` using provided examples.
 
 The endpoint first [searches](/docs/api-reference/searches) over the labeled examples
@@ -73,7 +74,7 @@ Labeled examples can be provided via an uploaded `file`, or explicitly listed in
 request using the `examples` parameter for quick tests and small scale use cases.
 
 * `create_completion` - Creates a completion for the provided prompt and parameters
-* `create_edit` - Creates a new edit for the provided input, instruction, and parameters
+* `create_edit` - Creates a new edit for the provided input, instruction, and parameters.
 * `create_embedding` - Creates an embedding vector representing the input text.
 * `create_file` - Upload a file that contains document(s) to be used across various endpoints/features. Currently, the size of all the files uploaded by one organization can be up to 1 GB. Please contact us if you need to increase the storage limit.
 
@@ -93,6 +94,8 @@ To go beyond the 200 document limit, documents can be processed offline and then
 
 The similarity score is a positive score that usually ranges from 0 to 300 (but can sometimes go higher), where a score above 200 usually means the document is semantically similar to the query.
 
+* `create_transcription` - Transcribes audio into the input language.
+* `create_translation` - Translates audio into into English.
 * `delete_file` - Delete a file.
 * `delete_model` - Delete a fine-tuned model. You must have the Owner role in your organization.
 * `download_file` - Returns the contents of the specified file
