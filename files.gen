@@ -1,5 +1,6 @@
 src/openai/openai.py
 src/openai/sdk.py
+pylintrc
 setup.py
 src/openai/__init__.py
 src/openai/models/__init__.py

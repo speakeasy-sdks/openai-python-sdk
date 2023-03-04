@@ -2,7 +2,6 @@ from __future__ import annotations
 import dataclasses
 
 
-
 @dataclasses.dataclass
 class CreateFileRequestFile:
     content: bytes = dataclasses.field(metadata={'multipart_form': { 'content': True }})

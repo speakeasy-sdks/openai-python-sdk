@@ -1,5 +1,6 @@
 from __future__ import annotations
 import dataclasses
+import requests
 from ..shared import listfinetuneeventsresponse as shared_listfinetuneeventsresponse
 from typing import Optional
 
@@ -25,4 +26,5 @@ class ListFineTuneEventsResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     list_fine_tune_events_response: Optional[shared_listfinetuneeventsresponse.ListFineTuneEventsResponse] = dataclasses.field(default=None)
+    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
     

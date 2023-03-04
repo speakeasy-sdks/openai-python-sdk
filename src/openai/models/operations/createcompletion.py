@@ -1,5 +1,6 @@
 from __future__ import annotations
 import dataclasses
+import requests
 from ..shared import createcompletionrequest as shared_createcompletionrequest
 from ..shared import createcompletionresponse as shared_createcompletionresponse
 from typing import Optional
@@ -15,4 +16,5 @@ class CreateCompletionResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     create_completion_response: Optional[shared_createcompletionresponse.CreateCompletionResponse] = dataclasses.field(default=None)
+    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
     
