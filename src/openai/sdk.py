@@ -1,5 +1,5 @@
 __doc__ = """ SDK Documentation: APIs for sampling from and fine-tuning language models"""
-import requests
+import requests as requests_http
 from . import utils
 from .openai import OpenAI
 
@@ -11,17 +11,17 @@ class Openai:
     r"""SDK Documentation: APIs for sampling from and fine-tuning language models"""
     open_ai: OpenAI
     
-    _client: requests.Session
-    _security_client: requests.Session
+    _client: requests_http.Session
+    _security_client: requests_http.Session
     
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "1.5.1"
-    _gen_version: str = "1.8.4"
+    _sdk_version: str = "1.5.2"
+    _gen_version: str = "1.8.5"
 
     def __init__(self) -> None:
-        self._client = requests.Session()
-        self._security_client = requests.Session()
+        self._client = requests_http.Session()
+        self._security_client = requests_http.Session()
         self._init_sdks()
 
     def config_server_url(self, server_url: str, params: dict[str, str] = None):
@@ -34,7 +34,7 @@ class Openai:
     
     
 
-    def config_client(self, client: requests.Session):
+    def config_client(self, client: requests_http.Session):
         self._client = client
         self._init_sdks()
     

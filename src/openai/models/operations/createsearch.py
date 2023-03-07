@@ -1,6 +1,6 @@
 from __future__ import annotations
 import dataclasses
-import requests
+import requests as requests_http
 from ..shared import createsearchrequest as shared_createsearchrequest
 from ..shared import createsearchresponse as shared_createsearchresponse
 from typing import Optional
@@ -22,5 +22,5 @@ class CreateSearchResponse:
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     create_search_response: Optional[shared_createsearchresponse.CreateSearchResponse] = dataclasses.field(default=None)
-    raw_response: Optional[requests.Response] = dataclasses.field(default=None)
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
