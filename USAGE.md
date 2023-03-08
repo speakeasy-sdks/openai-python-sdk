@@ -1,9 +1,9 @@
 <!-- Start SDK Example Usage -->
 ```python
-import openai
-from openai.models import operations, shared
+import gpt
+from gpt.models import operations, shared
 
-s = openai.Openai()
+s = gpt.Gpt()
    
 req = operations.CancelFineTuneRequest(
     path_params=operations.CancelFineTunePathParams(
