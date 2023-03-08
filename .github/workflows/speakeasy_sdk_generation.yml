@@ -8,20 +8,21 @@ on:
         type: boolean
         default: false
   schedule:
-    - cron: 0 0 * * * # Runs every day at midnight
+    - cron: 0 0 * * *
 
 jobs:
   generate:
-    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-generation.yaml@v13
-    with:
-      speakeasy_version: latest
-      openapi_doc_location: https://raw.githubusercontent.com/openai/openai-openapi/master/openapi.yaml
-      languages: |-
-        - python: ./
-      publish_python: true
-      force: ${{ github.event.inputs.force }} 
-      mode: pr
-    secrets:
-      pypi_token: ${{ secrets.PYPI_TOKEN }}
-      github_access_token: ${{ secrets.GITHUB_TOKEN }}
-      speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+    name: Generate SDK
+    runs-on: ubuntu-latest
+    steps:
+      - uses: speakeasy-api/sdk-generation-action@v13
+        with:
+          speakeasy_version: latest
+          openapi_doc_location: https://raw.githubusercontent.com/openai/openai-openapi/master/openapi.yaml
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+          languages: |-
+            - python
+          publish_python: true
+          mode: pr
+          speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+          force: ${{ github.event.inputs.force }}
