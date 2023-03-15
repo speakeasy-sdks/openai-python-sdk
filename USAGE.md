@@ -4,11 +4,10 @@ import gpt
 from gpt.models import operations, shared
 
 s = gpt.Gpt()
-   
+
+
 req = operations.CancelFineTuneRequest(
-    path_params=operations.CancelFineTunePathParams(
-        fine_tune_id="unde",
-    ),
+    fine_tune_id="unde",
 )
     
 res = s.open_ai.cancel_fine_tune(req)

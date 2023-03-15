@@ -1,14 +1,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import createimagevariationrequest as shared_createimagevariationrequest
 from typing import Any, Optional
 
-
-@dataclasses.dataclass
-class CreateImageVariationRequest:
-    request: shared_createimagevariationrequest.CreateImageVariationRequest = dataclasses.field(metadata={'request': { 'media_type': 'multipart/form-data' }})
-    
 
 @dataclasses.dataclass
 class CreateImageVariationResponse:

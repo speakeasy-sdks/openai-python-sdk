@@ -26,7 +26,7 @@ class OpenAI:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/fine-tunes/{fine_tune_id}/cancel', request.path_params)
+        url = utils.generate_url(operations.CancelFineTuneRequest, base_url, '/fine-tunes/{fine_tune_id}/cancel', request)
         
         
         client = self._client
@@ -43,7 +43,7 @@ class OpenAI:
 
         return res
 
-    def create_answer(self, request: operations.CreateAnswerRequest) -> operations.CreateAnswerResponse:
+    def create_answer(self, request: shared.CreateAnswerRequest) -> operations.CreateAnswerResponse:
         r"""Answers the specified question using the provided documents and examples.
         
         The endpoint first [searches](/docs/api-reference/searches) over provided documents or files to find relevant context. The relevant context is combined with the provided examples and question to create the prompt for [completion](/docs/api-reference/completions).
@@ -55,7 +55,7 @@ class OpenAI:
         url = base_url.removesuffix('/') + '/answers'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -75,7 +75,7 @@ class OpenAI:
 
         return res
 
-    def create_chat_completion(self, request: operations.CreateChatCompletionRequest) -> operations.CreateChatCompletionResponse:
+    def create_chat_completion(self, request: shared.CreateChatCompletionRequest) -> operations.CreateChatCompletionResponse:
         r"""Creates a completion for the chat message
         """
         
@@ -84,7 +84,7 @@ class OpenAI:
         url = base_url.removesuffix('/') + '/chat/completions'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -104,7 +104,7 @@ class OpenAI:
 
         return res
 
-    def create_classification(self, request: operations.CreateClassificationRequest) -> operations.CreateClassificationResponse:
+    def create_classification(self, request: shared.CreateClassificationRequest) -> operations.CreateClassificationResponse:
         r"""Classifies the specified `query` using provided examples.
         
         The endpoint first [searches](/docs/api-reference/searches) over the labeled examples
@@ -122,7 +122,7 @@ class OpenAI:
         url = base_url.removesuffix('/') + '/classifications'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -142,7 +142,7 @@ class OpenAI:
 
         return res
 
-    def create_completion(self, request: operations.CreateCompletionRequest) -> operations.CreateCompletionResponse:
+    def create_completion(self, request: shared.CreateCompletionRequest) -> operations.CreateCompletionResponse:
         r"""Creates a completion for the provided prompt and parameters
         """
         
@@ -151,7 +151,7 @@ class OpenAI:
         url = base_url.removesuffix('/') + '/completions'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -171,7 +171,7 @@ class OpenAI:
 
         return res
 
-    def create_edit(self, request: operations.CreateEditRequest) -> operations.CreateEditResponse:
+    def create_edit(self, request: shared.CreateEditRequest) -> operations.CreateEditResponse:
         r"""Creates a new edit for the provided input, instruction, and parameters.
         """
         
@@ -180,7 +180,7 @@ class OpenAI:
         url = base_url.removesuffix('/') + '/edits'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -200,7 +200,7 @@ class OpenAI:
 
         return res
 
-    def create_embedding(self, request: operations.CreateEmbeddingRequest) -> operations.CreateEmbeddingResponse:
+    def create_embedding(self, request: shared.CreateEmbeddingRequest) -> operations.CreateEmbeddingResponse:
         r"""Creates an embedding vector representing the input text.
         """
         
@@ -209,7 +209,7 @@ class OpenAI:
         url = base_url.removesuffix('/') + '/embeddings'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -229,7 +229,7 @@ class OpenAI:
 
         return res
 
-    def create_file(self, request: operations.CreateFileRequest) -> operations.CreateFileResponse:
+    def create_file(self, request: shared.CreateFileRequest) -> operations.CreateFileResponse:
         r"""Upload a file that contains document(s) to be used across various endpoints/features. Currently, the size of all the files uploaded by one organization can be up to 1 GB. Please contact us if you need to increase the storage limit.
         
         """
@@ -239,7 +239,7 @@ class OpenAI:
         url = base_url.removesuffix('/') + '/files'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -259,7 +259,7 @@ class OpenAI:
 
         return res
 
-    def create_fine_tune(self, request: operations.CreateFineTuneRequest) -> operations.CreateFineTuneResponse:
+    def create_fine_tune(self, request: shared.CreateFineTuneRequest) -> operations.CreateFineTuneResponse:
         r"""Creates a job that fine-tunes a specified model from a given dataset.
         
         Response includes details of the enqueued job including job status and the name of the fine-tuned models once complete.
@@ -273,7 +273,7 @@ class OpenAI:
         url = base_url.removesuffix('/') + '/fine-tunes'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -293,7 +293,7 @@ class OpenAI:
 
         return res
 
-    def create_image(self, request: operations.CreateImageRequest) -> operations.CreateImageResponse:
+    def create_image(self, request: shared.CreateImageRequest) -> operations.CreateImageResponse:
         r"""Creates an image given a prompt.
         """
         
@@ -302,7 +302,7 @@ class OpenAI:
         url = base_url.removesuffix('/') + '/images/generations'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -322,7 +322,7 @@ class OpenAI:
 
         return res
 
-    def create_image_edit(self, request: operations.CreateImageEditRequest) -> operations.CreateImageEditResponse:
+    def create_image_edit(self, request: shared.CreateImageEditRequest) -> operations.CreateImageEditResponse:
         r"""Creates an edited or extended image given an original image and a prompt.
         """
         
@@ -331,7 +331,7 @@ class OpenAI:
         url = base_url.removesuffix('/') + '/images/edits'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -351,7 +351,7 @@ class OpenAI:
 
         return res
 
-    def create_image_variation(self, request: operations.CreateImageVariationRequest) -> operations.CreateImageVariationResponse:
+    def create_image_variation(self, request: shared.CreateImageVariationRequest) -> operations.CreateImageVariationResponse:
         r"""Creates a variation of a given image.
         """
         
@@ -360,7 +360,7 @@ class OpenAI:
         url = base_url.removesuffix('/') + '/images/variations'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -380,7 +380,7 @@ class OpenAI:
 
         return res
 
-    def create_moderation(self, request: operations.CreateModerationRequest) -> operations.CreateModerationResponse:
+    def create_moderation(self, request: shared.CreateModerationRequest) -> operations.CreateModerationResponse:
         r"""Classifies if text violates OpenAI's Content Policy
         """
         
@@ -389,7 +389,7 @@ class OpenAI:
         url = base_url.removesuffix('/') + '/moderations'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -420,10 +420,10 @@ class OpenAI:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/engines/{engine_id}/search', request.path_params)
+        url = utils.generate_url(operations.CreateSearchRequest, base_url, '/engines/{engine_id}/search', request)
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "create_search_request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -443,7 +443,7 @@ class OpenAI:
 
         return res
 
-    def create_transcription(self, request: operations.CreateTranscriptionRequest) -> operations.CreateTranscriptionResponse:
+    def create_transcription(self, request: shared.CreateTranscriptionRequest) -> operations.CreateTranscriptionResponse:
         r"""Transcribes audio into the input language.
         """
         
@@ -452,7 +452,7 @@ class OpenAI:
         url = base_url.removesuffix('/') + '/audio/transcriptions'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -472,7 +472,7 @@ class OpenAI:
 
         return res
 
-    def create_translation(self, request: operations.CreateTranslationRequest) -> operations.CreateTranslationResponse:
+    def create_translation(self, request: shared.CreateTranslationRequest) -> operations.CreateTranslationResponse:
         r"""Translates audio into into English.
         """
         
@@ -481,7 +481,7 @@ class OpenAI:
         url = base_url.removesuffix('/') + '/audio/translations'
         
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request)
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
@@ -507,7 +507,7 @@ class OpenAI:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/files/{file_id}', request.path_params)
+        url = utils.generate_url(operations.DeleteFileRequest, base_url, '/files/{file_id}', request)
         
         
         client = self._client
@@ -530,7 +530,7 @@ class OpenAI:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/models/{model}', request.path_params)
+        url = utils.generate_url(operations.DeleteModelRequest, base_url, '/models/{model}', request)
         
         
         client = self._client
@@ -553,7 +553,7 @@ class OpenAI:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/files/{file_id}/content', request.path_params)
+        url = utils.generate_url(operations.DownloadFileRequest, base_url, '/files/{file_id}/content', request)
         
         
         client = self._client
@@ -622,9 +622,9 @@ class OpenAI:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/fine-tunes/{fine_tune_id}/events', request.path_params)
+        url = utils.generate_url(operations.ListFineTuneEventsRequest, base_url, '/fine-tunes/{fine_tune_id}/events', request)
         
-        query_params = utils.get_query_params(request.query_params)
+        query_params = utils.get_query_params(operations.ListFineTuneEventsRequest, request)
         
         client = self._client
         
@@ -693,7 +693,7 @@ class OpenAI:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/engines/{engine_id}', request.path_params)
+        url = utils.generate_url(operations.RetrieveEngineRequest, base_url, '/engines/{engine_id}', request)
         
         
         client = self._client
@@ -716,7 +716,7 @@ class OpenAI:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/files/{file_id}', request.path_params)
+        url = utils.generate_url(operations.RetrieveFileRequest, base_url, '/files/{file_id}', request)
         
         
         client = self._client
@@ -742,7 +742,7 @@ class OpenAI:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/fine-tunes/{fine_tune_id}', request.path_params)
+        url = utils.generate_url(operations.RetrieveFineTuneRequest, base_url, '/fine-tunes/{fine_tune_id}', request)
         
         
         client = self._client
@@ -765,7 +765,7 @@ class OpenAI:
         
         base_url = self._server_url
         
-        url = utils.generate_url(base_url, '/models/{model}', request.path_params)
+        url = utils.generate_url(operations.RetrieveModelRequest, base_url, '/models/{model}', request)
         
         
         client = self._client

@@ -1,15 +1,9 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import createcompletionrequest as shared_createcompletionrequest
 from ..shared import createcompletionresponse as shared_createcompletionresponse
 from typing import Optional
 
-
-@dataclasses.dataclass
-class CreateCompletionRequest:
-    request: shared_createcompletionrequest.CreateCompletionRequest = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
-    
 
 @dataclasses.dataclass
 class CreateCompletionResponse:

@@ -1,15 +1,9 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import createmoderationrequest as shared_createmoderationrequest
 from ..shared import createmoderationresponse as shared_createmoderationresponse
 from typing import Optional
 
-
-@dataclasses.dataclass
-class CreateModerationRequest:
-    request: shared_createmoderationrequest.CreateModerationRequest = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
-    
 
 @dataclasses.dataclass
 class CreateModerationResponse:

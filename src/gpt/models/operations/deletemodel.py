@@ -6,13 +6,8 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class DeleteModelPathParams:
-    model: str = dataclasses.field(metadata={'path_param': { 'field_name': 'model', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class DeleteModelRequest:
-    path_params: DeleteModelPathParams = dataclasses.field()
+    model: str = dataclasses.field(metadata={'path_param': { 'field_name': 'model', 'style': 'simple', 'explode': False }})
     
 
 @dataclasses.dataclass

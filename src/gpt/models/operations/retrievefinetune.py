@@ -5,13 +5,8 @@ from typing import Any, Optional
 
 
 @dataclasses.dataclass
-class RetrieveFineTunePathParams:
-    fine_tune_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'fine_tune_id', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class RetrieveFineTuneRequest:
-    path_params: RetrieveFineTunePathParams = dataclasses.field()
+    fine_tune_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'fine_tune_id', 'style': 'simple', 'explode': False }})
     
 
 @dataclasses.dataclass
