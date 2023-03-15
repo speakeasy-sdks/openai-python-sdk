@@ -7,14 +7,9 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class CreateSearchPathParams:
-    engine_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'engine_id', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class CreateSearchRequest:
-    path_params: CreateSearchPathParams = dataclasses.field()
-    request: shared_createsearchrequest.CreateSearchRequest = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
+    create_search_request: shared_createsearchrequest.CreateSearchRequest = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
+    engine_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'engine_id', 'style': 'simple', 'explode': False }})
     
 
 @dataclasses.dataclass

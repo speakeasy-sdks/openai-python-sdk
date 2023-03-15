@@ -5,13 +5,8 @@ from typing import Any, Optional
 
 
 @dataclasses.dataclass
-class RetrieveFilePathParams:
-    file_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'file_id', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class RetrieveFileRequest:
-    path_params: RetrieveFilePathParams = dataclasses.field()
+    file_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'file_id', 'style': 'simple', 'explode': False }})
     
 
 @dataclasses.dataclass

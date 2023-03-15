@@ -5,13 +5,8 @@ from typing import Any, Optional
 
 
 @dataclasses.dataclass
-class RetrieveModelPathParams:
-    model: str = dataclasses.field(metadata={'path_param': { 'field_name': 'model', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class RetrieveModelRequest:
-    path_params: RetrieveModelPathParams = dataclasses.field()
+    model: str = dataclasses.field(metadata={'path_param': { 'field_name': 'model', 'style': 'simple', 'explode': False }})
     
 
 @dataclasses.dataclass

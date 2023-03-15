@@ -6,13 +6,8 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class DeleteFilePathParams:
-    file_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'file_id', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class DeleteFileRequest:
-    path_params: DeleteFilePathParams = dataclasses.field()
+    file_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'file_id', 'style': 'simple', 'explode': False }})
     
 
 @dataclasses.dataclass

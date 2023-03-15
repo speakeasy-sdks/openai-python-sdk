@@ -5,13 +5,8 @@ from typing import Any, Optional
 
 
 @dataclasses.dataclass
-class CancelFineTunePathParams:
-    fine_tune_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'fine_tune_id', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class CancelFineTuneRequest:
-    path_params: CancelFineTunePathParams = dataclasses.field()
+    fine_tune_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'fine_tune_id', 'style': 'simple', 'explode': False }})
     
 
 @dataclasses.dataclass

@@ -6,19 +6,9 @@ from typing import Optional
 
 
 @dataclasses.dataclass
-class ListFineTuneEventsPathParams:
-    fine_tune_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'fine_tune_id', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
-class ListFineTuneEventsQueryParams:
-    stream: Optional[bool] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'stream', 'style': 'form', 'explode': True }})
-    
-
-@dataclasses.dataclass
 class ListFineTuneEventsRequest:
-    path_params: ListFineTuneEventsPathParams = dataclasses.field()
-    query_params: ListFineTuneEventsQueryParams = dataclasses.field()
+    fine_tune_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'fine_tune_id', 'style': 'simple', 'explode': False }})
+    stream: Optional[bool] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'stream', 'style': 'form', 'explode': True }})
     
 
 @dataclasses.dataclass

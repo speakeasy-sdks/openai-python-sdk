@@ -5,13 +5,8 @@ from typing import Any, Optional
 
 
 @dataclasses.dataclass
-class RetrieveEnginePathParams:
-    engine_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'engine_id', 'style': 'simple', 'explode': False }})
-    
-
-@dataclasses.dataclass
 class RetrieveEngineRequest:
-    path_params: RetrieveEnginePathParams = dataclasses.field()
+    engine_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'engine_id', 'style': 'simple', 'explode': False }})
     
 
 @dataclasses.dataclass

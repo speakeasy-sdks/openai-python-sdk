@@ -1,14 +1,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ..shared import createimageeditrequest as shared_createimageeditrequest
 from typing import Any, Optional
 
-
-@dataclasses.dataclass
-class CreateImageEditRequest:
-    request: shared_createimageeditrequest.CreateImageEditRequest = dataclasses.field(metadata={'request': { 'media_type': 'multipart/form-data' }})
-    
 
 @dataclasses.dataclass
 class CreateImageEditResponse:
