@@ -39,7 +39,7 @@ s = gpt.Gpt()
 
 
 req = operations.CancelFineTuneRequest(
-    fine_tune_id="unde",
+    fine_tune_id="ft-AF1WoRqd3aJAHsqc9NY7iL8F",
 )
     
 res = s.open_ai.cancel_fine_tune(req)
