@@ -17,7 +17,7 @@ class CreateFineTuneRequest:
     See [upload file](/docs/api-reference/files/upload) for how to upload a file.
     
     Your dataset must be formatted as a JSONL file, where each training
-    example is a JSON object with the keys "prompt" and "completion".
+    example is a JSON object with the keys \"prompt\" and \"completion\".
     Additionally, you must upload your file with the purpose `fine-tune`.
     
     See the [fine-tuning guide](/docs/guides/fine-tuning/creating-training-data) for more details.
@@ -81,8 +81,8 @@ class CreateFineTuneRequest:
     
     """  
     model: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model'), 'exclude': lambda f: f is None }})
-    r"""The name of the base model to fine-tune. You can select one of "ada",
-    "babbage", "curie", "davinci", or a fine-tuned model created after 2022-04-21.
+    r"""The name of the base model to fine-tune. You can select one of \"ada\",
+    \"babbage\", \"curie\", \"davinci\", or a fine-tuned model created after 2022-04-21.
     To learn more about these models, see the
     [Models](https://platform.openai.com/docs/models) documentation.
     
@@ -106,7 +106,7 @@ class CreateFineTuneRequest:
     suffix: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('suffix'), 'exclude': lambda f: f is None }})
     r"""A string of up to 40 characters that will be added to your fine-tuned model name.
     
-    For example, a `suffix` of "custom-model-name" would produce a model name like `ada:ft-your-org:custom-model-name-2022-02-15-04-21-04`.
+    For example, a `suffix` of \"custom-model-name\" would produce a model name like `ada:ft-your-org:custom-model-name-2022-02-15-04-21-04`.
     
     """  
     validation_file: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validation_file'), 'exclude': lambda f: f is None }})
@@ -118,7 +118,7 @@ class CreateFineTuneRequest:
     Your train and validation data should be mutually exclusive.
     
     Your dataset must be formatted as a JSONL file, where each validation
-    example is a JSON object with the keys "prompt" and "completion".
+    example is a JSON object with the keys \"prompt\" and \"completion\".
     Additionally, you must upload your file with the purpose `fine-tune`.
     
     See the [fine-tuning guide](/docs/guides/fine-tuning/creating-training-data) for more details.

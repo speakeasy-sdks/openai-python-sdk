@@ -17,7 +17,7 @@ class CreateClassificationRequest:
     examples: Optional[list[list[str]]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('examples'), 'exclude': lambda f: f is None }})
     r"""A list of examples with labels, in the following format:
     
-    `[["The movie is so interesting.", "Positive"], ["It is quite boring.", "Negative"], ...]`
+    `[[\"The movie is so interesting.\", \"Positive\"], [\"It is quite boring.\", \"Negative\"], ...]`
     
     All the label strings will be normalized to be capitalized.
     

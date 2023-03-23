@@ -34,7 +34,7 @@ class CreateSearchRequest:
     
     """  
     return_metadata: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('return_metadata'), 'exclude': lambda f: f is None }})
-    r"""A special boolean flag for showing metadata. If set to `true`, each document entry in the returned JSON will contain a "metadata" field.
+    r"""A special boolean flag for showing metadata. If set to `true`, each document entry in the returned JSON will contain a \"metadata\" field.
     
     This flag only takes effect when `file` is set.
     
