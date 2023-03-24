@@ -18,8 +18,8 @@ class Gpt:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "1.7.1"
-    _gen_version: str = "2.13.1"
+    _sdk_version: str = "1.8.0"
+    _gen_version: str = "2.15.0"
 
     def __init__(self,
                  server_url: str = None,
