@@ -8,9 +8,9 @@ from gpt import utils
 
 class ChatCompletionResponseMessageRoleEnum(str, Enum):
     r"""The role of the author of this message."""
-    SYSTEM = "system"
-    USER = "user"
-    ASSISTANT = "assistant"
+    SYSTEM = 'system'
+    USER = 'user'
+    ASSISTANT = 'assistant'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)

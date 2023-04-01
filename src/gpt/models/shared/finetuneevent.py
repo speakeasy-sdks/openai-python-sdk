@@ -2,16 +2,16 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import openaifile as shared_openaifile
 from dataclasses_json import Undefined, dataclass_json
 from gpt import utils
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class ListFilesResponse:
-    r"""OK"""
+class FineTuneEvent:
     
-    data: list[shared_openaifile.OpenAIFile] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})  
+    created_at: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created_at') }})  
+    level: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('level') }})  
+    message: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message') }})  
     object: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('object') }})  
     

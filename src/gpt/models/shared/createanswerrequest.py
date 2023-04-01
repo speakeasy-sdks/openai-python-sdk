@@ -23,7 +23,6 @@ class CreateAnswerRequest:
     r"""List of documents from which the answer for the input `question` should be derived. If this is an empty list, the question will be answered based on the question-answer examples.
     
     You should specify either `documents` or a `file`, but not both.
-    
     """  
     expand: Optional[list[Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('expand'), 'exclude': lambda f: f is None }})
     r"""If an object name is in the list, we provide the full information of the object; otherwise, we only provide the object ID. Currently we support `completion` and `file` objects for expansion."""  
@@ -31,7 +30,6 @@ class CreateAnswerRequest:
     r"""The ID of an uploaded file that contains documents to search over. See [upload file](/docs/api-reference/files/upload) for how to upload a file of the desired format and purpose.
     
     You should specify either `documents` or a `file`, but not both.
-    
     """  
     logit_bias: Optional[Any] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('logit_bias'), 'exclude': lambda f: f is None }})  
     logprobs: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('logprobs'), 'exclude': lambda f: f is None }})
@@ -40,7 +38,6 @@ class CreateAnswerRequest:
     The maximum value for `logprobs` is 5. If you need more than this, please contact us through our [Help center](https://help.openai.com) and describe your use case.
     
     When `logprobs` is set, `completion` will be automatically added into `expand` to get the logprobs.
-    
     """  
     max_rerank: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('max_rerank'), 'exclude': lambda f: f is None }})
     r"""The maximum number of documents to be ranked by [Search](/docs/api-reference/searches/create) when using `file`. Setting it to a higher value leads to improved accuracy but with increased latency and cost."""  
@@ -50,7 +47,7 @@ class CreateAnswerRequest:
     r"""How many answers to generate for each question."""  
     return_metadata: Optional[Any] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('return_metadata'), 'exclude': lambda f: f is None }})  
     return_prompt: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('return_prompt'), 'exclude': lambda f: f is None }})
-    r"""If set to `true`, the returned JSON will include a \"prompt\" field containing the final prompt that was used to request a completion. This is mainly useful for debugging purposes."""  
+    r"""If set to `true`, the returned JSON will include a \\"prompt\\" field containing the final prompt that was used to request a completion. This is mainly useful for debugging purposes."""  
     search_model: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('search_model'), 'exclude': lambda f: f is None }})
     r"""ID of the model to use for [Search](/docs/api-reference/searches/create). You can select one of `ada`, `babbage`, `curie`, or `davinci`."""  
     stop: Optional[Any] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('stop'), 'exclude': lambda f: f is None }})

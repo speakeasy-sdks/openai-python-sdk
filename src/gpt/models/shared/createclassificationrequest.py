@@ -22,14 +22,12 @@ class CreateClassificationRequest:
     All the label strings will be normalized to be capitalized.
     
     You should specify either `examples` or `file`, but not both.
-    
     """  
     expand: Optional[Any] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('expand'), 'exclude': lambda f: f is None }})  
     file: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('file'), 'exclude': lambda f: f is None }})
     r"""The ID of the uploaded file that contains training examples. See [upload file](/docs/api-reference/files/upload) for how to upload a file of the desired format and purpose.
     
     You should specify either `examples` or `file`, but not both.
-    
     """  
     labels: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('labels'), 'exclude': lambda f: f is None }})
     r"""The set of categories being classified. If not specified, candidate labels will be automatically collected from the examples you provide. All the label strings will be normalized to be capitalized."""  

@@ -36,6 +36,9 @@ src/gpt/models/operations/retrievefile.py
 src/gpt/models/operations/retrievefinetune.py
 src/gpt/models/operations/retrievemodel.py
 src/gpt/models/operations/__init__.py
+src/gpt/models/shared/finetune.py
+src/gpt/models/shared/openaifile.py
+src/gpt/models/shared/finetuneevent.py
 src/gpt/models/shared/createanswerresponse.py
 src/gpt/models/shared/createanswerrequest.py
 src/gpt/models/shared/createchatcompletionresponse.py
@@ -52,6 +55,7 @@ src/gpt/models/shared/createembeddingresponse.py
 src/gpt/models/shared/createembeddingrequest.py
 src/gpt/models/shared/createfilerequest.py
 src/gpt/models/shared/createfinetunerequest.py
+src/gpt/models/shared/imagesresponse.py
 src/gpt/models/shared/createimagerequest.py
 src/gpt/models/shared/createimageeditrequest.py
 src/gpt/models/shared/createimagevariationrequest.py
@@ -66,9 +70,11 @@ src/gpt/models/shared/createtranslationrequest.py
 src/gpt/models/shared/deletefileresponse.py
 src/gpt/models/shared/deletemodelresponse.py
 src/gpt/models/shared/listenginesresponse.py
+src/gpt/models/shared/engine.py
 src/gpt/models/shared/listfilesresponse.py
 src/gpt/models/shared/listfinetuneeventsresponse.py
 src/gpt/models/shared/listfinetunesresponse.py
 src/gpt/models/shared/listmodelsresponse.py
+src/gpt/models/shared/model.py
 src/gpt/models/shared/__init__.py
 USAGE.md

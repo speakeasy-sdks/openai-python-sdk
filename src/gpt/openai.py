@@ -3,7 +3,7 @@
 import requests as requests_http
 from . import utils
 from gpt.models import operations, shared
-from typing import Any, Optional
+from typing import Optional
 
 class OpenAI:
     r"""The OpenAI REST API"""
@@ -23,9 +23,7 @@ class OpenAI:
         self._gen_version = gen_version
         
     def cancel_fine_tune(self, request: operations.CancelFineTuneRequest) -> operations.CancelFineTuneResponse:
-        r"""Immediately cancel a fine-tune job.
-        
-        """
+        r"""Immediately cancel a fine-tune job."""
         base_url = self._server_url
         
         url = utils.generate_url(operations.CancelFineTuneRequest, base_url, '/fine-tunes/{fine_tune_id}/cancel', request)
@@ -40,7 +38,7 @@ class OpenAI:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[Any])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.FineTune])
                 res.fine_tune = out
 
         return res
@@ -49,7 +47,6 @@ class OpenAI:
         r"""Answers the specified question using the provided documents and examples.
         
         The endpoint first [searches](/docs/api-reference/searches) over provided documents or files to find relevant context. The relevant context is combined with the provided examples and question to create the prompt for [completion](/docs/api-reference/completions).
-        
         """
         base_url = self._server_url
         
@@ -113,7 +110,6 @@ class OpenAI:
         
         Labeled examples can be provided via an uploaded `file`, or explicitly listed in the
         request using the `examples` parameter for quick tests and small scale use cases.
-        
         """
         base_url = self._server_url
         
@@ -222,9 +218,7 @@ class OpenAI:
         return res
 
     def create_file(self, request: shared.CreateFileRequest) -> operations.CreateFileResponse:
-        r"""Upload a file that contains document(s) to be used across various endpoints/features. Currently, the size of all the files uploaded by one organization can be up to 1 GB. Please contact us if you need to increase the storage limit.
-        
-        """
+        r"""Upload a file that contains document(s) to be used across various endpoints/features. Currently, the size of all the files uploaded by one organization can be up to 1 GB. Please contact us if you need to increase the storage limit."""
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/files'
@@ -245,7 +239,7 @@ class OpenAI:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[Any])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.OpenAIFile])
                 res.open_ai_file = out
 
         return res
@@ -256,7 +250,6 @@ class OpenAI:
         Response includes details of the enqueued job including job status and the name of the fine-tuned models once complete.
         
         [Learn more about Fine-tuning](/docs/guides/fine-tuning)
-        
         """
         base_url = self._server_url
         
@@ -278,7 +271,7 @@ class OpenAI:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[Any])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.FineTune])
                 res.fine_tune = out
 
         return res
@@ -305,7 +298,7 @@ class OpenAI:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[Any])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ImagesResponse])
                 res.images_response = out
 
         return res
@@ -332,7 +325,7 @@ class OpenAI:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[Any])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ImagesResponse])
                 res.images_response = out
 
         return res
@@ -359,7 +352,7 @@ class OpenAI:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[Any])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ImagesResponse])
                 res.images_response = out
 
         return res
@@ -397,7 +390,6 @@ class OpenAI:
         To go beyond the 200 document limit, documents can be processed offline and then used for efficient retrieval at query time. When `file` is set, the search endpoint searches over all the documents in the given file and returns up to the `max_rerank` number of documents. These documents will be returned along with their search scores.
         
         The similarity score is a positive score that usually ranges from 0 to 300 (but can sometimes go higher), where a score above 200 usually means the document is semantically similar to the query.
-        
         """
         base_url = self._server_url
         
@@ -583,9 +575,7 @@ class OpenAI:
         return res
 
     def list_fine_tune_events(self, request: operations.ListFineTuneEventsRequest) -> operations.ListFineTuneEventsResponse:
-        r"""Get fine-grained status updates for a fine-tune job.
-        
-        """
+        r"""Get fine-grained status updates for a fine-tune job."""
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListFineTuneEventsRequest, base_url, '/fine-tunes/{fine_tune_id}/events', request)
@@ -607,9 +597,7 @@ class OpenAI:
         return res
 
     def list_fine_tunes(self) -> operations.ListFineTunesResponse:
-        r"""List your organization's fine-tuning jobs
-        
-        """
+        r"""List your organization's fine-tuning jobs"""
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/fine-tunes'
@@ -666,7 +654,7 @@ class OpenAI:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[Any])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Engine])
                 res.engine = out
 
         return res
@@ -687,7 +675,7 @@ class OpenAI:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[Any])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.OpenAIFile])
                 res.open_ai_file = out
 
         return res
@@ -696,7 +684,6 @@ class OpenAI:
         r"""Gets info about the fine-tune job.
         
         [Learn more about Fine-tuning](/docs/guides/fine-tuning)
-        
         """
         base_url = self._server_url
         
@@ -712,7 +699,7 @@ class OpenAI:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[Any])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.FineTune])
                 res.fine_tune = out
 
         return res
@@ -733,7 +720,7 @@ class OpenAI:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[Any])
+                out = utils.unmarshal_json(http_res.text, Optional[shared.Model])
                 res.model = out
 
         return res
