@@ -77,4 +77,6 @@ src/gpt/models/shared/listfinetunesresponse.py
 src/gpt/models/shared/listmodelsresponse.py
 src/gpt/models/shared/model.py
 src/gpt/models/shared/__init__.py
+docs/gpt/README.md
+docs/openai/README.md
 USAGE.md
