@@ -12,10 +12,12 @@ from typing import Any, Optional
 class CreateModerationRequest:
     
     input: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('input') }})
-    r"""The input text to classify"""  
+
+    r"""The input text to classify"""
     model: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model'), 'exclude': lambda f: f is None }})
+
     r"""Two content moderations models are available: `text-moderation-stable` and `text-moderation-latest`.
     
     The default is `text-moderation-latest` which will be automatically upgraded over time. This ensures you are always using our most accurate model. If you use `text-moderation-stable`, we will provide advanced notice before updating the model. Accuracy of `text-moderation-stable` may be slightly lower than for `text-moderation-latest`.
-    """  
+    """
     

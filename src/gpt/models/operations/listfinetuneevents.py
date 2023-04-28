@@ -11,8 +11,10 @@ from typing import Optional
 class ListFineTuneEventsRequest:
     
     fine_tune_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'fine_tune_id', 'style': 'simple', 'explode': False }})
-    r"""The ID of the fine-tune job to get events for."""  
+
+    r"""The ID of the fine-tune job to get events for."""
     stream: Optional[bool] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'stream', 'style': 'form', 'explode': True }})
+
     r"""Whether to stream events for the fine-tune job. If set to true,
     events will be sent as data-only
     [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format)
@@ -21,15 +23,19 @@ class ListFineTuneEventsRequest:
     or failed).
     
     If set to false, only events generated so far will be returned.
-    """  
+    """
     
 
 @dataclasses.dataclass
 class ListFineTuneEventsResponse:
     
-    content_type: str = dataclasses.field()  
-    status_code: int = dataclasses.field()  
+    content_type: str = dataclasses.field()
+
+    status_code: int = dataclasses.field()
+
     list_fine_tune_events_response: Optional[shared_listfinetuneeventsresponse.ListFineTuneEventsResponse] = dataclasses.field(default=None)
-    r"""OK"""  
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+
+    r"""OK"""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+
     

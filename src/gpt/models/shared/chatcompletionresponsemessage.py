@@ -18,7 +18,9 @@ class ChatCompletionResponseMessageRoleEnum(str, Enum):
 class ChatCompletionResponseMessage:
     
     content: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('content') }})
-    r"""The contents of the message"""  
+
+    r"""The contents of the message"""
     role: ChatCompletionResponseMessageRoleEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('role') }})
-    r"""The role of the author of this message."""  
+
+    r"""The role of the author of this message."""
     

@@ -12,6 +12,8 @@ from gpt import utils
 class ListFineTunesResponse:
     r"""OK"""
     
-    data: list[shared_finetune.FineTune] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})  
-    object: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('object') }})  
+    data: list[shared_finetune.FineTune] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
+
+    object: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('object') }})
+
     

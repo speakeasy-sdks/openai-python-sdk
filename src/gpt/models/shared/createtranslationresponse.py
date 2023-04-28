@@ -11,5 +11,6 @@ from gpt import utils
 class CreateTranslationResponse:
     r"""OK"""
     
-    text: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('text') }})  
+    text: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('text') }})
+
     

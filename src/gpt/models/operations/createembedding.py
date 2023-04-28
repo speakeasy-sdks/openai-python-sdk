@@ -10,9 +10,13 @@ from typing import Optional
 @dataclasses.dataclass
 class CreateEmbeddingResponse:
     
-    content_type: str = dataclasses.field()  
-    status_code: int = dataclasses.field()  
+    content_type: str = dataclasses.field()
+
+    status_code: int = dataclasses.field()
+
     create_embedding_response: Optional[shared_createembeddingresponse.CreateEmbeddingResponse] = dataclasses.field(default=None)
-    r"""OK"""  
-    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)  
+
+    r"""OK"""
+    raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+
     

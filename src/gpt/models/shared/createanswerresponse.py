@@ -11,8 +11,10 @@ from typing import Optional
 @dataclasses.dataclass
 class CreateAnswerResponseSelectedDocuments:
     
-    document: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('document'), 'exclude': lambda f: f is None }})  
-    text: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('text'), 'exclude': lambda f: f is None }})  
+    document: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('document'), 'exclude': lambda f: f is None }})
+
+    text: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('text'), 'exclude': lambda f: f is None }})
+
     
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -20,10 +22,16 @@ class CreateAnswerResponseSelectedDocuments:
 class CreateAnswerResponse:
     r"""OK"""
     
-    answers: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('answers'), 'exclude': lambda f: f is None }})  
-    completion: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('completion'), 'exclude': lambda f: f is None }})  
-    model: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model'), 'exclude': lambda f: f is None }})  
-    object: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('object'), 'exclude': lambda f: f is None }})  
-    search_model: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('search_model'), 'exclude': lambda f: f is None }})  
-    selected_documents: Optional[list[CreateAnswerResponseSelectedDocuments]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('selected_documents'), 'exclude': lambda f: f is None }})  
+    answers: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('answers'), 'exclude': lambda f: f is None }})
+
+    completion: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('completion'), 'exclude': lambda f: f is None }})
+
+    model: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model'), 'exclude': lambda f: f is None }})
+
+    object: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('object'), 'exclude': lambda f: f is None }})
+
+    search_model: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('search_model'), 'exclude': lambda f: f is None }})
+
+    selected_documents: Optional[list[CreateAnswerResponseSelectedDocuments]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('selected_documents'), 'exclude': lambda f: f is None }})
+
     

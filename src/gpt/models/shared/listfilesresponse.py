@@ -12,6 +12,8 @@ from gpt import utils
 class ListFilesResponse:
     r"""OK"""
     
-    data: list[shared_openaifile.OpenAIFile] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})  
-    object: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('object') }})  
+    data: list[shared_openaifile.OpenAIFile] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
+
+    object: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('object') }})
+
     
