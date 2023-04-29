@@ -10,7 +10,6 @@ from typing import Optional
 class DownloadFileRequest:
     
     file_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'file_id', 'style': 'simple', 'explode': False }})
-
     r"""The ID of the file to use for this request"""
     
 
@@ -18,12 +17,8 @@ class DownloadFileRequest:
 class DownloadFileResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     download_file_200_application_json_string: Optional[str] = dataclasses.field(default=None)
-
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

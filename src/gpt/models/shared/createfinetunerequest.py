@@ -12,7 +12,6 @@ from typing import Optional
 class CreateFineTuneRequest:
     
     training_file: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('training_file') }})
-
     r"""The ID of an uploaded file that contains training data.
     
     See [upload file](/docs/api-reference/files/upload) for how to upload a file.
@@ -24,7 +23,6 @@ class CreateFineTuneRequest:
     See the [fine-tuning guide](/docs/guides/fine-tuning/creating-training-data) for more details.
     """
     batch_size: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('batch_size'), 'exclude': lambda f: f is None }})
-
     r"""The batch size to use for training. The batch size is the number of
     training examples used to train a single forward and backward pass.
     
@@ -34,7 +32,6 @@ class CreateFineTuneRequest:
     for larger datasets.
     """
     classification_betas: Optional[list[float]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('classification_betas'), 'exclude': lambda f: f is None }})
-
     r"""If this is provided, we calculate F-beta scores at the specified
     beta values. The F-beta score is a generalization of F-1 score.
     This is only used for binary classification.
@@ -45,20 +42,17 @@ class CreateFineTuneRequest:
     on precision and less on recall.
     """
     classification_n_classes: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('classification_n_classes'), 'exclude': lambda f: f is None }})
-
     r"""The number of classes in a classification task.
     
     This parameter is required for multiclass classification.
     """
     classification_positive_class: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('classification_positive_class'), 'exclude': lambda f: f is None }})
-
     r"""The positive class in binary classification.
     
     This parameter is needed to generate precision, recall, and F1
     metrics when doing binary classification.
     """
     compute_classification_metrics: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('compute_classification_metrics'), 'exclude': lambda f: f is None }})
-
     r"""If set, we calculate classification-specific metrics such as accuracy
     and F-1 score using the validation set at the end of every epoch.
     These metrics can be viewed in the [results file](/docs/guides/fine-tuning/analyzing-your-fine-tuned-model).
@@ -69,7 +63,6 @@ class CreateFineTuneRequest:
     `classification_positive_class` for binary classification.
     """
     learning_rate_multiplier: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('learning_rate_multiplier'), 'exclude': lambda f: f is None }})
-
     r"""The learning rate multiplier to use for training.
     The fine-tuning learning rate is the original learning rate used for
     pretraining multiplied by this value.
@@ -81,19 +74,16 @@ class CreateFineTuneRequest:
     results.
     """
     model: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model'), 'exclude': lambda f: f is None }})
-
     r"""The name of the base model to fine-tune. You can select one of \\"ada\\",
     \"babbage\", \"curie\", \"davinci\", or a fine-tuned model created after 2022-04-21.
     To learn more about these models, see the
     [Models](https://platform.openai.com/docs/models) documentation.
     """
     n_epochs: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('n_epochs'), 'exclude': lambda f: f is None }})
-
     r"""The number of epochs to train the model for. An epoch refers to one
     full cycle through the training dataset.
     """
     prompt_loss_weight: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('prompt_loss_weight'), 'exclude': lambda f: f is None }})
-
     r"""The weight to use for loss on the prompt tokens. This controls how
     much the model tries to learn to generate the prompt (as compared
     to the completion which always has a weight of 1.0), and can add
@@ -104,13 +94,11 @@ class CreateFineTuneRequest:
     learning the prompt.
     """
     suffix: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('suffix'), 'exclude': lambda f: f is None }})
-
     r"""A string of up to 40 characters that will be added to your fine-tuned model name.
     
     For example, a `suffix` of \"custom-model-name\" would produce a model name like `ada:ft-your-org:custom-model-name-2022-02-15-04-21-04`.
     """
     validation_file: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validation_file'), 'exclude': lambda f: f is None }})
-
     r"""The ID of an uploaded file that contains validation data.
     
     If you provide this file, the data is used to generate validation

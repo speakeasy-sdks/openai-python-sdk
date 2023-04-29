@@ -11,7 +11,6 @@ from typing import Optional
 class RetrieveModelRequest:
     
     model: str = dataclasses.field(metadata={'path_param': { 'field_name': 'model', 'style': 'simple', 'explode': False }})
-
     r"""The ID of the model to use for this request"""
     
 
@@ -19,12 +18,8 @@ class RetrieveModelRequest:
 class RetrieveModelResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     model: Optional[shared_model.Model] = dataclasses.field(default=None)
-
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

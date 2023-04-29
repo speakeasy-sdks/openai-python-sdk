@@ -11,12 +11,8 @@ from typing import Optional
 class ListModelsResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     list_models_response: Optional[shared_listmodelsresponse.ListModelsResponse] = dataclasses.field(default=None)
-
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

@@ -11,7 +11,6 @@ from typing import Optional
 class DeleteModelRequest:
     
     model: str = dataclasses.field(metadata={'path_param': { 'field_name': 'model', 'style': 'simple', 'explode': False }})
-
     r"""The model to delete"""
     
 
@@ -19,12 +18,8 @@ class DeleteModelRequest:
 class DeleteModelResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     delete_model_response: Optional[shared_deletemodelresponse.DeleteModelResponse] = dataclasses.field(default=None)
-
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

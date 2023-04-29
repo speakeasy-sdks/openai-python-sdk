@@ -11,7 +11,6 @@ from typing import Optional
 class RetrieveFileRequest:
     
     file_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'file_id', 'style': 'simple', 'explode': False }})
-
     r"""The ID of the file to use for this request"""
     
 
@@ -19,12 +18,8 @@ class RetrieveFileRequest:
 class RetrieveFileResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     open_ai_file: Optional[shared_openaifile.OpenAIFile] = dataclasses.field(default=None)
-
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

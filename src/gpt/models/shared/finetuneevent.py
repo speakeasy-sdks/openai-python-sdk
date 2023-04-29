@@ -11,11 +11,7 @@ from gpt import utils
 class FineTuneEvent:
     
     created_at: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created_at') }})
-
     level: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('level') }})
-
     message: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message') }})
-
     object: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('object') }})
-
     

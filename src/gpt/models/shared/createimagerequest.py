@@ -24,17 +24,12 @@ class CreateImageRequestSizeEnum(str, Enum):
 class CreateImageRequest:
     
     prompt: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('prompt') }})
-
     r"""A text description of the desired image(s). The maximum length is 1000 characters."""
     n: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('n'), 'exclude': lambda f: f is None }})
-
     r"""The number of images to generate. Must be between 1 and 10."""
     response_format: Optional[CreateImageRequestResponseFormatEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('response_format'), 'exclude': lambda f: f is None }})
-
     r"""The format in which the generated images are returned. Must be one of `url` or `b64_json`."""
     size: Optional[CreateImageRequestSizeEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('size'), 'exclude': lambda f: f is None }})
-
     r"""The size of the generated images. Must be one of `256x256`, `512x512`, or `1024x1024`."""
     user: Optional[Any] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('user'), 'exclude': lambda f: f is None }})
-
     

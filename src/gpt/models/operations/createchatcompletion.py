@@ -11,12 +11,8 @@ from typing import Optional
 class CreateChatCompletionResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     create_chat_completion_response: Optional[shared_createchatcompletionresponse.CreateChatCompletionResponse] = dataclasses.field(default=None)
-
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

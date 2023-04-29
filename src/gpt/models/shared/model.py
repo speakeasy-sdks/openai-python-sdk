@@ -12,11 +12,7 @@ class Model:
     r"""OK"""
     
     created: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created') }})
-
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
-
     object: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('object') }})
-
     owned_by: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('owned_by') }})
-
     

@@ -11,7 +11,6 @@ from typing import Optional
 class CancelFineTuneRequest:
     
     fine_tune_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'fine_tune_id', 'style': 'simple', 'explode': False }})
-
     r"""The ID of the fine-tune job to cancel"""
     
 
@@ -19,12 +18,8 @@ class CancelFineTuneRequest:
 class CancelFineTuneResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     fine_tune: Optional[shared_finetune.FineTune] = dataclasses.field(default=None)
-
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

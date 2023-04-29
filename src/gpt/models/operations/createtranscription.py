@@ -11,12 +11,8 @@ from typing import Optional
 class CreateTranscriptionResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     create_transcription_response: Optional[shared_createtranscriptionresponse.CreateTranscriptionResponse] = dataclasses.field(default=None)
-
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

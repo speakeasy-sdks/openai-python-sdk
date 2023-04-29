@@ -13,19 +13,11 @@ class OpenAIFile:
     r"""OK"""
     
     bytes: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bytes') }})
-
     created_at: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created_at') }})
-
     filename: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('filename') }})
-
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
-
     object: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('object') }})
-
     purpose: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('purpose') }})
-
     status: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
-
     status_details: Optional[dict[str, Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status_details'), 'exclude': lambda f: f is None }})
-
     

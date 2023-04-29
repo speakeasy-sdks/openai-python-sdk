@@ -11,12 +11,8 @@ from typing import Optional
 class ListEnginesResponse:
     
     content_type: str = dataclasses.field()
-
     status_code: int = dataclasses.field()
-
     list_engines_response: Optional[shared_listenginesresponse.ListEnginesResponse] = dataclasses.field(default=None)
-
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
-
     

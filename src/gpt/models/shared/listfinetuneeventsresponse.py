@@ -13,7 +13,5 @@ class ListFineTuneEventsResponse:
     r"""OK"""
     
     data: list[shared_finetuneevent.FineTuneEvent] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
-
     object: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('object') }})
-
     
