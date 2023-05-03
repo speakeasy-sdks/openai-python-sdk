@@ -79,7 +79,7 @@ s = gpt.Gpt()
 
 
 req = operations.CancelFineTuneRequest(
-    fine_tune_id="ft-AF1WoRqd3aJAHsqc9NY7iL8F",
+    fine_tune_id='ft-AF1WoRqd3aJAHsqc9NY7iL8F',
 )
 
 res = s.open_ai.cancel_fine_tune(req)
@@ -106,50 +106,50 @@ s = gpt.Gpt()
 
 req = shared.CreateAnswerRequest(
     documents=[
-        "provident",
-        "distinctio",
-        "quibusdam",
+        'provident',
+        'distinctio',
+        'quibusdam',
     ],
     examples=[
         [
-            "corrupti",
-            "illum",
-            "vel",
-            "error",
+            'corrupti',
+            'illum',
+            'vel',
+            'error',
         ],
         [
-            "suscipit",
-            "iure",
-            "magnam",
+            'suscipit',
+            'iure',
+            'magnam',
         ],
         [
-            "ipsa",
-            "delectus",
-            "tempora",
-            "suscipit",
+            'ipsa',
+            'delectus',
+            'tempora',
+            'suscipit',
         ],
     ],
-    examples_context="Ottawa, Canada's capital, is located in the east of southern Ontario, near the city of Montréal and the U.S. border.",
+    examples_context='Ottawa, Canada's capital, is located in the east of southern Ontario, near the city of Montréal and the U.S. border.',
     expand=[
-        "minus",
-        "placeat",
+        'minus',
+        'placeat',
     ],
-    file="voluptatum",
-    logit_bias="iusto",
+    file='voluptatum',
+    logit_bias='iusto',
     logprobs=568045,
     max_rerank=392785,
     max_tokens=925597,
-    model="temporibus",
+    model='temporibus',
     n=71036,
-    question="What is the capital of Japan?",
-    return_metadata="quis",
+    question='What is the capital of Japan?',
+    return_metadata='quis',
     return_prompt=False,
-    search_model="veritatis",
+    search_model='veritatis',
     stop=[
-        "["\n"]",
+        '["\n"]',
     ],
     temperature=3682.41,
-    user="repellendus",
+    user='repellendus',
 )
 
 res = s.open_ai.create_answer(req)
@@ -174,46 +174,46 @@ s = gpt.Gpt()
 req = shared.CreateChatCompletionRequest(
     frequency_penalty=9571.56,
     logit_bias={
-        "odit": "at",
-        "at": "maiores",
-        "molestiae": "quod",
-        "quod": "esse",
+        "odit": 'at',
+        "at": 'maiores',
+        "molestiae": 'quod',
+        "quod": 'esse',
     },
     max_tokens=520478,
     messages=[
         shared.ChatCompletionRequestMessage(
-            content="dolorum",
-            name="Antoinette Nikolaus",
-            role="user",
+            content='dolorum',
+            name='Antoinette Nikolaus',
+            role=shared.ChatCompletionRequestMessageRoleEnum.USER,
         ),
         shared.ChatCompletionRequestMessage(
-            content="hic",
-            name="Everett Breitenberg",
-            role="system",
+            content='hic',
+            name='Everett Breitenberg',
+            role=shared.ChatCompletionRequestMessageRoleEnum.SYSTEM,
         ),
         shared.ChatCompletionRequestMessage(
-            content="qui",
-            name="Jonathon Klocko",
-            role="system",
+            content='qui',
+            name='Jonathon Klocko',
+            role=shared.ChatCompletionRequestMessageRoleEnum.SYSTEM,
         ),
         shared.ChatCompletionRequestMessage(
-            content="perferendis",
-            name="Faye Cormier",
-            role="user",
+            content='perferendis',
+            name='Faye Cormier',
+            role=shared.ChatCompletionRequestMessageRoleEnum.USER,
         ),
     ],
-    model="laboriosam",
+    model='laboriosam',
     n=1,
     presence_penalty=9437.49,
     stop=[
-        "in",
-        "corporis",
-        "iste",
+        'in',
+        'corporis',
+        'iste',
     ],
     stream=False,
     temperature=1,
     top_p=1,
-    user="iure",
+    user='iure',
 )
 
 res = s.open_ai.create_chat_completion(req)
@@ -247,38 +247,38 @@ s = gpt.Gpt()
 req = shared.CreateClassificationRequest(
     examples=[
         [
-            "architecto",
-            "ipsa",
-            "reiciendis",
+            'architecto',
+            'ipsa',
+            'reiciendis',
         ],
         [
-            "mollitia",
-            "laborum",
-            "dolores",
+            'mollitia',
+            'laborum',
+            'dolores',
         ],
         [
-            "corporis",
+            'corporis',
         ],
         [
-            "nobis",
+            'nobis',
         ],
     ],
-    expand="enim",
-    file="omnis",
+    expand='enim',
+    file='omnis',
     labels=[
-        "minima",
-        "excepturi",
+        'minima',
+        'excepturi',
     ],
-    logit_bias="accusantium",
-    logprobs="iure",
+    logit_bias='accusantium',
+    logprobs='iure',
     max_examples=634274,
-    model="doloribus",
-    query="The plot is not very attractive.",
-    return_metadata="sapiente",
-    return_prompt="architecto",
-    search_model="mollitia",
+    model='doloribus',
+    query='The plot is not very attractive.',
+    return_metadata='sapiente',
+    return_prompt='architecto',
+    search_model='mollitia',
     temperature=2088.76,
-    user="culpa",
+    user='culpa',
 )
 
 res = s.open_ai.create_classification(req)
@@ -305,26 +305,26 @@ req = shared.CreateCompletionRequest(
     echo=False,
     frequency_penalty=9953,
     logit_bias={
-        "occaecati": "numquam",
-        "commodi": "quam",
-        "molestiae": "velit",
+        "occaecati": 'numquam',
+        "commodi": 'quam',
+        "molestiae": 'velit',
     },
     logprobs=623510,
     max_tokens=16,
-    model="quia",
+    model='quia',
     n=1,
     presence_penalty=3380.07,
-    prompt="This is a test.",
+    prompt='This is a test.',
     stop=[
-        "["\n"]",
-        "["\n"]",
-        "["\n"]",
+        '["\n"]',
+        '["\n"]',
+        '["\n"]',
     ],
     stream=False,
-    suffix="test.",
+    suffix='test.',
     temperature=1,
     top_p=1,
-    user="user-1234",
+    user='user-1234',
 )
 
 res = s.open_ai.create_completion(req)
@@ -347,9 +347,9 @@ s = gpt.Gpt()
 
 
 req = shared.CreateEditRequest(
-    input="What day of the wek is it?",
-    instruction="Fix the spelling mistakes.",
-    model="enim",
+    input='What day of the wek is it?',
+    instruction='Fix the spelling mistakes.',
+    model='enim',
     n=1,
     temperature=1,
     top_p=1,
@@ -375,9 +375,9 @@ s = gpt.Gpt()
 
 
 req = shared.CreateEmbeddingRequest(
-    input="This is a test.",
-    model="quo",
-    user="sequi",
+    input='This is a test.',
+    model='quo',
+    user='sequi',
 )
 
 res = s.open_ai.create_embedding(req)
@@ -402,10 +402,10 @@ s = gpt.Gpt()
 
 req = shared.CreateFileRequest(
     file=shared.CreateFileRequestFile(
-        content="tenetur".encode(),
-        file="ipsam",
+        content='tenetur'.encode(),
+        file='ipsam',
     ),
-    purpose="id",
+    purpose='id',
 )
 
 res = s.open_ai.create_file(req)
@@ -438,15 +438,15 @@ req = shared.CreateFineTuneRequest(
         971.01,
     ],
     classification_n_classes=622846,
-    classification_positive_class="temporibus",
+    classification_positive_class='temporibus',
     compute_classification_metrics=False,
     learning_rate_multiplier=6736.6,
-    model="quasi",
+    model='quasi',
     n_epochs=971945,
     prompt_loss_weight=9764.6,
-    suffix="vero",
-    training_file="file-ajSREls59WBbvgSzJSVWxMCB",
-    validation_file="file-XjSREls59WBbvgSzJSVWxMCa",
+    suffix='vero',
+    training_file='file-ajSREls59WBbvgSzJSVWxMCB',
+    validation_file='file-XjSREls59WBbvgSzJSVWxMCa',
 )
 
 res = s.open_ai.create_fine_tune(req)
@@ -470,10 +470,10 @@ s = gpt.Gpt()
 
 req = shared.CreateImageRequest(
     n=1,
-    prompt="A cute baby sea otter",
-    response_format="url",
-    size="1024x1024",
-    user="nihil",
+    prompt='A cute baby sea otter',
+    response_format=shared.CreateImageRequestResponseFormatEnum.URL,
+    size=shared.CreateImageRequestSizeEnum.ONE_THOUSAND_AND_TWENTY_FOURX1024,
+    user='nihil',
 )
 
 res = s.open_ai.create_image(req)
@@ -497,18 +497,18 @@ s = gpt.Gpt()
 
 req = shared.CreateImageEditRequest(
     image=shared.CreateImageEditRequestImage(
-        content="praesentium".encode(),
-        image="voluptatibus",
+        content='praesentium'.encode(),
+        image='voluptatibus',
     ),
     mask=shared.CreateImageEditRequestMask(
-        content="ipsa".encode(),
-        mask="omnis",
+        content='ipsa'.encode(),
+        mask='omnis',
     ),
-    n="voluptate",
-    prompt="A cute baby sea otter wearing a beret",
-    response_format="cum",
-    size="perferendis",
-    user="doloremque",
+    n='voluptate',
+    prompt='A cute baby sea otter wearing a beret',
+    response_format='cum',
+    size='perferendis',
+    user='doloremque',
 )
 
 res = s.open_ai.create_image_edit(req)
@@ -532,13 +532,13 @@ s = gpt.Gpt()
 
 req = shared.CreateImageVariationRequest(
     image=shared.CreateImageVariationRequestImage(
-        content="reprehenderit".encode(),
-        image="ut",
+        content='reprehenderit'.encode(),
+        image='ut',
     ),
-    n="maiores",
-    response_format="dicta",
-    size="corporis",
-    user="dolore",
+    n='maiores',
+    response_format='dicta',
+    size='corporis',
+    user='dolore',
 )
 
 res = s.open_ai.create_image_variation(req)
@@ -561,8 +561,8 @@ s = gpt.Gpt()
 
 
 req = shared.CreateModerationRequest(
-    input="I want to kill them.",
-    model="text-moderation-stable",
+    input='I want to kill them.',
+    model='text-moderation-stable',
 )
 
 res = s.open_ai.create_moderation(req)
@@ -592,15 +592,15 @@ s = gpt.Gpt()
 req = operations.CreateSearchRequest(
     create_search_request=shared.CreateSearchRequest(
         documents=[
-            "harum",
+            'harum',
         ],
-        file="enim",
+        file='enim',
         max_rerank=880476,
-        query="the president",
+        query='the president',
         return_metadata=False,
-        user="commodi",
+        user='commodi',
     ),
-    engine_id="davinci",
+    engine_id='davinci',
 )
 
 res = s.open_ai.create_search(req)
@@ -624,13 +624,13 @@ s = gpt.Gpt()
 
 req = shared.CreateTranscriptionRequest(
     file=shared.CreateTranscriptionRequestFile(
-        content="repudiandae".encode(),
-        file="quae",
+        content='repudiandae'.encode(),
+        file='quae',
     ),
-    language="ipsum",
-    model="quidem",
-    prompt="molestias",
-    response_format="excepturi",
+    language='ipsum',
+    model='quidem',
+    prompt='molestias',
+    response_format='excepturi',
     temperature=8651.03,
 )
 
@@ -655,12 +655,12 @@ s = gpt.Gpt()
 
 req = shared.CreateTranslationRequest(
     file=shared.CreateTranslationRequestFile(
-        content="modi".encode(),
-        file="praesentium",
+        content='modi'.encode(),
+        file='praesentium',
     ),
-    model="rem",
-    prompt="voluptates",
-    response_format="quasi",
+    model='rem',
+    prompt='voluptates',
+    response_format='quasi',
     temperature=9211.58,
 )
 
@@ -684,7 +684,7 @@ s = gpt.Gpt()
 
 
 req = operations.DeleteFileRequest(
-    file_id="sint",
+    file_id='sint',
 )
 
 res = s.open_ai.delete_file(req)
@@ -707,7 +707,7 @@ s = gpt.Gpt()
 
 
 req = operations.DeleteModelRequest(
-    model="curie:ft-acmeco-2021-03-03-21-44-20",
+    model='curie:ft-acmeco-2021-03-03-21-44-20',
 )
 
 res = s.open_ai.delete_model(req)
@@ -730,7 +730,7 @@ s = gpt.Gpt()
 
 
 req = operations.DownloadFileRequest(
-    file_id="veritatis",
+    file_id='veritatis',
 )
 
 res = s.open_ai.download_file(req)
@@ -792,7 +792,7 @@ s = gpt.Gpt()
 
 
 req = operations.ListFineTuneEventsRequest(
-    fine_tune_id="ft-AF1WoRqd3aJAHsqc9NY7iL8F",
+    fine_tune_id='ft-AF1WoRqd3aJAHsqc9NY7iL8F',
     stream=False,
 )
 
@@ -855,7 +855,7 @@ s = gpt.Gpt()
 
 
 req = operations.RetrieveEngineRequest(
-    engine_id="davinci",
+    engine_id='davinci',
 )
 
 res = s.open_ai.retrieve_engine(req)
@@ -878,7 +878,7 @@ s = gpt.Gpt()
 
 
 req = operations.RetrieveFileRequest(
-    file_id="itaque",
+    file_id='itaque',
 )
 
 res = s.open_ai.retrieve_file(req)
@@ -904,7 +904,7 @@ s = gpt.Gpt()
 
 
 req = operations.RetrieveFineTuneRequest(
-    fine_tune_id="ft-AF1WoRqd3aJAHsqc9NY7iL8F",
+    fine_tune_id='ft-AF1WoRqd3aJAHsqc9NY7iL8F',
 )
 
 res = s.open_ai.retrieve_fine_tune(req)
@@ -927,7 +927,7 @@ s = gpt.Gpt()
 
 
 req = operations.RetrieveModelRequest(
-    model="text-davinci-001",
+    model='text-davinci-001',
 )
 
 res = s.open_ai.retrieve_model(req)
