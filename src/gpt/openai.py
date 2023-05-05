@@ -22,6 +22,7 @@ class OpenAI:
         self._sdk_version = sdk_version
         self._gen_version = gen_version
         
+    
     def cancel_fine_tune(self, request: operations.CancelFineTuneRequest) -> operations.CancelFineTuneResponse:
         r"""Immediately cancel a fine-tune job."""
         base_url = self._server_url
@@ -43,6 +44,7 @@ class OpenAI:
 
         return res
 
+    
     def create_answer(self, request: shared.CreateAnswerRequest) -> operations.CreateAnswerResponse:
         r"""Answers the specified question using the provided documents and examples.
         
@@ -73,6 +75,7 @@ class OpenAI:
 
         return res
 
+    
     def create_chat_completion(self, request: shared.CreateChatCompletionRequest) -> operations.CreateChatCompletionResponse:
         r"""Creates a completion for the chat message"""
         base_url = self._server_url
@@ -100,6 +103,7 @@ class OpenAI:
 
         return res
 
+    
     def create_classification(self, request: shared.CreateClassificationRequest) -> operations.CreateClassificationResponse:
         r"""Classifies the specified `query` using provided examples.
         
@@ -136,6 +140,7 @@ class OpenAI:
 
         return res
 
+    
     def create_completion(self, request: shared.CreateCompletionRequest) -> operations.CreateCompletionResponse:
         r"""Creates a completion for the provided prompt and parameters"""
         base_url = self._server_url
@@ -163,6 +168,7 @@ class OpenAI:
 
         return res
 
+    
     def create_edit(self, request: shared.CreateEditRequest) -> operations.CreateEditResponse:
         r"""Creates a new edit for the provided input, instruction, and parameters."""
         base_url = self._server_url
@@ -190,6 +196,7 @@ class OpenAI:
 
         return res
 
+    
     def create_embedding(self, request: shared.CreateEmbeddingRequest) -> operations.CreateEmbeddingResponse:
         r"""Creates an embedding vector representing the input text."""
         base_url = self._server_url
@@ -217,6 +224,7 @@ class OpenAI:
 
         return res
 
+    
     def create_file(self, request: shared.CreateFileRequest) -> operations.CreateFileResponse:
         r"""Upload a file that contains document(s) to be used across various endpoints/features. Currently, the size of all the files uploaded by one organization can be up to 1 GB. Please contact us if you need to increase the storage limit."""
         base_url = self._server_url
@@ -244,6 +252,7 @@ class OpenAI:
 
         return res
 
+    
     def create_fine_tune(self, request: shared.CreateFineTuneRequest) -> operations.CreateFineTuneResponse:
         r"""Creates a job that fine-tunes a specified model from a given dataset.
         
@@ -276,6 +285,7 @@ class OpenAI:
 
         return res
 
+    
     def create_image(self, request: shared.CreateImageRequest) -> operations.CreateImageResponse:
         r"""Creates an image given a prompt."""
         base_url = self._server_url
@@ -303,6 +313,7 @@ class OpenAI:
 
         return res
 
+    
     def create_image_edit(self, request: shared.CreateImageEditRequest) -> operations.CreateImageEditResponse:
         r"""Creates an edited or extended image given an original image and a prompt."""
         base_url = self._server_url
@@ -330,6 +341,7 @@ class OpenAI:
 
         return res
 
+    
     def create_image_variation(self, request: shared.CreateImageVariationRequest) -> operations.CreateImageVariationResponse:
         r"""Creates a variation of a given image."""
         base_url = self._server_url
@@ -357,6 +369,7 @@ class OpenAI:
 
         return res
 
+    
     def create_moderation(self, request: shared.CreateModerationRequest) -> operations.CreateModerationResponse:
         r"""Classifies if text violates OpenAI's Content Policy"""
         base_url = self._server_url
@@ -384,6 +397,7 @@ class OpenAI:
 
         return res
 
+    
     def create_search(self, request: operations.CreateSearchRequest) -> operations.CreateSearchResponse:
         r"""The search endpoint computes similarity scores between provided query and documents. Documents can be passed directly to the API if there are no more than 200 of them.
         
@@ -416,6 +430,7 @@ class OpenAI:
 
         return res
 
+    
     def create_transcription(self, request: shared.CreateTranscriptionRequest) -> operations.CreateTranscriptionResponse:
         r"""Transcribes audio into the input language."""
         base_url = self._server_url
@@ -443,6 +458,7 @@ class OpenAI:
 
         return res
 
+    
     def create_translation(self, request: shared.CreateTranslationRequest) -> operations.CreateTranslationResponse:
         r"""Translates audio into into English."""
         base_url = self._server_url
@@ -470,6 +486,7 @@ class OpenAI:
 
         return res
 
+    
     def delete_file(self, request: operations.DeleteFileRequest) -> operations.DeleteFileResponse:
         r"""Delete a file."""
         base_url = self._server_url
@@ -491,6 +508,7 @@ class OpenAI:
 
         return res
 
+    
     def delete_model(self, request: operations.DeleteModelRequest) -> operations.DeleteModelResponse:
         r"""Delete a fine-tuned model. You must have the Owner role in your organization."""
         base_url = self._server_url
@@ -512,6 +530,7 @@ class OpenAI:
 
         return res
 
+    
     def download_file(self, request: operations.DownloadFileRequest) -> operations.DownloadFileResponse:
         r"""Returns the contents of the specified file"""
         base_url = self._server_url
@@ -532,6 +551,7 @@ class OpenAI:
 
         return res
 
+    
     def list_engines(self) -> operations.ListEnginesResponse:
         r"""Lists the currently available (non-finetuned) models, and provides basic information about each one such as the owner and availability."""
         base_url = self._server_url
@@ -553,6 +573,7 @@ class OpenAI:
 
         return res
 
+    
     def list_files(self) -> operations.ListFilesResponse:
         r"""Returns a list of files that belong to the user's organization."""
         base_url = self._server_url
@@ -574,6 +595,7 @@ class OpenAI:
 
         return res
 
+    
     def list_fine_tune_events(self, request: operations.ListFineTuneEventsRequest) -> operations.ListFineTuneEventsResponse:
         r"""Get fine-grained status updates for a fine-tune job."""
         base_url = self._server_url
@@ -596,6 +618,7 @@ class OpenAI:
 
         return res
 
+    
     def list_fine_tunes(self) -> operations.ListFineTunesResponse:
         r"""List your organization's fine-tuning jobs"""
         base_url = self._server_url
@@ -617,6 +640,7 @@ class OpenAI:
 
         return res
 
+    
     def list_models(self) -> operations.ListModelsResponse:
         r"""Lists the currently available models, and provides basic information about each one such as the owner and availability."""
         base_url = self._server_url
@@ -638,6 +662,7 @@ class OpenAI:
 
         return res
 
+    
     def retrieve_engine(self, request: operations.RetrieveEngineRequest) -> operations.RetrieveEngineResponse:
         r"""Retrieves a model instance, providing basic information about it such as the owner and availability."""
         base_url = self._server_url
@@ -659,6 +684,7 @@ class OpenAI:
 
         return res
 
+    
     def retrieve_file(self, request: operations.RetrieveFileRequest) -> operations.RetrieveFileResponse:
         r"""Returns information about a specific file."""
         base_url = self._server_url
@@ -680,6 +706,7 @@ class OpenAI:
 
         return res
 
+    
     def retrieve_fine_tune(self, request: operations.RetrieveFineTuneRequest) -> operations.RetrieveFineTuneResponse:
         r"""Gets info about the fine-tune job.
         
@@ -704,6 +731,7 @@ class OpenAI:
 
         return res
 
+    
     def retrieve_model(self, request: operations.RetrieveModelRequest) -> operations.RetrieveModelResponse:
         r"""Retrieves a model instance, providing basic information about the model such as the owner and permissioning."""
         base_url = self._server_url

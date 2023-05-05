@@ -77,7 +77,6 @@ from gpt.models import operations
 
 s = gpt.Gpt()
 
-
 req = operations.CancelFineTuneRequest(
     fine_tune_id='ft-AF1WoRqd3aJAHsqc9NY7iL8F',
 )
@@ -102,7 +101,6 @@ import gpt
 from gpt.models import shared
 
 s = gpt.Gpt()
-
 
 req = shared.CreateAnswerRequest(
     documents=[
@@ -169,7 +167,6 @@ import gpt
 from gpt.models import shared
 
 s = gpt.Gpt()
-
 
 req = shared.CreateChatCompletionRequest(
     frequency_penalty=9571.56,
@@ -243,7 +240,6 @@ from gpt.models import shared
 
 s = gpt.Gpt()
 
-
 req = shared.CreateClassificationRequest(
     examples=[
         [
@@ -299,7 +295,6 @@ from gpt.models import shared
 
 s = gpt.Gpt()
 
-
 req = shared.CreateCompletionRequest(
     best_of=161309,
     echo=False,
@@ -345,7 +340,6 @@ from gpt.models import shared
 
 s = gpt.Gpt()
 
-
 req = shared.CreateEditRequest(
     input='What day of the wek is it?',
     instruction='Fix the spelling mistakes.',
@@ -373,7 +367,6 @@ from gpt.models import shared
 
 s = gpt.Gpt()
 
-
 req = shared.CreateEmbeddingRequest(
     input='This is a test.',
     model='quo',
@@ -398,7 +391,6 @@ import gpt
 from gpt.models import shared
 
 s = gpt.Gpt()
-
 
 req = shared.CreateFileRequest(
     file=shared.CreateFileRequestFile(
@@ -430,7 +422,6 @@ import gpt
 from gpt.models import shared
 
 s = gpt.Gpt()
-
 
 req = shared.CreateFineTuneRequest(
     batch_size=820994,
@@ -467,7 +458,6 @@ from gpt.models import shared
 
 s = gpt.Gpt()
 
-
 req = shared.CreateImageRequest(
     n=1,
     prompt='A cute baby sea otter',
@@ -493,7 +483,6 @@ import gpt
 from gpt.models import shared
 
 s = gpt.Gpt()
-
 
 req = shared.CreateImageEditRequest(
     image=shared.CreateImageEditRequestImage(
@@ -529,7 +518,6 @@ from gpt.models import shared
 
 s = gpt.Gpt()
 
-
 req = shared.CreateImageVariationRequest(
     image=shared.CreateImageVariationRequestImage(
         content='reprehenderit'.encode(),
@@ -559,7 +547,6 @@ from gpt.models import shared
 
 s = gpt.Gpt()
 
-
 req = shared.CreateModerationRequest(
     input='I want to kill them.',
     model='text-moderation-stable',
@@ -587,7 +574,6 @@ import gpt
 from gpt.models import operations, shared
 
 s = gpt.Gpt()
-
 
 req = operations.CreateSearchRequest(
     create_search_request=shared.CreateSearchRequest(
@@ -621,7 +607,6 @@ from gpt.models import shared
 
 s = gpt.Gpt()
 
-
 req = shared.CreateTranscriptionRequest(
     file=shared.CreateTranscriptionRequestFile(
         content='repudiandae'.encode(),
@@ -652,7 +637,6 @@ from gpt.models import shared
 
 s = gpt.Gpt()
 
-
 req = shared.CreateTranslationRequest(
     file=shared.CreateTranslationRequestFile(
         content='modi'.encode(),
@@ -682,7 +666,6 @@ from gpt.models import operations
 
 s = gpt.Gpt()
 
-
 req = operations.DeleteFileRequest(
     file_id='sint',
 )
@@ -705,7 +688,6 @@ from gpt.models import operations
 
 s = gpt.Gpt()
 
-
 req = operations.DeleteModelRequest(
     model='curie:ft-acmeco-2021-03-03-21-44-20',
 )
@@ -727,7 +709,6 @@ import gpt
 from gpt.models import operations
 
 s = gpt.Gpt()
-
 
 req = operations.DownloadFileRequest(
     file_id='veritatis',
@@ -789,7 +770,6 @@ import gpt
 from gpt.models import operations
 
 s = gpt.Gpt()
-
 
 req = operations.ListFineTuneEventsRequest(
     fine_tune_id='ft-AF1WoRqd3aJAHsqc9NY7iL8F',
@@ -853,7 +833,6 @@ from gpt.models import operations
 
 s = gpt.Gpt()
 
-
 req = operations.RetrieveEngineRequest(
     engine_id='davinci',
 )
@@ -875,7 +854,6 @@ import gpt
 from gpt.models import operations
 
 s = gpt.Gpt()
-
 
 req = operations.RetrieveFileRequest(
     file_id='itaque',
@@ -902,7 +880,6 @@ from gpt.models import operations
 
 s = gpt.Gpt()
 
-
 req = operations.RetrieveFineTuneRequest(
     fine_tune_id='ft-AF1WoRqd3aJAHsqc9NY7iL8F',
 )
@@ -924,7 +901,6 @@ import gpt
 from gpt.models import operations
 
 s = gpt.Gpt()
-
 
 req = operations.RetrieveModelRequest(
     model='text-davinci-001',

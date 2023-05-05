@@ -5,7 +5,6 @@ from gpt.models import operations
 
 s = gpt.Gpt()
 
-
 req = operations.CancelFineTuneRequest(
     fine_tune_id='ft-AF1WoRqd3aJAHsqc9NY7iL8F',
 )
