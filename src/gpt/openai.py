@@ -49,6 +49,8 @@ class OpenAI:
         r"""Answers the specified question using the provided documents and examples.
         
         The endpoint first [searches](/docs/api-reference/searches) over provided documents or files to find relevant context. The relevant context is combined with the provided examples and question to create the prompt for [completion](/docs/api-reference/completions).
+        
+        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
         """
         base_url = self._server_url
         
@@ -114,6 +116,8 @@ class OpenAI:
         
         Labeled examples can be provided via an uploaded `file`, or explicitly listed in the
         request using the `examples` parameter for quick tests and small scale use cases.
+        
+        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
         """
         base_url = self._server_url
         
@@ -404,6 +408,8 @@ class OpenAI:
         To go beyond the 200 document limit, documents can be processed offline and then used for efficient retrieval at query time. When `file` is set, the search endpoint searches over all the documents in the given file and returns up to the `max_rerank` number of documents. These documents will be returned along with their search scores.
         
         The similarity score is a positive score that usually ranges from 0 to 300 (but can sometimes go higher), where a score above 200 usually means the document is semantically similar to the query.
+        
+        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
         """
         base_url = self._server_url
         
@@ -553,7 +559,10 @@ class OpenAI:
 
     
     def list_engines(self) -> operations.ListEnginesResponse:
-        r"""Lists the currently available (non-finetuned) models, and provides basic information about each one such as the owner and availability."""
+        r"""Lists the currently available (non-finetuned) models, and provides basic information about each one such as the owner and availability.
+        
+        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
+        """
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/engines'
@@ -664,7 +673,10 @@ class OpenAI:
 
     
     def retrieve_engine(self, request: operations.RetrieveEngineRequest) -> operations.RetrieveEngineResponse:
-        r"""Retrieves a model instance, providing basic information about it such as the owner and availability."""
+        r"""Retrieves a model instance, providing basic information about it such as the owner and availability.
+        
+        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
+        """
         base_url = self._server_url
         
         url = utils.generate_url(operations.RetrieveEngineRequest, base_url, '/engines/{engine_id}', request)

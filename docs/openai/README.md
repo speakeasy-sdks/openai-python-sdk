@@ -8,12 +8,12 @@ The OpenAI REST API
 
 * [cancel_fine_tune](#cancel_fine_tune) - Immediately cancel a fine-tune job.
 
-* [create_answer](#create_answer) - Answers the specified question using the provided documents and examples.
+* [~~create_answer~~](#create_answer) - Answers the specified question using the provided documents and examples.
 
 The endpoint first [searches](/docs/api-reference/searches) over provided documents or files to find relevant context. The relevant context is combined with the provided examples and question to create the prompt for [completion](/docs/api-reference/completions).
-
+ :warning: **Deprecated**
 * [create_chat_completion](#create_chat_completion) - Creates a completion for the chat message
-* [create_classification](#create_classification) - Classifies the specified `query` using provided examples.
+* [~~create_classification~~](#create_classification) - Classifies the specified `query` using provided examples.
 
 The endpoint first [searches](/docs/api-reference/searches) over the labeled examples
 to select the ones most relevant for the particular query. Then, the relevant examples
@@ -22,7 +22,7 @@ are combined with the query to construct a prompt to produce the final label via
 
 Labeled examples can be provided via an uploaded `file`, or explicitly listed in the
 request using the `examples` parameter for quick tests and small scale use cases.
-
+ :warning: **Deprecated**
 * [create_completion](#create_completion) - Creates a completion for the provided prompt and parameters
 * [create_edit](#create_edit) - Creates a new edit for the provided input, instruction, and parameters.
 * [create_embedding](#create_embedding) - Creates an embedding vector representing the input text.
@@ -38,25 +38,25 @@ Response includes details of the enqueued job including job status and the name 
 * [create_image_edit](#create_image_edit) - Creates an edited or extended image given an original image and a prompt.
 * [create_image_variation](#create_image_variation) - Creates a variation of a given image.
 * [create_moderation](#create_moderation) - Classifies if text violates OpenAI's Content Policy
-* [create_search](#create_search) - The search endpoint computes similarity scores between provided query and documents. Documents can be passed directly to the API if there are no more than 200 of them.
+* [~~create_search~~](#create_search) - The search endpoint computes similarity scores between provided query and documents. Documents can be passed directly to the API if there are no more than 200 of them.
 
 To go beyond the 200 document limit, documents can be processed offline and then used for efficient retrieval at query time. When `file` is set, the search endpoint searches over all the documents in the given file and returns up to the `max_rerank` number of documents. These documents will be returned along with their search scores.
 
 The similarity score is a positive score that usually ranges from 0 to 300 (but can sometimes go higher), where a score above 200 usually means the document is semantically similar to the query.
-
+ :warning: **Deprecated**
 * [create_transcription](#create_transcription) - Transcribes audio into the input language.
 * [create_translation](#create_translation) - Translates audio into into English.
 * [delete_file](#delete_file) - Delete a file.
 * [delete_model](#delete_model) - Delete a fine-tuned model. You must have the Owner role in your organization.
 * [download_file](#download_file) - Returns the contents of the specified file
-* [list_engines](#list_engines) - Lists the currently available (non-finetuned) models, and provides basic information about each one such as the owner and availability.
+* [~~list_engines~~](#list_engines) - Lists the currently available (non-finetuned) models, and provides basic information about each one such as the owner and availability. :warning: **Deprecated**
 * [list_files](#list_files) - Returns a list of files that belong to the user's organization.
 * [list_fine_tune_events](#list_fine_tune_events) - Get fine-grained status updates for a fine-tune job.
 
 * [list_fine_tunes](#list_fine_tunes) - List your organization's fine-tuning jobs
 
 * [list_models](#list_models) - Lists the currently available models, and provides basic information about each one such as the owner and availability.
-* [retrieve_engine](#retrieve_engine) - Retrieves a model instance, providing basic information about it such as the owner and availability.
+* [~~retrieve_engine~~](#retrieve_engine) - Retrieves a model instance, providing basic information about it such as the owner and availability. :warning: **Deprecated**
 * [retrieve_file](#retrieve_file) - Returns information about a specific file.
 * [retrieve_fine_tune](#retrieve_fine_tune) - Gets info about the fine-tune job.
 
@@ -87,12 +87,14 @@ if res.fine_tune is not None:
     # handle response
 ```
 
-## create_answer
+## ~~create_answer~~
 
 Answers the specified question using the provided documents and examples.
 
 The endpoint first [searches](/docs/api-reference/searches) over provided documents or files to find relevant context. The relevant context is combined with the provided examples and question to create the prompt for [completion](/docs/api-reference/completions).
 
+
+> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -219,7 +221,7 @@ if res.create_chat_completion_response is not None:
     # handle response
 ```
 
-## create_classification
+## ~~create_classification~~
 
 Classifies the specified `query` using provided examples.
 
@@ -231,6 +233,8 @@ are combined with the query to construct a prompt to produce the final label via
 Labeled examples can be provided via an uploaded `file`, or explicitly listed in the
 request using the `examples` parameter for quick tests and small scale use cases.
 
+
+> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -558,7 +562,7 @@ if res.create_moderation_response is not None:
     # handle response
 ```
 
-## create_search
+## ~~create_search~~
 
 The search endpoint computes similarity scores between provided query and documents. Documents can be passed directly to the API if there are no more than 200 of them.
 
@@ -566,6 +570,8 @@ To go beyond the 200 document limit, documents can be processed offline and then
 
 The similarity score is a positive score that usually ranges from 0 to 300 (but can sometimes go higher), where a score above 200 usually means the document is semantically similar to the query.
 
+
+> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -720,9 +726,11 @@ if res.download_file_200_application_json_string is not None:
     # handle response
 ```
 
-## list_engines
+## ~~list_engines~~
 
 Lists the currently available (non-finetuned) models, and provides basic information about each one such as the owner and availability.
+
+> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -821,9 +829,11 @@ if res.list_models_response is not None:
     # handle response
 ```
 
-## retrieve_engine
+## ~~retrieve_engine~~
 
 Retrieves a model instance, providing basic information about it such as the owner and availability.
+
+> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
