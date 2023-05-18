@@ -28,11 +28,12 @@ class OpenAI:
         base_url = self._server_url
         
         url = utils.generate_url(operations.CancelFineTuneRequest, base_url, '/fine-tunes/{fine_tune_id}/cancel', request)
-        
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._client
         
-        http_res = client.request('POST', url)
+        http_res = client.request('POST', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.CancelFineTuneResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -55,13 +56,13 @@ class OpenAI:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/answers'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._client
         
@@ -83,13 +84,13 @@ class OpenAI:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/chat/completions'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._client
         
@@ -122,13 +123,13 @@ class OpenAI:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/classifications'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._client
         
@@ -150,13 +151,13 @@ class OpenAI:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/completions'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._client
         
@@ -178,13 +179,13 @@ class OpenAI:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/edits'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._client
         
@@ -206,13 +207,13 @@ class OpenAI:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/embeddings'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._client
         
@@ -234,13 +235,13 @@ class OpenAI:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/files'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._client
         
@@ -267,13 +268,13 @@ class OpenAI:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/fine-tunes'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._client
         
@@ -295,13 +296,13 @@ class OpenAI:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/images/generations'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._client
         
@@ -323,13 +324,13 @@ class OpenAI:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/images/edits'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._client
         
@@ -351,13 +352,13 @@ class OpenAI:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/images/variations'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._client
         
@@ -379,13 +380,13 @@ class OpenAI:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/moderations'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._client
         
@@ -414,13 +415,13 @@ class OpenAI:
         base_url = self._server_url
         
         url = utils.generate_url(operations.CreateSearchRequest, base_url, '/engines/{engine_id}/search', request)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "create_search_request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._client
         
@@ -442,13 +443,13 @@ class OpenAI:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/audio/transcriptions'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._client
         
@@ -470,13 +471,13 @@ class OpenAI:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/audio/translations'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._client
         
@@ -498,11 +499,12 @@ class OpenAI:
         base_url = self._server_url
         
         url = utils.generate_url(operations.DeleteFileRequest, base_url, '/files/{file_id}', request)
-        
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._client
         
-        http_res = client.request('DELETE', url)
+        http_res = client.request('DELETE', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.DeleteFileResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -520,11 +522,12 @@ class OpenAI:
         base_url = self._server_url
         
         url = utils.generate_url(operations.DeleteModelRequest, base_url, '/models/{model}', request)
-        
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._client
         
-        http_res = client.request('DELETE', url)
+        http_res = client.request('DELETE', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.DeleteModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -542,11 +545,12 @@ class OpenAI:
         base_url = self._server_url
         
         url = utils.generate_url(operations.DownloadFileRequest, base_url, '/files/{file_id}/content', request)
-        
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._client
         
-        http_res = client.request('GET', url)
+        http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.DownloadFileResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -566,11 +570,12 @@ class OpenAI:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/engines'
-        
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._client
         
-        http_res = client.request('GET', url)
+        http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListEnginesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -588,11 +593,12 @@ class OpenAI:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/files'
-        
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._client
         
-        http_res = client.request('GET', url)
+        http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListFilesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -610,12 +616,13 @@ class OpenAI:
         base_url = self._server_url
         
         url = utils.generate_url(operations.ListFineTuneEventsRequest, base_url, '/fine-tunes/{fine_tune_id}/events', request)
-        
+        headers = {}
         query_params = utils.get_query_params(operations.ListFineTuneEventsRequest, request)
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._client
         
-        http_res = client.request('GET', url, params=query_params)
+        http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListFineTuneEventsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -633,11 +640,12 @@ class OpenAI:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/fine-tunes'
-        
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._client
         
-        http_res = client.request('GET', url)
+        http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListFineTunesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -655,11 +663,12 @@ class OpenAI:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/models'
-        
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._client
         
-        http_res = client.request('GET', url)
+        http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ListModelsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -680,11 +689,12 @@ class OpenAI:
         base_url = self._server_url
         
         url = utils.generate_url(operations.RetrieveEngineRequest, base_url, '/engines/{engine_id}', request)
-        
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._client
         
-        http_res = client.request('GET', url)
+        http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.RetrieveEngineResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -702,11 +712,12 @@ class OpenAI:
         base_url = self._server_url
         
         url = utils.generate_url(operations.RetrieveFileRequest, base_url, '/files/{file_id}', request)
-        
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._client
         
-        http_res = client.request('GET', url)
+        http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.RetrieveFileResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -727,11 +738,12 @@ class OpenAI:
         base_url = self._server_url
         
         url = utils.generate_url(operations.RetrieveFineTuneRequest, base_url, '/fine-tunes/{fine_tune_id}', request)
-        
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._client
         
-        http_res = client.request('GET', url)
+        http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.RetrieveFineTuneResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -749,11 +761,12 @@ class OpenAI:
         base_url = self._server_url
         
         url = utils.generate_url(operations.RetrieveModelRequest, base_url, '/models/{model}', request)
-        
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._client
         
-        http_res = client.request('GET', url)
+        http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.RetrieveModelResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
