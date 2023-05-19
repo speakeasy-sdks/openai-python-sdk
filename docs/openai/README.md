@@ -183,22 +183,22 @@ req = shared.CreateChatCompletionRequest(
         shared.ChatCompletionRequestMessage(
             content='dolorum',
             name='Antoinette Nikolaus',
-            role=shared.ChatCompletionRequestMessageRoleEnum.USER,
+            role=shared.ChatCompletionRequestMessageRole.USER,
         ),
         shared.ChatCompletionRequestMessage(
             content='hic',
             name='Everett Breitenberg',
-            role=shared.ChatCompletionRequestMessageRoleEnum.SYSTEM,
+            role=shared.ChatCompletionRequestMessageRole.SYSTEM,
         ),
         shared.ChatCompletionRequestMessage(
             content='qui',
             name='Jonathon Klocko',
-            role=shared.ChatCompletionRequestMessageRoleEnum.SYSTEM,
+            role=shared.ChatCompletionRequestMessageRole.SYSTEM,
         ),
         shared.ChatCompletionRequestMessage(
             content='perferendis',
             name='Faye Cormier',
-            role=shared.ChatCompletionRequestMessageRoleEnum.USER,
+            role=shared.ChatCompletionRequestMessageRole.USER,
         ),
     ],
     model='laboriosam',
@@ -465,8 +465,8 @@ s = gpt.Gpt()
 req = shared.CreateImageRequest(
     n=1,
     prompt='A cute baby sea otter',
-    response_format=shared.CreateImageRequestResponseFormatEnum.URL,
-    size=shared.CreateImageRequestSizeEnum.ONE_THOUSAND_AND_TWENTY_FOURX1024,
+    response_format=shared.CreateImageRequestResponseFormat.URL,
+    size=shared.CreateImageRequestSize.ONE_THOUSAND_AND_TWENTY_FOURX1024,
     user='nihil',
 )
 
