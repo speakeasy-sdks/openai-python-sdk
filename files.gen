@@ -1,5 +1,6 @@
 src/gpt/openai.py
 src/gpt/sdk.py
+.gitignore
 pylintrc
 setup.py
 src/gpt/__init__.py
