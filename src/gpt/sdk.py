@@ -6,7 +6,7 @@ from .sdkconfiguration import SDKConfiguration
 from gpt import utils
 
 class Gpt:
-    r"""APIs for sampling from and fine-tuning language models"""
+    r"""OpenAI API: APIs for sampling from and fine-tuning language models"""
     open_ai: OpenAI
     r"""The OpenAI REST API"""
 
