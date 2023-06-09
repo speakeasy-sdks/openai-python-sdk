@@ -13,7 +13,7 @@
 ## SDK Installation
 
 ```bash
-pip install speakeasy-openai
+pip install openai-python
 ```
 <!-- End SDK Installation -->
 
@@ -33,16 +33,14 @@ Authorization: Bearer YOUR_API_KEY
 <!-- Start SDK Example Usage -->
 ```python
 import gpt
-from gpt.models import operations, shared
+from gpt.models import operations
 
 s = gpt.Gpt()
-   
+
 req = operations.CancelFineTuneRequest(
-    path_params=operations.CancelFineTunePathParams(
-        fine_tune_id="unde",
-    ),
+    fine_tune_id='ft-AF1WoRqd3aJAHsqc9NY7iL8F',
 )
-    
+
 res = s.open_ai.cancel_fine_tune(req)
 
 if res.fine_tune is not None:
@@ -51,19 +49,19 @@ if res.fine_tune is not None:
 <!-- End SDK Example Usage -->
 
 <!-- Start SDK Available Operations -->
-## SDK Available Operations
+## Available Resources and Operations
 
 
-### open_ai
+### [open_ai](docs/openai/README.md)
 
-* `cancel_fine_tune` - Immediately cancel a fine-tune job.
+* [cancel_fine_tune](docs/openai/README.md#cancel_fine_tune) - Immediately cancel a fine-tune job.
 
-* `create_answer` - Answers the specified question using the provided documents and examples.
+* [~~create_answer~~](docs/openai/README.md#create_answer) - Answers the specified question using the provided documents and examples.
 
 The endpoint first [searches](/docs/api-reference/searches) over provided documents or files to find relevant context. The relevant context is combined with the provided examples and question to create the prompt for [completion](/docs/api-reference/completions).
-
-* `create_chat_completion` - Creates a completion for the chat message
-* `create_classification` - Classifies the specified `query` using provided examples.
+ :warning: **Deprecated**
+* [create_chat_completion](docs/openai/README.md#create_chat_completion) - Creates a completion for the chat message
+* [~~create_classification~~](docs/openai/README.md#create_classification) - Classifies the specified `query` using provided examples.
 
 The endpoint first [searches](/docs/api-reference/searches) over the labeled examples
 to select the ones most relevant for the particular query. Then, the relevant examples
@@ -72,47 +70,47 @@ are combined with the query to construct a prompt to produce the final label via
 
 Labeled examples can be provided via an uploaded `file`, or explicitly listed in the
 request using the `examples` parameter for quick tests and small scale use cases.
+ :warning: **Deprecated**
+* [create_completion](docs/openai/README.md#create_completion) - Creates a completion for the provided prompt and parameters
+* [create_edit](docs/openai/README.md#create_edit) - Creates a new edit for the provided input, instruction, and parameters.
+* [create_embedding](docs/openai/README.md#create_embedding) - Creates an embedding vector representing the input text.
+* [create_file](docs/openai/README.md#create_file) - Upload a file that contains document(s) to be used across various endpoints/features. Currently, the size of all the files uploaded by one organization can be up to 1 GB. Please contact us if you need to increase the storage limit.
 
-* `create_completion` - Creates a completion for the provided prompt and parameters
-* `create_edit` - Creates a new edit for the provided input, instruction, and parameters.
-* `create_embedding` - Creates an embedding vector representing the input text.
-* `create_file` - Upload a file that contains document(s) to be used across various endpoints/features. Currently, the size of all the files uploaded by one organization can be up to 1 GB. Please contact us if you need to increase the storage limit.
-
-* `create_fine_tune` - Creates a job that fine-tunes a specified model from a given dataset.
+* [create_fine_tune](docs/openai/README.md#create_fine_tune) - Creates a job that fine-tunes a specified model from a given dataset.
 
 Response includes details of the enqueued job including job status and the name of the fine-tuned models once complete.
 
 [Learn more about Fine-tuning](/docs/guides/fine-tuning)
 
-* `create_image` - Creates an image given a prompt.
-* `create_image_edit` - Creates an edited or extended image given an original image and a prompt.
-* `create_image_variation` - Creates a variation of a given image.
-* `create_moderation` - Classifies if text violates OpenAI's Content Policy
-* `create_search` - The search endpoint computes similarity scores between provided query and documents. Documents can be passed directly to the API if there are no more than 200 of them.
+* [create_image](docs/openai/README.md#create_image) - Creates an image given a prompt.
+* [create_image_edit](docs/openai/README.md#create_image_edit) - Creates an edited or extended image given an original image and a prompt.
+* [create_image_variation](docs/openai/README.md#create_image_variation) - Creates a variation of a given image.
+* [create_moderation](docs/openai/README.md#create_moderation) - Classifies if text violates OpenAI's Content Policy
+* [~~create_search~~](docs/openai/README.md#create_search) - The search endpoint computes similarity scores between provided query and documents. Documents can be passed directly to the API if there are no more than 200 of them.
 
 To go beyond the 200 document limit, documents can be processed offline and then used for efficient retrieval at query time. When `file` is set, the search endpoint searches over all the documents in the given file and returns up to the `max_rerank` number of documents. These documents will be returned along with their search scores.
 
 The similarity score is a positive score that usually ranges from 0 to 300 (but can sometimes go higher), where a score above 200 usually means the document is semantically similar to the query.
+ :warning: **Deprecated**
+* [create_transcription](docs/openai/README.md#create_transcription) - Transcribes audio into the input language.
+* [create_translation](docs/openai/README.md#create_translation) - Translates audio into into English.
+* [delete_file](docs/openai/README.md#delete_file) - Delete a file.
+* [delete_model](docs/openai/README.md#delete_model) - Delete a fine-tuned model. You must have the Owner role in your organization.
+* [download_file](docs/openai/README.md#download_file) - Returns the contents of the specified file
+* [~~list_engines~~](docs/openai/README.md#list_engines) - Lists the currently available (non-finetuned) models, and provides basic information about each one such as the owner and availability. :warning: **Deprecated**
+* [list_files](docs/openai/README.md#list_files) - Returns a list of files that belong to the user's organization.
+* [list_fine_tune_events](docs/openai/README.md#list_fine_tune_events) - Get fine-grained status updates for a fine-tune job.
 
-* `create_transcription` - Transcribes audio into the input language.
-* `create_translation` - Translates audio into into English.
-* `delete_file` - Delete a file.
-* `delete_model` - Delete a fine-tuned model. You must have the Owner role in your organization.
-* `download_file` - Returns the contents of the specified file
-* `list_engines` - Lists the currently available (non-finetuned) models, and provides basic information about each one such as the owner and availability.
-* `list_files` - Returns a list of files that belong to the user's organization.
-* `list_fine_tune_events` - Get fine-grained status updates for a fine-tune job.
+* [list_fine_tunes](docs/openai/README.md#list_fine_tunes) - List your organization's fine-tuning jobs
 
-* `list_fine_tunes` - List your organization's fine-tuning jobs
-
-* `list_models` - Lists the currently available models, and provides basic information about each one such as the owner and availability.
-* `retrieve_engine` - Retrieves a model instance, providing basic information about it such as the owner and availability.
-* `retrieve_file` - Returns information about a specific file.
-* `retrieve_fine_tune` - Gets info about the fine-tune job.
+* [list_models](docs/openai/README.md#list_models) - Lists the currently available models, and provides basic information about each one such as the owner and availability.
+* [~~retrieve_engine~~](docs/openai/README.md#retrieve_engine) - Retrieves a model instance, providing basic information about it such as the owner and availability. :warning: **Deprecated**
+* [retrieve_file](docs/openai/README.md#retrieve_file) - Returns information about a specific file.
+* [retrieve_fine_tune](docs/openai/README.md#retrieve_fine_tune) - Gets info about the fine-tune job.
 
 [Learn more about Fine-tuning](/docs/guides/fine-tuning)
 
-* `retrieve_model` - Retrieves a model instance, providing basic information about the model such as the owner and permissioning.
+* [retrieve_model](docs/openai/README.md#retrieve_model) - Retrieves a model instance, providing basic information about the model such as the owner and permissioning.
 <!-- End SDK Available Operations -->
 
 ### SDK Generated by [Speakeasy](https://docs.speakeasyapi.dev/docs/using-speakeasy/client-sdks)
