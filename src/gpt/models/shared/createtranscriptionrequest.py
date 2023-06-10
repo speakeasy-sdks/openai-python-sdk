@@ -5,16 +5,18 @@ import dataclasses
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class CreateTranscriptionRequestFile:
-    
     content: bytes = dataclasses.field(metadata={'multipart_form': { 'content': True }})
     file: str = dataclasses.field(metadata={'multipart_form': { 'field_name': 'file' }})
     
 
+
+
+
 @dataclasses.dataclass
 class CreateTranscriptionRequest:
-    
     file: CreateTranscriptionRequestFile = dataclasses.field(metadata={'multipart_form': { 'file': True }})
     r"""The audio file to transcribe, in one of these formats: mp3, mp4, mpeg, mpga, m4a, wav, or webm."""
     model: str = dataclasses.field(metadata={'multipart_form': { 'field_name': 'model' }})
@@ -28,3 +30,4 @@ class CreateTranscriptionRequest:
     temperature: Optional[float] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'temperature' }})
     r"""The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit."""
     
+

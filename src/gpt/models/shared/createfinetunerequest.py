@@ -8,9 +8,9 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class CreateFineTuneRequest:
-    
     training_file: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('training_file') }})
     r"""The ID of an uploaded file that contains training data.
     
@@ -113,3 +113,4 @@ class CreateFineTuneRequest:
     See the [fine-tuning guide](/docs/guides/fine-tuning/creating-training-data) for more details.
     """
     
+

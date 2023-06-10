@@ -15,9 +15,9 @@ class ChatCompletionRequestMessageRole(str, Enum):
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class ChatCompletionRequestMessage:
-    
     content: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('content') }})
     r"""The contents of the message"""
     role: ChatCompletionRequestMessageRole = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('role') }})
@@ -25,3 +25,4 @@ class ChatCompletionRequestMessage:
     name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
     r"""The name of the user in a multi-user chat"""
     
+

@@ -5,23 +5,27 @@ import dataclasses
 from typing import Any, Optional
 
 
+
 @dataclasses.dataclass
 class CreateImageEditRequestImage:
-    
     content: bytes = dataclasses.field(metadata={'multipart_form': { 'content': True }})
     image: str = dataclasses.field(metadata={'multipart_form': { 'field_name': 'image' }})
     
 
+
+
+
 @dataclasses.dataclass
 class CreateImageEditRequestMask:
-    
     content: bytes = dataclasses.field(metadata={'multipart_form': { 'content': True }})
     mask: str = dataclasses.field(metadata={'multipart_form': { 'field_name': 'mask' }})
     
 
+
+
+
 @dataclasses.dataclass
 class CreateImageEditRequest:
-    
     image: CreateImageEditRequestImage = dataclasses.field(metadata={'multipart_form': { 'file': True }})
     r"""The image to edit. Must be a valid PNG file, less than 4MB, and square. If mask is not provided, image must have transparency, which will be used as the mask."""
     prompt: str = dataclasses.field(metadata={'multipart_form': { 'field_name': 'prompt' }})
@@ -33,3 +37,4 @@ class CreateImageEditRequest:
     size: Optional[Any] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'size' }})
     user: Optional[Any] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'user' }})
     
+

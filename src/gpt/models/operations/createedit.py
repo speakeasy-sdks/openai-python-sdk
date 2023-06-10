@@ -7,12 +7,13 @@ from ..shared import createeditresponse as shared_createeditresponse
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class CreateEditResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     create_edit_response: Optional[shared_createeditresponse.CreateEditResponse] = dataclasses.field(default=None)
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+

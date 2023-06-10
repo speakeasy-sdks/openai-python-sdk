@@ -6,17 +6,23 @@ from ..shared import finetuneevent as shared_finetuneevent
 from ..shared import openaifile as shared_openaifile
 from dataclasses_json import Undefined, dataclass_json
 from gpt import utils
-from typing import Any, Optional
+from typing import Optional
+
+
+
+@dataclasses.dataclass
+class FineTuneHyperparams:
+    pass
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class FineTune:
     r"""OK"""
-    
     created_at: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created_at') }})
     fine_tuned_model: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fine_tuned_model') }})
-    hyperparams: dict[str, Any] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hyperparams') }})
+    hyperparams: FineTuneHyperparams = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hyperparams') }})
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     model: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model') }})
     object: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('object') }})
@@ -28,3 +34,4 @@ class FineTune:
     validation_files: list[shared_openaifile.OpenAIFile] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validation_files') }})
     events: Optional[list[shared_finetuneevent.FineTuneEvent]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('events'), 'exclude': lambda f: f is None }})
     
+

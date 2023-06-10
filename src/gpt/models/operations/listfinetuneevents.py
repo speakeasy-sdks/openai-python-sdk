@@ -7,9 +7,9 @@ from ..shared import listfinetuneeventsresponse as shared_listfinetuneeventsresp
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class ListFineTuneEventsRequest:
-    
     fine_tune_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'fine_tune_id', 'style': 'simple', 'explode': False }})
     r"""The ID of the fine-tune job to get events for."""
     stream: Optional[bool] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'stream', 'style': 'form', 'explode': True }})
@@ -24,12 +24,15 @@ class ListFineTuneEventsRequest:
     """
     
 
+
+
+
 @dataclasses.dataclass
 class ListFineTuneEventsResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     list_fine_tune_events_response: Optional[shared_listfinetuneeventsresponse.ListFineTuneEventsResponse] = dataclasses.field(default=None)
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+

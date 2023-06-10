@@ -7,12 +7,13 @@ from ..shared import createclassificationresponse as shared_createclassification
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class CreateClassificationResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     create_classification_response: Optional[shared_createclassificationresponse.CreateClassificationResponse] = dataclasses.field(default=None)
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+

@@ -5,16 +5,18 @@ import dataclasses
 from typing import Any, Optional
 
 
+
 @dataclasses.dataclass
 class CreateImageVariationRequestImage:
-    
     content: bytes = dataclasses.field(metadata={'multipart_form': { 'content': True }})
     image: str = dataclasses.field(metadata={'multipart_form': { 'field_name': 'image' }})
     
 
+
+
+
 @dataclasses.dataclass
 class CreateImageVariationRequest:
-    
     image: CreateImageVariationRequestImage = dataclasses.field(metadata={'multipart_form': { 'file': True }})
     r"""The image to use as the basis for the variation(s). Must be a valid PNG file, less than 4MB, and square."""
     n: Optional[Any] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'n' }})
@@ -22,3 +24,4 @@ class CreateImageVariationRequest:
     size: Optional[Any] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'size' }})
     user: Optional[Any] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'user' }})
     
+

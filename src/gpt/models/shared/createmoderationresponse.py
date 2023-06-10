@@ -7,9 +7,9 @@ from gpt import utils
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class CreateModerationResponseResultsCategories:
-    
     hate: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hate') }})
     hate_threatening: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hate/threatening') }})
     self_harm: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self-harm') }})
@@ -19,10 +19,12 @@ class CreateModerationResponseResultsCategories:
     violence_graphic: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('violence/graphic') }})
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class CreateModerationResponseResultsCategoryScores:
-    
     hate: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hate') }})
     hate_threatening: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hate/threatening') }})
     self_harm: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self-harm') }})
@@ -32,21 +34,26 @@ class CreateModerationResponseResultsCategoryScores:
     violence_graphic: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('violence/graphic') }})
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class CreateModerationResponseResults:
-    
     categories: CreateModerationResponseResultsCategories = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('categories') }})
     category_scores: CreateModerationResponseResultsCategoryScores = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('category_scores') }})
     flagged: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('flagged') }})
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class CreateModerationResponse:
     r"""OK"""
-    
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     model: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model') }})
     results: list[CreateModerationResponseResults] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results') }})
     
+

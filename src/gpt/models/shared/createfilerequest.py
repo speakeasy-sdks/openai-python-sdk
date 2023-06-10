@@ -4,16 +4,18 @@ from __future__ import annotations
 import dataclasses
 
 
+
 @dataclasses.dataclass
 class CreateFileRequestFile:
-    
     content: bytes = dataclasses.field(metadata={'multipart_form': { 'content': True }})
     file: str = dataclasses.field(metadata={'multipart_form': { 'field_name': 'file' }})
     
 
+
+
+
 @dataclasses.dataclass
 class CreateFileRequest:
-    
     file: CreateFileRequestFile = dataclasses.field(metadata={'multipart_form': { 'file': True }})
     r"""Name of the [JSON Lines](https://jsonlines.readthedocs.io/en/latest/) file to be uploaded.
     
@@ -25,3 +27,4 @@ class CreateFileRequest:
     Use \"fine-tune\" for [Fine-tuning](/docs/api-reference/fine-tunes). This allows us to validate the format of the uploaded file.
     """
     
+

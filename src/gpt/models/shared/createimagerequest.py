@@ -20,9 +20,9 @@ class CreateImageRequestSize(str, Enum):
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class CreateImageRequest:
-    
     prompt: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('prompt') }})
     r"""A text description of the desired image(s). The maximum length is 1000 characters."""
     n: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('n'), 'exclude': lambda f: f is None }})
@@ -33,3 +33,4 @@ class CreateImageRequest:
     r"""The size of the generated images. Must be one of `256x256`, `512x512`, or `1024x1024`."""
     user: Optional[Any] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('user'), 'exclude': lambda f: f is None }})
     
+

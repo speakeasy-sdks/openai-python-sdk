@@ -8,9 +8,9 @@ from typing import Any, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class CreateAnswerRequest:
-    
     examples: list[list[str]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('examples') }})
     r"""List of (question, answer) pairs that will help steer the model towards the tone and answer format you'd like. We recommend adding 2 to 3 examples."""
     examples_context: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('examples_context') }})
@@ -56,3 +56,4 @@ class CreateAnswerRequest:
     r"""What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic."""
     user: Optional[Any] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('user'), 'exclude': lambda f: f is None }})
     
+
