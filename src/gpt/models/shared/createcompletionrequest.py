@@ -16,7 +16,8 @@ class CreateCompletionRequestLogitBias:
     
     As an example, you can pass `{\"50256\": -100}` to prevent the <|endoftext|> token from being generated.
     """
-    pass
+    
+
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
