@@ -72,7 +72,7 @@ class OpenAI:
 
     
     def create_chat_completion(self, request: shared.CreateChatCompletionRequest) -> operations.CreateChatCompletionResponse:
-        r"""Creates a completion for the chat message"""
+        r"""Creates a model response for the given chat conversation."""
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/chat/completions'
@@ -141,7 +141,7 @@ class OpenAI:
 
     
     def create_completion(self, request: shared.CreateCompletionRequest) -> operations.CreateCompletionResponse:
-        r"""Creates a completion for the provided prompt and parameters"""
+        r"""Creates a completion for the provided prompt and parameters."""
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/completions'

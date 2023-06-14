@@ -47,6 +47,7 @@ src/gpt/models/shared/createchatcompletionresponse.py
 src/gpt/models/shared/chatcompletionresponsemessage.py
 src/gpt/models/shared/createchatcompletionrequest.py
 src/gpt/models/shared/chatcompletionrequestmessage.py
+src/gpt/models/shared/chatcompletionfunctions.py
 src/gpt/models/shared/createclassificationresponse.py
 src/gpt/models/shared/createclassificationrequest.py
 src/gpt/models/shared/createcompletionresponse.py
@@ -131,12 +132,17 @@ docs/models/shared/createanswerrequest.md
 docs/models/shared/createchatcompletionresponsechoices.md
 docs/models/shared/createchatcompletionresponseusage.md
 docs/models/shared/createchatcompletionresponse.md
+docs/models/shared/chatcompletionresponsemessagefunctioncall.md
 docs/models/shared/chatcompletionresponsemessagerole.md
 docs/models/shared/chatcompletionresponsemessage.md
+docs/models/shared/createchatcompletionrequestfunctioncall2.md
+docs/models/shared/createchatcompletionrequestfunctioncall1.md
 docs/models/shared/createchatcompletionrequestlogitbias.md
 docs/models/shared/createchatcompletionrequest.md
+docs/models/shared/chatcompletionrequestmessagefunctioncall.md
 docs/models/shared/chatcompletionrequestmessagerole.md
 docs/models/shared/chatcompletionrequestmessage.md
+docs/models/shared/chatcompletionfunctions.md
 docs/models/shared/createclassificationresponseselectedexamples.md
 docs/models/shared/createclassificationresponse.md
 docs/models/shared/createclassificationrequest.md

@@ -18,7 +18,7 @@ class CreateTranscriptionRequestFile:
 @dataclasses.dataclass
 class CreateTranscriptionRequest:
     file: CreateTranscriptionRequestFile = dataclasses.field(metadata={'multipart_form': { 'file': True }})
-    r"""The audio file to transcribe, in one of these formats: mp3, mp4, mpeg, mpga, m4a, wav, or webm."""
+    r"""The audio file object (not file name) to transcribe, in one of these formats: mp3, mp4, mpeg, mpga, m4a, wav, or webm."""
     model: str = dataclasses.field(metadata={'multipart_form': { 'field_name': 'model' }})
     r"""ID of the model to use. Only `whisper-1` is currently available."""
     language: Optional[str] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'language' }})

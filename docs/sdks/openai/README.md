@@ -12,7 +12,7 @@ The OpenAI REST API
 
 The endpoint first [searches](/docs/api-reference/searches) over provided documents or files to find relevant context. The relevant context is combined with the provided examples and question to create the prompt for [completion](/docs/api-reference/completions).
  :warning: **Deprecated**
-* [create_chat_completion](#create_chat_completion) - Creates a completion for the chat message
+* [create_chat_completion](#create_chat_completion) - Creates a model response for the given chat conversation.
 * [~~create_classification~~](#create_classification) - Classifies the specified `query` using provided examples.
 
 The endpoint first [searches](/docs/api-reference/searches) over the labeled examples
@@ -23,7 +23,7 @@ are combined with the query to construct a prompt to produce the final label via
 Labeled examples can be provided via an uploaded `file`, or explicitly listed in the
 request using the `examples` parameter for quick tests and small scale use cases.
  :warning: **Deprecated**
-* [create_completion](#create_completion) - Creates a completion for the provided prompt and parameters
+* [create_completion](#create_completion) - Creates a completion for the provided prompt and parameters.
 * [create_edit](#create_edit) - Creates a new edit for the provided input, instruction, and parameters.
 * [create_embedding](#create_embedding) - Creates an embedding vector representing the input text.
 * [create_file](#create_file) - Upload a file that contains document(s) to be used across various endpoints/features. Currently, the size of all the files uploaded by one organization can be up to 1 GB. Please contact us if you need to increase the storage limit.
@@ -184,7 +184,7 @@ if res.create_answer_response is not None:
 
 ## create_chat_completion
 
-Creates a completion for the chat message
+Creates a model response for the given chat conversation.
 
 ### Example Usage
 
@@ -196,25 +196,94 @@ s = gpt.Gpt()
 
 req = shared.CreateChatCompletionRequest(
     frequency_penalty=9571.56,
-    logit_bias=shared.CreateChatCompletionRequestLogitBias(),
-    max_tokens=778157,
-    messages=[
-        shared.ChatCompletionRequestMessage(
-            content='at',
-            name='Emilio Krajcik',
-            role=shared.ChatCompletionRequestMessageRole.USER,
+    function_call=shared.CreateChatCompletionRequestFunctionCall2(
+        name='Teri Strosin',
+    ),
+    functions=[
+        shared.ChatCompletionFunctions(
+            description='quod',
+            name='Deanna Sauer MD',
+            parameters={
+                "occaecati": 'fugit',
+                "deleniti": 'hic',
+                "optio": 'totam',
+            },
+        ),
+        shared.ChatCompletionFunctions(
+            description='beatae',
+            name='Tanya Gleason',
+            parameters={
+                "esse": 'ipsum',
+                "excepturi": 'aspernatur',
+                "perferendis": 'ad',
+            },
+        ),
+        shared.ChatCompletionFunctions(
+            description='natus',
+            name='Sheryl Fadel',
+            parameters={
+                "saepe": 'fuga',
+                "in": 'corporis',
+                "iste": 'iure',
+                "saepe": 'quidem',
+            },
+        ),
+        shared.ChatCompletionFunctions(
+            description='architecto',
+            name='Lela Orn',
+            parameters={
+                "dolorem": 'corporis',
+            },
         ),
     ],
-    model='totam',
-    n=1,
-    presence_penalty=7805.29,
-    stop=[
-        'nam',
+    logit_bias=shared.CreateChatCompletionRequestLogitBias(),
+    max_tokens=128926,
+    messages=[
+        shared.ChatCompletionRequestMessage(
+            content='enim',
+            function_call=shared.ChatCompletionRequestMessageFunctionCall(
+                arguments='omnis',
+                name='Ms. Cathy Marks',
+            ),
+            name='Darrin Brakus',
+            role=shared.ChatCompletionRequestMessageRole.ASSISTANT,
+        ),
+        shared.ChatCompletionRequestMessage(
+            content='consequuntur',
+            function_call=shared.ChatCompletionRequestMessageFunctionCall(
+                arguments='repellat',
+                name='Tracy Fritsch',
+            ),
+            name='Shannon Mueller',
+            role=shared.ChatCompletionRequestMessageRole.SYSTEM,
+        ),
+        shared.ChatCompletionRequestMessage(
+            content='laborum',
+            function_call=shared.ChatCompletionRequestMessageFunctionCall(
+                arguments='animi',
+                name='Christina Satterfield',
+            ),
+            name='Mr. Alberta Schuster',
+            role=shared.ChatCompletionRequestMessageRole.FUNCTION,
+        ),
+        shared.ChatCompletionRequestMessage(
+            content='laborum',
+            function_call=shared.ChatCompletionRequestMessageFunctionCall(
+                arguments='quasi',
+                name='Jan Thiel',
+            ),
+            name='Jose Moen',
+            role=shared.ChatCompletionRequestMessageRole.SYSTEM,
+        ),
     ],
+    model='doloremque',
+    n=1,
+    presence_penalty=4417.11,
+    stop='maiores',
     stream=False,
     temperature=1,
     top_p=1,
-    user='officia',
+    user='dicta',
 )
 
 res = s.open_ai.create_chat_completion(req)
@@ -261,35 +330,30 @@ s = gpt.Gpt()
 req = shared.CreateClassificationRequest(
     examples=[
         [
-            'deleniti',
+            'iusto',
+            'dicta',
         ],
         [
-            'optio',
-            'totam',
-            'beatae',
+            'enim',
+            'accusamus',
             'commodi',
         ],
-        [
-            'modi',
-            'qui',
-        ],
     ],
-    expand='impedit',
-    file='cum',
+    expand='repudiandae',
+    file='quae',
     labels=[
-        'ipsum',
-        'excepturi',
+        'quidem',
     ],
-    logit_bias='aspernatur',
-    logprobs='perferendis',
-    max_examples=324141,
-    model='natus',
+    logit_bias='molestias',
+    logprobs='excepturi',
+    max_examples=865103,
+    model='modi',
     query='The plot is not very attractive.',
-    return_metadata='sed',
-    return_prompt='iste',
-    search_model='dolor',
+    return_metadata='praesentium',
+    return_prompt='rem',
+    search_model='voluptates',
     temperature=0,
-    user='natus',
+    user='quasi',
 )
 
 res = s.open_ai.create_classification(req)
@@ -312,7 +376,7 @@ if res.create_classification_response is not None:
 
 ## create_completion
 
-Creates a completion for the provided prompt and parameters
+Creates a completion for the provided prompt and parameters.
 
 ### Example Usage
 
@@ -323,22 +387,24 @@ from gpt.models import shared
 s = gpt.Gpt()
 
 req = shared.CreateCompletionRequest(
-    best_of=386489,
+    best_of=921158,
     echo=False,
-    frequency_penalty=9437.49,
+    frequency_penalty=5759.47,
     logit_bias=shared.CreateCompletionRequestLogitBias(),
-    logprobs=902599,
+    logprobs=83112,
     max_tokens=16,
-    model='fuga',
+    model='itaque',
     n=1,
-    presence_penalty=4499.5,
+    presence_penalty=2777.18,
     prompt=[
         'This is a test.',
-        'This is a test.',
-        'This is a test.',
     ],
-    stop='
-',
+    stop=[
+        '["\n"]',
+        '["\n"]',
+        '["\n"]',
+        '["\n"]',
+    ],
     stream=False,
     suffix='test.',
     temperature=1,
@@ -379,7 +445,7 @@ s = gpt.Gpt()
 req = shared.CreateEditRequest(
     input='What day of the wek is it?',
     instruction='Fix the spelling mistakes.',
-    model='saepe',
+    model='explicabo',
     n=1,
     temperature=1,
     top_p=1,
@@ -417,10 +483,12 @@ s = gpt.Gpt()
 
 req = shared.CreateEmbeddingRequest(
     input=[
-        60225,
+        841386,
+        289406,
+        264730,
     ],
-    model='reiciendis',
-    user='est',
+    model='qui',
+    user='aliquid',
 )
 
 res = s.open_ai.create_embedding(req)
@@ -456,10 +524,10 @@ s = gpt.Gpt()
 
 req = shared.CreateFileRequest(
     file=shared.CreateFileRequestFile(
-        content='mollitia'.encode(),
-        file='laborum',
+        content='cupiditate'.encode(),
+        file='quos',
     ),
-    purpose='dolores',
+    purpose='perferendis',
 )
 
 res = s.open_ai.create_file(req)
@@ -498,19 +566,21 @@ from gpt.models import shared
 s = gpt.Gpt()
 
 req = shared.CreateFineTuneRequest(
-    batch_size=210382,
+    batch_size=164940,
     classification_betas=[
-        1289.26,
-        7506.86,
+        3698.08,
+        46.95,
+        1464.41,
+        6778.17,
     ],
-    classification_n_classes=315428,
-    classification_positive_class='omnis',
+    classification_n_classes=569618,
+    classification_positive_class='tempora',
     compute_classification_metrics=False,
-    learning_rate_multiplier=3637.11,
-    model='minima',
-    n_epochs=570197,
-    prompt_loss_weight=384.25,
-    suffix='iure',
+    learning_rate_multiplier=7037.37,
+    model='tempore',
+    n_epochs=288476,
+    prompt_loss_weight=9621.89,
+    suffix='eum',
     training_file='file-ajSREls59WBbvgSzJSVWxMCB',
     validation_file='file-XjSREls59WBbvgSzJSVWxMCa',
 )
@@ -550,7 +620,7 @@ req = shared.CreateImageRequest(
     prompt='A cute baby sea otter',
     response_format=shared.CreateImageRequestResponseFormat.URL,
     size=shared.CreateImageRequestSize.ONE_THOUSAND_AND_TWENTY_FOURX1024,
-    user='culpa',
+    user='non',
 )
 
 res = s.open_ai.create_image(req)
@@ -585,18 +655,18 @@ s = gpt.Gpt()
 
 req = shared.CreateImageEditRequest(
     image=shared.CreateImageEditRequestImage(
-        content='doloribus'.encode(),
-        image='sapiente',
+        content='eligendi'.encode(),
+        image='sint',
     ),
     mask=shared.CreateImageEditRequestMask(
-        content='architecto'.encode(),
-        mask='mollitia',
+        content='aliquid'.encode(),
+        mask='provident',
     ),
-    n='dolorem',
+    n='necessitatibus',
     prompt='A cute baby sea otter wearing a beret',
-    response_format='culpa',
-    size='consequuntur',
-    user='repellat',
+    response_format='sint',
+    size='officia',
+    user='dolor',
 )
 
 res = s.open_ai.create_image_edit(req)
@@ -631,13 +701,13 @@ s = gpt.Gpt()
 
 req = shared.CreateImageVariationRequest(
     image=shared.CreateImageVariationRequestImage(
-        content='mollitia'.encode(),
-        image='occaecati',
+        content='debitis'.encode(),
+        image='a',
     ),
-    n='numquam',
-    response_format='commodi',
-    size='quam',
-    user='molestiae',
+    n='dolorum',
+    response_format='in',
+    size='in',
+    user='illum',
 )
 
 res = s.open_ai.create_image_variation(req)
@@ -671,7 +741,11 @@ from gpt.models import shared
 s = gpt.Gpt()
 
 req = shared.CreateModerationRequest(
-    input='I want to kill them.',
+    input=[
+        'I want to kill them.',
+        'I want to kill them.',
+        'I want to kill them.',
+    ],
     model='text-moderation-stable',
 )
 
@@ -715,15 +789,13 @@ s = gpt.Gpt()
 req = operations.CreateSearchRequest(
     create_search_request=shared.CreateSearchRequest(
         documents=[
-            'quia',
-            'quis',
-            'vitae',
+            'magnam',
         ],
-        file='laborum',
-        max_rerank=656330,
+        file='cumque',
+        max_rerank=813798,
         query='the president',
         return_metadata=False,
-        user='enim',
+        user='ea',
     ),
     engine_id='davinci',
 )
@@ -760,14 +832,14 @@ s = gpt.Gpt()
 
 req = shared.CreateTranscriptionRequest(
     file=shared.CreateTranscriptionRequestFile(
-        content='odit'.encode(),
-        file='quo',
+        content='aliquid'.encode(),
+        file='laborum',
     ),
-    language='sequi',
-    model='tenetur',
-    prompt='ipsam',
-    response_format='id',
-    temperature=8209.94,
+    language='accusamus',
+    model='non',
+    prompt='occaecati',
+    response_format='enim',
+    temperature=8817.36,
 )
 
 res = s.open_ai.create_transcription(req)
@@ -802,13 +874,13 @@ s = gpt.Gpt()
 
 req = shared.CreateTranslationRequest(
     file=shared.CreateTranslationRequestFile(
-        content='aut'.encode(),
-        file='quasi',
+        content='delectus'.encode(),
+        file='quidem',
     ),
-    model='error',
-    prompt='temporibus',
-    response_format='laborum',
-    temperature=960.98,
+    model='provident',
+    prompt='nam',
+    response_format='id',
+    temperature=5013.24,
 )
 
 res = s.open_ai.create_translation(req)
@@ -842,7 +914,7 @@ from gpt.models import operations
 s = gpt.Gpt()
 
 req = operations.DeleteFileRequest(
-    file_id='reiciendis',
+    file_id='deleniti',
 )
 
 res = s.open_ai.delete_file(req)
@@ -910,7 +982,7 @@ from gpt.models import operations
 s = gpt.Gpt()
 
 req = operations.DownloadFileRequest(
-    file_id='voluptatibus',
+    file_id='sapiente',
 )
 
 res = s.open_ai.download_file(req)
@@ -1119,7 +1191,7 @@ from gpt.models import operations
 s = gpt.Gpt()
 
 req = operations.RetrieveFileRequest(
-    file_id='vero',
+    file_id='amet',
 )
 
 res = s.open_ai.retrieve_file(req)

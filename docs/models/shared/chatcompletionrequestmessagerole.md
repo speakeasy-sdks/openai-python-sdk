@@ -1,6 +1,6 @@
 # ChatCompletionRequestMessageRole
 
-The role of the author of this message.
+The role of the messages author. One of `system`, `user`, `assistant`, or `function`.
 
 
 ## Values
@@ -10,3 +10,4 @@ The role of the author of this message.
 | `SYSTEM`    | system      |
 | `USER`      | user        |
 | `ASSISTANT` | assistant   |
+| `FUNCTION`  | function    |

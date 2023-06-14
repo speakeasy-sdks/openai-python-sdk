@@ -10,3 +10,4 @@ The role of the author of this message.
 | `SYSTEM`    | system      |
 | `USER`      | user        |
 | `ASSISTANT` | assistant   |
+| `FUNCTION`  | function    |
