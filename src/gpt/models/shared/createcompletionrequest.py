@@ -26,6 +26,11 @@ class CreateCompletionRequestLogitBias:
 class CreateCompletionRequest:
     model: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model') }})
     r"""ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](/docs/models/overview) for descriptions of them."""
+    prompt: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('prompt') }})
+    r"""The prompt(s) to generate completions for, encoded as a string, array of strings, array of tokens, or array of token arrays.
+    
+    Note that <|endoftext|> is the document separator that the model sees during training, so if a prompt is not specified the model will generate as if from the beginning of a new document.
+    """
     best_of: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('best_of'), 'exclude': lambda f: f is None }})
     r"""Generates `best_of` completions server-side and returns the \\"best\\" (the one with the highest log probability per token). Results cannot be streamed.
     
@@ -66,11 +71,6 @@ class CreateCompletionRequest:
     r"""Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
     
     [See more information about frequency and presence penalties.](/docs/api-reference/parameter-details)
-    """
-    prompt: Optional[Any] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('prompt'), 'exclude': lambda f: f is None }})
-    r"""The prompt(s) to generate completions for, encoded as a string, array of strings, array of tokens, or array of token arrays.
-    
-    Note that <|endoftext|> is the document separator that the model sees during training, so if a prompt is not specified the model will generate as if from the beginning of a new document.
     """
     stop: Optional[Any] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('stop'), 'exclude': lambda f: f is None }})
     r"""Up to 4 sequences where the API will stop generating further tokens. The returned text will not contain the stop sequence."""
