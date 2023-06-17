@@ -3,8 +3,13 @@
 from __future__ import annotations
 import dataclasses
 from dataclasses_json import Undefined, dataclass_json
+from enum import Enum
 from gpt import utils
 from typing import Optional
+
+class CreateCompletionResponseChoicesFinishReason(str, Enum):
+    STOP = 'stop'
+    LENGTH = 'length'
 
 
 
@@ -29,7 +34,7 @@ class CreateCompletionResponseChoicesLogprobs:
 
 @dataclasses.dataclass
 class CreateCompletionResponseChoices:
-    finish_reason: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finish_reason') }})
+    finish_reason: CreateCompletionResponseChoicesFinishReason = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finish_reason') }})
     index: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('index') }})
     logprobs: CreateCompletionResponseChoicesLogprobs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('logprobs') }})
     text: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('text') }})

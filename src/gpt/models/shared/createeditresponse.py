@@ -3,8 +3,13 @@
 from __future__ import annotations
 import dataclasses
 from dataclasses_json import Undefined, dataclass_json
+from enum import Enum
 from gpt import utils
 from typing import Optional
+
+class CreateEditResponseChoicesFinishReason(str, Enum):
+    STOP = 'stop'
+    LENGTH = 'length'
 
 
 
@@ -29,7 +34,7 @@ class CreateEditResponseChoicesLogprobs:
 
 @dataclasses.dataclass
 class CreateEditResponseChoices:
-    finish_reason: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finish_reason'), 'exclude': lambda f: f is None }})
+    finish_reason: Optional[CreateEditResponseChoicesFinishReason] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finish_reason'), 'exclude': lambda f: f is None }})
     index: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('index'), 'exclude': lambda f: f is None }})
     logprobs: Optional[CreateEditResponseChoicesLogprobs] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('logprobs'), 'exclude': lambda f: f is None }})
     text: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('text'), 'exclude': lambda f: f is None }})

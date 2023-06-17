@@ -4,15 +4,21 @@ from __future__ import annotations
 import dataclasses
 from ..shared import chatcompletionresponsemessage as shared_chatcompletionresponsemessage
 from dataclasses_json import Undefined, dataclass_json
+from enum import Enum
 from gpt import utils
 from typing import Optional
+
+class CreateChatCompletionResponseChoicesFinishReason(str, Enum):
+    STOP = 'stop'
+    LENGTH = 'length'
+    FUNCTION_CALL = 'function_call'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 
 @dataclasses.dataclass
 class CreateChatCompletionResponseChoices:
-    finish_reason: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finish_reason'), 'exclude': lambda f: f is None }})
+    finish_reason: Optional[CreateChatCompletionResponseChoicesFinishReason] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finish_reason'), 'exclude': lambda f: f is None }})
     index: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('index'), 'exclude': lambda f: f is None }})
     message: Optional[shared_chatcompletionresponsemessage.ChatCompletionResponseMessage] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message'), 'exclude': lambda f: f is None }})
     
