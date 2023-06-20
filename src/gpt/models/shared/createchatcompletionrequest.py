@@ -36,6 +36,17 @@ class CreateChatCompletionRequestLogitBias:
     
 
 
+class CreateChatCompletionRequestModel2(str, Enum):
+    r"""ID of the model to use. See the [model endpoint compatibility](/docs/models/model-endpoint-compatibility) table for details on which models work with the Chat API."""
+    GPT_4 = 'gpt-4'
+    GPT_4_0613 = 'gpt-4-0613'
+    GPT_4_32K = 'gpt-4-32k'
+    GPT_4_32K_0613 = 'gpt-4-32k-0613'
+    GPT_3_5_TURBO = 'gpt-3.5-turbo'
+    GPT_3_5_TURBO_16K = 'gpt-3.5-turbo-16k'
+    GPT_3_5_TURBO_0613 = 'gpt-3.5-turbo-0613'
+    GPT_3_5_TURBO_16K_0613 = 'gpt-3.5-turbo-16k-0613'
+
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 
@@ -43,7 +54,7 @@ class CreateChatCompletionRequestLogitBias:
 class CreateChatCompletionRequest:
     messages: list[shared_chatcompletionrequestmessage.ChatCompletionRequestMessage] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('messages') }})
     r"""A list of messages comprising the conversation so far. [Example Python code](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_format_inputs_to_ChatGPT_models.ipynb)."""
-    model: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model') }})
+    model: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model') }})
     r"""ID of the model to use. See the [model endpoint compatibility](/docs/models/model-endpoint-compatibility) table for details on which models work with the Chat API."""
     frequency_penalty: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('frequency_penalty'), 'exclude': lambda f: f is None }})
     r"""completions_frequency_penalty_description"""

@@ -37,40 +37,6 @@ class OpenAI:
         return res
 
     
-    def create_answer(self, request: shared.CreateAnswerRequest) -> operations.CreateAnswerResponse:
-        r"""Answers the specified question using the provided documents and examples.
-        
-        The endpoint first [searches](/docs/api-reference/searches) over provided documents or files to find relevant context. The relevant context is combined with the provided examples and question to create the prompt for [completion](/docs/api-reference/completions).
-        
-        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
-        """
-        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
-        
-        url = base_url + '/answers'
-        headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
-        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
-            headers['content-type'] = req_content_type
-        if data is None and form is None:
-            raise Exception('request body is required')
-        headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
-        
-        client = self.sdk_configuration.client
-        
-        http_res = client.request('POST', url, data=data, files=form, headers=headers)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.CreateAnswerResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.CreateAnswerResponse])
-                res.create_answer_response = out
-
-        return res
-
-    
     def create_chat_completion(self, request: shared.CreateChatCompletionRequest) -> operations.CreateChatCompletionResponse:
         r"""Creates a model response for the given chat conversation."""
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -96,46 +62,6 @@ class OpenAI:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.CreateChatCompletionResponse])
                 res.create_chat_completion_response = out
-
-        return res
-
-    
-    def create_classification(self, request: shared.CreateClassificationRequest) -> operations.CreateClassificationResponse:
-        r"""Classifies the specified `query` using provided examples.
-        
-        The endpoint first [searches](/docs/api-reference/searches) over the labeled examples
-        to select the ones most relevant for the particular query. Then, the relevant examples
-        are combined with the query to construct a prompt to produce the final label via the
-        [completions](/docs/api-reference/completions) endpoint.
-        
-        Labeled examples can be provided via an uploaded `file`, or explicitly listed in the
-        request using the `examples` parameter for quick tests and small scale use cases.
-        
-        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
-        """
-        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
-        
-        url = base_url + '/classifications'
-        headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
-        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
-            headers['content-type'] = req_content_type
-        if data is None and form is None:
-            raise Exception('request body is required')
-        headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
-        
-        client = self.sdk_configuration.client
-        
-        http_res = client.request('POST', url, data=data, files=form, headers=headers)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.CreateClassificationResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.CreateClassificationResponse])
-                res.create_classification_response = out
 
         return res
 
@@ -406,42 +332,6 @@ class OpenAI:
         return res
 
     
-    def create_search(self, request: operations.CreateSearchRequest) -> operations.CreateSearchResponse:
-        r"""The search endpoint computes similarity scores between provided query and documents. Documents can be passed directly to the API if there are no more than 200 of them.
-        
-        To go beyond the 200 document limit, documents can be processed offline and then used for efficient retrieval at query time. When `file` is set, the search endpoint searches over all the documents in the given file and returns up to the `max_rerank` number of documents. These documents will be returned along with their search scores.
-        
-        The similarity score is a positive score that usually ranges from 0 to 300 (but can sometimes go higher), where a score above 200 usually means the document is semantically similar to the query.
-        
-        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
-        """
-        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
-        
-        url = utils.generate_url(operations.CreateSearchRequest, base_url, '/engines/{engine_id}/search', request)
-        headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "create_search_request", 'json')
-        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
-            headers['content-type'] = req_content_type
-        if data is None and form is None:
-            raise Exception('request body is required')
-        headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
-        
-        client = self.sdk_configuration.client
-        
-        http_res = client.request('POST', url, data=data, files=form, headers=headers)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.CreateSearchResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.CreateSearchResponse])
-                res.create_search_response = out
-
-        return res
-
-    
     def create_transcription(self, request: shared.CreateTranscriptionRequest) -> operations.CreateTranscriptionResponse:
         r"""Transcribes audio into the input language."""
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -472,7 +362,7 @@ class OpenAI:
 
     
     def create_translation(self, request: shared.CreateTranslationRequest) -> operations.CreateTranslationResponse:
-        r"""Translates audio into into English."""
+        r"""Translates audio into English."""
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/audio/translations'
@@ -571,33 +461,6 @@ class OpenAI:
         return res
 
     
-    def list_engines(self) -> operations.ListEnginesResponse:
-        r"""Lists the currently available (non-finetuned) models, and provides basic information about each one such as the owner and availability.
-        
-        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
-        """
-        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
-        
-        url = base_url + '/engines'
-        headers = {}
-        headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
-        
-        client = self.sdk_configuration.client
-        
-        http_res = client.request('GET', url, headers=headers)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.ListEnginesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.ListEnginesResponse])
-                res.list_engines_response = out
-
-        return res
-
-    
     def list_files(self) -> operations.ListFilesResponse:
         r"""Returns a list of files that belong to the user's organization."""
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -691,33 +554,6 @@ class OpenAI:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ListModelsResponse])
                 res.list_models_response = out
-
-        return res
-
-    
-    def retrieve_engine(self, request: operations.RetrieveEngineRequest) -> operations.RetrieveEngineResponse:
-        r"""Retrieves a model instance, providing basic information about it such as the owner and availability.
-        
-        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
-        """
-        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
-        
-        url = utils.generate_url(operations.RetrieveEngineRequest, base_url, '/engines/{engine_id}', request)
-        headers = {}
-        headers['Accept'] = 'application/json'
-        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
-        
-        client = self.sdk_configuration.client
-        
-        http_res = client.request('GET', url, headers=headers)
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.RetrieveEngineResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[shared.Engine])
-                res.engine = out
 
         return res
 

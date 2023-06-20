@@ -8,21 +8,7 @@ The OpenAI REST API
 
 * [cancel_fine_tune](#cancel_fine_tune) - Immediately cancel a fine-tune job.
 
-* [~~create_answer~~](#create_answer) - Answers the specified question using the provided documents and examples.
-
-The endpoint first [searches](/docs/api-reference/searches) over provided documents or files to find relevant context. The relevant context is combined with the provided examples and question to create the prompt for [completion](/docs/api-reference/completions).
- :warning: **Deprecated**
 * [create_chat_completion](#create_chat_completion) - Creates a model response for the given chat conversation.
-* [~~create_classification~~](#create_classification) - Classifies the specified `query` using provided examples.
-
-The endpoint first [searches](/docs/api-reference/searches) over the labeled examples
-to select the ones most relevant for the particular query. Then, the relevant examples
-are combined with the query to construct a prompt to produce the final label via the
-[completions](/docs/api-reference/completions) endpoint.
-
-Labeled examples can be provided via an uploaded `file`, or explicitly listed in the
-request using the `examples` parameter for quick tests and small scale use cases.
- :warning: **Deprecated**
 * [create_completion](#create_completion) - Creates a completion for the provided prompt and parameters.
 * [create_edit](#create_edit) - Creates a new edit for the provided input, instruction, and parameters.
 * [create_embedding](#create_embedding) - Creates an embedding vector representing the input text.
@@ -38,25 +24,17 @@ Response includes details of the enqueued job including job status and the name 
 * [create_image_edit](#create_image_edit) - Creates an edited or extended image given an original image and a prompt.
 * [create_image_variation](#create_image_variation) - Creates a variation of a given image.
 * [create_moderation](#create_moderation) - Classifies if text violates OpenAI's Content Policy
-* [~~create_search~~](#create_search) - The search endpoint computes similarity scores between provided query and documents. Documents can be passed directly to the API if there are no more than 200 of them.
-
-To go beyond the 200 document limit, documents can be processed offline and then used for efficient retrieval at query time. When `file` is set, the search endpoint searches over all the documents in the given file and returns up to the `max_rerank` number of documents. These documents will be returned along with their search scores.
-
-The similarity score is a positive score that usually ranges from 0 to 300 (but can sometimes go higher), where a score above 200 usually means the document is semantically similar to the query.
- :warning: **Deprecated**
 * [create_transcription](#create_transcription) - Transcribes audio into the input language.
-* [create_translation](#create_translation) - Translates audio into into English.
+* [create_translation](#create_translation) - Translates audio into English.
 * [delete_file](#delete_file) - Delete a file.
 * [delete_model](#delete_model) - Delete a fine-tuned model. You must have the Owner role in your organization.
 * [download_file](#download_file) - Returns the contents of the specified file
-* [~~list_engines~~](#list_engines) - Lists the currently available (non-finetuned) models, and provides basic information about each one such as the owner and availability. :warning: **Deprecated**
 * [list_files](#list_files) - Returns a list of files that belong to the user's organization.
 * [list_fine_tune_events](#list_fine_tune_events) - Get fine-grained status updates for a fine-tune job.
 
 * [list_fine_tunes](#list_fine_tunes) - List your organization's fine-tuning jobs
 
 * [list_models](#list_models) - Lists the currently available models, and provides basic information about each one such as the owner and availability.
-* [~~retrieve_engine~~](#retrieve_engine) - Retrieves a model instance, providing basic information about it such as the owner and availability. :warning: **Deprecated**
 * [retrieve_file](#retrieve_file) - Returns information about a specific file.
 * [retrieve_fine_tune](#retrieve_fine_tune) - Gets info about the fine-tune job.
 
@@ -99,89 +77,6 @@ if res.fine_tune is not None:
 **[operations.CancelFineTuneResponse](../../models/operations/cancelfinetuneresponse.md)**
 
 
-## ~~create_answer~~
-
-Answers the specified question using the provided documents and examples.
-
-The endpoint first [searches](/docs/api-reference/searches) over provided documents or files to find relevant context. The relevant context is combined with the provided examples and question to create the prompt for [completion](/docs/api-reference/completions).
-
-
-> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
-
-### Example Usage
-
-```python
-import gpt
-from gpt.models import shared
-
-s = gpt.Gpt()
-
-req = shared.CreateAnswerRequest(
-    documents=[
-        'provident',
-        'distinctio',
-        'quibusdam',
-    ],
-    examples=[
-        [
-            'corrupti',
-            'illum',
-            'vel',
-            'error',
-        ],
-        [
-            'suscipit',
-            'iure',
-            'magnam',
-        ],
-        [
-            'ipsa',
-            'delectus',
-            'tempora',
-            'suscipit',
-        ],
-    ],
-    examples_context='Ottawa, Canada's capital, is located in the east of southern Ontario, near the city of Montréal and the U.S. border.',
-    expand=[
-        'minus',
-        'placeat',
-    ],
-    file='voluptatum',
-    logit_bias='iusto',
-    logprobs=568045,
-    max_rerank=392785,
-    max_tokens=925597,
-    model='temporibus',
-    n=71036,
-    question='What is the capital of Japan?',
-    return_metadata='quis',
-    return_prompt=False,
-    search_model='veritatis',
-    stop=[
-        '["\n"]',
-    ],
-    temperature=3682.41,
-    user='repellendus',
-)
-
-res = s.open_ai.create_answer(req)
-
-if res.create_answer_response is not None:
-    # handle response
-```
-
-### Parameters
-
-| Parameter                                                                | Type                                                                     | Required                                                                 | Description                                                              |
-| ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------ |
-| `request`                                                                | [shared.CreateAnswerRequest](../../models/shared/createanswerrequest.md) | :heavy_check_mark:                                                       | The request object to use for the request.                               |
-
-
-### Response
-
-**[operations.CreateAnswerResponse](../../models/operations/createanswerresponse.md)**
-
-
 ## create_chat_completion
 
 Creates a model response for the given chat conversation.
@@ -195,95 +90,79 @@ from gpt.models import shared
 s = gpt.Gpt()
 
 req = shared.CreateChatCompletionRequest(
-    frequency_penalty=9571.56,
+    frequency_penalty=5488.14,
     function_call=shared.CreateChatCompletionRequestFunctionCall2(
-        name='Teri Strosin',
+        name='Ellis Mitchell',
     ),
     functions=[
         shared.ChatCompletionFunctions(
-            description='quod',
-            name='Deanna Sauer MD',
+            description='vel',
+            name='Doug Hoppe',
             parameters={
-                "occaecati": 'fugit',
-                "deleniti": 'hic',
+                "ipsa": 'delectus',
+                "tempora": 'suscipit',
+                "molestiae": 'minus',
+                "placeat": 'voluptatum',
+            },
+        ),
+        shared.ChatCompletionFunctions(
+            description='iusto',
+            name='Charlie Walsh II',
+            parameters={
+                "deserunt": 'perferendis',
+            },
+        ),
+        shared.ChatCompletionFunctions(
+            description='ipsam',
+            name='Timmy Satterfield',
+            parameters={
+                "maiores": 'molestiae',
+                "quod": 'quod',
+                "esse": 'totam',
+                "porro": 'dolorum',
+            },
+        ),
+        shared.ChatCompletionFunctions(
+            description='dicta',
+            name='Luke McCullough',
+            parameters={
                 "optio": 'totam',
-            },
-        ),
-        shared.ChatCompletionFunctions(
-            description='beatae',
-            name='Tanya Gleason',
-            parameters={
-                "esse": 'ipsum',
-                "excepturi": 'aspernatur',
-                "perferendis": 'ad',
-            },
-        ),
-        shared.ChatCompletionFunctions(
-            description='natus',
-            name='Sheryl Fadel',
-            parameters={
-                "saepe": 'fuga',
-                "in": 'corporis',
-                "iste": 'iure',
-                "saepe": 'quidem',
-            },
-        ),
-        shared.ChatCompletionFunctions(
-            description='architecto',
-            name='Lela Orn',
-            parameters={
-                "dolorem": 'corporis',
+                "beatae": 'commodi',
+                "molestiae": 'modi',
+                "qui": 'impedit',
             },
         ),
     ],
     logit_bias=shared.CreateChatCompletionRequestLogitBias(),
-    max_tokens=128926,
+    max_tokens=736918,
     messages=[
         shared.ChatCompletionRequestMessage(
-            content='enim',
+            content='ipsum',
             function_call=shared.ChatCompletionRequestMessageFunctionCall(
-                arguments='omnis',
-                name='Ms. Cathy Marks',
+                arguments='excepturi',
+                name='Dorothy Hane',
             ),
-            name='Darrin Brakus',
-            role=shared.ChatCompletionRequestMessageRole.ASSISTANT,
-        ),
-        shared.ChatCompletionRequestMessage(
-            content='consequuntur',
-            function_call=shared.ChatCompletionRequestMessageFunctionCall(
-                arguments='repellat',
-                name='Tracy Fritsch',
-            ),
-            name='Shannon Mueller',
-            role=shared.ChatCompletionRequestMessageRole.SYSTEM,
-        ),
-        shared.ChatCompletionRequestMessage(
-            content='laborum',
-            function_call=shared.ChatCompletionRequestMessageFunctionCall(
-                arguments='animi',
-                name='Christina Satterfield',
-            ),
-            name='Mr. Alberta Schuster',
+            name='Curtis Morissette',
             role=shared.ChatCompletionRequestMessageRole.FUNCTION,
         ),
         shared.ChatCompletionRequestMessage(
-            content='laborum',
+            content='fuga',
             function_call=shared.ChatCompletionRequestMessageFunctionCall(
-                arguments='quasi',
-                name='Jan Thiel',
+                arguments='in',
+                name='Sheryl Kertzmann',
             ),
-            name='Jose Moen',
-            role=shared.ChatCompletionRequestMessageRole.SYSTEM,
+            name='Brenda Wisozk',
+            role=shared.ChatCompletionRequestMessageRole.ASSISTANT,
         ),
     ],
-    model='doloremque',
+    model='gpt-3.5-turbo',
     n=1,
-    presence_penalty=4417.11,
-    stop='maiores',
+    presence_penalty=2103.82,
+    stop='explicabo',
     stream=False,
     temperature=1,
     top_p=1,
-    user='dicta',
+    user='nobis',
 )
 
 res = s.open_ai.create_chat_completion(req)
@@ -304,76 +183,6 @@ if res.create_chat_completion_response is not None:
 **[operations.CreateChatCompletionResponse](../../models/operations/createchatcompletionresponse.md)**
 
 
-## ~~create_classification~~
-
-Classifies the specified `query` using provided examples.
-
-The endpoint first [searches](/docs/api-reference/searches) over the labeled examples
-to select the ones most relevant for the particular query. Then, the relevant examples
-are combined with the query to construct a prompt to produce the final label via the
-[completions](/docs/api-reference/completions) endpoint.
-
-Labeled examples can be provided via an uploaded `file`, or explicitly listed in the
-request using the `examples` parameter for quick tests and small scale use cases.
-
-
-> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
-
-### Example Usage
-
-```python
-import gpt
-from gpt.models import shared
-
-s = gpt.Gpt()
-
-req = shared.CreateClassificationRequest(
-    examples=[
-        [
-            'iusto',
-            'dicta',
-        ],
-        [
-            'enim',
-            'accusamus',
-            'commodi',
-        ],
-    ],
-    expand='repudiandae',
-    file='quae',
-    labels=[
-        'quidem',
-    ],
-    logit_bias='molestias',
-    logprobs='excepturi',
-    max_examples=865103,
-    model='modi',
-    query='The plot is not very attractive.',
-    return_metadata='praesentium',
-    return_prompt='rem',
-    search_model='voluptates',
-    temperature=0,
-    user='quasi',
-)
-
-res = s.open_ai.create_classification(req)
-
-if res.create_classification_response is not None:
-    # handle response
-```
-
-### Parameters
-
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `request`                                                                                | [shared.CreateClassificationRequest](../../models/shared/createclassificationrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
-
-
-### Response
-
-**[operations.CreateClassificationResponse](../../models/operations/createclassificationresponse.md)**
-
-
 ## create_completion
 
 Creates a completion for the provided prompt and parameters.
@@ -387,16 +196,18 @@ from gpt.models import shared
 s = gpt.Gpt()
 
 req = shared.CreateCompletionRequest(
-    best_of=921158,
+    best_of=315428,
     echo=False,
-    frequency_penalty=5759.47,
+    frequency_penalty=6078.31,
     logit_bias=shared.CreateCompletionRequestLogitBias(),
-    logprobs=83112,
+    logprobs=363711,
     max_tokens=16,
-    model='itaque',
+    model='excepturi',
     n=1,
-    presence_penalty=2777.18,
+    presence_penalty=384.25,
     prompt=[
+        'This is a test.',
+        'This is a test.',
         'This is a test.',
     ],
     stop=[
@@ -445,7 +256,7 @@ s = gpt.Gpt()
 req = shared.CreateEditRequest(
     input='What day of the wek is it?',
     instruction='Fix the spelling mistakes.',
-    model='explicabo',
+    model='text-davinci-edit-001',
     n=1,
     temperature=1,
     top_p=1,
@@ -483,12 +294,10 @@ s = gpt.Gpt()
 
 req = shared.CreateEmbeddingRequest(
     input=[
-        841386,
-        289406,
-        264730,
+        635059,
     ],
-    model='qui',
-    user='aliquid',
+    model='text-embedding-ada-002',
+    user='repellat',
 )
 
 res = s.open_ai.create_embedding(req)
@@ -524,10 +333,10 @@ s = gpt.Gpt()
 
 req = shared.CreateFileRequest(
     file=shared.CreateFileRequestFile(
-        content='cupiditate'.encode(),
-        file='quos',
+        content='mollitia'.encode(),
+        file='occaecati',
     ),
-    purpose='perferendis',
+    purpose='numquam',
 )
 
 res = s.open_ai.create_file(req)
@@ -566,21 +375,19 @@ from gpt.models import shared
 s = gpt.Gpt()
 
 req = shared.CreateFineTuneRequest(
-    batch_size=164940,
+    batch_size=414369,
     classification_betas=[
-        3698.08,
-        46.95,
-        1464.41,
-        6778.17,
+        4746.97,
+        2444.25,
     ],
-    classification_n_classes=569618,
-    classification_positive_class='tempora',
+    classification_n_classes=623510,
+    classification_positive_class='quia',
     compute_classification_metrics=False,
-    learning_rate_multiplier=7037.37,
-    model='tempore',
-    n_epochs=288476,
-    prompt_loss_weight=9621.89,
-    suffix='eum',
+    learning_rate_multiplier=3380.07,
+    model='curie',
+    n_epochs=674752,
+    prompt_loss_weight=6563.3,
+    suffix='enim',
     training_file='file-ajSREls59WBbvgSzJSVWxMCB',
     validation_file='file-XjSREls59WBbvgSzJSVWxMCa',
 )
@@ -620,7 +427,7 @@ req = shared.CreateImageRequest(
     prompt='A cute baby sea otter',
     response_format=shared.CreateImageRequestResponseFormat.URL,
     size=shared.CreateImageRequestSize.ONE_THOUSAND_AND_TWENTY_FOURX1024,
-    user='non',
+    user='odit',
 )
 
 res = s.open_ai.create_image(req)
@@ -655,18 +462,18 @@ s = gpt.Gpt()
 
 req = shared.CreateImageEditRequest(
     image=shared.CreateImageEditRequestImage(
-        content='eligendi'.encode(),
-        image='sint',
+        content='quo'.encode(),
+        image='sequi',
     ),
     mask=shared.CreateImageEditRequestMask(
-        content='aliquid'.encode(),
-        mask='provident',
+        content='tenetur'.encode(),
+        mask='ipsam',
     ),
-    n='necessitatibus',
+    n='id',
     prompt='A cute baby sea otter wearing a beret',
-    response_format='sint',
-    size='officia',
-    user='dolor',
+    response_format='possimus',
+    size='aut',
+    user='quasi',
 )
 
 res = s.open_ai.create_image_edit(req)
@@ -701,13 +508,13 @@ s = gpt.Gpt()
 
 req = shared.CreateImageVariationRequest(
     image=shared.CreateImageVariationRequestImage(
-        content='debitis'.encode(),
-        image='a',
+        content='error'.encode(),
+        image='temporibus',
     ),
-    n='dolorum',
-    response_format='in',
-    size='in',
-    user='illum',
+    n='laborum',
+    response_format='quasi',
+    size='reiciendis',
+    user='voluptatibus',
 )
 
 res = s.open_ai.create_image_variation(req)
@@ -744,9 +551,8 @@ req = shared.CreateModerationRequest(
     input=[
         'I want to kill them.',
         'I want to kill them.',
-        'I want to kill them.',
     ],
-    model='text-moderation-stable',
+    model=shared.CreateModerationRequestModel2.TEXT_MODERATION_STABLE,
 )
 
 res = s.open_ai.create_moderation(req)
@@ -767,57 +573,6 @@ if res.create_moderation_response is not None:
 **[operations.CreateModerationResponse](../../models/operations/createmoderationresponse.md)**
 
 
-## ~~create_search~~
-
-The search endpoint computes similarity scores between provided query and documents. Documents can be passed directly to the API if there are no more than 200 of them.
-
-To go beyond the 200 document limit, documents can be processed offline and then used for efficient retrieval at query time. When `file` is set, the search endpoint searches over all the documents in the given file and returns up to the `max_rerank` number of documents. These documents will be returned along with their search scores.
-
-The similarity score is a positive score that usually ranges from 0 to 300 (but can sometimes go higher), where a score above 200 usually means the document is semantically similar to the query.
-
-
-> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
-
-### Example Usage
-
-```python
-import gpt
-from gpt.models import operations, shared
-
-s = gpt.Gpt()
-
-req = operations.CreateSearchRequest(
-    create_search_request=shared.CreateSearchRequest(
-        documents=[
-            'magnam',
-        ],
-        file='cumque',
-        max_rerank=813798,
-        query='the president',
-        return_metadata=False,
-        user='ea',
-    ),
-    engine_id='davinci',
-)
-
-res = s.open_ai.create_search(req)
-
-if res.create_search_response is not None:
-    # handle response
-```
-
-### Parameters
-
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `request`                                                                        | [operations.CreateSearchRequest](../../models/operations/createsearchrequest.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
-
-
-### Response
-
-**[operations.CreateSearchResponse](../../models/operations/createsearchresponse.md)**
-
-
 ## create_transcription
 
 Transcribes audio into the input language.
@@ -832,14 +587,14 @@ s = gpt.Gpt()
 
 req = shared.CreateTranscriptionRequest(
     file=shared.CreateTranscriptionRequestFile(
-        content='aliquid'.encode(),
-        file='laborum',
+        content='voluptatibus'.encode(),
+        file='ipsa',
     ),
-    language='accusamus',
-    model='non',
-    prompt='occaecati',
-    response_format='enim',
-    temperature=8817.36,
+    language='omnis',
+    model='whisper-1',
+    prompt='cum',
+    response_format='perferendis',
+    temperature=391.87,
 )
 
 res = s.open_ai.create_transcription(req)
@@ -862,7 +617,7 @@ if res.create_transcription_response is not None:
 
 ## create_translation
 
-Translates audio into into English.
+Translates audio into English.
 
 ### Example Usage
 
@@ -874,13 +629,13 @@ s = gpt.Gpt()
 
 req = shared.CreateTranslationRequest(
     file=shared.CreateTranslationRequestFile(
-        content='delectus'.encode(),
-        file='quidem',
+        content='reprehenderit'.encode(),
+        file='ut',
     ),
-    model='provident',
-    prompt='nam',
-    response_format='id',
-    temperature=5013.24,
+    model=shared.CreateTranslationRequestModel2.WHISPER_1,
+    prompt='dicta',
+    response_format='corporis',
+    temperature=2961.4,
 )
 
 res = s.open_ai.create_translation(req)
@@ -914,7 +669,7 @@ from gpt.models import operations
 s = gpt.Gpt()
 
 req = operations.DeleteFileRequest(
-    file_id='deleniti',
+    file_id='iusto',
 )
 
 res = s.open_ai.delete_file(req)
@@ -982,7 +737,7 @@ from gpt.models import operations
 s = gpt.Gpt()
 
 req = operations.DownloadFileRequest(
-    file_id='sapiente',
+    file_id='dicta',
 )
 
 res = s.open_ai.download_file(req)
@@ -1001,33 +756,6 @@ if res.download_file_200_application_json_string is not None:
 ### Response
 
 **[operations.DownloadFileResponse](../../models/operations/downloadfileresponse.md)**
-
-
-## ~~list_engines~~
-
-Lists the currently available (non-finetuned) models, and provides basic information about each one such as the owner and availability.
-
-> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
-
-### Example Usage
-
-```python
-import gpt
-
-
-s = gpt.Gpt()
-
-
-res = s.open_ai.list_engines()
-
-if res.list_engines_response is not None:
-    # handle response
-```
-
-
-### Response
-
-**[operations.ListEnginesResponse](../../models/operations/listenginesresponse.md)**
 
 
 ## list_files
@@ -1142,42 +870,6 @@ if res.list_models_response is not None:
 **[operations.ListModelsResponse](../../models/operations/listmodelsresponse.md)**
 
 
-## ~~retrieve_engine~~
-
-Retrieves a model instance, providing basic information about it such as the owner and availability.
-
-> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
-
-### Example Usage
-
-```python
-import gpt
-from gpt.models import operations
-
-s = gpt.Gpt()
-
-req = operations.RetrieveEngineRequest(
-    engine_id='davinci',
-)
-
-res = s.open_ai.retrieve_engine(req)
-
-if res.engine is not None:
-    # handle response
-```
-
-### Parameters
-
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `request`                                                                            | [operations.RetrieveEngineRequest](../../models/operations/retrieveenginerequest.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
-
-
-### Response
-
-**[operations.RetrieveEngineResponse](../../models/operations/retrieveengineresponse.md)**
-
-
 ## retrieve_file
 
 Returns information about a specific file.
@@ -1191,7 +883,7 @@ from gpt.models import operations
 s = gpt.Gpt()
 
 req = operations.RetrieveFileRequest(
-    file_id='amet',
+    file_id='harum',
 )
 
 res = s.open_ai.retrieve_file(req)

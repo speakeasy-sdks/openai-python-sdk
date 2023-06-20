@@ -3,6 +3,7 @@
 from __future__ import annotations
 import dataclasses
 from dataclasses_json import Undefined, dataclass_json
+from enum import Enum
 from gpt import utils
 from typing import Any, Optional
 
@@ -19,12 +20,22 @@ class CreateCompletionRequestLogitBias:
     
 
 
+class CreateCompletionRequestModel2(str, Enum):
+    r"""ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](/docs/models/overview) for descriptions of them."""
+    TEXT_DAVINCI_003 = 'text-davinci-003'
+    TEXT_DAVINCI_002 = 'text-davinci-002'
+    TEXT_DAVINCI_001 = 'text-davinci-001'
+    CODE_DAVINCI_002 = 'code-davinci-002'
+    TEXT_CURIE_001 = 'text-curie-001'
+    TEXT_BABBAGE_001 = 'text-babbage-001'
+    TEXT_ADA_001 = 'text-ada-001'
+
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 
 @dataclasses.dataclass
 class CreateCompletionRequest:
-    model: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model') }})
+    model: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model') }})
     r"""ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](/docs/models/overview) for descriptions of them."""
     prompt: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('prompt') }})
     r"""The prompt(s) to generate completions for, encoded as a string, array of strings, array of tokens, or array of token arrays.

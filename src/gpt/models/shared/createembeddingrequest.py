@@ -3,8 +3,13 @@
 from __future__ import annotations
 import dataclasses
 from dataclasses_json import Undefined, dataclass_json
+from enum import Enum
 from gpt import utils
 from typing import Any, Optional
+
+class CreateEmbeddingRequestModel2(str, Enum):
+    r"""model_description"""
+    TEXT_EMBEDDING_ADA_002 = 'text-embedding-ada-002'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -14,6 +19,7 @@ class CreateEmbeddingRequest:
     input: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('input') }})
     r"""Input text to embed, encoded as a string or array of tokens. To embed multiple inputs in a single request, pass an array of strings or array of token arrays. Each input must not exceed the max input tokens for the model (8191 tokens for `text-embedding-ada-002`). [Example Python code](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_count_tokens_with_tiktoken.ipynb) for counting tokens."""
     model: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model') }})
+    r"""model_description"""
     user: Optional[Any] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('user'), 'exclude': lambda f: f is None }})
     
 
