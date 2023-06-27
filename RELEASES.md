@@ -139,3 +139,11 @@ Based on:
 - Speakeasy CLI 1.50.1 (2.43.2) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [PyPI v2.1.0] https://pypi.org/project/openai-python/2.1.0 - .
+
+## 2023-06-27 01:11:24
+### Changes
+Based on:
+- OpenAPI Doc 2.0.0 https://raw.githubusercontent.com/openai/openai-openapi/master/openapi.yaml
+- Speakeasy CLI 1.51.1 (2.50.2) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [PyPI v2.2.0] https://pypi.org/project/openai-python/2.2.0 - .
