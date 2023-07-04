@@ -12,12 +12,6 @@ class CreateCompletionResponseChoicesFinishReason(str, Enum):
     LENGTH = 'length'
 
 
-
-@dataclasses.dataclass
-class CreateCompletionResponseChoicesLogprobsTopLogprobs:
-    pass
-
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 
 @dataclasses.dataclass
@@ -25,7 +19,7 @@ class CreateCompletionResponseChoicesLogprobs:
     text_offset: Optional[list[int]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('text_offset'), 'exclude': lambda f: f is None }})
     token_logprobs: Optional[list[float]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('token_logprobs'), 'exclude': lambda f: f is None }})
     tokens: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tokens'), 'exclude': lambda f: f is None }})
-    top_logprobs: Optional[list[CreateCompletionResponseChoicesLogprobsTopLogprobs]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('top_logprobs'), 'exclude': lambda f: f is None }})
+    top_logprobs: Optional[list[dict[str, int]]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('top_logprobs'), 'exclude': lambda f: f is None }})
     
 
 

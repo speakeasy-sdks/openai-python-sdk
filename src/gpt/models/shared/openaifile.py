@@ -7,12 +7,6 @@ from gpt import utils
 from typing import Optional
 
 
-
-@dataclasses.dataclass
-class OpenAIFileStatusDetails:
-    pass
-
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 
 @dataclasses.dataclass
@@ -25,6 +19,6 @@ class OpenAIFile:
     object: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('object') }})
     purpose: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('purpose') }})
     status: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
-    status_details: Optional[OpenAIFileStatusDetails] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status_details'), 'exclude': lambda f: f is None }})
+    status_details: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status_details'), 'exclude': lambda f: f is None }})
     
 

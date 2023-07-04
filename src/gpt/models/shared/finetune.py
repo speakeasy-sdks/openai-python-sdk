@@ -9,10 +9,19 @@ from gpt import utils
 from typing import Optional
 
 
+@dataclass_json(undefined=Undefined.EXCLUDE)
 
 @dataclasses.dataclass
 class FineTuneHyperparams:
-    pass
+    batch_size: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('batch_size') }})
+    learning_rate_multiplier: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('learning_rate_multiplier') }})
+    n_epochs: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('n_epochs') }})
+    prompt_loss_weight: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('prompt_loss_weight') }})
+    classification_n_classes: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('classification_n_classes'), 'exclude': lambda f: f is None }})
+    classification_positive_class: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('classification_positive_class'), 'exclude': lambda f: f is None }})
+    compute_classification_metrics: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('compute_classification_metrics'), 'exclude': lambda f: f is None }})
+    
+
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
