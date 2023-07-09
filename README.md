@@ -58,7 +58,7 @@ if res.fine_tune is not None:
 
 * [create_chat_completion](docs/sdks/openai/README.md#create_chat_completion) - Creates a model response for the given chat conversation.
 * [create_completion](docs/sdks/openai/README.md#create_completion) - Creates a completion for the provided prompt and parameters.
-* [create_edit](docs/sdks/openai/README.md#create_edit) - Creates a new edit for the provided input, instruction, and parameters.
+* [~~create_edit~~](docs/sdks/openai/README.md#create_edit) - Creates a new edit for the provided input, instruction, and parameters. :warning: **Deprecated**
 * [create_embedding](docs/sdks/openai/README.md#create_embedding) - Creates an embedding vector representing the input text.
 * [create_file](docs/sdks/openai/README.md#create_file) - Upload a file that contains document(s) to be used across various endpoints/features. Currently, the size of all the files uploaded by one organization can be up to 1 GB. Please contact us if you need to increase the storage limit.
 

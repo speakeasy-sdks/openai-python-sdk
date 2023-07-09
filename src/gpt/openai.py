@@ -96,7 +96,10 @@ class OpenAI:
 
     
     def create_edit(self, request: shared.CreateEditRequest) -> operations.CreateEditResponse:
-        r"""Creates a new edit for the provided input, instruction, and parameters."""
+        r"""Creates a new edit for the provided input, instruction, and parameters.
+        
+        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
+        """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/edits'
