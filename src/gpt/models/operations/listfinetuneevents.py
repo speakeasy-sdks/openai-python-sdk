@@ -19,7 +19,7 @@ class ListFineTuneEventsRequest:
     as they become available. The stream will terminate with a
     `data: [DONE]` message when the job is finished (succeeded, cancelled,
     or failed).
-    
+
     If set to false, only events generated so far will be returned.
     """
     

@@ -97,7 +97,7 @@ class OpenAI:
     
     def create_edit(self, request: shared.CreateEditRequest) -> operations.CreateEditResponse:
         r"""Creates a new edit for the provided input, instruction, and parameters.
-        
+
         Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -187,9 +187,9 @@ class OpenAI:
     
     def create_fine_tune(self, request: shared.CreateFineTuneRequest) -> operations.CreateFineTuneResponse:
         r"""Creates a job that fine-tunes a specified model from a given dataset.
-        
+
         Response includes details of the enqueued job including job status and the name of the fine-tuned models once complete.
-        
+
         [Learn more about Fine-tuning](/docs/guides/fine-tuning)
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
@@ -587,7 +587,7 @@ class OpenAI:
     
     def retrieve_fine_tune(self, request: operations.RetrieveFineTuneRequest) -> operations.RetrieveFineTuneResponse:
         r"""Gets info about the fine-tune job.
-        
+
         [Learn more about Fine-tuning](/docs/guides/fine-tuning)
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
