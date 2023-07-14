@@ -584,7 +584,7 @@ from gpt.models import shared
 
 s = gpt.Gpt()
 
-req = shared.CreateTranscriptionRequest(
+req = shared.CreateTranscriptionRequest1(
     file=shared.CreateTranscriptionRequestFile(
         content='reprehenderit'.encode(),
         file='ut',
@@ -592,7 +592,7 @@ req = shared.CreateTranscriptionRequest(
     language='maiores',
     model='whisper-1',
     prompt='corporis',
-    response_format='dolore',
+    response_format=shared.CreateTranscriptionRequestResponseFormat.TEXT,
     temperature=4808.94,
 )
 
@@ -604,9 +604,9 @@ if res.create_transcription_response is not None:
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [shared.CreateTranscriptionRequest](../../models/shared/createtranscriptionrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `request`                                                                                | [shared.CreateTranscriptionRequest1](../../models/shared/createtranscriptionrequest1.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
 
 
 ### Response

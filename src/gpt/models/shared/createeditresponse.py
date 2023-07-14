@@ -5,7 +5,6 @@ import dataclasses
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from gpt import utils
-from typing import Optional
 
 class CreateEditResponseChoicesFinishReason(str, Enum):
     STOP = 'stop'
@@ -15,23 +14,10 @@ class CreateEditResponseChoicesFinishReason(str, Enum):
 @dataclass_json(undefined=Undefined.EXCLUDE)
 
 @dataclasses.dataclass
-class CreateEditResponseChoicesLogprobs:
-    text_offset: Optional[list[int]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('text_offset'), 'exclude': lambda f: f is None }})
-    token_logprobs: Optional[list[float]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('token_logprobs'), 'exclude': lambda f: f is None }})
-    tokens: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tokens'), 'exclude': lambda f: f is None }})
-    top_logprobs: Optional[list[dict[str, int]]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('top_logprobs'), 'exclude': lambda f: f is None }})
-    
-
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-
-@dataclasses.dataclass
 class CreateEditResponseChoices:
-    finish_reason: Optional[CreateEditResponseChoicesFinishReason] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finish_reason'), 'exclude': lambda f: f is None }})
-    index: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('index'), 'exclude': lambda f: f is None }})
-    logprobs: Optional[CreateEditResponseChoicesLogprobs] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('logprobs'), 'exclude': lambda f: f is None }})
-    text: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('text'), 'exclude': lambda f: f is None }})
+    finish_reason: CreateEditResponseChoicesFinishReason = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finish_reason') }})
+    index: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('index') }})
+    text: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('text') }})
     
 
 

@@ -18,9 +18,9 @@ class CreateChatCompletionResponseChoicesFinishReason(str, Enum):
 
 @dataclasses.dataclass
 class CreateChatCompletionResponseChoices:
-    finish_reason: Optional[CreateChatCompletionResponseChoicesFinishReason] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finish_reason'), 'exclude': lambda f: f is None }})
-    index: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('index'), 'exclude': lambda f: f is None }})
-    message: Optional[shared_chatcompletionresponsemessage.ChatCompletionResponseMessage] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message'), 'exclude': lambda f: f is None }})
+    finish_reason: CreateChatCompletionResponseChoicesFinishReason = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finish_reason') }})
+    index: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('index') }})
+    message: shared_chatcompletionresponsemessage.ChatCompletionResponseMessage = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message') }})
     
 
 

@@ -55,7 +55,7 @@ src/gpt/models/shared/createimagevariationrequest.py
 src/gpt/models/shared/createmoderationresponse.py
 src/gpt/models/shared/createmoderationrequest.py
 src/gpt/models/shared/createtranscriptionresponse.py
-src/gpt/models/shared/createtranscriptionrequest.py
+src/gpt/models/shared/createtranscriptionrequest1.py
 src/gpt/models/shared/createtranslationresponse.py
 src/gpt/models/shared/createtranslationrequest.py
 src/gpt/models/shared/deletefileresponse.py
@@ -127,7 +127,6 @@ docs/models/shared/createcompletionresponse.md
 docs/models/shared/createcompletionrequestmodel2.md
 docs/models/shared/createcompletionrequest.md
 docs/models/shared/createeditresponsechoicesfinishreason.md
-docs/models/shared/createeditresponsechoiceslogprobs.md
 docs/models/shared/createeditresponsechoices.md
 docs/models/shared/createeditresponseusage.md
 docs/models/shared/createeditresponse.md
@@ -161,7 +160,8 @@ docs/models/shared/createmoderationrequest.md
 docs/models/shared/createtranscriptionresponse.md
 docs/models/shared/createtranscriptionrequestfile.md
 docs/models/shared/createtranscriptionrequestmodel2.md
-docs/models/shared/createtranscriptionrequest.md
+docs/models/shared/createtranscriptionrequestresponseformat.md
+docs/models/shared/createtranscriptionrequest1.md
 docs/models/shared/createtranslationresponse.md
 docs/models/shared/createtranslationrequestfile.md
 docs/models/shared/createtranslationrequestmodel2.md

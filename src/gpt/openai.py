@@ -335,7 +335,7 @@ class OpenAI:
         return res
 
     
-    def create_transcription(self, request: shared.CreateTranscriptionRequest) -> operations.CreateTranscriptionResponse:
+    def create_transcription(self, request: shared.CreateTranscriptionRequest1) -> operations.CreateTranscriptionResponse:
         r"""Transcribes audio into the input language."""
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
