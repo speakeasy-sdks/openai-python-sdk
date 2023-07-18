@@ -2,7 +2,7 @@
 
 from .sdkconfiguration import SDKConfiguration
 from gpt import utils
-from gpt.models import operations, shared
+from gpt.models import errors, operations, shared
 from typing import Optional
 
 class OpenAI:
@@ -33,6 +33,8 @@ class OpenAI:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.FineTune])
                 res.fine_tune = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -62,6 +64,8 @@ class OpenAI:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.CreateChatCompletionResponse])
                 res.create_chat_completion_response = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -91,6 +95,8 @@ class OpenAI:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.CreateCompletionResponse])
                 res.create_completion_response = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -123,6 +129,8 @@ class OpenAI:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.CreateEditResponse])
                 res.create_edit_response = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -152,6 +160,8 @@ class OpenAI:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.CreateEmbeddingResponse])
                 res.create_embedding_response = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -181,6 +191,8 @@ class OpenAI:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.OpenAIFile])
                 res.open_ai_file = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -215,6 +227,8 @@ class OpenAI:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.FineTune])
                 res.fine_tune = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -244,11 +258,13 @@ class OpenAI:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ImagesResponse])
                 res.images_response = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
     
-    def create_image_edit(self, request: shared.CreateImageEditRequest) -> operations.CreateImageEditResponse:
+    def create_image_edit(self, request: shared.CreateImageEditRequest2) -> operations.CreateImageEditResponse:
         r"""Creates an edited or extended image given an original image and a prompt."""
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -273,11 +289,13 @@ class OpenAI:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ImagesResponse])
                 res.images_response = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
     
-    def create_image_variation(self, request: shared.CreateImageVariationRequest) -> operations.CreateImageVariationResponse:
+    def create_image_variation(self, request: shared.CreateImageVariationRequest2) -> operations.CreateImageVariationResponse:
         r"""Creates a variation of a given image."""
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -302,6 +320,8 @@ class OpenAI:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ImagesResponse])
                 res.images_response = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -331,6 +351,8 @@ class OpenAI:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.CreateModerationResponse])
                 res.create_moderation_response = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -360,6 +382,8 @@ class OpenAI:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.CreateTranscriptionResponse])
                 res.create_transcription_response = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -389,6 +413,8 @@ class OpenAI:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.CreateTranslationResponse])
                 res.create_translation_response = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -413,6 +439,8 @@ class OpenAI:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.DeleteFileResponse])
                 res.delete_file_response = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -437,6 +465,8 @@ class OpenAI:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.DeleteModelResponse])
                 res.delete_model_response = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -460,6 +490,8 @@ class OpenAI:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 res.download_file_200_application_json_string = http_res.content
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -484,6 +516,8 @@ class OpenAI:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ListFilesResponse])
                 res.list_files_response = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -509,6 +543,8 @@ class OpenAI:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ListFineTuneEventsResponse])
                 res.list_fine_tune_events_response = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -533,6 +569,8 @@ class OpenAI:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ListFineTunesResponse])
                 res.list_fine_tunes_response = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -557,6 +595,8 @@ class OpenAI:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ListModelsResponse])
                 res.list_models_response = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -581,6 +621,8 @@ class OpenAI:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.OpenAIFile])
                 res.open_ai_file = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -608,6 +650,8 @@ class OpenAI:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.FineTune])
                 res.fine_tune = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -632,6 +676,8 @@ class OpenAI:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.Model])
                 res.model = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 

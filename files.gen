@@ -5,6 +5,7 @@ pylintrc
 setup.py
 src/gpt/__init__.py
 src/gpt/models/__init__.py
+src/gpt/models/errors/sdkerror.py
 src/gpt/utils/__init__.py
 src/gpt/utils/retries.py
 src/gpt/utils/utils.py
@@ -50,8 +51,8 @@ src/gpt/models/shared/createfilerequest.py
 src/gpt/models/shared/createfinetunerequest.py
 src/gpt/models/shared/imagesresponse.py
 src/gpt/models/shared/createimagerequest.py
-src/gpt/models/shared/createimageeditrequest.py
-src/gpt/models/shared/createimagevariationrequest.py
+src/gpt/models/shared/createimageeditrequest2.py
+src/gpt/models/shared/createimagevariationrequest2.py
 src/gpt/models/shared/createmoderationresponse.py
 src/gpt/models/shared/createmoderationrequest.py
 src/gpt/models/shared/createtranscriptionresponse.py
@@ -66,6 +67,7 @@ src/gpt/models/shared/listfinetunesresponse.py
 src/gpt/models/shared/listmodelsresponse.py
 src/gpt/models/shared/model.py
 src/gpt/models/shared/__init__.py
+src/gpt/models/errors/__init__.py
 docs/sdks/gpt/README.md
 docs/sdks/openai/README.md
 USAGE.md
@@ -148,9 +150,13 @@ docs/models/shared/createimagerequestsize.md
 docs/models/shared/createimagerequest.md
 docs/models/shared/createimageeditrequestimage.md
 docs/models/shared/createimageeditrequestmask.md
-docs/models/shared/createimageeditrequest.md
+docs/models/shared/createimageeditrequestresponseformat.md
+docs/models/shared/createimageeditrequestsize.md
+docs/models/shared/createimageeditrequest2.md
 docs/models/shared/createimagevariationrequestimage.md
-docs/models/shared/createimagevariationrequest.md
+docs/models/shared/createimagevariationrequestresponseformat.md
+docs/models/shared/createimagevariationrequestsize.md
+docs/models/shared/createimagevariationrequest2.md
 docs/models/shared/createmoderationresponseresultscategories.md
 docs/models/shared/createmoderationresponseresultscategoryscores.md
 docs/models/shared/createmoderationresponseresults.md

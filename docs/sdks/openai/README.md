@@ -161,7 +161,7 @@ req = shared.CreateChatCompletionRequest(
     stream=False,
     temperature=1,
     top_p=1,
-    user='dolorem',
+    user='user-1234',
 )
 
 res = s.open_ai.create_chat_completion(req)
@@ -195,24 +195,20 @@ from gpt.models import shared
 s = gpt.Gpt()
 
 req = shared.CreateCompletionRequest(
-    best_of=358152,
+    best_of=210382,
     echo=False,
-    frequency_penalty=1289.26,
+    frequency_penalty=3581.52,
     logit_bias={
-        "enim": 607831,
-        "nemo": 325047,
-        "excepturi": 38425,
-        "iure": 634274,
+        "nobis": 315428,
     },
-    logprobs=988374,
+    logprobs=607831,
     max_tokens=16,
-    model=shared.CreateCompletionRequestModel2.TEXT_DAVINCI_003,
+    model='minima',
     n=1,
-    presence_penalty=6527.9,
+    presence_penalty=5701.97,
     prompt='This is a test.',
-    stop=[
-        '["\n"]',
-    ],
+    stop='
+',
     stream=False,
     suffix='test.',
     temperature=1,
@@ -293,12 +289,23 @@ s = gpt.Gpt()
 
 req = shared.CreateEmbeddingRequest(
     input=[
-        253291,
-        414369,
-        466311,
+        [
+            652790,
+        ],
+        [
+            635059,
+        ],
+        [
+            995300,
+        ],
+        [
+            581850,
+            253291,
+            414369,
+        ],
     ],
     model='text-embedding-ada-002',
-    user='velit',
+    user='user-1234',
 )
 
 res = s.open_ai.create_embedding(req)
@@ -334,10 +341,10 @@ s = gpt.Gpt()
 
 req = shared.CreateFileRequest(
     file=shared.CreateFileRequestFile(
-        content='error'.encode(),
-        file='quia',
+        content='molestiae'.encode(),
+        file='velit',
     ),
-    purpose='quis',
+    purpose='error',
 )
 
 res = s.open_ai.create_file(req)
@@ -376,20 +383,19 @@ from gpt.models import shared
 s = gpt.Gpt()
 
 req = shared.CreateFineTuneRequest(
-    batch_size=110375,
+    batch_size=158969,
     classification_betas=[
-        6563.3,
-        3172.02,
-        1381.83,
+        1103.75,
+        6747.52,
     ],
-    classification_n_classes=778346,
-    classification_positive_class='sequi',
+    classification_n_classes=656330,
+    classification_positive_class='enim',
     compute_classification_metrics=False,
-    learning_rate_multiplier=9495.72,
-    model='curie',
-    n_epochs=662527,
-    prompt_loss_weight=8209.94,
-    suffix='aut',
+    learning_rate_multiplier=1381.83,
+    model=shared.CreateFineTuneRequestModel2.CURIE,
+    n_epochs=196582,
+    prompt_loss_weight=9495.72,
+    suffix='ipsam',
     training_file='file-ajSREls59WBbvgSzJSVWxMCB',
     validation_file='file-XjSREls59WBbvgSzJSVWxMCa',
 )
@@ -429,7 +435,7 @@ req = shared.CreateImageRequest(
     prompt='A cute baby sea otter',
     response_format=shared.CreateImageRequestResponseFormat.URL,
     size=shared.CreateImageRequestSize.ONE_THOUSAND_AND_TWENTY_FOURX1024,
-    user='quasi',
+    user='user-1234',
 )
 
 res = s.open_ai.create_image(req)
@@ -462,20 +468,20 @@ from gpt.models import shared
 
 s = gpt.Gpt()
 
-req = shared.CreateImageEditRequest(
+req = shared.CreateImageEditRequest2(
     image=shared.CreateImageEditRequestImage(
-        content='error'.encode(),
-        image='temporibus',
+        content='id'.encode(),
+        image='possimus',
     ),
     mask=shared.CreateImageEditRequestMask(
-        content='laborum'.encode(),
+        content='aut'.encode(),
         mask='quasi',
     ),
-    n='reiciendis',
+    n=1,
     prompt='A cute baby sea otter wearing a beret',
-    response_format='voluptatibus',
-    size='vero',
-    user='nihil',
+    response_format=shared.CreateImageEditRequestResponseFormat.URL,
+    size=shared.CreateImageEditRequestSize.ONE_THOUSAND_AND_TWENTY_FOURX1024,
+    user='user-1234',
 )
 
 res = s.open_ai.create_image_edit(req)
@@ -486,9 +492,9 @@ if res.images_response is not None:
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `request`                                                                      | [shared.CreateImageEditRequest](../../models/shared/createimageeditrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `request`                                                                        | [shared.CreateImageEditRequest2](../../models/shared/createimageeditrequest2.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
 
 
 ### Response
@@ -508,15 +514,15 @@ from gpt.models import shared
 
 s = gpt.Gpt()
 
-req = shared.CreateImageVariationRequest(
+req = shared.CreateImageVariationRequest2(
     image=shared.CreateImageVariationRequestImage(
-        content='praesentium'.encode(),
-        image='voluptatibus',
+        content='error'.encode(),
+        image='temporibus',
     ),
-    n='ipsa',
-    response_format='omnis',
-    size='voluptate',
-    user='cum',
+    n=1,
+    response_format=shared.CreateImageVariationRequestResponseFormat.URL,
+    size=shared.CreateImageVariationRequestSize.ONE_THOUSAND_AND_TWENTY_FOURX1024,
+    user='user-1234',
 )
 
 res = s.open_ai.create_image_variation(req)
@@ -527,9 +533,9 @@ if res.images_response is not None:
 
 ### Parameters
 
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `request`                                                                                | [shared.CreateImageVariationRequest](../../models/shared/createimagevariationrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `request`                                                                                  | [shared.CreateImageVariationRequest2](../../models/shared/createimagevariationrequest2.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
 
 
 ### Response
@@ -550,8 +556,10 @@ from gpt.models import shared
 s = gpt.Gpt()
 
 req = shared.CreateModerationRequest(
-    input='I want to kill them.',
-    model='text-moderation-stable',
+    input=[
+        'I want to kill them.',
+    ],
+    model=shared.CreateModerationRequestModel2.TEXT_MODERATION_STABLE,
 )
 
 res = s.open_ai.create_moderation(req)
@@ -586,14 +594,14 @@ s = gpt.Gpt()
 
 req = shared.CreateTranscriptionRequest1(
     file=shared.CreateTranscriptionRequestFile(
-        content='reprehenderit'.encode(),
-        file='ut',
+        content='voluptatibus'.encode(),
+        file='vero',
     ),
-    language='maiores',
-    model='whisper-1',
-    prompt='corporis',
-    response_format=shared.CreateTranscriptionRequestResponseFormat.TEXT,
-    temperature=4808.94,
+    language='nihil',
+    model=shared.CreateTranscriptionRequestModel2.WHISPER_1,
+    prompt='voluptatibus',
+    response_format=shared.CreateTranscriptionRequestResponseFormat.JSON,
+    temperature=6048.46,
 )
 
 res = s.open_ai.create_transcription(req)
@@ -628,13 +636,13 @@ s = gpt.Gpt()
 
 req = shared.CreateTranslationRequest(
     file=shared.CreateTranslationRequestFile(
-        content='dicta'.encode(),
-        file='harum',
+        content='voluptate'.encode(),
+        file='cum',
     ),
     model='whisper-1',
-    prompt='accusamus',
-    response_format='commodi',
-    temperature=9182.36,
+    prompt='doloremque',
+    response_format='reprehenderit',
+    temperature=2828.07,
 )
 
 res = s.open_ai.create_translation(req)
@@ -668,7 +676,7 @@ from gpt.models import operations
 s = gpt.Gpt()
 
 req = operations.DeleteFileRequest(
-    file_id='quae',
+    file_id='maiores',
 )
 
 res = s.open_ai.delete_file(req)
@@ -736,7 +744,7 @@ from gpt.models import operations
 s = gpt.Gpt()
 
 req = operations.DownloadFileRequest(
-    file_id='ipsum',
+    file_id='dicta',
 )
 
 res = s.open_ai.download_file(req)
@@ -882,7 +890,7 @@ from gpt.models import operations
 s = gpt.Gpt()
 
 req = operations.RetrieveFileRequest(
-    file_id='quidem',
+    file_id='corporis',
 )
 
 res = s.open_ai.retrieve_file(req)
