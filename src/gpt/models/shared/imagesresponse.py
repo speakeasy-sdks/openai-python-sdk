@@ -2,19 +2,9 @@
 
 from __future__ import annotations
 import dataclasses
+from ..shared import image as shared_image
 from dataclasses_json import Undefined, dataclass_json
 from gpt import utils
-from typing import Optional
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-
-@dataclasses.dataclass
-class ImagesResponseData:
-    b64_json: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('b64_json'), 'exclude': lambda f: f is None }})
-    url: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url'), 'exclude': lambda f: f is None }})
-    
-
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -23,6 +13,6 @@ class ImagesResponseData:
 class ImagesResponse:
     r"""OK"""
     created: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created') }})
-    data: list[ImagesResponseData] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
+    data: list[shared_image.Image] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
     
 

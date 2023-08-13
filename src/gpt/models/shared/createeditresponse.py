@@ -2,11 +2,15 @@
 
 from __future__ import annotations
 import dataclasses
+from ..shared import completionusage as shared_completionusage
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from gpt import utils
 
 class CreateEditResponseChoicesFinishReason(str, Enum):
+    r"""The reason the model stopped generating tokens. This will be `stop` if the model hit a natural stop point or a provided stop sequence,
+    or `length` if the maximum number of tokens specified in the request was reached.
+    """
     STOP = 'stop'
     LENGTH = 'length'
 
@@ -16,19 +20,13 @@ class CreateEditResponseChoicesFinishReason(str, Enum):
 @dataclasses.dataclass
 class CreateEditResponseChoices:
     finish_reason: CreateEditResponseChoicesFinishReason = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finish_reason') }})
+    r"""The reason the model stopped generating tokens. This will be `stop` if the model hit a natural stop point or a provided stop sequence,
+    or `length` if the maximum number of tokens specified in the request was reached.
+    """
     index: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('index') }})
+    r"""The index of the choice in the list of choices."""
     text: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('text') }})
-    
-
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-
-@dataclasses.dataclass
-class CreateEditResponseUsage:
-    completion_tokens: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('completion_tokens') }})
-    prompt_tokens: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('prompt_tokens') }})
-    total_tokens: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('total_tokens') }})
+    r"""The edited result."""
     
 
 
@@ -39,8 +37,12 @@ class CreateEditResponseUsage:
 class CreateEditResponse:
     r"""OK"""
     choices: list[CreateEditResponseChoices] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('choices') }})
+    r"""A list of edit choices. Can be more than one if `n` is greater than 1."""
     created: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created') }})
+    r"""A unix timestamp of when the edit was created."""
     object: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('object') }})
-    usage: CreateEditResponseUsage = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('usage') }})
+    r"""The object type, which is always `edit`."""
+    usage: shared_completionusage.CompletionUsage = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('usage') }})
+    r"""Usage statistics for the completion request."""
     
 

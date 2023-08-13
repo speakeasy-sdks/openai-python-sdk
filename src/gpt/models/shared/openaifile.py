@@ -11,14 +11,22 @@ from typing import Optional
 
 @dataclasses.dataclass
 class OpenAIFile:
-    r"""OK"""
+    r"""The `File` object represents a document that has been uploaded to OpenAI."""
     bytes: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bytes') }})
+    r"""The size of the file in bytes."""
     created_at: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created_at') }})
+    r"""The unix timestamp for when the file was created."""
     filename: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('filename') }})
+    r"""The name of the file."""
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
+    r"""The file identifier, which can be referenced in the API endpoints."""
     object: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('object') }})
+    r"""The object type, which is always \\"file\\"."""
     purpose: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('purpose') }})
+    r"""The intended purpose of the file. Currently, only \\"fine-tune\\" is supported."""
     status: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
+    r"""The current status of the file, which can be either `uploaded`, `processed`, `pending`, `error`, `deleting` or `deleted`."""
     status_details: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status_details'), 'exclude': lambda f: f is None }})
+    r"""Additional details about the status of the file. If the file is in the `error` state, this will include a message describing the error."""
     
 

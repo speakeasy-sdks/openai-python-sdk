@@ -10,10 +10,14 @@ from gpt import utils
 
 @dataclasses.dataclass
 class Model:
-    r"""OK"""
+    r"""Describes an OpenAI model offering that can be used with the API."""
     created: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created') }})
+    r"""The date and time when the model was created."""
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
+    r"""The model identifier, which can be referenced in the API endpoints."""
     object: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('object') }})
+    r"""The object type, which is always \\"model\\"."""
     owned_by: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('owned_by') }})
+    r"""The organization that owns the model."""
     
 

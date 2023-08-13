@@ -10,13 +10,21 @@ from gpt import utils
 
 @dataclasses.dataclass
 class CreateModerationResponseResultsCategories:
+    r"""A list of the categories, and whether they are flagged or not."""
     hate: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hate') }})
+    r"""Whether the content was flagged as 'hate'."""
     hate_threatening: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hate/threatening') }})
+    r"""Whether the content was flagged as 'hate/threatening'."""
     self_harm: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self-harm') }})
+    r"""Whether the content was flagged as 'self-harm'."""
     sexual: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sexual') }})
+    r"""Whether the content was flagged as 'sexual'."""
     sexual_minors: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sexual/minors') }})
+    r"""Whether the content was flagged as 'sexual/minors'."""
     violence: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('violence') }})
+    r"""Whether the content was flagged as 'violence'."""
     violence_graphic: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('violence/graphic') }})
+    r"""Whether the content was flagged as 'violence/graphic'."""
     
 
 
@@ -25,13 +33,21 @@ class CreateModerationResponseResultsCategories:
 
 @dataclasses.dataclass
 class CreateModerationResponseResultsCategoryScores:
+    r"""A list of the categories along with their scores as predicted by model."""
     hate: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hate') }})
+    r"""The score for the category 'hate'."""
     hate_threatening: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hate/threatening') }})
+    r"""The score for the category 'hate/threatening'."""
     self_harm: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self-harm') }})
+    r"""The score for the category 'self-harm'."""
     sexual: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sexual') }})
+    r"""The score for the category 'sexual'."""
     sexual_minors: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sexual/minors') }})
+    r"""The score for the category 'sexual/minors'."""
     violence: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('violence') }})
+    r"""The score for the category 'violence'."""
     violence_graphic: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('violence/graphic') }})
+    r"""The score for the category 'violence/graphic'."""
     
 
 
@@ -41,8 +57,11 @@ class CreateModerationResponseResultsCategoryScores:
 @dataclasses.dataclass
 class CreateModerationResponseResults:
     categories: CreateModerationResponseResultsCategories = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('categories') }})
+    r"""A list of the categories, and whether they are flagged or not."""
     category_scores: CreateModerationResponseResultsCategoryScores = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('category_scores') }})
+    r"""A list of the categories along with their scores as predicted by model."""
     flagged: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('flagged') }})
+    r"""Whether the content violates [OpenAI's usage policies](/policies/usage-policies)."""
     
 
 
@@ -51,9 +70,12 @@ class CreateModerationResponseResults:
 
 @dataclasses.dataclass
 class CreateModerationResponse:
-    r"""OK"""
+    r"""Represents policy compliance report by OpenAI's content moderation model against a given input."""
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
+    r"""The unique identifier for the moderation request."""
     model: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model') }})
+    r"""The model used to generate the moderation results."""
     results: list[CreateModerationResponseResults] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results') }})
+    r"""A list of moderation objects."""
     
 
