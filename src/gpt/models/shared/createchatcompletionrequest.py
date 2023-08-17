@@ -9,17 +9,6 @@ from enum import Enum
 from gpt import utils
 from typing import Any, Optional
 
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-
-@dataclasses.dataclass
-class CreateChatCompletionRequestFunctionCall2:
-    r"""Controls how the model responds to function calls. \\"none\\" means the model does not call a function, and responds to the end-user. \\"auto\\" means the model can pick between an end-user or calling a function.  Specifying a particular function via `{\\"name\\":\ \\"my_function\\"}` forces the model to call that function. \\"none\\" is the default when no functions are present. \\"auto\\" is the default if functions are present."""
-    name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
-    r"""The name of the function to call."""
-    
-
-
 class CreateChatCompletionRequestFunctionCall1(str, Enum):
     r"""Controls how the model responds to function calls. \\"none\\" means the model does not call a function, and responds to the end-user. \\"auto\\" means the model can pick between an end-user or calling a function.  Specifying a particular function via `{\\"name\\":\ \\"my_function\\"}` forces the model to call that function. \\"none\\" is the default when no functions are present. \\"auto\\" is the default if functions are present."""
     NONE = 'none'

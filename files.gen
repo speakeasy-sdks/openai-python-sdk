@@ -42,6 +42,7 @@ src/gpt/models/shared/chatcompletionresponsemessage.py
 src/gpt/models/shared/createchatcompletionrequest.py
 src/gpt/models/shared/chatcompletionrequestmessage.py
 src/gpt/models/shared/chatcompletionfunctions.py
+src/gpt/models/shared/chatcompletionfunctioncalloption.py
 src/gpt/models/shared/createcompletionresponse.py
 src/gpt/models/shared/createcompletionrequest.py
 src/gpt/models/shared/createeditresponse.py
@@ -116,7 +117,6 @@ docs/models/shared/completionusage.md
 docs/models/shared/chatcompletionresponsemessagefunctioncall.md
 docs/models/shared/chatcompletionresponsemessagerole.md
 docs/models/shared/chatcompletionresponsemessage.md
-docs/models/shared/createchatcompletionrequestfunctioncall2.md
 docs/models/shared/createchatcompletionrequestfunctioncall1.md
 docs/models/shared/createchatcompletionrequestmodel2.md
 docs/models/shared/createchatcompletionrequest.md
@@ -124,6 +124,7 @@ docs/models/shared/chatcompletionrequestmessagefunctioncall.md
 docs/models/shared/chatcompletionrequestmessagerole.md
 docs/models/shared/chatcompletionrequestmessage.md
 docs/models/shared/chatcompletionfunctions.md
+docs/models/shared/chatcompletionfunctioncalloption.md
 docs/models/shared/createcompletionresponsechoicesfinishreason.md
 docs/models/shared/createcompletionresponsechoiceslogprobs.md
 docs/models/shared/createcompletionresponsechoices.md

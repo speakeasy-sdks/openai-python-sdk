@@ -91,7 +91,7 @@ s = gpt.Gpt()
 
 req = shared.CreateChatCompletionRequest(
     frequency_penalty=5488.14,
-    function_call=shared.CreateChatCompletionRequestFunctionCall2(
+    function_call=shared.ChatCompletionFunctionCallOption(
         name='Ellis Mitchell',
     ),
     functions=[
