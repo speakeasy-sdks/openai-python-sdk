@@ -11,20 +11,28 @@ from gpt import utils
 @dataclasses.dataclass
 class CreateModerationResponseResultsCategories:
     r"""A list of the categories, and whether they are flagged or not."""
+    harassment: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('harassment') }})
+    r"""Content that expresses, incites, or promotes harassing language towards any target."""
+    harassment_threatening: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('harassment/threatening') }})
+    r"""Harassment content that also includes violence or serious harm towards any target."""
     hate: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hate') }})
-    r"""Whether the content was flagged as 'hate'."""
+    r"""Content that expresses, incites, or promotes hate based on race, gender, ethnicity, religion, nationality, sexual orientation, disability status, or caste. Hateful content aimed at non-protected groups (e.g., chess players) is harrassment."""
     hate_threatening: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hate/threatening') }})
-    r"""Whether the content was flagged as 'hate/threatening'."""
+    r"""Hateful content that also includes violence or serious harm towards the targeted group based on race, gender, ethnicity, religion, nationality, sexual orientation, disability status, or caste."""
     self_harm: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self-harm') }})
-    r"""Whether the content was flagged as 'self-harm'."""
+    r"""Content that promotes, encourages, or depicts acts of self-harm, such as suicide, cutting, and eating disorders."""
+    self_harm_instructions: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self-harm/instructions') }})
+    r"""Content that encourages performing acts of self-harm, such as suicide, cutting, and eating disorders, or that gives instructions or advice on how to commit such acts."""
+    self_harm_intent: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self-harm/intent') }})
+    r"""Content where the speaker expresses that they are engaging or intend to engage in acts of self-harm, such as suicide, cutting, and eating disorders."""
     sexual: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sexual') }})
-    r"""Whether the content was flagged as 'sexual'."""
+    r"""Content meant to arouse sexual excitement, such as the description of sexual activity, or that promotes sexual services (excluding sex education and wellness)."""
     sexual_minors: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sexual/minors') }})
-    r"""Whether the content was flagged as 'sexual/minors'."""
+    r"""Sexual content that includes an individual who is under 18 years old."""
     violence: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('violence') }})
-    r"""Whether the content was flagged as 'violence'."""
+    r"""Content that depicts death, violence, or physical injury."""
     violence_graphic: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('violence/graphic') }})
-    r"""Whether the content was flagged as 'violence/graphic'."""
+    r"""Content that depicts death, violence, or physical injury in graphic detail."""
     
 
 
@@ -34,12 +42,20 @@ class CreateModerationResponseResultsCategories:
 @dataclasses.dataclass
 class CreateModerationResponseResultsCategoryScores:
     r"""A list of the categories along with their scores as predicted by model."""
+    harassment: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('harassment') }})
+    r"""The score for the category 'harassment'."""
+    harassment_threatening: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('harassment/threatening') }})
+    r"""The score for the category 'harassment/threatening'."""
     hate: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hate') }})
     r"""The score for the category 'hate'."""
     hate_threatening: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hate/threatening') }})
     r"""The score for the category 'hate/threatening'."""
     self_harm: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self-harm') }})
     r"""The score for the category 'self-harm'."""
+    self_harm_instructions: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self-harm/instructions') }})
+    r"""The score for the category 'self-harm/instructions'."""
+    self_harm_intent: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self-harm/intent') }})
+    r"""The score for the category 'self-harm/intent'."""
     sexual: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sexual') }})
     r"""The score for the category 'sexual'."""
     sexual_minors: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sexual/minors') }})
