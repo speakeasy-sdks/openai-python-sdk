@@ -365,3 +365,13 @@ Based on:
 - [python v2.17.2] .
 ### Releases
 - [PyPI v2.17.2] https://pypi.org/project/openai-python/2.17.2 - .
+
+## 2023-08-25 00:47:28
+### Changes
+Based on:
+- OpenAPI Doc 2.0.0 https://raw.githubusercontent.com/openai/openai-openapi/master/openapi.yaml
+- Speakeasy CLI 1.74.11 (2.87.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [python v2.17.3] .
+### Releases
+- [PyPI v2.17.3] https://pypi.org/project/openai-python/2.17.3 - .
