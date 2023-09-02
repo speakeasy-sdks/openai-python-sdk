@@ -40,7 +40,7 @@ class CreateChatCompletionRequest:
     frequency_penalty: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('frequency_penalty'), 'exclude': lambda f: f is None }})
     r"""Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.
 
-    [See more information about frequency and presence penalties.](/docs/api-reference/parameter-details)
+    [See more information about frequency and presence penalties.](/docs/guides/gpt/parameter-details)
     """
     function_call: Optional[Any] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('function_call'), 'exclude': lambda f: f is None }})
     r"""Controls how the model responds to function calls. \\"none\\" means the model does not call a function, and responds to the end-user. \\"auto\\" means the model can pick between an end-user or calling a function.  Specifying a particular function via `{\\"name\\":\ \\"my_function\\"}` forces the model to call that function. \\"none\\" is the default when no functions are present. \\"auto\\" is the default if functions are present."""
@@ -61,7 +61,7 @@ class CreateChatCompletionRequest:
     presence_penalty: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('presence_penalty'), 'exclude': lambda f: f is None }})
     r"""Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
 
-    [See more information about frequency and presence penalties.](/docs/api-reference/parameter-details)
+    [See more information about frequency and presence penalties.](/docs/guides/gpt/parameter-details)
     """
     stop: Optional[Any] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('stop'), 'exclude': lambda f: f is None }})
     r"""Up to 4 sequences where the API will stop generating further tokens."""

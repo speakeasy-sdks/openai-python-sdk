@@ -51,7 +51,7 @@ class CreateCompletionResponse:
     choices: list[CreateCompletionResponseChoices] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('choices') }})
     r"""The list of completion choices the model generated for the input prompt."""
     created: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created') }})
-    r"""The Unix timestamp of when the completion was created."""
+    r"""The Unix timestamp (in seconds) of when the completion was created."""
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""A unique identifier for the completion."""
     model: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model') }})

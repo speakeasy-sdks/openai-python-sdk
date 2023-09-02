@@ -35,11 +35,14 @@ class CreateEditResponseChoices:
 
 @dataclasses.dataclass
 class CreateEditResponse:
-    r"""OK"""
+    r"""OK
+
+    Deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
+    """
     choices: list[CreateEditResponseChoices] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('choices') }})
     r"""A list of edit choices. Can be more than one if `n` is greater than 1."""
     created: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created') }})
-    r"""A unix timestamp of when the edit was created."""
+    r"""The Unix timestamp (in seconds) of when the edit was created."""
     object: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('object') }})
     r"""The object type, which is always `edit`."""
     usage: shared_completionusage.CompletionUsage = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('usage') }})

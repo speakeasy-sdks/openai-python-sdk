@@ -9,6 +9,8 @@ from typing import Any, Optional
 
 class CreateCompletionRequestModel2(str, Enum):
     r"""ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](/docs/models/overview) for descriptions of them."""
+    BABBAGE_002 = 'babbage-002'
+    DAVINCI_002 = 'davinci-002'
     TEXT_DAVINCI_003 = 'text-davinci-003'
     TEXT_DAVINCI_002 = 'text-davinci-002'
     TEXT_DAVINCI_001 = 'text-davinci-001'
@@ -41,7 +43,7 @@ class CreateCompletionRequest:
     frequency_penalty: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('frequency_penalty'), 'exclude': lambda f: f is None }})
     r"""Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.
 
-    [See more information about frequency and presence penalties.](/docs/api-reference/parameter-details)
+    [See more information about frequency and presence penalties.](/docs/guides/gpt/parameter-details)
     """
     logit_bias: Optional[dict[str, int]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('logit_bias'), 'exclude': lambda f: f is None }})
     r"""Modify the likelihood of specified tokens appearing in the completion.
@@ -68,7 +70,7 @@ class CreateCompletionRequest:
     presence_penalty: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('presence_penalty'), 'exclude': lambda f: f is None }})
     r"""Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.
 
-    [See more information about frequency and presence penalties.](/docs/api-reference/parameter-details)
+    [See more information about frequency and presence penalties.](/docs/guides/gpt/parameter-details)
     """
     stop: Optional[Any] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('stop'), 'exclude': lambda f: f is None }})
     r"""Up to 4 sequences where the API will stop generating further tokens. The returned text will not contain the stop sequence."""

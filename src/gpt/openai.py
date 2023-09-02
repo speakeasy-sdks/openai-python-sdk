@@ -14,7 +14,10 @@ class OpenAI:
         
     
     def cancel_fine_tune(self, request: operations.CancelFineTuneRequest) -> operations.CancelFineTuneResponse:
-        r"""Immediately cancel a fine-tune job."""
+        r"""Immediately cancel a fine-tune job.
+
+        Deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+        """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.CancelFineTuneRequest, base_url, '/fine-tunes/{fine_tune_id}/cancel', request)
@@ -33,6 +36,32 @@ class OpenAI:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.FineTune])
                 res.fine_tune = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    def cancel_fine_tuning_job(self, request: operations.CancelFineTuningJobRequest) -> operations.CancelFineTuningJobResponse:
+        r"""Immediately cancel a fine-tune job."""
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = utils.generate_url(operations.CancelFineTuningJobRequest, base_url, '/fine_tuning/jobs/{fine_tuning_job_id}/cancel', request)
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.client
+        
+        http_res = client.request('POST', url, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.CancelFineTuningJobResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.FineTuningJob])
+                res.fine_tuning_job = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
@@ -202,7 +231,9 @@ class OpenAI:
 
         Response includes details of the enqueued job including job status and the name of the fine-tuned models once complete.
 
-        [Learn more about Fine-tuning](/docs/guides/fine-tuning)
+        [Learn more about fine-tuning](/docs/guides/legacy-fine-tuning)
+
+        Deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -227,6 +258,42 @@ class OpenAI:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.FineTune])
                 res.fine_tune = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    def create_fine_tuning_job(self, request: shared.CreateFineTuningJobRequest) -> operations.CreateFineTuningJobResponse:
+        r"""Creates a job that fine-tunes a specified model from a given dataset.
+
+        Response includes details of the enqueued job including job status and the name of the fine-tuned models once complete.
+
+        [Learn more about fine-tuning](/docs/guides/fine-tuning)
+        """
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = base_url + '/fine_tuning/jobs'
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        if data is None and form is None:
+            raise Exception('request body is required')
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.client
+        
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.CreateFineTuningJobResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.FineTuningJob])
+                res.fine_tuning_job = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
@@ -446,7 +513,7 @@ class OpenAI:
 
     
     def delete_model(self, request: operations.DeleteModelRequest) -> operations.DeleteModelResponse:
-        r"""Delete a fine-tuned model. You must have the Owner role in your organization."""
+        r"""Delete a fine-tuned model. You must have the Owner role in your organization to delete a model."""
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.DeleteModelRequest, base_url, '/models/{model}', request)
@@ -523,7 +590,10 @@ class OpenAI:
 
     
     def list_fine_tune_events(self, request: operations.ListFineTuneEventsRequest) -> operations.ListFineTuneEventsResponse:
-        r"""Get fine-grained status updates for a fine-tune job."""
+        r"""Get fine-grained status updates for a fine-tune job.
+
+        Deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+        """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.ListFineTuneEventsRequest, base_url, '/fine-tunes/{fine_tune_id}/events', request)
@@ -550,7 +620,10 @@ class OpenAI:
 
     
     def list_fine_tunes(self) -> operations.ListFineTunesResponse:
-        r"""List your organization's fine-tuning jobs"""
+        r"""List your organization's fine-tuning jobs
+
+        Deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
+        """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/fine-tunes'
@@ -569,6 +642,33 @@ class OpenAI:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ListFineTunesResponse])
                 res.list_fine_tunes_response = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    def list_fine_tuning_events(self, request: operations.ListFineTuningEventsRequest) -> operations.ListFineTuningEventsResponse:
+        r"""Get status updates for a fine-tuning job."""
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = utils.generate_url(operations.ListFineTuningEventsRequest, base_url, '/fine_tuning/jobs/{fine_tuning_job_id}/events', request)
+        headers = {}
+        query_params = utils.get_query_params(operations.ListFineTuningEventsRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.client
+        
+        http_res = client.request('GET', url, params=query_params, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.ListFineTuningEventsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ListFineTuningJobEventsResponse])
+                res.list_fine_tuning_job_events_response = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
@@ -595,6 +695,33 @@ class OpenAI:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ListModelsResponse])
                 res.list_models_response = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    def list_paginated_fine_tuning_jobs(self, request: operations.ListPaginatedFineTuningJobsRequest) -> operations.ListPaginatedFineTuningJobsResponse:
+        r"""List your organization's fine-tuning jobs"""
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = base_url + '/fine_tuning/jobs'
+        headers = {}
+        query_params = utils.get_query_params(operations.ListPaginatedFineTuningJobsRequest, request)
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.client
+        
+        http_res = client.request('GET', url, params=query_params, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.ListPaginatedFineTuningJobsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ListPaginatedFineTuningJobsResponse])
+                res.list_paginated_fine_tuning_jobs_response = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
@@ -630,7 +757,9 @@ class OpenAI:
     def retrieve_fine_tune(self, request: operations.RetrieveFineTuneRequest) -> operations.RetrieveFineTuneResponse:
         r"""Gets info about the fine-tune job.
 
-        [Learn more about Fine-tuning](/docs/guides/fine-tuning)
+        [Learn more about fine-tuning](/docs/guides/legacy-fine-tuning)
+
+        Deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
         """
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -650,6 +779,35 @@ class OpenAI:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.FineTune])
                 res.fine_tune = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    def retrieve_fine_tuning_job(self, request: operations.RetrieveFineTuningJobRequest) -> operations.RetrieveFineTuningJobResponse:
+        r"""Get info about a fine-tuning job.
+
+        [Learn more about fine-tuning](/docs/guides/fine-tuning)
+        """
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = utils.generate_url(operations.RetrieveFineTuningJobRequest, base_url, '/fine_tuning/jobs/{fine_tuning_job_id}', request)
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.client
+        
+        http_res = client.request('GET', url, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.RetrieveFineTuningJobResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.FineTuningJob])
+                res.fine_tuning_job = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 

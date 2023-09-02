@@ -13,7 +13,7 @@ from typing import Optional
 
 @dataclasses.dataclass
 class FineTuneHyperparams:
-    r"""The hyperparameters used for the fine-tuning job. See the [Fine-tuning Guide](/docs/guides/fine-tuning/hyperparameters) for more details."""
+    r"""The hyperparameters used for the fine-tuning job. See the [fine-tuning guide](/docs/guides/legacy-fine-tuning/hyperparameters) for more details."""
     batch_size: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('batch_size') }})
     r"""The batch size to use for training. The batch size is the number of
     training examples used to train a single forward and backward pass.
@@ -40,13 +40,16 @@ class FineTuneHyperparams:
 
 @dataclasses.dataclass
 class FineTune:
-    r"""The `FineTune` object represents a fine-tuning job that has been created through the API."""
+    r"""The `FineTune` object represents a legacy fine-tune job that has been created through the API.
+
+    Deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
+    """
     created_at: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created_at') }})
-    r"""The unix timestamp for when the fine-tuning job was created."""
+    r"""The Unix timestamp (in seconds) for when the fine-tuning job was created."""
     fine_tuned_model: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fine_tuned_model') }})
     r"""The name of the fine-tuned model that is being created."""
     hyperparams: FineTuneHyperparams = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hyperparams') }})
-    r"""The hyperparameters used for the fine-tuning job. See the [Fine-tuning Guide](/docs/guides/fine-tuning/hyperparameters) for more details."""
+    r"""The hyperparameters used for the fine-tuning job. See the [fine-tuning guide](/docs/guides/legacy-fine-tuning/hyperparameters) for more details."""
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""The object identifier, which can be referenced in the API endpoints."""
     model: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model') }})
@@ -58,11 +61,11 @@ class FineTune:
     result_files: list[shared_openaifile.OpenAIFile] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('result_files') }})
     r"""The compiled results files for the fine-tuning job."""
     status: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
-    r"""The current status of the fine-tuning job, which can be either `created`, `pending`, `running`, `succeeded`, `failed`, or `cancelled`."""
+    r"""The current status of the fine-tuning job, which can be either `created`, `running`, `succeeded`, `failed`, or `cancelled`."""
     training_files: list[shared_openaifile.OpenAIFile] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('training_files') }})
     r"""The list of files used for training."""
     updated_at: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('updated_at') }})
-    r"""The unix timestamp for when the fine-tuning job was last updated."""
+    r"""The Unix timestamp (in seconds) for when the fine-tuning job was last updated."""
     validation_files: list[shared_openaifile.OpenAIFile] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validation_files') }})
     r"""The list of files used for validation."""
     events: Optional[list[shared_finetuneevent.FineTuneEvent]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('events'), 'exclude': lambda f: f is None }})

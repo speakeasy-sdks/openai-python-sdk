@@ -9,9 +9,9 @@ from typing import Any, Optional
 
 class CreateFineTuneRequestModel2(str, Enum):
     r"""The name of the base model to fine-tune. You can select one of \\"ada\\",
-    \"babbage\", \"curie\", \"davinci\", or a fine-tuned model created after 2022-04-21.
+    \"babbage\", \"curie\", \"davinci\", or a fine-tuned model created after 2022-04-21 and before 2023-08-22.
     To learn more about these models, see the
-    [Models](https://platform.openai.com/docs/models) documentation.
+    [Models](/docs/models) documentation.
     """
     ADA = 'ada'
     BABBAGE = 'babbage'
@@ -32,7 +32,7 @@ class CreateFineTuneRequest:
     example is a JSON object with the keys \"prompt\" and \"completion\".
     Additionally, you must upload your file with the purpose `fine-tune`.
 
-    See the [fine-tuning guide](/docs/guides/fine-tuning/creating-training-data) for more details.
+    See the [fine-tuning guide](/docs/guides/legacy-fine-tuning/creating-training-data) for more details.
     """
     batch_size: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('batch_size'), 'exclude': lambda f: f is None }})
     r"""The batch size to use for training. The batch size is the number of
@@ -67,7 +67,7 @@ class CreateFineTuneRequest:
     compute_classification_metrics: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('compute_classification_metrics'), 'exclude': lambda f: f is None }})
     r"""If set, we calculate classification-specific metrics such as accuracy
     and F-1 score using the validation set at the end of every epoch.
-    These metrics can be viewed in the [results file](/docs/guides/fine-tuning/analyzing-your-fine-tuned-model).
+    These metrics can be viewed in the [results file](/docs/guides/legacy-fine-tuning/analyzing-your-fine-tuned-model).
 
     In order to compute classification metrics, you must provide a
     `validation_file`. Additionally, you must
@@ -87,9 +87,9 @@ class CreateFineTuneRequest:
     """
     model: Optional[Any] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model'), 'exclude': lambda f: f is None }})
     r"""The name of the base model to fine-tune. You can select one of \\"ada\\",
-    \"babbage\", \"curie\", \"davinci\", or a fine-tuned model created after 2022-04-21.
+    \"babbage\", \"curie\", \"davinci\", or a fine-tuned model created after 2022-04-21 and before 2023-08-22.
     To learn more about these models, see the
-    [Models](https://platform.openai.com/docs/models) documentation.
+    [Models](/docs/models) documentation.
     """
     n_epochs: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('n_epochs'), 'exclude': lambda f: f is None }})
     r"""The number of epochs to train the model for. An epoch refers to one
@@ -115,14 +115,14 @@ class CreateFineTuneRequest:
 
     If you provide this file, the data is used to generate validation
     metrics periodically during fine-tuning. These metrics can be viewed in
-    the [fine-tuning results file](/docs/guides/fine-tuning/analyzing-your-fine-tuned-model).
+    the [fine-tuning results file](/docs/guides/legacy-fine-tuning/analyzing-your-fine-tuned-model).
     Your train and validation data should be mutually exclusive.
 
     Your dataset must be formatted as a JSONL file, where each validation
     example is a JSON object with the keys \"prompt\" and \"completion\".
     Additionally, you must upload your file with the purpose `fine-tune`.
 
-    See the [fine-tuning guide](/docs/guides/fine-tuning/creating-training-data) for more details.
+    See the [fine-tuning guide](/docs/guides/legacy-fine-tuning/creating-training-data) for more details.
     """
     
 

@@ -56,7 +56,9 @@ if res.fine_tune is not None:
 
 ### [open_ai](docs/sdks/openai/README.md)
 
-* [cancel_fine_tune](docs/sdks/openai/README.md#cancel_fine_tune) - Immediately cancel a fine-tune job.
+* [~~cancel_fine_tune~~](docs/sdks/openai/README.md#cancel_fine_tune) - Immediately cancel a fine-tune job.
+ :warning: **Deprecated**
+* [cancel_fine_tuning_job](docs/sdks/openai/README.md#cancel_fine_tuning_job) - Immediately cancel a fine-tune job.
 
 * [create_chat_completion](docs/sdks/openai/README.md#create_chat_completion) - Creates a model response for the given chat conversation.
 * [create_completion](docs/sdks/openai/README.md#create_completion) - Creates a completion for the provided prompt and parameters.
@@ -64,11 +66,17 @@ if res.fine_tune is not None:
 * [create_embedding](docs/sdks/openai/README.md#create_embedding) - Creates an embedding vector representing the input text.
 * [create_file](docs/sdks/openai/README.md#create_file) - Upload a file that contains document(s) to be used across various endpoints/features. Currently, the size of all the files uploaded by one organization can be up to 1 GB. Please contact us if you need to increase the storage limit.
 
-* [create_fine_tune](docs/sdks/openai/README.md#create_fine_tune) - Creates a job that fine-tunes a specified model from a given dataset.
+* [~~create_fine_tune~~](docs/sdks/openai/README.md#create_fine_tune) - Creates a job that fine-tunes a specified model from a given dataset.
 
 Response includes details of the enqueued job including job status and the name of the fine-tuned models once complete.
 
-[Learn more about Fine-tuning](/docs/guides/fine-tuning)
+[Learn more about fine-tuning](/docs/guides/legacy-fine-tuning)
+ :warning: **Deprecated**
+* [create_fine_tuning_job](docs/sdks/openai/README.md#create_fine_tuning_job) - Creates a job that fine-tunes a specified model from a given dataset.
+
+Response includes details of the enqueued job including job status and the name of the fine-tuned models once complete.
+
+[Learn more about fine-tuning](/docs/guides/fine-tuning)
 
 * [create_image](docs/sdks/openai/README.md#create_image) - Creates an image given a prompt.
 * [create_image_edit](docs/sdks/openai/README.md#create_image_edit) - Creates an edited or extended image given an original image and a prompt.
@@ -77,18 +85,26 @@ Response includes details of the enqueued job including job status and the name 
 * [create_transcription](docs/sdks/openai/README.md#create_transcription) - Transcribes audio into the input language.
 * [create_translation](docs/sdks/openai/README.md#create_translation) - Translates audio into English.
 * [delete_file](docs/sdks/openai/README.md#delete_file) - Delete a file.
-* [delete_model](docs/sdks/openai/README.md#delete_model) - Delete a fine-tuned model. You must have the Owner role in your organization.
+* [delete_model](docs/sdks/openai/README.md#delete_model) - Delete a fine-tuned model. You must have the Owner role in your organization to delete a model.
 * [download_file](docs/sdks/openai/README.md#download_file) - Returns the contents of the specified file
 * [list_files](docs/sdks/openai/README.md#list_files) - Returns a list of files that belong to the user's organization.
-* [list_fine_tune_events](docs/sdks/openai/README.md#list_fine_tune_events) - Get fine-grained status updates for a fine-tune job.
-
-* [list_fine_tunes](docs/sdks/openai/README.md#list_fine_tunes) - List your organization's fine-tuning jobs
+* [~~list_fine_tune_events~~](docs/sdks/openai/README.md#list_fine_tune_events) - Get fine-grained status updates for a fine-tune job.
+ :warning: **Deprecated**
+* [~~list_fine_tunes~~](docs/sdks/openai/README.md#list_fine_tunes) - List your organization's fine-tuning jobs
+ :warning: **Deprecated**
+* [list_fine_tuning_events](docs/sdks/openai/README.md#list_fine_tuning_events) - Get status updates for a fine-tuning job.
 
 * [list_models](docs/sdks/openai/README.md#list_models) - Lists the currently available models, and provides basic information about each one such as the owner and availability.
-* [retrieve_file](docs/sdks/openai/README.md#retrieve_file) - Returns information about a specific file.
-* [retrieve_fine_tune](docs/sdks/openai/README.md#retrieve_fine_tune) - Gets info about the fine-tune job.
+* [list_paginated_fine_tuning_jobs](docs/sdks/openai/README.md#list_paginated_fine_tuning_jobs) - List your organization's fine-tuning jobs
 
-[Learn more about Fine-tuning](/docs/guides/fine-tuning)
+* [retrieve_file](docs/sdks/openai/README.md#retrieve_file) - Returns information about a specific file.
+* [~~retrieve_fine_tune~~](docs/sdks/openai/README.md#retrieve_fine_tune) - Gets info about the fine-tune job.
+
+[Learn more about fine-tuning](/docs/guides/legacy-fine-tuning)
+ :warning: **Deprecated**
+* [retrieve_fine_tuning_job](docs/sdks/openai/README.md#retrieve_fine_tuning_job) - Get info about a fine-tuning job.
+
+[Learn more about fine-tuning](/docs/guides/fine-tuning)
 
 * [retrieve_model](docs/sdks/openai/README.md#retrieve_model) - Retrieves a model instance, providing basic information about the model such as the owner and permissioning.
 <!-- End SDK Available Operations -->

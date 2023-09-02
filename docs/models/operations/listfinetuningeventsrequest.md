@@ -1,0 +1,10 @@
+# ListFineTuningEventsRequest
+
+
+## Fields
+
+| Field                                                               | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `after`                                                             | *Optional[str]*                                                     | :heavy_minus_sign:                                                  | Identifier for the last event from the previous pagination request. |                                                                     |
+| `fine_tuning_job_id`                                                | *str*                                                               | :heavy_check_mark:                                                  | The ID of the fine-tuning job to get events for.<br/>               | ft-AF1WoRqd3aJAHsqc9NY7iL8F                                         |
+| `limit`                                                             | *Optional[int]*                                                     | :heavy_minus_sign:                                                  | Number of events to retrieve.                                       |                                                                     |

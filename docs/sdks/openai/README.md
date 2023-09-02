@@ -6,7 +6,9 @@ The OpenAI REST API
 
 ### Available Operations
 
-* [cancel_fine_tune](#cancel_fine_tune) - Immediately cancel a fine-tune job.
+* [~~cancel_fine_tune~~](#cancel_fine_tune) - Immediately cancel a fine-tune job.
+ :warning: **Deprecated**
+* [cancel_fine_tuning_job](#cancel_fine_tuning_job) - Immediately cancel a fine-tune job.
 
 * [create_chat_completion](#create_chat_completion) - Creates a model response for the given chat conversation.
 * [create_completion](#create_completion) - Creates a completion for the provided prompt and parameters.
@@ -14,11 +16,17 @@ The OpenAI REST API
 * [create_embedding](#create_embedding) - Creates an embedding vector representing the input text.
 * [create_file](#create_file) - Upload a file that contains document(s) to be used across various endpoints/features. Currently, the size of all the files uploaded by one organization can be up to 1 GB. Please contact us if you need to increase the storage limit.
 
-* [create_fine_tune](#create_fine_tune) - Creates a job that fine-tunes a specified model from a given dataset.
+* [~~create_fine_tune~~](#create_fine_tune) - Creates a job that fine-tunes a specified model from a given dataset.
 
 Response includes details of the enqueued job including job status and the name of the fine-tuned models once complete.
 
-[Learn more about Fine-tuning](/docs/guides/fine-tuning)
+[Learn more about fine-tuning](/docs/guides/legacy-fine-tuning)
+ :warning: **Deprecated**
+* [create_fine_tuning_job](#create_fine_tuning_job) - Creates a job that fine-tunes a specified model from a given dataset.
+
+Response includes details of the enqueued job including job status and the name of the fine-tuned models once complete.
+
+[Learn more about fine-tuning](/docs/guides/fine-tuning)
 
 * [create_image](#create_image) - Creates an image given a prompt.
 * [create_image_edit](#create_image_edit) - Creates an edited or extended image given an original image and a prompt.
@@ -27,25 +35,35 @@ Response includes details of the enqueued job including job status and the name 
 * [create_transcription](#create_transcription) - Transcribes audio into the input language.
 * [create_translation](#create_translation) - Translates audio into English.
 * [delete_file](#delete_file) - Delete a file.
-* [delete_model](#delete_model) - Delete a fine-tuned model. You must have the Owner role in your organization.
+* [delete_model](#delete_model) - Delete a fine-tuned model. You must have the Owner role in your organization to delete a model.
 * [download_file](#download_file) - Returns the contents of the specified file
 * [list_files](#list_files) - Returns a list of files that belong to the user's organization.
-* [list_fine_tune_events](#list_fine_tune_events) - Get fine-grained status updates for a fine-tune job.
-
-* [list_fine_tunes](#list_fine_tunes) - List your organization's fine-tuning jobs
+* [~~list_fine_tune_events~~](#list_fine_tune_events) - Get fine-grained status updates for a fine-tune job.
+ :warning: **Deprecated**
+* [~~list_fine_tunes~~](#list_fine_tunes) - List your organization's fine-tuning jobs
+ :warning: **Deprecated**
+* [list_fine_tuning_events](#list_fine_tuning_events) - Get status updates for a fine-tuning job.
 
 * [list_models](#list_models) - Lists the currently available models, and provides basic information about each one such as the owner and availability.
-* [retrieve_file](#retrieve_file) - Returns information about a specific file.
-* [retrieve_fine_tune](#retrieve_fine_tune) - Gets info about the fine-tune job.
+* [list_paginated_fine_tuning_jobs](#list_paginated_fine_tuning_jobs) - List your organization's fine-tuning jobs
 
-[Learn more about Fine-tuning](/docs/guides/fine-tuning)
+* [retrieve_file](#retrieve_file) - Returns information about a specific file.
+* [~~retrieve_fine_tune~~](#retrieve_fine_tune) - Gets info about the fine-tune job.
+
+[Learn more about fine-tuning](/docs/guides/legacy-fine-tuning)
+ :warning: **Deprecated**
+* [retrieve_fine_tuning_job](#retrieve_fine_tuning_job) - Get info about a fine-tuning job.
+
+[Learn more about fine-tuning](/docs/guides/fine-tuning)
 
 * [retrieve_model](#retrieve_model) - Retrieves a model instance, providing basic information about the model such as the owner and permissioning.
 
-## cancel_fine_tune
+## ~~cancel_fine_tune~~
 
 Immediately cancel a fine-tune job.
 
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -75,6 +93,41 @@ if res.fine_tune is not None:
 ### Response
 
 **[operations.CancelFineTuneResponse](../../models/operations/cancelfinetuneresponse.md)**
+
+
+## cancel_fine_tuning_job
+
+Immediately cancel a fine-tune job.
+
+
+### Example Usage
+
+```python
+import gpt
+from gpt.models import operations
+
+s = gpt.Gpt()
+
+req = operations.CancelFineTuningJobRequest(
+    fine_tuning_job_id='ft-AF1WoRqd3aJAHsqc9NY7iL8F',
+)
+
+res = s.open_ai.cancel_fine_tuning_job(req)
+
+if res.fine_tuning_job is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `request`                                                                                      | [operations.CancelFineTuningJobRequest](../../models/operations/cancelfinetuningjobrequest.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+
+
+### Response
+
+**[operations.CancelFineTuningJobResponse](../../models/operations/cancelfinetuningjobresponse.md)**
 
 
 ## create_chat_completion
@@ -365,14 +418,16 @@ if res.open_ai_file is not None:
 **[operations.CreateFileResponse](../../models/operations/createfileresponse.md)**
 
 
-## create_fine_tune
+## ~~create_fine_tune~~
 
 Creates a job that fine-tunes a specified model from a given dataset.
 
 Response includes details of the enqueued job including job status and the name of the fine-tuned models once complete.
 
-[Learn more about Fine-tuning](/docs/guides/fine-tuning)
+[Learn more about fine-tuning](/docs/guides/legacy-fine-tuning)
 
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -396,8 +451,8 @@ req = shared.CreateFineTuneRequest(
     n_epochs=196582,
     prompt_loss_weight=9495.72,
     suffix='ipsam',
-    training_file='file-ajSREls59WBbvgSzJSVWxMCB',
-    validation_file='file-XjSREls59WBbvgSzJSVWxMCa',
+    training_file='file-abc123',
+    validation_file='file-abc123',
 )
 
 res = s.open_ai.create_fine_tune(req)
@@ -416,6 +471,51 @@ if res.fine_tune is not None:
 ### Response
 
 **[operations.CreateFineTuneResponse](../../models/operations/createfinetuneresponse.md)**
+
+
+## create_fine_tuning_job
+
+Creates a job that fine-tunes a specified model from a given dataset.
+
+Response includes details of the enqueued job including job status and the name of the fine-tuned models once complete.
+
+[Learn more about fine-tuning](/docs/guides/fine-tuning)
+
+
+### Example Usage
+
+```python
+import gpt
+from gpt.models import shared
+
+s = gpt.Gpt()
+
+req = shared.CreateFineTuningJobRequest(
+    hyperparameters=shared.CreateFineTuningJobRequestHyperparameters(
+        n_epochs=820994,
+    ),
+    model='gpt-3.5-turbo',
+    suffix='quasi',
+    training_file='file-abc123',
+    validation_file='file-abc123',
+)
+
+res = s.open_ai.create_fine_tuning_job(req)
+
+if res.fine_tuning_job is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `request`                                                                              | [shared.CreateFineTuningJobRequest](../../models/shared/createfinetuningjobrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+
+
+### Response
+
+**[operations.CreateFineTuningJobResponse](../../models/operations/createfinetuningjobresponse.md)**
 
 
 ## create_image
@@ -470,11 +570,11 @@ s = gpt.Gpt()
 
 req = shared.CreateImageEditRequest2(
     image=shared.CreateImageEditRequestImage(
-        content='id'.encode(),
-        image='possimus',
+        content='error'.encode(),
+        image='temporibus',
     ),
     mask=shared.CreateImageEditRequestMask(
-        content='aut'.encode(),
+        content='laborum'.encode(),
         mask='quasi',
     ),
     n=1,
@@ -516,8 +616,8 @@ s = gpt.Gpt()
 
 req = shared.CreateImageVariationRequest2(
     image=shared.CreateImageVariationRequestImage(
-        content='error'.encode(),
-        image='temporibus',
+        content='reiciendis'.encode(),
+        image='voluptatibus',
     ),
     n=1,
     response_format=shared.CreateImageVariationRequestResponseFormat.URL,
@@ -558,6 +658,7 @@ s = gpt.Gpt()
 req = shared.CreateModerationRequest(
     input=[
         'I want to kill them.',
+        'I want to kill them.',
     ],
     model=shared.CreateModerationRequestModel2.TEXT_MODERATION_STABLE,
 )
@@ -595,13 +696,13 @@ s = gpt.Gpt()
 req = shared.CreateTranscriptionRequest1(
     file=shared.CreateTranscriptionRequestFile(
         content='voluptatibus'.encode(),
-        file='vero',
+        file='ipsa',
     ),
-    language='nihil',
-    model=shared.CreateTranscriptionRequestModel2.WHISPER_1,
-    prompt='voluptatibus',
+    language='omnis',
+    model='whisper-1',
+    prompt='cum',
     response_format=shared.CreateTranscriptionRequestResponseFormat.JSON,
-    temperature=6048.46,
+    temperature=391.87,
 )
 
 res = s.open_ai.create_transcription(req)
@@ -636,13 +737,13 @@ s = gpt.Gpt()
 
 req = shared.CreateTranslationRequest(
     file=shared.CreateTranslationRequestFile(
-        content='voluptate'.encode(),
-        file='cum',
+        content='reprehenderit'.encode(),
+        file='ut',
     ),
-    model='whisper-1',
-    prompt='doloremque',
-    response_format='reprehenderit',
-    temperature=2828.07,
+    model=shared.CreateTranslationRequestModel2.WHISPER_1,
+    prompt='dicta',
+    response_format='corporis',
+    temperature=2961.4,
 )
 
 res = s.open_ai.create_translation(req)
@@ -676,7 +777,7 @@ from gpt.models import operations
 s = gpt.Gpt()
 
 req = operations.DeleteFileRequest(
-    file_id='maiores',
+    file_id='iusto',
 )
 
 res = s.open_ai.delete_file(req)
@@ -699,7 +800,7 @@ if res.delete_file_response is not None:
 
 ## delete_model
 
-Delete a fine-tuned model. You must have the Owner role in your organization.
+Delete a fine-tuned model. You must have the Owner role in your organization to delete a model.
 
 ### Example Usage
 
@@ -710,7 +811,7 @@ from gpt.models import operations
 s = gpt.Gpt()
 
 req = operations.DeleteModelRequest(
-    model='curie:ft-acmeco-2021-03-03-21-44-20',
+    model='ft:gpt-3.5-turbo:acemeco:suffix:abc123',
 )
 
 res = s.open_ai.delete_model(req)
@@ -790,10 +891,12 @@ if res.list_files_response is not None:
 **[operations.ListFilesResponse](../../models/operations/listfilesresponse.md)**
 
 
-## list_fine_tune_events
+## ~~list_fine_tune_events~~
 
 Get fine-grained status updates for a fine-tune job.
 
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -826,10 +929,12 @@ if res.list_fine_tune_events_response is not None:
 **[operations.ListFineTuneEventsResponse](../../models/operations/listfinetuneeventsresponse.md)**
 
 
-## list_fine_tunes
+## ~~list_fine_tunes~~
 
 List your organization's fine-tuning jobs
 
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -850,6 +955,43 @@ if res.list_fine_tunes_response is not None:
 ### Response
 
 **[operations.ListFineTunesResponse](../../models/operations/listfinetunesresponse.md)**
+
+
+## list_fine_tuning_events
+
+Get status updates for a fine-tuning job.
+
+
+### Example Usage
+
+```python
+import gpt
+from gpt.models import operations
+
+s = gpt.Gpt()
+
+req = operations.ListFineTuningEventsRequest(
+    after='harum',
+    fine_tuning_job_id='ft-AF1WoRqd3aJAHsqc9NY7iL8F',
+    limit=317983,
+)
+
+res = s.open_ai.list_fine_tuning_events(req)
+
+if res.list_fine_tuning_job_events_response is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `request`                                                                                        | [operations.ListFineTuningEventsRequest](../../models/operations/listfinetuningeventsrequest.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
+
+
+### Response
+
+**[operations.ListFineTuningEventsResponse](../../models/operations/listfinetuningeventsresponse.md)**
 
 
 ## list_models
@@ -877,6 +1019,42 @@ if res.list_models_response is not None:
 **[operations.ListModelsResponse](../../models/operations/listmodelsresponse.md)**
 
 
+## list_paginated_fine_tuning_jobs
+
+List your organization's fine-tuning jobs
+
+
+### Example Usage
+
+```python
+import gpt
+from gpt.models import operations
+
+s = gpt.Gpt()
+
+req = operations.ListPaginatedFineTuningJobsRequest(
+    after='accusamus',
+    limit=414263,
+)
+
+res = s.open_ai.list_paginated_fine_tuning_jobs(req)
+
+if res.list_paginated_fine_tuning_jobs_response is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                      | [operations.ListPaginatedFineTuningJobsRequest](../../models/operations/listpaginatedfinetuningjobsrequest.md) | :heavy_check_mark:                                                                                             | The request object to use for the request.                                                                     |
+
+
+### Response
+
+**[operations.ListPaginatedFineTuningJobsResponse](../../models/operations/listpaginatedfinetuningjobsresponse.md)**
+
+
 ## retrieve_file
 
 Returns information about a specific file.
@@ -890,7 +1068,7 @@ from gpt.models import operations
 s = gpt.Gpt()
 
 req = operations.RetrieveFileRequest(
-    file_id='corporis',
+    file_id='repudiandae',
 )
 
 res = s.open_ai.retrieve_file(req)
@@ -911,12 +1089,14 @@ if res.open_ai_file is not None:
 **[operations.RetrieveFileResponse](../../models/operations/retrievefileresponse.md)**
 
 
-## retrieve_fine_tune
+## ~~retrieve_fine_tune~~
 
 Gets info about the fine-tune job.
 
-[Learn more about Fine-tuning](/docs/guides/fine-tuning)
+[Learn more about fine-tuning](/docs/guides/legacy-fine-tuning)
 
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -948,6 +1128,43 @@ if res.fine_tune is not None:
 **[operations.RetrieveFineTuneResponse](../../models/operations/retrievefinetuneresponse.md)**
 
 
+## retrieve_fine_tuning_job
+
+Get info about a fine-tuning job.
+
+[Learn more about fine-tuning](/docs/guides/fine-tuning)
+
+
+### Example Usage
+
+```python
+import gpt
+from gpt.models import operations
+
+s = gpt.Gpt()
+
+req = operations.RetrieveFineTuningJobRequest(
+    fine_tuning_job_id='ft-AF1WoRqd3aJAHsqc9NY7iL8F',
+)
+
+res = s.open_ai.retrieve_fine_tuning_job(req)
+
+if res.fine_tuning_job is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `request`                                                                                          | [operations.RetrieveFineTuningJobRequest](../../models/operations/retrievefinetuningjobrequest.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
+
+
+### Response
+
+**[operations.RetrieveFineTuningJobResponse](../../models/operations/retrievefinetuningjobresponse.md)**
+
+
 ## retrieve_model
 
 Retrieves a model instance, providing basic information about the model such as the owner and permissioning.
@@ -961,7 +1178,7 @@ from gpt.models import operations
 s = gpt.Gpt()
 
 req = operations.RetrieveModelRequest(
-    model='text-davinci-001',
+    model='gpt-3.5-turbo',
 )
 
 res = s.open_ai.retrieve_model(req)

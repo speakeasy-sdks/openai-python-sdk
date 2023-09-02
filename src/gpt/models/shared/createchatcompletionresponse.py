@@ -42,7 +42,7 @@ class CreateChatCompletionResponse:
     choices: list[CreateChatCompletionResponseChoices] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('choices') }})
     r"""A list of chat completion choices. Can be more than one if `n` is greater than 1."""
     created: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created') }})
-    r"""A unix timestamp of when the chat completion was created."""
+    r"""The Unix timestamp (in seconds) of when the chat completion was created."""
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""A unique identifier for the chat completion."""
     model: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model') }})

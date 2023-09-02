@@ -12,7 +12,7 @@ from gpt import utils
 class Model:
     r"""Describes an OpenAI model offering that can be used with the API."""
     created: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created') }})
-    r"""The date and time when the model was created."""
+    r"""The Unix timestamp (in seconds) when the model was created."""
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""The model identifier, which can be referenced in the API endpoints."""
     object: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('object') }})

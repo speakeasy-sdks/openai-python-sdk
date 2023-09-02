@@ -15,7 +15,7 @@ class OpenAIFile:
     bytes: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bytes') }})
     r"""The size of the file in bytes."""
     created_at: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created_at') }})
-    r"""The unix timestamp for when the file was created."""
+    r"""The Unix timestamp (in seconds) for when the file was created."""
     filename: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('filename') }})
     r"""The name of the file."""
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
