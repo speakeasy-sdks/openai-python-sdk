@@ -35,9 +35,13 @@ Authorization: Bearer YOUR_API_KEY
 
 ```python
 import gpt
-from gpt.models import operations
+from gpt.models import operations, shared
 
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 req = operations.CancelFineTuneRequest(
     fine_tune_id='ft-AF1WoRqd3aJAHsqc9NY7iL8F',
@@ -86,7 +90,7 @@ Response includes details of the enqueued job including job status and the name 
 * [create_translation](docs/sdks/openai/README.md#create_translation) - Translates audio into English.
 * [delete_file](docs/sdks/openai/README.md#delete_file) - Delete a file.
 * [delete_model](docs/sdks/openai/README.md#delete_model) - Delete a fine-tuned model. You must have the Owner role in your organization to delete a model.
-* [download_file](docs/sdks/openai/README.md#download_file) - Returns the contents of the specified file
+* [download_file](docs/sdks/openai/README.md#download_file) - Returns the contents of the specified file.
 * [list_files](docs/sdks/openai/README.md#list_files) - Returns a list of files that belong to the user's organization.
 * [~~list_fine_tune_events~~](docs/sdks/openai/README.md#list_fine_tune_events) - Get fine-grained status updates for a fine-tune job.
  :warning: **Deprecated**

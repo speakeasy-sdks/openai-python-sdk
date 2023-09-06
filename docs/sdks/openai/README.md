@@ -36,7 +36,7 @@ Response includes details of the enqueued job including job status and the name 
 * [create_translation](#create_translation) - Translates audio into English.
 * [delete_file](#delete_file) - Delete a file.
 * [delete_model](#delete_model) - Delete a fine-tuned model. You must have the Owner role in your organization to delete a model.
-* [download_file](#download_file) - Returns the contents of the specified file
+* [download_file](#download_file) - Returns the contents of the specified file.
 * [list_files](#list_files) - Returns a list of files that belong to the user's organization.
 * [~~list_fine_tune_events~~](#list_fine_tune_events) - Get fine-grained status updates for a fine-tune job.
  :warning: **Deprecated**
@@ -69,9 +69,13 @@ Immediately cancel a fine-tune job.
 
 ```python
 import gpt
-from gpt.models import operations
+from gpt.models import operations, shared
 
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 req = operations.CancelFineTuneRequest(
     fine_tune_id='ft-AF1WoRqd3aJAHsqc9NY7iL8F',
@@ -104,9 +108,13 @@ Immediately cancel a fine-tune job.
 
 ```python
 import gpt
-from gpt.models import operations
+from gpt.models import operations, shared
 
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 req = operations.CancelFineTuningJobRequest(
     fine_tuning_job_id='ft-AF1WoRqd3aJAHsqc9NY7iL8F',
@@ -140,7 +148,11 @@ Creates a model response for the given chat conversation.
 import gpt
 from gpt.models import shared
 
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 req = shared.CreateChatCompletionRequest(
     frequency_penalty=5488.14,
@@ -245,7 +257,11 @@ Creates a completion for the provided prompt and parameters.
 import gpt
 from gpt.models import shared
 
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 req = shared.CreateCompletionRequest(
     best_of=210382,
@@ -299,7 +315,11 @@ Creates a new edit for the provided input, instruction, and parameters.
 import gpt
 from gpt.models import shared
 
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 req = shared.CreateEditRequest(
     input='What day of the wek is it?',
@@ -338,7 +358,11 @@ Creates an embedding vector representing the input text.
 import gpt
 from gpt.models import shared
 
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 req = shared.CreateEmbeddingRequest(
     input=[
@@ -390,7 +414,11 @@ Upload a file that contains document(s) to be used across various endpoints/feat
 import gpt
 from gpt.models import shared
 
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 req = shared.CreateFileRequest(
     file=shared.CreateFileRequestFile(
@@ -435,7 +463,11 @@ Response includes details of the enqueued job including job status and the name 
 import gpt
 from gpt.models import shared
 
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 req = shared.CreateFineTuneRequest(
     batch_size=158969,
@@ -488,7 +520,11 @@ Response includes details of the enqueued job including job status and the name 
 import gpt
 from gpt.models import shared
 
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 req = shared.CreateFineTuningJobRequest(
     hyperparameters=shared.CreateFineTuningJobRequestHyperparameters(
@@ -528,7 +564,11 @@ Creates an image given a prompt.
 import gpt
 from gpt.models import shared
 
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 req = shared.CreateImageRequest(
     n=1,
@@ -566,7 +606,11 @@ Creates an edited or extended image given an original image and a prompt.
 import gpt
 from gpt.models import shared
 
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 req = shared.CreateImageEditRequest2(
     image=shared.CreateImageEditRequestImage(
@@ -612,7 +656,11 @@ Creates a variation of a given image.
 import gpt
 from gpt.models import shared
 
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 req = shared.CreateImageVariationRequest2(
     image=shared.CreateImageVariationRequestImage(
@@ -653,7 +701,11 @@ Classifies if text violates OpenAI's Content Policy
 import gpt
 from gpt.models import shared
 
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 req = shared.CreateModerationRequest(
     input=[
@@ -691,7 +743,11 @@ Transcribes audio into the input language.
 import gpt
 from gpt.models import shared
 
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 req = shared.CreateTranscriptionRequest1(
     file=shared.CreateTranscriptionRequestFile(
@@ -733,7 +789,11 @@ Translates audio into English.
 import gpt
 from gpt.models import shared
 
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 req = shared.CreateTranslationRequest(
     file=shared.CreateTranslationRequestFile(
@@ -772,9 +832,13 @@ Delete a file.
 
 ```python
 import gpt
-from gpt.models import operations
+from gpt.models import operations, shared
 
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 req = operations.DeleteFileRequest(
     file_id='iusto',
@@ -806,9 +870,13 @@ Delete a fine-tuned model. You must have the Owner role in your organization to 
 
 ```python
 import gpt
-from gpt.models import operations
+from gpt.models import operations, shared
 
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 req = operations.DeleteModelRequest(
     model='ft:gpt-3.5-turbo:acemeco:suffix:abc123',
@@ -834,15 +902,19 @@ if res.delete_model_response is not None:
 
 ## download_file
 
-Returns the contents of the specified file
+Returns the contents of the specified file.
 
 ### Example Usage
 
 ```python
 import gpt
-from gpt.models import operations
+from gpt.models import operations, shared
 
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 req = operations.DownloadFileRequest(
     file_id='dicta',
@@ -874,9 +946,13 @@ Returns a list of files that belong to the user's organization.
 
 ```python
 import gpt
+from gpt.models import shared
 
-
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 
 res = s.open_ai.list_files()
@@ -902,9 +978,13 @@ Get fine-grained status updates for a fine-tune job.
 
 ```python
 import gpt
-from gpt.models import operations
+from gpt.models import operations, shared
 
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 req = operations.ListFineTuneEventsRequest(
     fine_tune_id='ft-AF1WoRqd3aJAHsqc9NY7iL8F',
@@ -940,9 +1020,13 @@ List your organization's fine-tuning jobs
 
 ```python
 import gpt
+from gpt.models import shared
 
-
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 
 res = s.open_ai.list_fine_tunes()
@@ -966,9 +1050,13 @@ Get status updates for a fine-tuning job.
 
 ```python
 import gpt
-from gpt.models import operations
+from gpt.models import operations, shared
 
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 req = operations.ListFineTuningEventsRequest(
     after='harum',
@@ -1002,9 +1090,13 @@ Lists the currently available models, and provides basic information about each 
 
 ```python
 import gpt
+from gpt.models import shared
 
-
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 
 res = s.open_ai.list_models()
@@ -1028,9 +1120,13 @@ List your organization's fine-tuning jobs
 
 ```python
 import gpt
-from gpt.models import operations
+from gpt.models import operations, shared
 
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 req = operations.ListPaginatedFineTuningJobsRequest(
     after='accusamus',
@@ -1063,9 +1159,13 @@ Returns information about a specific file.
 
 ```python
 import gpt
-from gpt.models import operations
+from gpt.models import operations, shared
 
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 req = operations.RetrieveFileRequest(
     file_id='repudiandae',
@@ -1102,9 +1202,13 @@ Gets info about the fine-tune job.
 
 ```python
 import gpt
-from gpt.models import operations
+from gpt.models import operations, shared
 
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 req = operations.RetrieveFineTuneRequest(
     fine_tune_id='ft-AF1WoRqd3aJAHsqc9NY7iL8F',
@@ -1139,9 +1243,13 @@ Get info about a fine-tuning job.
 
 ```python
 import gpt
-from gpt.models import operations
+from gpt.models import operations, shared
 
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 req = operations.RetrieveFineTuningJobRequest(
     fine_tuning_job_id='ft-AF1WoRqd3aJAHsqc9NY7iL8F',
@@ -1173,9 +1281,13 @@ Retrieves a model instance, providing basic information about the model such as 
 
 ```python
 import gpt
-from gpt.models import operations
+from gpt.models import operations, shared
 
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 req = operations.RetrieveModelRequest(
     model='gpt-3.5-turbo',

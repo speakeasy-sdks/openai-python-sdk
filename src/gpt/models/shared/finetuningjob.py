@@ -48,15 +48,15 @@ class FineTuningJob:
     organization_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('organization_id') }})
     r"""The organization that owns the fine-tuning job."""
     result_files: list[shared_openaifile.OpenAIFile] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('result_files') }})
-    r"""The compiled results files for the fine-tuning job."""
+    r"""The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents)."""
     status: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""The current status of the fine-tuning job, which can be either `created`, `pending`, `running`, `succeeded`, `failed`, or `cancelled`."""
     trained_tokens: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('trained_tokens') }})
-    r"""The total number of billable tokens processed by this fine tuning job."""
+    r"""The total number of billable tokens processed by this fine-tuning job."""
     training_file: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('training_file') }})
-    r"""The file ID used for training."""
+    r"""The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents)."""
     validation_file: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validation_file') }})
-    r"""The file ID used for validation."""
+    r"""The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents)."""
     finished_at: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finished_at'), 'exclude': lambda f: f is None }})
     r"""The Unix timestamp (in seconds) for when the fine-tuning job was finished."""
     

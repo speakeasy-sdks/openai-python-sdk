@@ -80,6 +80,7 @@ src/gpt/models/shared/finetuningjobevent.py
 src/gpt/models/shared/listmodelsresponse.py
 src/gpt/models/shared/model.py
 src/gpt/models/shared/listpaginatedfinetuningjobsresponse.py
+src/gpt/models/shared/security.py
 src/gpt/models/shared/__init__.py
 src/gpt/models/errors/__init__.py
 docs/sdks/gpt/README.md
@@ -211,4 +212,5 @@ docs/models/shared/finetuningjobevent.md
 docs/models/shared/listmodelsresponse.md
 docs/models/shared/model.md
 docs/models/shared/listpaginatedfinetuningjobsresponse.md
+docs/models/shared/security.md
 .gitattributes

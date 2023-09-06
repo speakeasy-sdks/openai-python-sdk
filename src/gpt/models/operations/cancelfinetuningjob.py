@@ -11,7 +11,7 @@ from typing import Optional
 @dataclasses.dataclass
 class CancelFineTuningJobRequest:
     fine_tuning_job_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'fine_tuning_job_id', 'style': 'simple', 'explode': False }})
-    r"""The ID of the fine-tuning job to cancel"""
+    r"""The ID of the fine-tuning job to cancel."""
     
 
 

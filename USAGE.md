@@ -3,9 +3,13 @@
 
 ```python
 import gpt
-from gpt.models import operations
+from gpt.models import operations, shared
 
-s = gpt.Gpt()
+s = gpt.Gpt(
+    security=shared.Security(
+        api_key_auth="",
+    ),
+)
 
 req = operations.CancelFineTuneRequest(
     fine_tune_id='ft-AF1WoRqd3aJAHsqc9NY7iL8F',

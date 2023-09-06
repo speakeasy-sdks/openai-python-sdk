@@ -4,15 +4,17 @@ import requests as requests_http
 from .openai import OpenAI
 from .sdkconfiguration import SDKConfiguration
 from gpt import utils
+from gpt.models import shared
 
 class Gpt:
-    r"""OpenAI API: APIs for sampling from and fine-tuning language models"""
+    r"""OpenAI API: The OpenAI REST API. Please see https://platform.openai.com/docs/api-reference for more details."""
     open_ai: OpenAI
     r"""The OpenAI REST API"""
 
     sdk_configuration: SDKConfiguration
 
     def __init__(self,
+                 security: shared.Security = None,
                  server_idx: int = None,
                  server_url: str = None,
                  url_params: dict[str, str] = None,
@@ -20,6 +22,8 @@ class Gpt:
                  ) -> None:
         """Instantiates the SDK configuring it with the provided parameters.
         
+        :param security: The security details required for authentication
+        :type security: shared.Security
         :param server_idx: The index of the server to use for all operations
         :type server_idx: int
         :param server_url: The server URL to use for all operations
@@ -32,7 +36,7 @@ class Gpt:
         if client is None:
             client = requests_http.Session()
         
-        security_client = client
+        security_client = utils.configure_security_client(client, security)
         
         if server_url is not None:
             if url_params is not None:
