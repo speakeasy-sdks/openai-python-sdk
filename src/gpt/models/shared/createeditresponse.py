@@ -35,10 +35,7 @@ class CreateEditResponseChoices:
 
 @dataclasses.dataclass
 class CreateEditResponse:
-    r"""OK
-
-    Deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
-    """
+    r"""Deprecated class: This will be removed in a future release, please migrate away from it as soon as possible."""
     choices: list[CreateEditResponseChoices] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('choices') }})
     r"""A list of edit choices. Can be more than one if `n` is greater than 1."""
     created: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created') }})

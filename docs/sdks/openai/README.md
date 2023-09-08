@@ -161,67 +161,33 @@ req = shared.CreateChatCompletionRequest(
     ),
     functions=[
         shared.ChatCompletionFunctions(
-            description='vel',
-            name='Doug Hoppe',
+            description='illum',
+            name='Sabrina Oberbrunner',
             parameters={
-                "ipsa": 'delectus',
-                "tempora": 'suscipit',
-                "molestiae": 'minus',
-                "placeat": 'voluptatum',
-            },
-        ),
-        shared.ChatCompletionFunctions(
-            description='iusto',
-            name='Charlie Walsh II',
-            parameters={
-                "deserunt": 'perferendis',
-            },
-        ),
-        shared.ChatCompletionFunctions(
-            description='ipsam',
-            name='Timmy Satterfield',
-            parameters={
-                "maiores": 'molestiae',
-                "quod": 'quod',
-                "esse": 'totam',
-                "porro": 'dolorum',
-            },
-        ),
-        shared.ChatCompletionFunctions(
-            description='dicta',
-            name='Luke McCullough',
-            parameters={
-                "optio": 'totam',
-                "beatae": 'commodi',
-                "molestiae": 'modi',
-                "qui": 'impedit',
+                "magnam": 'debitis',
             },
         ),
     ],
     logit_bias={
-        "esse": 216550,
-        "excepturi": 135218,
-        "perferendis": 324141,
+        "ipsa": 963663,
     },
-    max_tokens=617636,
+    max_tokens=272656,
     messages=[
         shared.ChatCompletionRequestMessage(
-            content='iste',
+            content='suscipit',
             function_call=shared.ChatCompletionRequestMessageFunctionCall(
-                arguments='dolor',
-                name='Lester Welch',
+                arguments='molestiae',
+                name='Irving Lehner',
             ),
-            name='Stacy Moore',
-            role=shared.ChatCompletionRequestMessageRole.ASSISTANT,
+            name='Mrs. Sophie Smith MD',
+            role=shared.ChatCompletionRequestMessageRole.SYSTEM,
         ),
     ],
     model='gpt-3.5-turbo',
     n=1,
-    presence_penalty=602.25,
+    presence_penalty=8326.2,
     stop=[
-        'mollitia',
-        'laborum',
-        'dolores',
+        'quo',
     ],
     stream=False,
     temperature=1,
@@ -264,20 +230,23 @@ s = gpt.Gpt(
 )
 
 req = shared.CreateCompletionRequest(
-    best_of=210382,
+    best_of=140350,
     echo=False,
-    frequency_penalty=3581.52,
+    frequency_penalty=8700.13,
     logit_bias={
-        "nobis": 315428,
+        "at": 978619,
     },
-    logprobs=607831,
+    logprobs=473608,
     max_tokens=16,
-    model='minima',
+    model=shared.CreateCompletionRequestModel2.TEXT_BABBAGE_001,
     n=1,
-    presence_penalty=5701.97,
-    prompt='This is a test.',
-    stop='
-',
+    presence_penalty=4614.79,
+    prompt=[
+        780529,
+    ],
+    stop=[
+        '["\n"]',
+    ],
     stream=False,
     suffix='test.',
     temperature=1,
@@ -324,7 +293,7 @@ s = gpt.Gpt(
 req = shared.CreateEditRequest(
     input='What day of the wek is it?',
     instruction='Fix the spelling mistakes.',
-    model=shared.CreateEditRequestModel2.TEXT_DAVINCI_EDIT_001,
+    model='text-davinci-edit-001',
     n=1,
     temperature=1,
     top_p=1,
@@ -366,22 +335,9 @@ s = gpt.Gpt(
 
 req = shared.CreateEmbeddingRequest(
     input=[
-        [
-            652790,
-        ],
-        [
-            635059,
-        ],
-        [
-            995300,
-        ],
-        [
-            581850,
-            253291,
-            414369,
-        ],
+        639921,
     ],
-    model='text-embedding-ada-002',
+    model=shared.CreateEmbeddingRequestModel2.TEXT_EMBEDDING_ADA_002,
     user='user-1234',
 )
 
@@ -422,10 +378,10 @@ s = gpt.Gpt(
 
 req = shared.CreateFileRequest(
     file=shared.CreateFileRequestFile(
-        content='molestiae'.encode(),
-        file='velit',
+        content='fugit'.encode(),
+        file='deleniti',
     ),
-    purpose='error',
+    purpose='hic',
 )
 
 res = s.open_ai.create_file(req)
@@ -470,19 +426,18 @@ s = gpt.Gpt(
 )
 
 req = shared.CreateFineTuneRequest(
-    batch_size=158969,
+    batch_size=758616,
     classification_betas=[
-        1103.75,
-        6747.52,
+        5218.48,
     ],
-    classification_n_classes=656330,
-    classification_positive_class='enim',
+    classification_n_classes=105907,
+    classification_positive_class='commodi',
     compute_classification_metrics=False,
-    learning_rate_multiplier=1381.83,
-    model=shared.CreateFineTuneRequestModel2.CURIE,
-    n_epochs=196582,
-    prompt_loss_weight=9495.72,
-    suffix='ipsam',
+    learning_rate_multiplier=4736,
+    model='curie',
+    n_epochs=186332,
+    prompt_loss_weight=7742.34,
+    suffix='cum',
     training_file='file-abc123',
     validation_file='file-abc123',
 )
@@ -528,10 +483,10 @@ s = gpt.Gpt(
 
 req = shared.CreateFineTuningJobRequest(
     hyperparameters=shared.CreateFineTuningJobRequestHyperparameters(
-        n_epochs=820994,
+        n_epochs=shared.CreateFineTuningJobRequestHyperparametersNEpochs1.AUTO,
     ),
     model='gpt-3.5-turbo',
-    suffix='quasi',
+    suffix='excepturi',
     training_file='file-abc123',
     validation_file='file-abc123',
 )
@@ -614,12 +569,12 @@ s = gpt.Gpt(
 
 req = shared.CreateImageEditRequest2(
     image=shared.CreateImageEditRequestImage(
-        content='error'.encode(),
-        image='temporibus',
+        content='aspernatur'.encode(),
+        image='perferendis',
     ),
     mask=shared.CreateImageEditRequestMask(
-        content='laborum'.encode(),
-        mask='quasi',
+        content='ad'.encode(),
+        mask='natus',
     ),
     n=1,
     prompt='A cute baby sea otter wearing a beret',
@@ -664,8 +619,8 @@ s = gpt.Gpt(
 
 req = shared.CreateImageVariationRequest2(
     image=shared.CreateImageVariationRequestImage(
-        content='reiciendis'.encode(),
-        image='voluptatibus',
+        content='sed'.encode(),
+        image='iste',
     ),
     n=1,
     response_format=shared.CreateImageVariationRequestResponseFormat.URL,
@@ -708,10 +663,7 @@ s = gpt.Gpt(
 )
 
 req = shared.CreateModerationRequest(
-    input=[
-        'I want to kill them.',
-        'I want to kill them.',
-    ],
+    input='I want to kill them.',
     model=shared.CreateModerationRequestModel2.TEXT_MODERATION_STABLE,
 )
 
@@ -751,14 +703,14 @@ s = gpt.Gpt(
 
 req = shared.CreateTranscriptionRequest1(
     file=shared.CreateTranscriptionRequestFile(
-        content='voluptatibus'.encode(),
-        file='ipsa',
+        content='laboriosam'.encode(),
+        file='hic',
     ),
-    language='omnis',
-    model='whisper-1',
-    prompt='cum',
-    response_format=shared.CreateTranscriptionRequestResponseFormat.JSON,
-    temperature=391.87,
+    language='saepe',
+    model=shared.CreateTranscriptionRequestModel2.WHISPER_1,
+    prompt='in',
+    response_format=shared.CreateTranscriptionRequestResponseFormat.TEXT,
+    temperature=6130.64,
 )
 
 res = s.open_ai.create_transcription(req)
@@ -797,13 +749,13 @@ s = gpt.Gpt(
 
 req = shared.CreateTranslationRequest(
     file=shared.CreateTranslationRequestFile(
-        content='reprehenderit'.encode(),
-        file='ut',
+        content='iure'.encode(),
+        file='saepe',
     ),
     model=shared.CreateTranslationRequestModel2.WHISPER_1,
-    prompt='dicta',
-    response_format='corporis',
-    temperature=2961.4,
+    prompt='architecto',
+    response_format='ipsa',
+    temperature=9698.1,
 )
 
 res = s.open_ai.create_translation(req)
@@ -841,7 +793,7 @@ s = gpt.Gpt(
 )
 
 req = operations.DeleteFileRequest(
-    file_id='iusto',
+    file_id='est',
 )
 
 res = s.open_ai.delete_file(req)
@@ -917,7 +869,7 @@ s = gpt.Gpt(
 )
 
 req = operations.DownloadFileRequest(
-    file_id='dicta',
+    file_id='mollitia',
 )
 
 res = s.open_ai.download_file(req)
@@ -1059,9 +1011,9 @@ s = gpt.Gpt(
 )
 
 req = operations.ListFineTuningEventsRequest(
-    after='harum',
+    after='laborum',
     fine_tuning_job_id='ft-AF1WoRqd3aJAHsqc9NY7iL8F',
-    limit=317983,
+    limit=170909,
 )
 
 res = s.open_ai.list_fine_tuning_events(req)
@@ -1129,8 +1081,8 @@ s = gpt.Gpt(
 )
 
 req = operations.ListPaginatedFineTuningJobsRequest(
-    after='accusamus',
-    limit=414263,
+    after='dolorem',
+    limit=358152,
 )
 
 res = s.open_ai.list_paginated_fine_tuning_jobs(req)
@@ -1168,7 +1120,7 @@ s = gpt.Gpt(
 )
 
 req = operations.RetrieveFileRequest(
-    file_id='repudiandae',
+    file_id='explicabo',
 )
 
 res = s.open_ai.retrieve_file(req)

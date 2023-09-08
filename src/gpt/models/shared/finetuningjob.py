@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 import dataclasses
-from ..shared import openaifile as shared_openaifile
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from gpt import utils
@@ -36,7 +35,7 @@ class FineTuningJob:
     created_at: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created_at') }})
     r"""The Unix timestamp (in seconds) for when the fine-tuning job was created."""
     fine_tuned_model: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fine_tuned_model') }})
-    r"""The name of the fine-tuned model that is being created."""
+    r"""The name of the fine-tuned model that is being created. The value will be null if the fine-tuning job is still running."""
     hyperparameters: FineTuningJobHyperparameters = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hyperparameters') }})
     r"""The hyperparameters used for the fine-tuning job. See the [fine-tuning guide](/docs/guides/fine-tuning) for more details."""
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
@@ -47,17 +46,17 @@ class FineTuningJob:
     r"""The object type, which is always \\"fine_tuning.job\\"."""
     organization_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('organization_id') }})
     r"""The organization that owns the fine-tuning job."""
-    result_files: list[shared_openaifile.OpenAIFile] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('result_files') }})
+    result_files: list[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('result_files') }})
     r"""The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents)."""
     status: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""The current status of the fine-tuning job, which can be either `created`, `pending`, `running`, `succeeded`, `failed`, or `cancelled`."""
     trained_tokens: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('trained_tokens') }})
-    r"""The total number of billable tokens processed by this fine-tuning job."""
+    r"""The total number of billable tokens processed by this fine-tuning job. The value will be null if the fine-tuning job is still running."""
     training_file: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('training_file') }})
     r"""The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents)."""
     validation_file: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validation_file') }})
     r"""The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents)."""
     finished_at: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finished_at'), 'exclude': lambda f: f is None }})
-    r"""The Unix timestamp (in seconds) for when the fine-tuning job was finished."""
+    r"""The Unix timestamp (in seconds) for when the fine-tuning job was finished. The value will be null if the fine-tuning job is still running."""
     
 

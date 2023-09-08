@@ -11,7 +11,6 @@ from gpt import utils
 
 @dataclasses.dataclass
 class ListModelsResponse:
-    r"""OK"""
     data: list[shared_model.Model] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
     object: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('object') }})
     

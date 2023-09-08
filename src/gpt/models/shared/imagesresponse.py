@@ -11,7 +11,6 @@ from gpt import utils
 
 @dataclasses.dataclass
 class ImagesResponse:
-    r"""OK"""
     created: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created') }})
     data: list[shared_image.Image] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
     
