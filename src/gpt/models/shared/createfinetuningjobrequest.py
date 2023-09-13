@@ -55,7 +55,7 @@ class CreateFineTuningJobRequest:
     hyperparameters: Optional[CreateFineTuningJobRequestHyperparameters] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hyperparameters'), 'exclude': lambda f: f is None }})
     r"""The hyperparameters used for the fine-tuning job."""
     suffix: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('suffix'), 'exclude': lambda f: f is None }})
-    r"""A string of up to 40 characters that will be added to your fine-tuned model name.
+    r"""A string of up to 18 characters that will be added to your fine-tuned model name.
 
     For example, a `suffix` of \"custom-model-name\" would produce a model name like `ft:gpt-3.5-turbo:openai:custom-model-name:7p4lURel`.
     """

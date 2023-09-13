@@ -10,7 +10,7 @@ from gpt import utils
 from typing import Any, Optional
 
 class CreateChatCompletionRequestFunctionCall1(str, Enum):
-    r"""Controls how the model responds to function calls. \\"none\\" means the model does not call a function, and responds to the end-user. \\"auto\\" means the model can pick between an end-user or calling a function.  Specifying a particular function via `{\\"name\\":\ \\"my_function\\"}` forces the model to call that function. \\"none\\" is the default when no functions are present. \\"auto\\" is the default if functions are present."""
+    r"""Controls how the model responds to function calls. `none` means the model does not call a function, and responds to the end-user. `auto` means the model can pick between an end-user or calling a function.  Specifying a particular function via `{\\"name\\": \\"my_function\\"}` forces the model to call that function. `none` is the default when no functions are present. `auto` is the default if functions are present."""
     NONE = 'none'
     AUTO = 'auto'
 
@@ -43,7 +43,7 @@ class CreateChatCompletionRequest:
     [See more information about frequency and presence penalties.](/docs/guides/gpt/parameter-details)
     """
     function_call: Optional[Any] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('function_call'), 'exclude': lambda f: f is None }})
-    r"""Controls how the model responds to function calls. \\"none\\" means the model does not call a function, and responds to the end-user. \\"auto\\" means the model can pick between an end-user or calling a function.  Specifying a particular function via `{\\"name\\":\ \\"my_function\\"}` forces the model to call that function. \\"none\\" is the default when no functions are present. \\"auto\\" is the default if functions are present."""
+    r"""Controls how the model responds to function calls. `none` means the model does not call a function, and responds to the end-user. `auto` means the model can pick between an end-user or calling a function.  Specifying a particular function via `{\\"name\\": \\"my_function\\"}` forces the model to call that function. `none` is the default when no functions are present. `auto` is the default if functions are present."""
     functions: Optional[list[shared_chatcompletionfunctions.ChatCompletionFunctions]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('functions'), 'exclude': lambda f: f is None }})
     r"""A list of functions the model may generate JSON inputs for."""
     logit_bias: Optional[dict[str, int]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('logit_bias'), 'exclude': lambda f: f is None }})

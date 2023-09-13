@@ -7,6 +7,21 @@ from enum import Enum
 from gpt import utils
 from typing import Any, Optional
 
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+
+@dataclasses.dataclass
+class FineTuningJobError:
+    r"""For fine-tuning jobs that have `failed`, this will contain more information on the cause of the failure."""
+    code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('code'), 'exclude': lambda f: f is None }})
+    r"""A machine-readable error code."""
+    message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message'), 'exclude': lambda f: f is None }})
+    r"""A human-readable error message."""
+    param: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('param'), 'exclude': lambda f: f is None }})
+    r"""The parameter that was invalid, usually `training_file` or `validation_file`. This field will be null if the failure was not parameter-specific."""
+    
+
+
 class FineTuningJobHyperparametersNEpochs1(str, Enum):
     r"""The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
     \"Auto\" decides the optimal number of epochs based on the size of the dataset. If setting the number manually, we support any number between 1 and 50 epochs.
@@ -34,6 +49,8 @@ class FineTuningJob:
     r"""The `fine_tuning.job` object represents a fine-tuning job that has been created through the API."""
     created_at: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created_at') }})
     r"""The Unix timestamp (in seconds) for when the fine-tuning job was created."""
+    error: FineTuningJobError = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('error') }})
+    r"""For fine-tuning jobs that have `failed`, this will contain more information on the cause of the failure."""
     fine_tuned_model: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fine_tuned_model') }})
     r"""The name of the fine-tuned model that is being created. The value will be null if the fine-tuning job is still running."""
     hyperparameters: FineTuningJobHyperparameters = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hyperparameters') }})
