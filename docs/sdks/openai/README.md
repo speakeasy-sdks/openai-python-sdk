@@ -1,4 +1,4 @@
-# open_ai
+# OpenAI
 
 ## Overview
 
