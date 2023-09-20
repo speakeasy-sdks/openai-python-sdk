@@ -10,10 +10,12 @@ from typing import Optional
 
 class CreateCompletionResponseChoicesFinishReason(str, Enum):
     r"""The reason the model stopped generating tokens. This will be `stop` if the model hit a natural stop point or a provided stop sequence,
-    or `length` if the maximum number of tokens specified in the request was reached.
+    `length` if the maximum number of tokens specified in the request was reached,
+    or `content_filter` if content was omitted due to a flag from our content filters.
     """
     STOP = 'stop'
     LENGTH = 'length'
+    CONTENT_FILTER = 'content_filter'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -34,7 +36,8 @@ class CreateCompletionResponseChoicesLogprobs:
 class CreateCompletionResponseChoices:
     finish_reason: CreateCompletionResponseChoicesFinishReason = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finish_reason') }})
     r"""The reason the model stopped generating tokens. This will be `stop` if the model hit a natural stop point or a provided stop sequence,
-    or `length` if the maximum number of tokens specified in the request was reached.
+    `length` if the maximum number of tokens specified in the request was reached,
+    or `content_filter` if content was omitted due to a flag from our content filters.
     """
     index: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('index') }})
     logprobs: CreateCompletionResponseChoicesLogprobs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('logprobs') }})
