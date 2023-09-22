@@ -5,7 +5,7 @@ import dataclasses
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from gpt import utils
-from typing import Any, Optional
+from typing import Any
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -13,18 +13,18 @@ from typing import Any, Optional
 @dataclasses.dataclass
 class FineTuningJobError:
     r"""For fine-tuning jobs that have `failed`, this will contain more information on the cause of the failure."""
-    code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('code'), 'exclude': lambda f: f is None }})
+    code: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('code') }})
     r"""A machine-readable error code."""
-    message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message'), 'exclude': lambda f: f is None }})
+    message: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message') }})
     r"""A human-readable error message."""
-    param: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('param'), 'exclude': lambda f: f is None }})
+    param: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('param') }})
     r"""The parameter that was invalid, usually `training_file` or `validation_file`. This field will be null if the failure was not parameter-specific."""
     
 
 
 class FineTuningJobHyperparametersNEpochs1(str, Enum):
     r"""The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
-    \"Auto\" decides the optimal number of epochs based on the size of the dataset. If setting the number manually, we support any number between 1 and 50 epochs.
+    \"auto\" decides the optimal number of epochs based on the size of the dataset. If setting the number manually, we support any number between 1 and 50 epochs.
     """
     AUTO = 'auto'
 
@@ -34,9 +34,9 @@ class FineTuningJobHyperparametersNEpochs1(str, Enum):
 @dataclasses.dataclass
 class FineTuningJobHyperparameters:
     r"""The hyperparameters used for the fine-tuning job. See the [fine-tuning guide](/docs/guides/fine-tuning) for more details."""
-    n_epochs: Optional[Any] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('n_epochs'), 'exclude': lambda f: f is None }})
+    n_epochs: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('n_epochs') }})
     r"""The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
-    \"Auto\" decides the optimal number of epochs based on the size of the dataset. If setting the number manually, we support any number between 1 and 50 epochs.
+    \"auto\" decides the optimal number of epochs based on the size of the dataset. If setting the number manually, we support any number between 1 and 50 epochs.
     """
     
 
@@ -53,6 +53,8 @@ class FineTuningJob:
     r"""For fine-tuning jobs that have `failed`, this will contain more information on the cause of the failure."""
     fine_tuned_model: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fine_tuned_model') }})
     r"""The name of the fine-tuned model that is being created. The value will be null if the fine-tuning job is still running."""
+    finished_at: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finished_at') }})
+    r"""The Unix timestamp (in seconds) for when the fine-tuning job was finished. The value will be null if the fine-tuning job is still running."""
     hyperparameters: FineTuningJobHyperparameters = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hyperparameters') }})
     r"""The hyperparameters used for the fine-tuning job. See the [fine-tuning guide](/docs/guides/fine-tuning) for more details."""
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
@@ -66,14 +68,12 @@ class FineTuningJob:
     result_files: list[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('result_files') }})
     r"""The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents)."""
     status: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
-    r"""The current status of the fine-tuning job, which can be either `created`, `pending`, `running`, `succeeded`, `failed`, or `cancelled`."""
+    r"""The current status of the fine-tuning job, which can be either `validating_files`, `queued`, `running`, `succeeded`, `failed`, or `cancelled`."""
     trained_tokens: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('trained_tokens') }})
     r"""The total number of billable tokens processed by this fine-tuning job. The value will be null if the fine-tuning job is still running."""
     training_file: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('training_file') }})
     r"""The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents)."""
     validation_file: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validation_file') }})
     r"""The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents)."""
-    finished_at: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finished_at'), 'exclude': lambda f: f is None }})
-    r"""The Unix timestamp (in seconds) for when the fine-tuning job was finished. The value will be null if the fine-tuning job is still running."""
     
 
