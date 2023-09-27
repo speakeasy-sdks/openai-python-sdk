@@ -56,7 +56,7 @@ if res.fine_tune is not None:
 ## Available Resources and Operations
 
 
-### [OpenAI](docs/sdks/openai/README.md)
+### [open_ai](docs/sdks/openai/README.md)
 
 * [~~cancel_fine_tune~~](docs/sdks/openai/README.md#cancel_fine_tune) - Immediately cancel a fine-tune job.
  :warning: **Deprecated**

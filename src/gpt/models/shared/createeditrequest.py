@@ -5,12 +5,18 @@ import dataclasses
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from gpt import utils
-from typing import Any, Optional
+from typing import Optional, Union
 
 class CreateEditRequestModel2(str, Enum):
     r"""ID of the model to use. You can use the `text-davinci-edit-001` or `code-davinci-edit-001` model with this endpoint."""
     TEXT_DAVINCI_EDIT_001 = 'text-davinci-edit-001'
     CODE_DAVINCI_EDIT_001 = 'code-davinci-edit-001'
+
+
+
+@dataclasses.dataclass
+class CreateEditRequestModel:
+    pass
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -19,7 +25,7 @@ class CreateEditRequestModel2(str, Enum):
 class CreateEditRequest:
     instruction: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('instruction') }})
     r"""The instruction that tells the model how to edit the prompt."""
-    model: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model') }})
+    model: Union[str, CreateEditRequestModel2] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model') }})
     r"""ID of the model to use. You can use the `text-davinci-edit-001` or `code-davinci-edit-001` model with this endpoint."""
     input: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('input'), 'exclude': lambda f: f is None }})
     r"""The input text to use as a starting point for the edit."""

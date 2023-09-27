@@ -5,7 +5,7 @@ import dataclasses
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from gpt import utils
-from typing import Any, Optional
+from typing import Optional, Union
 
 class CreateCompletionRequestModel2(str, Enum):
     r"""ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](/docs/models/overview) for descriptions of them."""
@@ -21,13 +21,31 @@ class CreateCompletionRequestModel2(str, Enum):
     TEXT_ADA_001 = 'text-ada-001'
 
 
+
+@dataclasses.dataclass
+class CreateCompletionRequestModel:
+    pass
+
+
+
+@dataclasses.dataclass
+class CreateCompletionRequestPrompt:
+    pass
+
+
+
+@dataclasses.dataclass
+class CreateCompletionRequestStop:
+    pass
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
 
 @dataclasses.dataclass
 class CreateCompletionRequest:
-    model: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model') }})
+    model: Union[str, CreateCompletionRequestModel2] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model') }})
     r"""ID of the model to use. You can use the [List models](/docs/api-reference/models/list) API to see all of your available models, or see our [Model overview](/docs/models/overview) for descriptions of them."""
-    prompt: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('prompt') }})
+    prompt: Union[str, list[str], list[int], list[list[int]]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('prompt') }})
     r"""The prompt(s) to generate completions for, encoded as a string, array of strings, array of tokens, or array of token arrays.
 
     Note that <|endoftext|> is the document separator that the model sees during training, so if a prompt is not specified the model will generate as if from the beginning of a new document.
@@ -73,7 +91,7 @@ class CreateCompletionRequest:
 
     [See more information about frequency and presence penalties.](/docs/guides/gpt/parameter-details)
     """
-    stop: Optional[Any] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('stop'), 'exclude': lambda f: f is None }})
+    stop: Optional[Union[str, list[str]]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('stop'), 'exclude': lambda f: f is None }})
     r"""Up to 4 sequences where the API will stop generating further tokens. The returned text will not contain the stop sequence."""
     stream: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('stream'), 'exclude': lambda f: f is None }})
     r"""Whether to stream back partial progress. If set, tokens will be sent as data-only [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format) as they become available, with the stream terminated by a `data: [DONE]` message. [Example Python code](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_stream_completions.ipynb)."""

@@ -424,7 +424,7 @@ class OpenAI:
         return res
 
     
-    def create_transcription(self, request: shared.CreateTranscriptionRequest1) -> operations.CreateTranscriptionResponse:
+    def create_transcription(self, request: shared.CreateTranscriptionRequest3) -> operations.CreateTranscriptionResponse:
         r"""Transcribes audio into the input language."""
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -455,7 +455,7 @@ class OpenAI:
         return res
 
     
-    def create_translation(self, request: shared.CreateTranslationRequest) -> operations.CreateTranslationResponse:
+    def create_translation(self, request: shared.CreateTranslationRequest1) -> operations.CreateTranslationResponse:
         r"""Translates audio into English."""
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         

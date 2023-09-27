@@ -5,7 +5,7 @@ import dataclasses
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from gpt import utils
-from typing import Any, Optional
+from typing import Optional, Union
 
 class CreateFineTuningJobRequestHyperparametersNEpochs1(str, Enum):
     r"""The number of epochs to train the model for. An epoch refers to one
@@ -14,12 +14,18 @@ class CreateFineTuningJobRequestHyperparametersNEpochs1(str, Enum):
     AUTO = 'auto'
 
 
+
+@dataclasses.dataclass
+class CreateFineTuningJobRequestHyperparametersNEpochs:
+    pass
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
 
 @dataclasses.dataclass
 class CreateFineTuningJobRequestHyperparameters:
     r"""The hyperparameters used for the fine-tuning job."""
-    n_epochs: Optional[Any] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('n_epochs'), 'exclude': lambda f: f is None }})
+    n_epochs: Optional[Union[CreateFineTuningJobRequestHyperparametersNEpochs1, int]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('n_epochs'), 'exclude': lambda f: f is None }})
     r"""The number of epochs to train the model for. An epoch refers to one
     full cycle through the training dataset.
     """
@@ -35,11 +41,17 @@ class CreateFineTuningJobRequestModel2(str, Enum):
     GPT_3_5_TURBO = 'gpt-3.5-turbo'
 
 
+
+@dataclasses.dataclass
+class CreateFineTuningJobRequestModel:
+    pass
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
 
 @dataclasses.dataclass
 class CreateFineTuningJobRequest:
-    model: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model') }})
+    model: Union[str, CreateFineTuningJobRequestModel2] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model') }})
     r"""The name of the model to fine-tune. You can select one of the
     [supported models](/docs/guides/fine-tuning/what-models-can-be-fine-tuned).
     """

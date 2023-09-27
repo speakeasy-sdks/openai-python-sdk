@@ -5,7 +5,7 @@ import dataclasses
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from gpt import utils
-from typing import Any, Optional
+from typing import Optional, Union
 
 class CreateFineTuneRequestModel2(str, Enum):
     r"""The name of the base model to fine-tune. You can select one of \\"ada\\",
@@ -17,6 +17,12 @@ class CreateFineTuneRequestModel2(str, Enum):
     BABBAGE = 'babbage'
     CURIE = 'curie'
     DAVINCI = 'davinci'
+
+
+
+@dataclasses.dataclass
+class CreateFineTuneRequestModel:
+    pass
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -85,7 +91,7 @@ class CreateFineTuneRequest:
     with values in the range 0.02 to 0.2 to see what produces the best
     results.
     """
-    model: Optional[Any] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model'), 'exclude': lambda f: f is None }})
+    model: Optional[Union[str, CreateFineTuneRequestModel2]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model'), 'exclude': lambda f: f is None }})
     r"""The name of the base model to fine-tune. You can select one of \\"ada\\",
     \"babbage\", \"curie\", \"davinci\", or a fine-tuned model created after 2022-04-21 and before 2023-08-22.
     To learn more about these models, see the
