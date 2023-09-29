@@ -26,7 +26,7 @@ class OpenAIFile:
     r"""The intended purpose of the file. Currently, only \\"fine-tune\\" is supported."""
     status: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status'), 'exclude': lambda f: f is None }})
     r"""The current status of the file, which can be either `uploaded`, `processed`, `pending`, `error`, `deleting` or `deleted`."""
-    status_details: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status_details'), 'exclude': lambda f: f is None }})
+    status_details: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status_details') }})
     r"""Additional details about the status of the file. If the file is in the `error` state, this will include a message describing the error."""
     
 

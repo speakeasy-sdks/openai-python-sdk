@@ -40,7 +40,7 @@ class CreateCompletionResponseChoices:
     or `content_filter` if content was omitted due to a flag from our content filters.
     """
     index: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('index') }})
-    logprobs: CreateCompletionResponseChoicesLogprobs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('logprobs') }})
+    logprobs: Optional[CreateCompletionResponseChoicesLogprobs] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('logprobs') }})
     text: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('text') }})
     
 

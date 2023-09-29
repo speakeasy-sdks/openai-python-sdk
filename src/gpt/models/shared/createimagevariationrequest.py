@@ -28,14 +28,14 @@ class CreateImageVariationRequestSize(str, Enum):
 
 
 @dataclasses.dataclass
-class CreateImageVariationRequest2:
+class CreateImageVariationRequest:
     image: CreateImageVariationRequestImage = dataclasses.field(metadata={'multipart_form': { 'file': True }})
     r"""The image to use as the basis for the variation(s). Must be a valid PNG file, less than 4MB, and square."""
-    n: Optional[int] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'n' }})
+    n: Optional[int] = dataclasses.field(default=1, metadata={'multipart_form': { 'field_name': 'n' }})
     r"""The number of images to generate. Must be between 1 and 10."""
-    response_format: Optional[CreateImageVariationRequestResponseFormat] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'response_format' }})
+    response_format: Optional[CreateImageVariationRequestResponseFormat] = dataclasses.field(default=CreateImageVariationRequestResponseFormat.URL, metadata={'multipart_form': { 'field_name': 'response_format' }})
     r"""The format in which the generated images are returned. Must be one of `url` or `b64_json`."""
-    size: Optional[CreateImageVariationRequestSize] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'size' }})
+    size: Optional[CreateImageVariationRequestSize] = dataclasses.field(default=CreateImageVariationRequestSize.ONE_THOUSAND_AND_TWENTY_FOURX1024, metadata={'multipart_form': { 'field_name': 'size' }})
     r"""The size of the generated images. Must be one of `256x256`, `512x512`, or `1024x1024`."""
     user: Optional[str] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'user' }})
     r"""A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. [Learn more](/docs/guides/safety-best-practices/end-user-ids)."""

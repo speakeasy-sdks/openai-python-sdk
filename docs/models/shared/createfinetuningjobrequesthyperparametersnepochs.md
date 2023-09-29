@@ -3,10 +3,10 @@
 
 ## Supported Types
 
-### CreateFineTuningJobRequestHyperparametersNEpochs1
+### 
 
 ```python
-createFineTuningJobRequestHyperparametersNEpochs: shared.CreateFineTuningJobRequestHyperparametersNEpochs1 = /* values here */
+createFineTuningJobRequestHyperparametersNEpochs: str = /* values here */
 ```
 
 ### 

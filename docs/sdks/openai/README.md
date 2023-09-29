@@ -156,35 +156,35 @@ s = gpt.Gpt(
 )
 
 req = shared.CreateChatCompletionRequest(
-    frequency_penalty=5488.14,
+    frequency_penalty=7707.26,
     function_call=[],
     functions=[
         shared.ChatCompletionFunctions(
-            description='provident',
-            name='Ellis Mitchell',
+            description='Optimized exuding secured line',
+            name='Money',
             parameters={
-                "illum": 'vel',
+                "dolorum": 'lumen',
             },
         ),
     ],
     logit_bias={
-        "error": 645894,
+        "quod": 401600,
     },
-    max_tokens=384382,
+    max_tokens=90770,
     messages=[
         shared.ChatCompletionRequestMessage(
-            content='iure',
+            content='International incidunt Franc',
             function_call=shared.ChatCompletionRequestMessageFunctionCall(
-                arguments='magnam',
-                name='Larry Windler',
+                arguments='alarm',
+                name='Chair',
             ),
-            name='Alexandra Schulist',
+            name='Northeast frictionless Park',
             role=shared.ChatCompletionRequestMessageRole.ASSISTANT,
         ),
     ],
     model=[],
     n=1,
-    presence_penalty=3927.85,
+    presence_penalty=6542.93,
     stop=[],
     stream=False,
     temperature=1,
@@ -227,17 +227,17 @@ s = gpt.Gpt(
 )
 
 req = shared.CreateCompletionRequest(
-    best_of=925597,
+    best_of=160667,
     echo=False,
-    frequency_penalty=8360.79,
+    frequency_penalty=141.61,
     logit_bias={
-        "ab": 337396,
+        "velit": 254881,
     },
-    logprobs=87129,
+    logprobs=877910,
     max_tokens=16,
     model=[],
     n=1,
-    presence_penalty=6481.72,
+    presence_penalty=5915.62,
     prompt=[],
     stop=[],
     stream=False,
@@ -328,7 +328,7 @@ s = gpt.Gpt(
 
 req = shared.CreateEmbeddingRequest(
     input=[],
-    model=[],
+    model='text-embedding-ada-002',
     user='user-1234',
 )
 
@@ -369,10 +369,10 @@ s = gpt.Gpt(
 
 req = shared.CreateFileRequest(
     file=shared.CreateFileRequestFile(
-        content='perferendis'.encode(),
-        file='ipsam',
+        content='`\'$Z`(L/RH'.encode(),
+        file='Rap National',
     ),
-    purpose='repellendus',
+    purpose='Female synergistic Maine',
 )
 
 res = s.open_ai.create_file(req)
@@ -417,18 +417,18 @@ s = gpt.Gpt(
 )
 
 req = shared.CreateFineTuneRequest(
-    batch_size=957156,
+    batch_size=763928,
     classification_betas=[
-        7781.57,
+        3993.02,
     ],
-    classification_n_classes=140350,
-    classification_positive_class='at',
+    classification_n_classes=172686,
+    classification_positive_class='male Buckinghamshire',
     compute_classification_metrics=False,
-    learning_rate_multiplier=8700.88,
+    learning_rate_multiplier=4447.26,
     model=[],
-    n_epochs=978619,
-    prompt_loss_weight=4736.08,
-    suffix='quod',
+    n_epochs=592749,
+    prompt_loss_weight=4413.8,
+    suffix='next',
     training_file='file-abc123',
     validation_file='file-abc123',
 )
@@ -477,7 +477,7 @@ req = shared.CreateFineTuningJobRequest(
         n_epochs=[],
     ),
     model=[],
-    suffix='quod',
+    suffix='Thallium',
     training_file='file-abc123',
     validation_file='file-abc123',
 )
@@ -558,14 +558,14 @@ s = gpt.Gpt(
     ),
 )
 
-req = shared.CreateImageEditRequest2(
+req = shared.CreateImageEditRequest(
     image=shared.CreateImageEditRequestImage(
-        content='esse'.encode(),
-        image='totam',
+        content='0]/(|3W_T9'.encode(),
+        image='https://loremflickr.com/640/480',
     ),
     mask=shared.CreateImageEditRequestMask(
-        content='porro'.encode(),
-        mask='dolorum',
+        content='`^YjrpxopK'.encode(),
+        mask='Rap Dodge Incredible',
     ),
     n=1,
     prompt='A cute baby sea otter wearing a beret',
@@ -582,9 +582,9 @@ if res.images_response is not None:
 
 ### Parameters
 
-| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
-| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
-| `request`                                                                        | [shared.CreateImageEditRequest2](../../models/shared/createimageeditrequest2.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [shared.CreateImageEditRequest](../../models/shared/createimageeditrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
 
 
 ### Response
@@ -608,10 +608,10 @@ s = gpt.Gpt(
     ),
 )
 
-req = shared.CreateImageVariationRequest2(
+req = shared.CreateImageVariationRequest(
     image=shared.CreateImageVariationRequestImage(
-        content='dicta'.encode(),
-        image='nam',
+        content='`YY7PCrWuK'.encode(),
+        image='https://loremflickr.com/640/480',
     ),
     n=1,
     response_format=shared.CreateImageVariationRequestResponseFormat.URL,
@@ -627,9 +627,9 @@ if res.images_response is not None:
 
 ### Parameters
 
-| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
-| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
-| `request`                                                                                  | [shared.CreateImageVariationRequest2](../../models/shared/createimagevariationrequest2.md) | :heavy_check_mark:                                                                         | The request object to use for the request.                                                 |
+| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `request`                                                                                | [shared.CreateImageVariationRequest](../../models/shared/createimagevariationrequest.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
 
 
 ### Response
@@ -692,16 +692,16 @@ s = gpt.Gpt(
     ),
 )
 
-req = shared.CreateTranscriptionRequest3(
+req = shared.CreateTranscriptionRequest(
     file=shared.CreateTranscriptionRequestFile(
-        content='officia'.encode(),
-        file='occaecati',
+        content='\#BbTW\'zX9'.encode(),
+        file='Buckinghamshire',
     ),
-    language='fugit',
-    model=[],
-    prompt='deleniti',
-    response_format=shared.CreateTranscriptionRequestResponseFormat.VTT,
-    temperature=7586.16,
+    language='teal Titanium',
+    model='whisper-1',
+    prompt='Mendelevium Kansas behind',
+    response_format=shared.CreateTranscriptionRequestResponseFormat.JSON,
+    temperature=3694.44,
 )
 
 res = s.open_ai.create_transcription(req)
@@ -712,9 +712,9 @@ if res.create_transcription_response is not None:
 
 ### Parameters
 
-| Parameter                                                                                | Type                                                                                     | Required                                                                                 | Description                                                                              |
-| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
-| `request`                                                                                | [shared.CreateTranscriptionRequest3](../../models/shared/createtranscriptionrequest3.md) | :heavy_check_mark:                                                                       | The request object to use for the request.                                               |
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `request`                                                                              | [shared.CreateTranscriptionRequest](../../models/shared/createtranscriptionrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
 
 
 ### Response
@@ -738,15 +738,15 @@ s = gpt.Gpt(
     ),
 )
 
-req = shared.CreateTranslationRequest1(
+req = shared.CreateTranslationRequest(
     file=shared.CreateTranslationRequestFile(
-        content='totam'.encode(),
-        file='beatae',
+        content='M57UL;W3rx'.encode(),
+        file='Reggae Toys silver',
     ),
-    model=[],
-    prompt='commodi',
-    response_format='molestiae',
-    temperature=2645.55,
+    model='whisper-1',
+    prompt='Soft East Frozen',
+    response_format='Analyst aboard relocate',
+    temperature=6003.73,
 )
 
 res = s.open_ai.create_translation(req)
@@ -757,9 +757,9 @@ if res.create_translation_response is not None:
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `request`                                                                            | [shared.CreateTranslationRequest1](../../models/shared/createtranslationrequest1.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `request`                                                                          | [shared.CreateTranslationRequest](../../models/shared/createtranslationrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 
 
 ### Response
@@ -784,7 +784,7 @@ s = gpt.Gpt(
 )
 
 req = operations.DeleteFileRequest(
-    file_id='qui',
+    file_id='yellow kiddingly white',
 )
 
 res = s.open_ai.delete_file(req)
@@ -860,7 +860,7 @@ s = gpt.Gpt(
 )
 
 req = operations.DownloadFileRequest(
-    file_id='impedit',
+    file_id='Maserati Bronze Audi',
 )
 
 res = s.open_ai.download_file(req)
@@ -1002,9 +1002,9 @@ s = gpt.Gpt(
 )
 
 req = operations.ListFineTuningEventsRequest(
-    after='cum',
+    after='phew silver Consultant',
     fine_tuning_job_id='ft-AF1WoRqd3aJAHsqc9NY7iL8F',
-    limit=456150,
+    limit=104325,
 )
 
 res = s.open_ai.list_fine_tuning_events(req)
@@ -1072,8 +1072,8 @@ s = gpt.Gpt(
 )
 
 req = operations.ListPaginatedFineTuningJobsRequest(
-    after='ipsum',
-    limit=568434,
+    after='GB voluptate',
+    limit=374490,
 )
 
 res = s.open_ai.list_paginated_fine_tuning_jobs(req)
@@ -1111,7 +1111,7 @@ s = gpt.Gpt(
 )
 
 req = operations.RetrieveFileRequest(
-    file_id='aspernatur',
+    file_id='online Facilitator enfold',
 )
 
 res = s.open_ai.retrieve_file(req)

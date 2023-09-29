@@ -32,7 +32,7 @@ class ChatCompletionRequestMessageRole(str, Enum):
 
 @dataclasses.dataclass
 class ChatCompletionRequestMessage:
-    content: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('content') }})
+    content: Optional[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('content') }})
     r"""The contents of the message. `content` is required for all messages, and may be null for assistant messages with function calls."""
     role: ChatCompletionRequestMessageRole = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('role') }})
     r"""The role of the messages author. One of `system`, `user`, `assistant`, or `function`."""

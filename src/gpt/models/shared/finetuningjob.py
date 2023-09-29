@@ -3,9 +3,8 @@
 from __future__ import annotations
 import dataclasses
 from dataclasses_json import Undefined, dataclass_json
-from enum import Enum
 from gpt import utils
-from typing import Union
+from typing import Optional, Union
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -17,16 +16,10 @@ class FineTuningJobError:
     r"""A machine-readable error code."""
     message: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message') }})
     r"""A human-readable error message."""
-    param: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('param') }})
+    param: Optional[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('param') }})
     r"""The parameter that was invalid, usually `training_file` or `validation_file`. This field will be null if the failure was not parameter-specific."""
     
 
-
-class FineTuningJobHyperparametersNEpochs1(str, Enum):
-    r"""The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
-    \"auto\" decides the optimal number of epochs based on the size of the dataset. If setting the number manually, we support any number between 1 and 50 epochs.
-    """
-    AUTO = 'auto'
 
 
 
@@ -40,7 +33,7 @@ class FineTuningJobHyperparametersNEpochs:
 @dataclasses.dataclass
 class FineTuningJobHyperparameters:
     r"""The hyperparameters used for the fine-tuning job. See the [fine-tuning guide](/docs/guides/fine-tuning) for more details."""
-    n_epochs: Union[FineTuningJobHyperparametersNEpochs1, int] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('n_epochs') }})
+    n_epochs: Union[str, int] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('n_epochs') }})
     r"""The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
     \"auto\" decides the optimal number of epochs based on the size of the dataset. If setting the number manually, we support any number between 1 and 50 epochs.
     """
@@ -55,11 +48,11 @@ class FineTuningJob:
     r"""The `fine_tuning.job` object represents a fine-tuning job that has been created through the API."""
     created_at: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created_at') }})
     r"""The Unix timestamp (in seconds) for when the fine-tuning job was created."""
-    error: FineTuningJobError = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('error') }})
+    error: Optional[FineTuningJobError] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('error') }})
     r"""For fine-tuning jobs that have `failed`, this will contain more information on the cause of the failure."""
-    fine_tuned_model: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fine_tuned_model') }})
+    fine_tuned_model: Optional[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fine_tuned_model') }})
     r"""The name of the fine-tuned model that is being created. The value will be null if the fine-tuning job is still running."""
-    finished_at: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finished_at') }})
+    finished_at: Optional[int] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finished_at') }})
     r"""The Unix timestamp (in seconds) for when the fine-tuning job was finished. The value will be null if the fine-tuning job is still running."""
     hyperparameters: FineTuningJobHyperparameters = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hyperparameters') }})
     r"""The hyperparameters used for the fine-tuning job. See the [fine-tuning guide](/docs/guides/fine-tuning) for more details."""
@@ -75,11 +68,11 @@ class FineTuningJob:
     r"""The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents)."""
     status: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""The current status of the fine-tuning job, which can be either `validating_files`, `queued`, `running`, `succeeded`, `failed`, or `cancelled`."""
-    trained_tokens: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('trained_tokens') }})
+    trained_tokens: Optional[int] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('trained_tokens') }})
     r"""The total number of billable tokens processed by this fine-tuning job. The value will be null if the fine-tuning job is still running."""
     training_file: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('training_file') }})
     r"""The file ID used for training. You can retrieve the training data with the [Files API](/docs/api-reference/files/retrieve-contents)."""
-    validation_file: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validation_file') }})
+    validation_file: Optional[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validation_file') }})
     r"""The file ID used for validation. You can retrieve the validation results with the [Files API](/docs/api-reference/files/retrieve-contents)."""
     
 

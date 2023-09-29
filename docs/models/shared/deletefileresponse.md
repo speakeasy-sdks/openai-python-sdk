@@ -5,6 +5,6 @@
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `deleted`          | *bool*             | :heavy_check_mark: | N/A                |
-| `id`               | *str*              | :heavy_check_mark: | N/A                |
-| `object`           | *str*              | :heavy_check_mark: | N/A                |
+| `deleted`          | *Optional[bool]*   | :heavy_check_mark: | N/A                |
+| `id`               | *Optional[str]*    | :heavy_check_mark: | N/A                |
+| `object`           | *Optional[str]*    | :heavy_check_mark: | N/A                |

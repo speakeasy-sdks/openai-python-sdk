@@ -46,7 +46,7 @@ class FineTune:
     """
     created_at: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created_at') }})
     r"""The Unix timestamp (in seconds) for when the fine-tuning job was created."""
-    fine_tuned_model: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fine_tuned_model') }})
+    fine_tuned_model: Optional[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fine_tuned_model') }})
     r"""The name of the fine-tuned model that is being created."""
     hyperparams: FineTuneHyperparams = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hyperparams') }})
     r"""The hyperparameters used for the fine-tuning job. See the [fine-tuning guide](/docs/guides/legacy-fine-tuning/hyperparameters) for more details."""

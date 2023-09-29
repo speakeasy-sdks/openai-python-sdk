@@ -7,5 +7,5 @@ The usage information for the request.
 
 | Field                                           | Type                                            | Required                                        | Description                                     |
 | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- | ----------------------------------------------- |
-| `prompt_tokens`                                 | *int*                                           | :heavy_check_mark:                              | The number of tokens used by the prompt.        |
-| `total_tokens`                                  | *int*                                           | :heavy_check_mark:                              | The total number of tokens used by the request. |
+| `prompt_tokens`                                 | *Optional[int]*                                 | :heavy_check_mark:                              | The number of tokens used by the prompt.        |
+| `total_tokens`                                  | *Optional[int]*                                 | :heavy_check_mark:                              | The total number of tokens used by the request. |

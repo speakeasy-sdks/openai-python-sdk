@@ -7,4 +7,4 @@ Controls how the model responds to function calls. `none` means the model does n
 
 | Field                             | Type                              | Required                          | Description                       |
 | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
-| `name`                            | *str*                             | :heavy_check_mark:                | The name of the function to call. |
+| `name`                            | *Optional[str]*                   | :heavy_check_mark:                | The name of the function to call. |
