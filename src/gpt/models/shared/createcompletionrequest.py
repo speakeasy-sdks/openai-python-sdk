@@ -79,7 +79,7 @@ class CreateCompletionRequest:
     max_tokens: Optional[int] = dataclasses.field(default=16, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('max_tokens') }})
     r"""The maximum number of [tokens](/tokenizer) to generate in the completion.
 
-    The token count of your prompt plus `max_tokens` cannot exceed the model's context length. [Example Python code](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_count_tokens_with_tiktoken.ipynb) for counting tokens.
+    The token count of your prompt plus `max_tokens` cannot exceed the model's context length. [Example Python code](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken) for counting tokens.
     """
     n: Optional[int] = dataclasses.field(default=1, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('n') }})
     r"""How many completions to generate for each prompt.
@@ -94,7 +94,7 @@ class CreateCompletionRequest:
     stop: Optional[Union[str, list[str]]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('stop') }})
     r"""Up to 4 sequences where the API will stop generating further tokens. The returned text will not contain the stop sequence."""
     stream: Optional[bool] = dataclasses.field(default=False, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('stream') }})
-    r"""Whether to stream back partial progress. If set, tokens will be sent as data-only [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format) as they become available, with the stream terminated by a `data: [DONE]` message. [Example Python code](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_stream_completions.ipynb)."""
+    r"""Whether to stream back partial progress. If set, tokens will be sent as data-only [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format) as they become available, with the stream terminated by a `data: [DONE]` message. [Example Python code](https://cookbook.openai.com/examples/how_to_stream_completions)."""
     suffix: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('suffix') }})
     r"""The suffix that comes after a completion of inserted text."""
     temperature: Optional[float] = dataclasses.field(default=1, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('temperature') }})

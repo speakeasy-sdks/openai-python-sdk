@@ -17,14 +17,14 @@ class CreateFileRequestFile:
 @dataclasses.dataclass
 class CreateFileRequest:
     file: CreateFileRequestFile = dataclasses.field(metadata={'multipart_form': { 'file': True }})
-    r"""Name of the [JSON Lines](https://jsonlines.readthedocs.io/en/latest/) file to be uploaded.
+    r"""The file object (not file name) to be uploaded.
 
     If the `purpose` is set to \"fine-tune\", the file will be used for fine-tuning.
     """
     purpose: str = dataclasses.field(metadata={'multipart_form': { 'field_name': 'purpose' }})
-    r"""The intended purpose of the uploaded documents.
+    r"""The intended purpose of the uploaded file.
 
-    Use \"fine-tune\" for [fine-tuning](/docs/api-reference/fine-tuning). This allows us to validate the format of the uploaded file.
+    Use \"fine-tune\" for [fine-tuning](/docs/api-reference/fine-tuning). This allows us to validate the format of the uploaded file is correct for fine-tuning.
     """
     
 

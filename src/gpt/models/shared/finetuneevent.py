@@ -10,6 +10,10 @@ from gpt import utils
 
 @dataclasses.dataclass
 class FineTuneEvent:
+    r"""Fine-tune event object
+
+    Deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
+    """
     created_at: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created_at') }})
     level: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('level') }})
     message: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message') }})

@@ -16,6 +16,7 @@ class FineTuningJobEventLevel(str, Enum):
 
 @dataclasses.dataclass
 class FineTuningJobEvent:
+    r"""Fine-tuning job event object"""
     created_at: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created_at') }})
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     level: FineTuningJobEventLevel = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('level') }})

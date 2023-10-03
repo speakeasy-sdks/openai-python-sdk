@@ -11,7 +11,7 @@ from gpt import utils
 from typing import Optional, Union
 
 class CreateChatCompletionRequestFunctionCall1(str, Enum):
-    r"""Controls how the model responds to function calls. `none` means the model does not call a function, and responds to the end-user. `auto` means the model can pick between an end-user or calling a function.  Specifying a particular function via `{\\"name\\": \\"my_function\\"}` forces the model to call that function. `none` is the default when no functions are present. `auto` is the default if functions are present."""
+    r"""Controls how the model calls functions. \\"none\\" means the model will not call a function and instead generates a message. \\"auto\\" means the model can pick between generating a message or calling a function.  Specifying a particular function via `{\\"name\\": \\"my_function\\"}` forces the model to call that function. \\"none\\" is the default when no functions are present. \\"auto\\" is the default if functions are present."""
     NONE = 'none'
     AUTO = 'auto'
 
@@ -53,7 +53,7 @@ class CreateChatCompletionRequestStop:
 @dataclasses.dataclass
 class CreateChatCompletionRequest:
     messages: list[shared_chatcompletionrequestmessage.ChatCompletionRequestMessage] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('messages') }})
-    r"""A list of messages comprising the conversation so far. [Example Python code](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_format_inputs_to_ChatGPT_models.ipynb)."""
+    r"""A list of messages comprising the conversation so far. [Example Python code](https://cookbook.openai.com/examples/how_to_format_inputs_to_chatgpt_models)."""
     model: Union[str, CreateChatCompletionRequestModel2] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model') }})
     r"""ID of the model to use. See the [model endpoint compatibility](/docs/models/model-endpoint-compatibility) table for details on which models work with the Chat API."""
     frequency_penalty: Optional[float] = dataclasses.field(default=0, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('frequency_penalty') }})
@@ -62,7 +62,7 @@ class CreateChatCompletionRequest:
     [See more information about frequency and presence penalties.](/docs/guides/gpt/parameter-details)
     """
     function_call: Optional[Union[CreateChatCompletionRequestFunctionCall1, shared_chatcompletionfunctioncalloption.ChatCompletionFunctionCallOption]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('function_call'), 'exclude': lambda f: f is None }})
-    r"""Controls how the model responds to function calls. `none` means the model does not call a function, and responds to the end-user. `auto` means the model can pick between an end-user or calling a function.  Specifying a particular function via `{\\"name\\": \\"my_function\\"}` forces the model to call that function. `none` is the default when no functions are present. `auto` is the default if functions are present."""
+    r"""Controls how the model calls functions. \\"none\\" means the model will not call a function and instead generates a message. \\"auto\\" means the model can pick between generating a message or calling a function.  Specifying a particular function via `{\\"name\\": \\"my_function\\"}` forces the model to call that function. \\"none\\" is the default when no functions are present. \\"auto\\" is the default if functions are present."""
     functions: Optional[list[shared_chatcompletionfunctions.ChatCompletionFunctions]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('functions'), 'exclude': lambda f: f is None }})
     r"""A list of functions the model may generate JSON inputs for."""
     logit_bias: Optional[dict[str, int]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('logit_bias') }})
@@ -73,7 +73,7 @@ class CreateChatCompletionRequest:
     max_tokens: Optional[int] = dataclasses.field(default=inf, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('max_tokens') }})
     r"""The maximum number of [tokens](/tokenizer) to generate in the chat completion.
 
-    The total length of input tokens and generated tokens is limited by the model's context length. [Example Python code](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_count_tokens_with_tiktoken.ipynb) for counting tokens.
+    The total length of input tokens and generated tokens is limited by the model's context length. [Example Python code](https://cookbook.openai.com/examples/how_to_count_tokens_with_tiktoken) for counting tokens.
     """
     n: Optional[int] = dataclasses.field(default=1, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('n') }})
     r"""How many chat completion choices to generate for each input message."""
@@ -85,7 +85,7 @@ class CreateChatCompletionRequest:
     stop: Optional[Union[str, list[str]]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('stop') }})
     r"""Up to 4 sequences where the API will stop generating further tokens."""
     stream: Optional[bool] = dataclasses.field(default=False, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('stream') }})
-    r"""If set, partial message deltas will be sent, like in ChatGPT. Tokens will be sent as data-only [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format) as they become available, with the stream terminated by a `data: [DONE]` message. [Example Python code](https://github.com/openai/openai-cookbook/blob/main/examples/How_to_stream_completions.ipynb)."""
+    r"""If set, partial message deltas will be sent, like in ChatGPT. Tokens will be sent as data-only [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format) as they become available, with the stream terminated by a `data: [DONE]` message. [Example Python code](https://cookbook.openai.com/examples/how_to_stream_completions)."""
     temperature: Optional[float] = dataclasses.field(default=1, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('temperature') }})
     r"""What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
 

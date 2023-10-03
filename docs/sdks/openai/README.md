@@ -15,7 +15,7 @@ The OpenAI REST API
 * [create_completion](#create_completion) - Creates a completion for the provided prompt and parameters.
 * [~~create_edit~~](#create_edit) - Creates a new edit for the provided input, instruction, and parameters. :warning: **Deprecated**
 * [create_embedding](#create_embedding) - Creates an embedding vector representing the input text.
-* [create_file](#create_file) - Upload a file that contains document(s) to be used across various endpoints/features. Currently, the size of all the files uploaded by one organization can be up to 1 GB. Please contact us if you need to increase the storage limit.
+* [create_file](#create_file) - Upload a file that can be used across various endpoints/features. Currently, the size of all the files uploaded by one organization can be up to 1 GB. Please [contact us](https://help.openai.com/) if you need to increase the storage limit.
 
 * [~~create_fine_tune~~](#create_fine_tune) - Creates a job that fine-tunes a specified model from a given dataset.
 
@@ -352,7 +352,7 @@ if res.create_embedding_response is not None:
 
 ## create_file
 
-Upload a file that contains document(s) to be used across various endpoints/features. Currently, the size of all the files uploaded by one organization can be up to 1 GB. Please contact us if you need to increase the storage limit.
+Upload a file that can be used across various endpoints/features. Currently, the size of all the files uploaded by one organization can be up to 1 GB. Please [contact us](https://help.openai.com/) if you need to increase the storage limit.
 
 
 ### Example Usage
