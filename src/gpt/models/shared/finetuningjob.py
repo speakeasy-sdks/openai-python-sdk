@@ -3,6 +3,7 @@
 from __future__ import annotations
 import dataclasses
 from dataclasses_json import Undefined, dataclass_json
+from enum import Enum
 from gpt import utils
 from typing import Optional, Union
 
@@ -21,6 +22,12 @@ class FineTuningJobError:
     
 
 
+class FineTuningJobHyperparametersNEpochs1(str, Enum):
+    r"""The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
+    \"auto\" decides the optimal number of epochs based on the size of the dataset. If setting the number manually, we support any number between 1 and 50 epochs.
+    """
+    AUTO = 'auto'
+
 
 
 @dataclasses.dataclass
@@ -33,7 +40,7 @@ class FineTuningJobHyperparametersNEpochs:
 @dataclasses.dataclass
 class FineTuningJobHyperparameters:
     r"""The hyperparameters used for the fine-tuning job. See the [fine-tuning guide](/docs/guides/fine-tuning) for more details."""
-    n_epochs: Union[str, int] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('n_epochs') }})
+    n_epochs: Union[FineTuningJobHyperparametersNEpochs1, int] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('n_epochs') }})
     r"""The number of epochs to train the model for. An epoch refers to one full cycle through the training dataset.
     \"auto\" decides the optimal number of epochs based on the size of the dataset. If setting the number manually, we support any number between 1 and 50 epochs.
     """

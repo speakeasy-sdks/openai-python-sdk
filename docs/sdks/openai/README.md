@@ -328,7 +328,7 @@ s = gpt.Gpt(
 
 req = shared.CreateEmbeddingRequest(
     input=[],
-    model='text-embedding-ada-002',
+    model=[],
     user='user-1234',
 )
 
@@ -698,10 +698,10 @@ req = shared.CreateTranscriptionRequest(
         file='Buckinghamshire',
     ),
     language='teal Titanium',
-    model='whisper-1',
-    prompt='Mendelevium Kansas behind',
-    response_format=shared.CreateTranscriptionRequestResponseFormat.JSON,
-    temperature=3694.44,
+    model=[],
+    prompt='Configuration invoice',
+    response_format=shared.CreateTranscriptionRequestResponseFormat.TEXT,
+    temperature=1473.99,
 )
 
 res = s.open_ai.create_transcription(req)
@@ -743,10 +743,10 @@ req = shared.CreateTranslationRequest(
         content='M57UL;W3rx'.encode(),
         file='Reggae Toys silver',
     ),
-    model='whisper-1',
-    prompt='Soft East Frozen',
-    response_format='Analyst aboard relocate',
-    temperature=6003.73,
+    model=[],
+    prompt='foolishly Diesel',
+    response_format='Frozen Passenger',
+    temperature=4850.17,
 )
 
 res = s.open_ai.create_translation(req)

@@ -7,6 +7,12 @@ from enum import Enum
 from gpt import utils
 from typing import Optional, Union
 
+class CreateFineTuningJobRequestHyperparametersNEpochs1(str, Enum):
+    r"""The number of epochs to train the model for. An epoch refers to one
+    full cycle through the training dataset.
+    """
+    AUTO = 'auto'
+
 
 
 @dataclasses.dataclass
@@ -19,7 +25,7 @@ class CreateFineTuningJobRequestHyperparametersNEpochs:
 @dataclasses.dataclass
 class CreateFineTuningJobRequestHyperparameters:
     r"""The hyperparameters used for the fine-tuning job."""
-    n_epochs: Optional[Union[str, int]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('n_epochs'), 'exclude': lambda f: f is None }})
+    n_epochs: Optional[Union[CreateFineTuningJobRequestHyperparametersNEpochs1, int]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('n_epochs'), 'exclude': lambda f: f is None }})
     r"""The number of epochs to train the model for. An epoch refers to one
     full cycle through the training dataset.
     """
