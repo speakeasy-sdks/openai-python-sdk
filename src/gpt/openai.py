@@ -3,7 +3,7 @@
 from .sdkconfiguration import SDKConfiguration
 from gpt import utils
 from gpt.models import errors, operations, shared
-from typing import Optional
+from typing import Any, Optional
 
 class OpenAI:
     r"""The OpenAI REST API"""
@@ -164,7 +164,7 @@ class OpenAI:
         return res
 
     
-    def create_embedding(self, request: shared.CreateEmbeddingRequest) -> operations.CreateEmbeddingResponse:
+    def create_embedding(self, request: dict[str, Any]) -> operations.CreateEmbeddingResponse:
         r"""Creates an embedding vector representing the input text."""
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -195,7 +195,7 @@ class OpenAI:
         return res
 
     
-    def create_file(self, request: shared.CreateFileRequest) -> operations.CreateFileResponse:
+    def create_file(self, request: dict[str, Any]) -> operations.CreateFileResponse:
         r"""Upload a file that can be used across various endpoints/features. Currently, the size of all the files uploaded by one organization can be up to 1 GB. Please [contact us](https://help.openai.com/) if you need to increase the storage limit."""
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -424,7 +424,7 @@ class OpenAI:
         return res
 
     
-    def create_transcription(self, request: shared.CreateTranscriptionRequest) -> operations.CreateTranscriptionResponse:
+    def create_transcription(self, request: dict[str, Any]) -> operations.CreateTranscriptionResponse:
         r"""Transcribes audio into the input language."""
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -455,7 +455,7 @@ class OpenAI:
         return res
 
     
-    def create_translation(self, request: shared.CreateTranslationRequest) -> operations.CreateTranslationResponse:
+    def create_translation(self, request: dict[str, Any]) -> operations.CreateTranslationResponse:
         r"""Translates audio into English."""
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         

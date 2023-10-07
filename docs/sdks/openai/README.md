@@ -156,37 +156,33 @@ s = gpt.Gpt(
 )
 
 req = shared.CreateChatCompletionRequest(
-    frequency_penalty=7707.26,
-    function_call=[],
+    shared.ChatCompletionFunctionCallOption(
+        name='secondary Hoboken',
+    ),
     functions=[
         shared.ChatCompletionFunctions(
-            description='Optimized exuding secured line',
-            name='Money',
+            name='Baby',
             parameters={
-                "dolorum": 'lumen',
+                "lumen": 'maroon',
             },
         ),
     ],
     logit_bias={
-        "quod": 401600,
+        "Southeast": 652538,
     },
-    max_tokens=90770,
     messages=[
         shared.ChatCompletionRequestMessage(
-            content='International incidunt Franc',
+            content='incidunt Franc South',
             function_call=shared.ChatCompletionRequestMessageFunctionCall(
-                arguments='alarm',
-                name='Chair',
+                arguments='teal Yucaipa',
+                name='Response',
             ),
-            name='Northeast frictionless Park',
-            role=shared.ChatCompletionRequestMessageRole.ASSISTANT,
+            role=shared.ChatCompletionRequestMessageRole.USER,
         ),
     ],
-    model=[],
+shared.CreateChatCompletionRequestModel2.GPT_3_5_TURBO,
     n=1,
-    presence_penalty=6542.93,
-    stop=[],
-    stream=False,
+'Muller',
     temperature=1,
     top_p=1,
     user='user-1234',
@@ -227,20 +223,48 @@ s = gpt.Gpt(
 )
 
 req = shared.CreateCompletionRequest(
-    best_of=160667,
-    echo=False,
-    frequency_penalty=141.61,
     logit_bias={
-        "velit": 254881,
+        "red": 242695,
     },
-    logprobs=877910,
     max_tokens=16,
-    model=[],
+'optimistic',
     n=1,
-    presence_penalty=5915.62,
-    prompt=[],
-    stop=[],
-    stream=False,
+    [
+        [,
+        1,
+        2,
+        1,
+        2,
+        ,,
+         ,
+        3,
+        1,
+        8,
+        ,,
+         ,
+        2,
+        5,
+        7,
+        ,,
+         ,
+        1,
+        3,
+        3,
+        2,
+        ,,
+         ,
+        1,
+        3,
+        ],
+    ],
+    [
+        '[',
+        '"',
+        '\',
+        'n',
+        '"',
+        ']',
+    ],
     suffix='test.',
     temperature=1,
     top_p=1,
@@ -286,7 +310,7 @@ s = gpt.Gpt(
 req = shared.CreateEditRequest(
     input='What day of the wek is it?',
     instruction='Fix the spelling mistakes.',
-    model=[],
+shared.CreateEditRequestModel2.TEXT_DAVINCI_EDIT_001,
     n=1,
     temperature=1,
     top_p=1,
@@ -326,11 +350,9 @@ s = gpt.Gpt(
     ),
 )
 
-req = shared.CreateEmbeddingRequest(
-    input=[],
-    model=[],
-    user='user-1234',
-)
+req = {
+    "chief": 'compressing',
+}
 
 res = s.open_ai.create_embedding(req)
 
@@ -340,9 +362,9 @@ if res.create_embedding_response is not None:
 
 ### Parameters
 
-| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
-| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
-| `request`                                                                      | [shared.CreateEmbeddingRequest](../../models/shared/createembeddingrequest.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [dict[str, Any]](../../models//.md)        | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -367,13 +389,9 @@ s = gpt.Gpt(
     ),
 )
 
-req = shared.CreateFileRequest(
-    file=shared.CreateFileRequestFile(
-        content='`\'$Z`(L/RH'.encode(),
-        file='Rap National',
-    ),
-    purpose='Female synergistic Maine',
-)
+req = {
+    "Associate": 'Miami',
+}
 
 res = s.open_ai.create_file(req)
 
@@ -383,9 +401,9 @@ if res.open_ai_file is not None:
 
 ### Parameters
 
-| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
-| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| `request`                                                            | [shared.CreateFileRequest](../../models/shared/createfilerequest.md) | :heavy_check_mark:                                                   | The request object to use for the request.                           |
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [dict[str, Any]](../../models//.md)        | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -417,18 +435,13 @@ s = gpt.Gpt(
 )
 
 req = shared.CreateFineTuneRequest(
-    batch_size=763928,
     classification_betas=[
-        3993.02,
+        0.6,
+        1,
+        1.5,
+        2,
     ],
-    classification_n_classes=172686,
-    classification_positive_class='male Buckinghamshire',
-    compute_classification_metrics=False,
-    learning_rate_multiplier=4447.26,
-    model=[],
-    n_epochs=592749,
-    prompt_loss_weight=4413.8,
-    suffix='next',
+shared.CreateFineTuneRequestModel2.CURIE,
     training_file='file-abc123',
     validation_file='file-abc123',
 )
@@ -474,10 +487,9 @@ s = gpt.Gpt(
 
 req = shared.CreateFineTuningJobRequest(
     hyperparameters=shared.CreateFineTuningJobRequestHyperparameters(
-        n_epochs=[],
+    shared.CreateFineTuningJobRequestHyperparametersNEpochs1.AUTO,
     ),
-    model=[],
-    suffix='Thallium',
+shared.CreateFineTuningJobRequestModel2.GPT_3_5_TURBO,
     training_file='file-abc123',
     validation_file='file-abc123',
 )
@@ -654,8 +666,29 @@ s = gpt.Gpt(
 )
 
 req = shared.CreateModerationRequest(
-    input=[],
-    model=[],
+    [
+        'I',
+        ' ',
+        'w',
+        'a',
+        'n',
+        't',
+        ' ',
+        't',
+        'o',
+        ' ',
+        'k',
+        'i',
+        'l',
+        'l',
+        ' ',
+        't',
+        'h',
+        'e',
+        'm',
+        '.',
+    ],
+shared.CreateModerationRequestModel2.TEXT_MODERATION_STABLE,
 )
 
 res = s.open_ai.create_moderation(req)
@@ -692,17 +725,9 @@ s = gpt.Gpt(
     ),
 )
 
-req = shared.CreateTranscriptionRequest(
-    file=shared.CreateTranscriptionRequestFile(
-        content='\#BbTW\'zX9'.encode(),
-        file='Buckinghamshire',
-    ),
-    language='teal Titanium',
-    model=[],
-    prompt='Configuration invoice',
-    response_format=shared.CreateTranscriptionRequestResponseFormat.TEXT,
-    temperature=1473.99,
-)
+req = {
+    "Lead": 'neutral',
+}
 
 res = s.open_ai.create_transcription(req)
 
@@ -712,9 +737,9 @@ if res.create_transcription_response is not None:
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [shared.CreateTranscriptionRequest](../../models/shared/createtranscriptionrequest.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [dict[str, Any]](../../models//.md)        | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -738,16 +763,9 @@ s = gpt.Gpt(
     ),
 )
 
-req = shared.CreateTranslationRequest(
-    file=shared.CreateTranslationRequestFile(
-        content='M57UL;W3rx'.encode(),
-        file='Reggae Toys silver',
-    ),
-    model=[],
-    prompt='foolishly Diesel',
-    response_format='Frozen Passenger',
-    temperature=4850.17,
-)
+req = {
+    "DRAM": 'Granite',
+}
 
 res = s.open_ai.create_translation(req)
 
@@ -757,9 +775,9 @@ if res.create_translation_response is not None:
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `request`                                                                          | [shared.CreateTranslationRequest](../../models/shared/createtranslationrequest.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [dict[str, Any]](../../models//.md)        | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -931,7 +949,6 @@ s = gpt.Gpt(
 
 req = operations.ListFineTuneEventsRequest(
     fine_tune_id='ft-AF1WoRqd3aJAHsqc9NY7iL8F',
-    stream=False,
 )
 
 res = s.open_ai.list_fine_tune_events(req)
@@ -1002,9 +1019,7 @@ s = gpt.Gpt(
 )
 
 req = operations.ListFineTuningEventsRequest(
-    after='phew silver Consultant',
     fine_tuning_job_id='ft-AF1WoRqd3aJAHsqc9NY7iL8F',
-    limit=104325,
 )
 
 res = s.open_ai.list_fine_tuning_events(req)
@@ -1071,10 +1086,7 @@ s = gpt.Gpt(
     ),
 )
 
-req = operations.ListPaginatedFineTuningJobsRequest(
-    after='GB voluptate',
-    limit=374490,
-)
+req = operations.ListPaginatedFineTuningJobsRequest()
 
 res = s.open_ai.list_paginated_fine_tuning_jobs(req)
 
