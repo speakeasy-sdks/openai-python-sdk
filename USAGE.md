@@ -3,7 +3,7 @@
 
 ```python
 import gpt
-from gpt.models import operations, shared
+from gpt.models import shared
 
 s = gpt.Gpt(
     security=shared.Security(
@@ -11,13 +11,17 @@ s = gpt.Gpt(
     ),
 )
 
-req = operations.CancelFineTuneRequest(
-    fine_tune_id='ft-AF1WoRqd3aJAHsqc9NY7iL8F',
+req = shared.CreateTranscriptionRequest(
+    file=shared.CreateTranscriptionRequestFile(
+        content='\#BbTW\'zX9'.encode(),
+        file='Buckinghamshire',
+    ),
+shared.CreateTranscriptionRequestModel2.WHISPER_1,
 )
 
-res = s.open_ai.cancel_fine_tune(req)
+res = s.audio.create_transcription(req)
 
-if res.fine_tune is not None:
+if res.create_transcription_response is not None:
     # handle response
 ```
 <!-- End SDK Example Usage -->

@@ -7,6 +7,31 @@ from enum import Enum
 from gpt import utils
 from typing import Optional, Union
 
+class CreateFineTuneRequestHyperparametersNEpochs1(str, Enum):
+    r"""The number of epochs to train the model for. An epoch refers to one
+    full cycle through the training dataset.
+    """
+    AUTO = 'auto'
+
+
+
+@dataclasses.dataclass
+class CreateFineTuneRequestHyperparametersNEpochs:
+    pass
+
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+
+@dataclasses.dataclass
+class CreateFineTuneRequestHyperparameters:
+    r"""The hyperparameters used for the fine-tuning job."""
+    n_epochs: Optional[Union[CreateFineTuneRequestHyperparametersNEpochs1, int]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('n_epochs'), 'exclude': lambda f: f is None }})
+    r"""The number of epochs to train the model for. An epoch refers to one
+    full cycle through the training dataset.
+    """
+    
+
+
 class CreateFineTuneRequestModel2(str, Enum):
     r"""The name of the base model to fine-tune. You can select one of \\"ada\\",
     \"babbage\", \"curie\", \"davinci\", or a fine-tuned model created after 2022-04-21 and before 2023-08-22.
@@ -80,6 +105,8 @@ class CreateFineTuneRequest:
     specify `classification_n_classes` for multiclass classification or
     `classification_positive_class` for binary classification.
     """
+    hyperparameters: Optional[CreateFineTuneRequestHyperparameters] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hyperparameters'), 'exclude': lambda f: f is None }})
+    r"""The hyperparameters used for the fine-tuning job."""
     learning_rate_multiplier: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('learning_rate_multiplier') }})
     r"""The learning rate multiplier to use for training.
     The fine-tuning learning rate is the original learning rate used for
@@ -96,10 +123,6 @@ class CreateFineTuneRequest:
     \"babbage\", \"curie\", \"davinci\", or a fine-tuned model created after 2022-04-21 and before 2023-08-22.
     To learn more about these models, see the
     [Models](/docs/models) documentation.
-    """
-    n_epochs: Optional[int] = dataclasses.field(default=4, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('n_epochs') }})
-    r"""The number of epochs to train the model for. An epoch refers to one
-    full cycle through the training dataset.
     """
     prompt_loss_weight: Optional[float] = dataclasses.field(default=0.01, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('prompt_loss_weight') }})
     r"""The weight to use for loss on the prompt tokens. This controls how
