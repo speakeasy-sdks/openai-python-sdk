@@ -23,5 +23,6 @@ res = s.audio.create_transcription(req)
 
 if res.create_transcription_response is not None:
     # handle response
+    pass
 ```
 <!-- End SDK Example Usage -->

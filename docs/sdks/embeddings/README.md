@@ -35,6 +35,7 @@ res = s.embeddings.create_embedding(req)
 
 if res.create_embedding_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

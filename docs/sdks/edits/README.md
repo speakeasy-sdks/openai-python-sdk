@@ -40,6 +40,7 @@ res = s.edits.create_edit(req)
 
 if res.create_edit_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

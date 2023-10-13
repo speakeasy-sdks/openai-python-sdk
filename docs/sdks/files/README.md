@@ -43,6 +43,7 @@ res = s.files.create_file(req)
 
 if res.open_ai_file is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -81,6 +82,7 @@ res = s.files.delete_file(req)
 
 if res.delete_file_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -119,6 +121,7 @@ res = s.files.download_file(req)
 
 if res.download_file_200_application_json_string is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -154,6 +157,7 @@ res = s.files.list_files()
 
 if res.list_files_response is not None:
     # handle response
+    pass
 ```
 
 
@@ -186,6 +190,7 @@ res = s.files.retrieve_file(req)
 
 if res.open_ai_file is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

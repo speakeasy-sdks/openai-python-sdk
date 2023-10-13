@@ -8,4 +8,4 @@ Controls how the model calls functions. "none" means the model will not call a f
 
 | Field                             | Type                              | Required                          | Description                       |
 | --------------------------------- | --------------------------------- | --------------------------------- | --------------------------------- |
-| `name`                            | *Optional[str]*                   | :heavy_check_mark:                | The name of the function to call. |
+| `name`                            | *str*                             | :heavy_check_mark:                | The name of the function to call. |

@@ -55,6 +55,7 @@ res = s.moderations.create_moderation(req)
 
 if res.create_moderation_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

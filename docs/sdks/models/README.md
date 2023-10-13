@@ -35,6 +35,7 @@ res = s.models.delete_model(req)
 
 if res.delete_model_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -70,6 +71,7 @@ res = s.models.list_models()
 
 if res.list_models_response is not None:
     # handle response
+    pass
 ```
 
 
@@ -102,6 +104,7 @@ res = s.models.retrieve_model(req)
 
 if res.model is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

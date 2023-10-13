@@ -78,6 +78,7 @@ res = s.completions.create_completion(req)
 
 if res.create_completion_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

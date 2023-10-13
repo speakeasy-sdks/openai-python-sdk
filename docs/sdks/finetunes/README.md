@@ -51,6 +51,7 @@ res = s.fine_tunes.cancel_fine_tune(req)
 
 if res.fine_tune is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -107,6 +108,7 @@ res = s.fine_tunes.create_fine_tune(req)
 
 if res.fine_tune is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -148,6 +150,7 @@ res = s.fine_tunes.list_fine_tune_events(req)
 
 if res.list_fine_tune_events_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -186,6 +189,7 @@ res = s.fine_tunes.list_fine_tunes()
 
 if res.list_fine_tunes_response is not None:
     # handle response
+    pass
 ```
 
 
@@ -223,6 +227,7 @@ res = s.fine_tunes.retrieve_fine_tune(req)
 
 if res.fine_tune is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
