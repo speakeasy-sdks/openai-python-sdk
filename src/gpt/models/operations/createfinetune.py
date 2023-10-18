@@ -7,7 +7,6 @@ from ..shared import finetune as shared_finetune
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class CreateFineTuneResponse:
     content_type: str = dataclasses.field()

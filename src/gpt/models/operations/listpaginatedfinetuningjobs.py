@@ -7,7 +7,6 @@ from ..shared import listpaginatedfinetuningjobsresponse as shared_listpaginated
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class ListPaginatedFineTuningJobsRequest:
     after: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'after', 'style': 'form', 'explode': True }})
@@ -15,7 +14,6 @@ class ListPaginatedFineTuningJobsRequest:
     limit: Optional[int] = dataclasses.field(default=20, metadata={'query_param': { 'field_name': 'limit', 'style': 'form', 'explode': True }})
     r"""Number of fine-tuning jobs to retrieve."""
     
-
 
 
 

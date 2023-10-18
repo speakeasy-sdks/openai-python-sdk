@@ -7,7 +7,6 @@ from ..shared import listfinetuneeventsresponse as shared_listfinetuneeventsresp
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class ListFineTuneEventsRequest:
     fine_tune_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'fine_tune_id', 'style': 'simple', 'explode': False }})
@@ -23,7 +22,6 @@ class ListFineTuneEventsRequest:
     If set to false, only events generated so far will be returned.
     """
     
-
 
 
 

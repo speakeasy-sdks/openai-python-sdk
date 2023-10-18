@@ -7,7 +7,6 @@ from ..shared import listfinetunesresponse as shared_listfinetunesresponse
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class ListFineTunesResponse:
     content_type: str = dataclasses.field()

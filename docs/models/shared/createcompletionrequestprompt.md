@@ -12,18 +12,18 @@ createCompletionRequestPrompt: str = /* values here */
 ### 
 
 ```python
-createCompletionRequestPrompt: list[str] = /* values here */
+createCompletionRequestPrompt: List[str] = /* values here */
 ```
 
 ### 
 
 ```python
-createCompletionRequestPrompt: list[int] = /* values here */
+createCompletionRequestPrompt: List[int] = /* values here */
 ```
 
 ### 
 
 ```python
-createCompletionRequestPrompt: list[list[int]] = /* values here */
+createCompletionRequestPrompt: List[List[int]] = /* values here */
 ```
 

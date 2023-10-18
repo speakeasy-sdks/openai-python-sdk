@@ -14,14 +14,12 @@ class CreateFineTuningJobRequestHyperparametersNEpochs1(str, Enum):
     AUTO = 'auto'
 
 
-
 @dataclasses.dataclass
 class CreateFineTuningJobRequestHyperparametersNEpochs:
     pass
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class CreateFineTuningJobRequestHyperparameters:
     r"""The hyperparameters used for the fine-tuning job."""
@@ -41,14 +39,12 @@ class CreateFineTuningJobRequestModel2(str, Enum):
     GPT_3_5_TURBO = 'gpt-3.5-turbo'
 
 
-
 @dataclasses.dataclass
 class CreateFineTuningJobRequestModel:
     pass
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class CreateFineTuningJobRequest:
     model: Union[str, CreateFineTuningJobRequestModel2] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model') }})

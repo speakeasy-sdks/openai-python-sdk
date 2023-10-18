@@ -6,6 +6,7 @@ from ..shared import completionusage as shared_completionusage
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from gpt import utils
+from typing import List
 
 class CreateEditResponseChoicesFinishReason(str, Enum):
     r"""The reason the model stopped generating tokens. This will be `stop` if the model hit a natural stop point or a provided stop sequence,
@@ -17,7 +18,6 @@ class CreateEditResponseChoicesFinishReason(str, Enum):
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class CreateEditResponseChoices:
     finish_reason: CreateEditResponseChoicesFinishReason = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finish_reason') }})
@@ -34,11 +34,10 @@ class CreateEditResponseChoices:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class CreateEditResponse:
     r"""Deprecated class: This will be removed in a future release, please migrate away from it as soon as possible."""
-    choices: list[CreateEditResponseChoices] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('choices') }})
+    choices: List[CreateEditResponseChoices] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('choices') }})
     r"""A list of edit choices. Can be more than one if `n` is greater than 1."""
     created: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created') }})
     r"""The Unix timestamp (in seconds) of when the edit was created."""

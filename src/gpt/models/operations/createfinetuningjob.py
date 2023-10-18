@@ -7,7 +7,6 @@ from ..shared import finetuningjob as shared_finetuningjob
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class CreateFineTuningJobResponse:
     content_type: str = dataclasses.field()

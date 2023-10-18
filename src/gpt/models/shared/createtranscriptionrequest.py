@@ -6,7 +6,6 @@ from enum import Enum
 from typing import Optional, Union
 
 
-
 @dataclasses.dataclass
 class CreateTranscriptionRequestFile:
     content: bytes = dataclasses.field(metadata={'multipart_form': { 'content': True }})
@@ -17,7 +16,6 @@ class CreateTranscriptionRequestFile:
 class CreateTranscriptionRequestModel2(str, Enum):
     r"""ID of the model to use. Only `whisper-1` is currently available."""
     WHISPER_1 = 'whisper-1'
-
 
 
 @dataclasses.dataclass
@@ -31,7 +29,6 @@ class CreateTranscriptionRequestResponseFormat(str, Enum):
     SRT = 'srt'
     VERBOSE_JSON = 'verbose_json'
     VTT = 'vtt'
-
 
 
 @dataclasses.dataclass

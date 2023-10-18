@@ -7,7 +7,6 @@ from ..shared import createtranslationresponse as shared_createtranslationrespon
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class CreateTranslationResponse:
     content_type: str = dataclasses.field()

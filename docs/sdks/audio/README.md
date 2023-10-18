@@ -29,7 +29,7 @@ s = gpt.Gpt(
 req = shared.CreateTranscriptionRequest(
     file=shared.CreateTranscriptionRequestFile(
         content='\#BbTW\'zX9'.encode(),
-        file='Buckinghamshire',
+        file='green',
     ),
 shared.CreateTranscriptionRequestModel2.WHISPER_1,
 )
@@ -72,7 +72,7 @@ s = gpt.Gpt(
 req = shared.CreateTranslationRequest(
     file=shared.CreateTranslationRequestFile(
         content='M57UL;W3rx'.encode(),
-        file='Reggae Toys silver',
+        file='Bicycle',
     ),
 shared.CreateTranslationRequestModel2.WHISPER_1,
 )

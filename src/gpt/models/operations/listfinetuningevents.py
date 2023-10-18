@@ -7,7 +7,6 @@ from ..shared import listfinetuningjobeventsresponse as shared_listfinetuningjob
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class ListFineTuningEventsRequest:
     fine_tuning_job_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'fine_tuning_job_id', 'style': 'simple', 'explode': False }})
@@ -17,7 +16,6 @@ class ListFineTuningEventsRequest:
     limit: Optional[int] = dataclasses.field(default=20, metadata={'query_param': { 'field_name': 'limit', 'style': 'form', 'explode': True }})
     r"""Number of events to retrieve."""
     
-
 
 
 

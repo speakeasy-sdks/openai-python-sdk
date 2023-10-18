@@ -27,13 +27,13 @@ s = gpt.Gpt(
 
 req = shared.CreateChatCompletionRequest(
     shared.ChatCompletionFunctionCallOption(
-        name='secondary Hoboken',
+        name='navigate',
     ),
     functions=[
         shared.ChatCompletionFunctions(
-            name='Baby',
+            name='Diesel',
             parameters={
-                "lumen": 'maroon',
+                "Money": 'Web',
             },
         ),
     ],
@@ -42,17 +42,17 @@ req = shared.CreateChatCompletionRequest(
     },
     messages=[
         shared.ChatCompletionRequestMessage(
-            content='incidunt Franc South',
+            content='Planner',
             function_call=shared.ChatCompletionRequestMessageFunctionCall(
-                arguments='teal Yucaipa',
-                name='Response',
+                arguments='Modern',
+                name='alarm',
             ),
-            role=shared.ChatCompletionRequestMessageRole.USER,
+            role=shared.ChatCompletionRequestMessageRole.SYSTEM,
         ),
     ],
 shared.CreateChatCompletionRequestModel2.GPT_3_5_TURBO,
     n=1,
-'Muller',
+'Yucaipa',
     temperature=1,
     top_p=1,
     user='user-1234',

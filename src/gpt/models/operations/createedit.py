@@ -7,7 +7,6 @@ from ..shared import createeditresponse as shared_createeditresponse
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class CreateEditResponse:
     content_type: str = dataclasses.field()

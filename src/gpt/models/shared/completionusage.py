@@ -7,7 +7,6 @@ from gpt import utils
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class CompletionUsage:
     r"""Usage statistics for the completion request."""

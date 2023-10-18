@@ -7,7 +7,6 @@ from gpt import utils
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class Model:
     r"""Describes an OpenAI model offering that can be used with the API."""

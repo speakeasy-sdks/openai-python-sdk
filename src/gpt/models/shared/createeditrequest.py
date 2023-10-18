@@ -13,14 +13,12 @@ class CreateEditRequestModel2(str, Enum):
     CODE_DAVINCI_EDIT_001 = 'code-davinci-edit-001'
 
 
-
 @dataclasses.dataclass
 class CreateEditRequestModel:
     pass
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class CreateEditRequest:
     instruction: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('instruction') }})

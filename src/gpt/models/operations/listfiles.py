@@ -7,7 +7,6 @@ from ..shared import listfilesresponse as shared_listfilesresponse
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class ListFilesResponse:
     content_type: str = dataclasses.field()

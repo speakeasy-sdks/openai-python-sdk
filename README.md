@@ -44,7 +44,7 @@ s = gpt.Gpt(
 req = shared.CreateTranscriptionRequest(
     file=shared.CreateTranscriptionRequestFile(
         content='\#BbTW\'zX9'.encode(),
-        file='Buckinghamshire',
+        file='green',
     ),
 shared.CreateTranscriptionRequestModel2.WHISPER_1,
 )

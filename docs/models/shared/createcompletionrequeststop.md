@@ -12,6 +12,6 @@ createCompletionRequestStop: str = /* values here */
 ### 
 
 ```python
-createCompletionRequestStop: list[str] = /* values here */
+createCompletionRequestStop: List[str] = /* values here */
 ```
 

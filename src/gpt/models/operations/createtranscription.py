@@ -7,7 +7,6 @@ from ..shared import createtranscriptionresponse as shared_createtranscriptionre
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class CreateTranscriptionResponse:
     content_type: str = dataclasses.field()

@@ -7,7 +7,6 @@ from ..shared import listmodelsresponse as shared_listmodelsresponse
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class ListModelsResponse:
     content_type: str = dataclasses.field()

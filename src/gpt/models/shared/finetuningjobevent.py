@@ -13,7 +13,6 @@ class FineTuningJobEventLevel(str, Enum):
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class FineTuningJobEvent:
     r"""Fine-tuning job event object"""

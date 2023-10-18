@@ -4,10 +4,10 @@ from __future__ import annotations
 import dataclasses
 from dataclasses_json import Undefined, dataclass_json
 from gpt import utils
+from typing import List
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class CreateModerationResponseResultsCategories:
     r"""A list of the categories, and whether they are flagged or not."""
@@ -38,7 +38,6 @@ class CreateModerationResponseResultsCategories:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class CreateModerationResponseResultsCategoryScores:
     r"""A list of the categories along with their scores as predicted by model."""
@@ -69,7 +68,6 @@ class CreateModerationResponseResultsCategoryScores:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class CreateModerationResponseResults:
     categories: CreateModerationResponseResultsCategories = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('categories') }})
@@ -83,7 +81,6 @@ class CreateModerationResponseResults:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class CreateModerationResponse:
     r"""Represents policy compliance report by OpenAI's content moderation model against a given input."""
@@ -91,7 +88,7 @@ class CreateModerationResponse:
     r"""The unique identifier for the moderation request."""
     model: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model') }})
     r"""The model used to generate the moderation results."""
-    results: list[CreateModerationResponseResults] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results') }})
+    results: List[CreateModerationResponseResults] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('results') }})
     r"""A list of moderation objects."""
     
 

@@ -7,7 +7,6 @@ from ..shared import imagesresponse as shared_imagesresponse
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class CreateImageResponse:
     content_type: str = dataclasses.field()

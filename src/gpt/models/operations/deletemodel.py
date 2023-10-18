@@ -7,13 +7,11 @@ from ..shared import deletemodelresponse as shared_deletemodelresponse
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class DeleteModelRequest:
     model: str = dataclasses.field(metadata={'path_param': { 'field_name': 'model', 'style': 'simple', 'explode': False }})
     r"""The model to delete"""
     
-
 
 
 

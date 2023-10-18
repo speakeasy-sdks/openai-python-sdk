@@ -34,9 +34,9 @@ s = gpt.Gpt(
 req = shared.CreateFileRequest(
     file=shared.CreateFileRequestFile(
         content='`\'$Z`(L/RH'.encode(),
-        file='Rap National',
+        file='Persevering',
     ),
-    purpose='Female synergistic Maine',
+    purpose='produce',
 )
 
 res = s.files.create_file(req)
@@ -75,7 +75,7 @@ s = gpt.Gpt(
 )
 
 req = operations.DeleteFileRequest(
-    file_id='yellow kiddingly white',
+    file_id='Porsche',
 )
 
 res = s.files.delete_file(req)
@@ -114,7 +114,7 @@ s = gpt.Gpt(
 )
 
 req = operations.DownloadFileRequest(
-    file_id='Maserati Bronze Audi',
+    file_id='gosh',
 )
 
 res = s.files.download_file(req)
@@ -183,7 +183,7 @@ s = gpt.Gpt(
 )
 
 req = operations.RetrieveFileRequest(
-    file_id='online Facilitator enfold',
+    file_id='Developer',
 )
 
 res = s.files.retrieve_file(req)

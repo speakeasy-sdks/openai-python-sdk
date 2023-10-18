@@ -7,7 +7,6 @@ from ..shared import createchatcompletionresponse as shared_createchatcompletion
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class CreateChatCompletionResponse:
     content_type: str = dataclasses.field()

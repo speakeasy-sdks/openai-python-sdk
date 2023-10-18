@@ -5,13 +5,13 @@ import dataclasses
 from ..shared import finetuningjob as shared_finetuningjob
 from dataclasses_json import Undefined, dataclass_json
 from gpt import utils
+from typing import List
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ListPaginatedFineTuningJobsResponse:
-    data: list[shared_finetuningjob.FineTuningJob] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
+    data: List[shared_finetuningjob.FineTuningJob] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
     has_more: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('has_more') }})
     object: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('object') }})
     

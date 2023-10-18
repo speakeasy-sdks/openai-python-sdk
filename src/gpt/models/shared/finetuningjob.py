@@ -5,11 +5,10 @@ import dataclasses
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from gpt import utils
-from typing import Optional, Union
+from typing import List, Optional, Union
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class FineTuningJobError:
     r"""For fine-tuning jobs that have `failed`, this will contain more information on the cause of the failure."""
@@ -29,14 +28,12 @@ class FineTuningJobHyperparametersNEpochs1(str, Enum):
     AUTO = 'auto'
 
 
-
 @dataclasses.dataclass
 class FineTuningJobHyperparametersNEpochs:
     pass
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class FineTuningJobHyperparameters:
     r"""The hyperparameters used for the fine-tuning job. See the [fine-tuning guide](/docs/guides/fine-tuning) for more details."""
@@ -49,7 +46,6 @@ class FineTuningJobHyperparameters:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class FineTuningJob:
     r"""The `fine_tuning.job` object represents a fine-tuning job that has been created through the API."""
@@ -71,7 +67,7 @@ class FineTuningJob:
     r"""The object type, which is always \\"fine_tuning.job\\"."""
     organization_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('organization_id') }})
     r"""The organization that owns the fine-tuning job."""
-    result_files: list[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('result_files') }})
+    result_files: List[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('result_files') }})
     r"""The compiled results file ID(s) for the fine-tuning job. You can retrieve the results with the [Files API](/docs/api-reference/files/retrieve-contents)."""
     status: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""The current status of the fine-tuning job, which can be either `validating_files`, `queued`, `running`, `succeeded`, `failed`, or `cancelled`."""

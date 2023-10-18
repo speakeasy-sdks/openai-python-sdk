@@ -7,7 +7,6 @@ from gpt import utils
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class FineTuneEvent:
     r"""Fine-tune event object

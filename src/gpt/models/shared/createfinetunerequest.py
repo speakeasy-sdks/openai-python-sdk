@@ -5,7 +5,7 @@ import dataclasses
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from gpt import utils
-from typing import Optional, Union
+from typing import List, Optional, Union
 
 class CreateFineTuneRequestHyperparametersNEpochs1(str, Enum):
     r"""The number of epochs to train the model for. An epoch refers to one
@@ -14,14 +14,12 @@ class CreateFineTuneRequestHyperparametersNEpochs1(str, Enum):
     AUTO = 'auto'
 
 
-
 @dataclasses.dataclass
 class CreateFineTuneRequestHyperparametersNEpochs:
     pass
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class CreateFineTuneRequestHyperparameters:
     r"""The hyperparameters used for the fine-tuning job."""
@@ -44,14 +42,12 @@ class CreateFineTuneRequestModel2(str, Enum):
     DAVINCI = 'davinci'
 
 
-
 @dataclasses.dataclass
 class CreateFineTuneRequestModel:
     pass
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class CreateFineTuneRequest:
     training_file: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('training_file') }})
@@ -74,7 +70,7 @@ class CreateFineTuneRequest:
     in general, we've found that larger batch sizes tend to work better
     for larger datasets.
     """
-    classification_betas: Optional[list[float]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('classification_betas') }})
+    classification_betas: Optional[List[float]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('classification_betas') }})
     r"""If this is provided, we calculate F-beta scores at the specified
     beta values. The F-beta score is a generalization of F-1 score.
     This is only used for binary classification.

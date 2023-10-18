@@ -7,7 +7,6 @@ from ..shared import createembeddingresponse as shared_createembeddingresponse
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class CreateEmbeddingResponse:
     content_type: str = dataclasses.field()

@@ -7,7 +7,6 @@ from ..shared import openaifile as shared_openaifile
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class CreateFileResponse:
     content_type: str = dataclasses.field()

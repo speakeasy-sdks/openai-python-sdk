@@ -12,18 +12,18 @@ createEmbeddingRequestInput: str = /* values here */
 ### 
 
 ```python
-createEmbeddingRequestInput: list[str] = /* values here */
+createEmbeddingRequestInput: List[str] = /* values here */
 ```
 
 ### 
 
 ```python
-createEmbeddingRequestInput: list[int] = /* values here */
+createEmbeddingRequestInput: List[int] = /* values here */
 ```
 
 ### 
 
 ```python
-createEmbeddingRequestInput: list[list[int]] = /* values here */
+createEmbeddingRequestInput: List[List[int]] = /* values here */
 ```
 

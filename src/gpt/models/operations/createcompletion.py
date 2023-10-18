@@ -7,7 +7,6 @@ from ..shared import createcompletionresponse as shared_createcompletionresponse
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class CreateCompletionResponse:
     content_type: str = dataclasses.field()

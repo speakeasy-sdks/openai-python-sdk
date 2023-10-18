@@ -7,7 +7,7 @@ from ..shared import completionusage as shared_completionusage
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from gpt import utils
-from typing import Optional
+from typing import List, Optional
 
 class CreateChatCompletionResponseChoicesFinishReason(str, Enum):
     r"""The reason the model stopped generating tokens. This will be `stop` if the model hit a natural stop point or a provided stop sequence,
@@ -22,7 +22,6 @@ class CreateChatCompletionResponseChoicesFinishReason(str, Enum):
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class CreateChatCompletionResponseChoices:
     finish_reason: CreateChatCompletionResponseChoicesFinishReason = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('finish_reason') }})
@@ -40,11 +39,10 @@ class CreateChatCompletionResponseChoices:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class CreateChatCompletionResponse:
     r"""Represents a chat completion response returned by model, based on the provided input."""
-    choices: list[CreateChatCompletionResponseChoices] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('choices') }})
+    choices: List[CreateChatCompletionResponseChoices] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('choices') }})
     r"""A list of chat completion choices. Can be more than one if `n` is greater than 1."""
     created: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created') }})
     r"""The Unix timestamp (in seconds) of when the chat completion was created."""

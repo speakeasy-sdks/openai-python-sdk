@@ -7,13 +7,11 @@ from ..shared import finetuningjob as shared_finetuningjob
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class RetrieveFineTuningJobRequest:
     fine_tuning_job_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'fine_tuning_job_id', 'style': 'simple', 'explode': False }})
     r"""The ID of the fine-tuning job."""
     
-
 
 
 

@@ -6,11 +6,10 @@ from ..shared import finetuneevent as shared_finetuneevent
 from ..shared import openaifile as shared_openaifile
 from dataclasses_json import Undefined, dataclass_json
 from gpt import utils
-from typing import Optional
+from typing import List, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class FineTuneHyperparams:
     r"""The hyperparameters used for the fine-tuning job. See the [fine-tuning guide](/docs/guides/legacy-fine-tuning/hyperparameters) for more details."""
@@ -37,7 +36,6 @@ class FineTuneHyperparams:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class FineTune:
     r"""The `FineTune` object represents a legacy fine-tune job that has been created through the API.
@@ -58,17 +56,17 @@ class FineTune:
     r"""The object type, which is always \\"fine-tune\\"."""
     organization_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('organization_id') }})
     r"""The organization that owns the fine-tuning job."""
-    result_files: list[shared_openaifile.OpenAIFile] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('result_files') }})
+    result_files: List[shared_openaifile.OpenAIFile] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('result_files') }})
     r"""The compiled results files for the fine-tuning job."""
     status: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""The current status of the fine-tuning job, which can be either `created`, `running`, `succeeded`, `failed`, or `cancelled`."""
-    training_files: list[shared_openaifile.OpenAIFile] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('training_files') }})
+    training_files: List[shared_openaifile.OpenAIFile] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('training_files') }})
     r"""The list of files used for training."""
     updated_at: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('updated_at') }})
     r"""The Unix timestamp (in seconds) for when the fine-tuning job was last updated."""
-    validation_files: list[shared_openaifile.OpenAIFile] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validation_files') }})
+    validation_files: List[shared_openaifile.OpenAIFile] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validation_files') }})
     r"""The list of files used for validation."""
-    events: Optional[list[shared_finetuneevent.FineTuneEvent]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('events'), 'exclude': lambda f: f is None }})
+    events: Optional[List[shared_finetuneevent.FineTuneEvent]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('events'), 'exclude': lambda f: f is None }})
     r"""The list of events that have been observed in the lifecycle of the FineTune job."""
     
 

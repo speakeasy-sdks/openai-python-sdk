@@ -6,7 +6,6 @@ from enum import Enum
 from typing import Optional, Union
 
 
-
 @dataclasses.dataclass
 class CreateTranslationRequestFile:
     content: bytes = dataclasses.field(metadata={'multipart_form': { 'content': True }})
@@ -19,11 +18,9 @@ class CreateTranslationRequestModel2(str, Enum):
     WHISPER_1 = 'whisper-1'
 
 
-
 @dataclasses.dataclass
 class CreateTranslationRequestModel:
     pass
-
 
 
 @dataclasses.dataclass

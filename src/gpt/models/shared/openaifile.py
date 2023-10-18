@@ -8,7 +8,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class OpenAIFile:
     r"""The `File` object represents a document that has been uploaded to OpenAI."""

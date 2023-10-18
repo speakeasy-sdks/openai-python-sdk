@@ -12,6 +12,6 @@ createChatCompletionRequestStop: str = /* values here */
 ### 
 
 ```python
-createChatCompletionRequestStop: list[str] = /* values here */
+createChatCompletionRequestStop: List[str] = /* values here */
 ```
 

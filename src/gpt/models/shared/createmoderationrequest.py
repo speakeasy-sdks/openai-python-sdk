@@ -5,8 +5,7 @@ import dataclasses
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from gpt import utils
-from typing import Optional, Union
-
+from typing import List, Optional, Union
 
 
 @dataclasses.dataclass
@@ -22,17 +21,15 @@ class CreateModerationRequestModel2(str, Enum):
     TEXT_MODERATION_STABLE = 'text-moderation-stable'
 
 
-
 @dataclasses.dataclass
 class CreateModerationRequestModel:
     pass
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class CreateModerationRequest:
-    input: Union[str, list[str]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('input') }})
+    input: Union[str, List[str]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('input') }})
     r"""The input text to classify"""
     model: Optional[Union[str, CreateModerationRequestModel2]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model'), 'exclude': lambda f: f is None }})
     r"""Two content moderations models are available: `text-moderation-stable` and `text-moderation-latest`.

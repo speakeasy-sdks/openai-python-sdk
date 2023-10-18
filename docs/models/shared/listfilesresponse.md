@@ -5,5 +5,5 @@
 
 | Field                                                 | Type                                                  | Required                                              | Description                                           |
 | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `data`                                                | list[[OpenAIFile](../../models/shared/openaifile.md)] | :heavy_check_mark:                                    | N/A                                                   |
+| `data`                                                | List[[OpenAIFile](../../models/shared/openaifile.md)] | :heavy_check_mark:                                    | N/A                                                   |
 | `object`                                              | *str*                                                 | :heavy_check_mark:                                    | N/A                                                   |
