@@ -26,6 +26,7 @@ s = gpt.Gpt(
 )
 
 req = shared.CreateEmbeddingRequest(
+    encoding_format=shared.CreateEmbeddingRequestEncodingFormat.FLOAT,
 'The quick brown fox jumped over the lazy dog',
 shared.CreateEmbeddingRequestModel2.TEXT_EMBEDDING_ADA_002,
     user='user-1234',
