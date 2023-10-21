@@ -27,32 +27,34 @@ s = gpt.Gpt(
 
 req = shared.CreateChatCompletionRequest(
     shared.ChatCompletionFunctionCallOption(
-        name='navigate',
+        name='string',
     ),
     functions=[
         shared.ChatCompletionFunctions(
-            name='Diesel',
+            name='string',
             parameters={
-                "Money": 'Web',
+                "key": 'string',
             },
         ),
     ],
     logit_bias={
-        "Southeast": 652538,
+        "key": 544683,
     },
     messages=[
         shared.ChatCompletionRequestMessage(
-            content='Planner',
+            content='string',
             function_call=shared.ChatCompletionRequestMessageFunctionCall(
-                arguments='Modern',
-                name='alarm',
+                arguments='string',
+                name='string',
             ),
-            role=shared.ChatCompletionRequestMessageRole.SYSTEM,
+            role=shared.ChatCompletionRequestMessageRole.USER,
         ),
     ],
 shared.CreateChatCompletionRequestModel2.GPT_3_5_TURBO,
     n=1,
-'Yucaipa',
+    [
+        'string',
+    ],
     temperature=1,
     top_p=1,
     user='user-1234',

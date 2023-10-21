@@ -34,9 +34,9 @@ s = gpt.Gpt(
 req = shared.CreateFileRequest(
     file=shared.CreateFileRequestFile(
         content='`\'$Z`(L/RH'.encode(),
-        file='Persevering',
+        file='string',
     ),
-    purpose='produce',
+    purpose='string',
 )
 
 res = s.files.create_file(req)
@@ -75,7 +75,7 @@ s = gpt.Gpt(
 )
 
 req = operations.DeleteFileRequest(
-    file_id='Porsche',
+    file_id='string',
 )
 
 res = s.files.delete_file(req)
@@ -114,7 +114,7 @@ s = gpt.Gpt(
 )
 
 req = operations.DownloadFileRequest(
-    file_id='gosh',
+    file_id='string',
 )
 
 res = s.files.download_file(req)
@@ -183,7 +183,7 @@ s = gpt.Gpt(
 )
 
 req = operations.RetrieveFileRequest(
-    file_id='Developer',
+    file_id='string',
 )
 
 res = s.files.retrieve_file(req)

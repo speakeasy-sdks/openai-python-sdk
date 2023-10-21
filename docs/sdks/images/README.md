@@ -77,7 +77,7 @@ req = shared.CreateImageEditRequest(
     ),
     mask=shared.CreateImageEditRequestMask(
         content='`^YjrpxopK'.encode(),
-        mask='plum',
+        mask='string',
     ),
     n=1,
     prompt='A cute baby sea otter wearing a beret',
