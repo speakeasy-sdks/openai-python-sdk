@@ -1,19 +1,26 @@
 <!-- Start SDK Example Usage -->
+
+
 ```python
 import gpt
-from gpt.models import operations, shared
+from gpt.models import shared
 
-s = gpt.Gpt()
-   
-req = operations.CancelFineTuneRequest(
-    path_params=operations.CancelFineTunePathParams(
-        fine_tune_id="unde",
-    ),
+s = gpt.Gpt(
+    api_key_auth="",
 )
-    
-res = s.open_ai.cancel_fine_tune(req)
 
-if res.fine_tune is not None:
+req = shared.CreateTranscriptionRequest(
+    file=shared.CreateTranscriptionRequestFile(
+        content='\#BbTW\'zX9'.encode(),
+        file='string',
+    ),
+shared.CreateTranscriptionRequestModel2.WHISPER_1,
+)
+
+res = s.audio.create_transcription(req)
+
+if res.create_transcription_response is not None:
     # handle response
+    pass
 ```
 <!-- End SDK Example Usage -->
