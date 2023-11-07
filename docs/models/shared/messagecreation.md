@@ -1,0 +1,11 @@
+# MessageCreation
+
+Details of the message creation by the run step.
+
+
+## Fields
+
+| Field                                                                                                                              | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `message_creation`                                                                                                                 | [components.SchemasMessageCreation](../../models/shared/schemasmessagecreation.md)                                                 | :heavy_check_mark:                                                                                                                 | N/A                                                                                                                                |
+| `type`                                                                                                                             | [components.SchemasRunStepDetailsMessageCreationObjectType](../../models/shared/schemasrunstepdetailsmessagecreationobjecttype.md) | :heavy_check_mark:                                                                                                                 | Always `message_creation``.                                                                                                        |

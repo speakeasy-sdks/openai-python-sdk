@@ -1,0 +1,9 @@
+# ListFineTuneEventsResponse
+
+
+## Fields
+
+| Field                                                                                                  | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `data`                                                                                                 | List[[components.FineTuneEvent](../../models/shared/finetuneevent.md)]                                 | :heavy_check_mark:                                                                                     | N/A                                                                                                    |
+| `object`                                                                                               | [components.ListFineTuneEventsResponseObject](../../models/shared/listfinetuneeventsresponseobject.md) | :heavy_check_mark:                                                                                     | N/A                                                                                                    |

@@ -13,7 +13,7 @@
 ## SDK Installation
 
 ```bash
-pip install speakeasy-openai
+pip install openai-python
 ```
 <!-- End SDK Installation -->
 
@@ -33,86 +33,280 @@ Authorization: Bearer YOUR_API_KEY
 <!-- Start SDK Example Usage -->
 ```python
 import gpt
-from gpt.models import operations, shared
+from gpt.models import operations
 
-s = gpt.Gpt()
-   
-req = operations.CancelFineTuneRequest(
-    path_params=operations.CancelFineTunePathParams(
-        fine_tune_id="unde",
-    ),
+s = gpt.Gpt(
+    api_key_auth="",
 )
-    
-res = s.open_ai.cancel_fine_tune(req)
 
-if res.fine_tune is not None:
+
+res = s.assistants.cancel_run(run_id='string', thread_id='string')
+
+if res.run_object is not None:
     # handle response
+    pass
 ```
 <!-- End SDK Example Usage -->
 
 <!-- Start SDK Available Operations -->
-## SDK Available Operations
+## Available Resources and Operations
 
 
-### open_ai
+### [.assistants](docs/sdks/assistants/README.md)
 
-* `cancel_fine_tune` - Immediately cancel a fine-tune job.
+* [cancel_run](docs/sdks/assistants/README.md#cancel_run) - Cancels a run that is `in_progress`.
+* [create_assistant](docs/sdks/assistants/README.md#create_assistant) - Create an assistant with a model and instructions.
+* [create_assistant_file](docs/sdks/assistants/README.md#create_assistant_file) - Create an assistant file by attaching a [File](/docs/api-reference/files) to an [assistant](/docs/api-reference/assistants).
+* [create_message](docs/sdks/assistants/README.md#create_message) - Create a message.
+* [create_run](docs/sdks/assistants/README.md#create_run) - Create a run.
+* [create_thread](docs/sdks/assistants/README.md#create_thread) - Create a thread.
+* [create_thread_and_run](docs/sdks/assistants/README.md#create_thread_and_run) - Create a thread and run it in one request.
+* [delete_assistant](docs/sdks/assistants/README.md#delete_assistant) - Delete an assistant.
+* [delete_assistant_file](docs/sdks/assistants/README.md#delete_assistant_file) - Delete an assistant file.
+* [delete_thread](docs/sdks/assistants/README.md#delete_thread) - Delete a thread.
+* [get_assistant](docs/sdks/assistants/README.md#get_assistant) - Retrieves an assistant.
+* [get_assistant_file](docs/sdks/assistants/README.md#get_assistant_file) - Retrieves an AssistantFile.
+* [get_message](docs/sdks/assistants/README.md#get_message) - Retrieve a message.
+* [get_message_file](docs/sdks/assistants/README.md#get_message_file) - Retrieves a message file.
+* [get_run](docs/sdks/assistants/README.md#get_run) - Retrieves a run.
+* [get_run_step](docs/sdks/assistants/README.md#get_run_step) - Retrieves a run step.
+* [get_thread](docs/sdks/assistants/README.md#get_thread) - Retrieves a thread.
+* [list_assistant_files](docs/sdks/assistants/README.md#list_assistant_files) - Returns a list of assistant files.
+* [list_assistants](docs/sdks/assistants/README.md#list_assistants) - Returns a list of assistants.
+* [list_message_files](docs/sdks/assistants/README.md#list_message_files) - Returns a list of message files.
+* [list_messages](docs/sdks/assistants/README.md#list_messages) - Returns a list of messages for a given thread.
+* [list_run_steps](docs/sdks/assistants/README.md#list_run_steps) - Returns a list of run steps belonging to a run.
+* [list_runs](docs/sdks/assistants/README.md#list_runs) - Returns a list of runs belonging to a thread.
+* [modify_message](docs/sdks/assistants/README.md#modify_message) - Modifies a message.
+* [modify_run](docs/sdks/assistants/README.md#modify_run) - Modifies a run.
+* [modify_thread](docs/sdks/assistants/README.md#modify_thread) - Modifies a thread.
+* [submit_tool_ouputs_to_run](docs/sdks/assistants/README.md#submit_tool_ouputs_to_run) - When a run has the `status: "requires_action"` and `required_action.type` is `submit_tool_outputs`, this endpoint can be used to submit the outputs from the tool calls once they're all completed. All outputs must be submitted in a single request.
 
-* `create_answer` - Answers the specified question using the provided documents and examples.
 
-The endpoint first [searches](/docs/api-reference/searches) over provided documents or files to find relevant context. The relevant context is combined with the provided examples and question to create the prompt for [completion](/docs/api-reference/completions).
+### [.assistant](docs/sdks/assistant/README.md)
 
-* `create_chat_completion` - Creates a completion for the chat message
-* `create_classification` - Classifies the specified `query` using provided examples.
+* [modify_assistant](docs/sdks/assistant/README.md#modify_assistant) - Modifies an assistant.
 
-The endpoint first [searches](/docs/api-reference/searches) over the labeled examples
-to select the ones most relevant for the particular query. Then, the relevant examples
-are combined with the query to construct a prompt to produce the final label via the
-[completions](/docs/api-reference/completions) endpoint.
+### [.audio](docs/sdks/audio/README.md)
 
-Labeled examples can be provided via an uploaded `file`, or explicitly listed in the
-request using the `examples` parameter for quick tests and small scale use cases.
+* [create_speech](docs/sdks/audio/README.md#create_speech) - Generates audio from the input text.
+* [create_transcription](docs/sdks/audio/README.md#create_transcription) - Transcribes audio into the input language.
+* [create_translation](docs/sdks/audio/README.md#create_translation) - Translates audio into English.
 
-* `create_completion` - Creates a completion for the provided prompt and parameters
-* `create_edit` - Creates a new edit for the provided input, instruction, and parameters.
-* `create_embedding` - Creates an embedding vector representing the input text.
-* `create_file` - Upload a file that contains document(s) to be used across various endpoints/features. Currently, the size of all the files uploaded by one organization can be up to 1 GB. Please contact us if you need to increase the storage limit.
+### [.chat](docs/sdks/chat/README.md)
 
-* `create_fine_tune` - Creates a job that fine-tunes a specified model from a given dataset.
+* [create_chat_completion](docs/sdks/chat/README.md#create_chat_completion) - Creates a model response for the given chat conversation.
+
+### [.completions](docs/sdks/completions/README.md)
+
+* [create_completion](docs/sdks/completions/README.md#create_completion) - Creates a completion for the provided prompt and parameters.
+
+### [.edits](docs/sdks/edits/README.md)
+
+* [~~create_edit~~](docs/sdks/edits/README.md#create_edit) - Creates a new edit for the provided input, instruction, and parameters. :warning: **Deprecated**
+
+### [.embeddings](docs/sdks/embeddings/README.md)
+
+* [create_embedding](docs/sdks/embeddings/README.md#create_embedding) - Creates an embedding vector representing the input text.
+
+### [.files](docs/sdks/files/README.md)
+
+* [create_file](docs/sdks/files/README.md#create_file) - Upload a file that can be used across various endpoints/features. The size of all the files uploaded by one organization can be up to 100 GB.
+
+The size of individual files for can be a maximum of 512MB. See the [Assistants Tools guide](/docs/assistants/tools) to learn more about the types of files supported. The Fine-tuning API only supports `.jsonl` files.
+
+Please [contact us](https://help.openai.com/) if you need to increase these storage limits.
+
+* [delete_file](docs/sdks/files/README.md#delete_file) - Delete a file.
+* [download_file](docs/sdks/files/README.md#download_file) - Returns the contents of the specified file.
+* [list_files](docs/sdks/files/README.md#list_files) - Returns a list of files that belong to the user's organization.
+* [retrieve_file](docs/sdks/files/README.md#retrieve_file) - Returns information about a specific file.
+
+### [.fine_tunes](docs/sdks/finetunes/README.md)
+
+* [~~cancel_fine_tune~~](docs/sdks/finetunes/README.md#cancel_fine_tune) - Immediately cancel a fine-tune job.
+ :warning: **Deprecated**
+* [~~create_fine_tune~~](docs/sdks/finetunes/README.md#create_fine_tune) - Creates a job that fine-tunes a specified model from a given dataset.
 
 Response includes details of the enqueued job including job status and the name of the fine-tuned models once complete.
 
-[Learn more about Fine-tuning](/docs/guides/fine-tuning)
+[Learn more about fine-tuning](/docs/guides/legacy-fine-tuning)
+ :warning: **Deprecated**
+* [~~list_fine_tune_events~~](docs/sdks/finetunes/README.md#list_fine_tune_events) - Get fine-grained status updates for a fine-tune job.
+ :warning: **Deprecated**
+* [~~list_fine_tunes~~](docs/sdks/finetunes/README.md#list_fine_tunes) - List your organization's fine-tuning jobs
+ :warning: **Deprecated**
+* [~~retrieve_fine_tune~~](docs/sdks/finetunes/README.md#retrieve_fine_tune) - Gets info about the fine-tune job.
 
-* `create_image` - Creates an image given a prompt.
-* `create_image_edit` - Creates an edited or extended image given an original image and a prompt.
-* `create_image_variation` - Creates a variation of a given image.
-* `create_moderation` - Classifies if text violates OpenAI's Content Policy
-* `create_search` - The search endpoint computes similarity scores between provided query and documents. Documents can be passed directly to the API if there are no more than 200 of them.
+[Learn more about fine-tuning](/docs/guides/legacy-fine-tuning)
+ :warning: **Deprecated**
 
-To go beyond the 200 document limit, documents can be processed offline and then used for efficient retrieval at query time. When `file` is set, the search endpoint searches over all the documents in the given file and returns up to the `max_rerank` number of documents. These documents will be returned along with their search scores.
+### [.fine_tuning](docs/sdks/finetuning/README.md)
 
-The similarity score is a positive score that usually ranges from 0 to 300 (but can sometimes go higher), where a score above 200 usually means the document is semantically similar to the query.
+* [cancel_fine_tuning_job](docs/sdks/finetuning/README.md#cancel_fine_tuning_job) - Immediately cancel a fine-tune job.
 
-* `create_transcription` - Transcribes audio into the input language.
-* `create_translation` - Translates audio into into English.
-* `delete_file` - Delete a file.
-* `delete_model` - Delete a fine-tuned model. You must have the Owner role in your organization.
-* `download_file` - Returns the contents of the specified file
-* `list_engines` - Lists the currently available (non-finetuned) models, and provides basic information about each one such as the owner and availability.
-* `list_files` - Returns a list of files that belong to the user's organization.
-* `list_fine_tune_events` - Get fine-grained status updates for a fine-tune job.
+* [create_fine_tuning_job](docs/sdks/finetuning/README.md#create_fine_tuning_job) - Creates a job that fine-tunes a specified model from a given dataset.
 
-* `list_fine_tunes` - List your organization's fine-tuning jobs
+Response includes details of the enqueued job including job status and the name of the fine-tuned models once complete.
 
-* `list_models` - Lists the currently available models, and provides basic information about each one such as the owner and availability.
-* `retrieve_engine` - Retrieves a model instance, providing basic information about it such as the owner and availability.
-* `retrieve_file` - Returns information about a specific file.
-* `retrieve_fine_tune` - Gets info about the fine-tune job.
+[Learn more about fine-tuning](/docs/guides/fine-tuning)
 
-[Learn more about Fine-tuning](/docs/guides/fine-tuning)
+* [list_fine_tuning_events](docs/sdks/finetuning/README.md#list_fine_tuning_events) - Get status updates for a fine-tuning job.
 
-* `retrieve_model` - Retrieves a model instance, providing basic information about the model such as the owner and permissioning.
+* [list_paginated_fine_tuning_jobs](docs/sdks/finetuning/README.md#list_paginated_fine_tuning_jobs) - List your organization's fine-tuning jobs
+
+* [retrieve_fine_tuning_job](docs/sdks/finetuning/README.md#retrieve_fine_tuning_job) - Get info about a fine-tuning job.
+
+[Learn more about fine-tuning](/docs/guides/fine-tuning)
+
+
+### [.images](docs/sdks/images/README.md)
+
+* [create_image](docs/sdks/images/README.md#create_image) - Creates an image given a prompt.
+* [create_image_edit](docs/sdks/images/README.md#create_image_edit) - Creates an edited or extended image given an original image and a prompt.
+* [create_image_variation](docs/sdks/images/README.md#create_image_variation) - Creates a variation of a given image.
+
+### [.models](docs/sdks/models/README.md)
+
+* [delete_model](docs/sdks/models/README.md#delete_model) - Delete a fine-tuned model. You must have the Owner role in your organization to delete a model.
+* [list_models](docs/sdks/models/README.md#list_models) - Lists the currently available models, and provides basic information about each one such as the owner and availability.
+* [retrieve_model](docs/sdks/models/README.md#retrieve_model) - Retrieves a model instance, providing basic information about the model such as the owner and permissioning.
+
+### [.moderations](docs/sdks/moderations/README.md)
+
+* [create_moderation](docs/sdks/moderations/README.md#create_moderation) - Classifies if text violates OpenAI's Content Policy
 <!-- End SDK Available Operations -->
+
+
+
+<!-- Start Dev Containers -->
+
+
+
+<!-- End Dev Containers -->
+
+
+
+<!-- Start Error Handling -->
+# Error Handling
+
+Handling errors in your SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate Error type.
+
+
+<!-- End Error Handling -->
+
+
+
+<!-- Start Server Selection -->
+# Server Selection
+
+## Select Server by Index
+
+You can override the default server globally by passing a server index to the `server_idx: int` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `https://api.openai.com/v1` | None |
+
+For example:
+
+```python
+import gpt
+from gpt.models import operations
+
+s = gpt.Gpt(
+    server_idx=0,
+    api_key_auth="",
+)
+
+
+res = s.assistants.cancel_run(run_id='string', thread_id='string')
+
+if res.run_object is not None:
+    # handle response
+    pass
+```
+
+
+## Override Server URL Per-Client
+
+The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
+
+```python
+import gpt
+from gpt.models import operations
+
+s = gpt.Gpt(
+    server_url="https://api.openai.com/v1",
+    api_key_auth="",
+)
+
+
+res = s.assistants.cancel_run(run_id='string', thread_id='string')
+
+if res.run_object is not None:
+    # handle response
+    pass
+```
+<!-- End Server Selection -->
+
+
+
+<!-- Start Custom HTTP Client -->
+# Custom HTTP Client
+
+The Python SDK makes API calls using the (requests)[https://pypi.org/project/requests/] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
+
+
+For example, you could specify a header for every request that your sdk makes as follows:
+
+```python
+import gpt
+import requests
+
+http_client = requests.Session()
+http_client.headers.update({'x-custom-header': 'someValue'})
+s = gpt.Gpt(client: http_client)
+```
+
+
+<!-- End Custom HTTP Client -->
+
+
+
+<!-- Start Authentication -->
+
+# Authentication
+
+## Per-Client Security Schemes
+
+Your SDK supports the following security scheme globally:
+
+| Name           | Type           | Scheme         |
+| -------------- | -------------- | -------------- |
+| `api_key_auth` | http           | HTTP Bearer    |
+
+To authenticate with the API the `api_key_auth` parameter must be set when initializing the SDK client instance. For example:
+
+```python
+import gpt
+from gpt.models import operations
+
+s = gpt.Gpt(
+    api_key_auth="",
+)
+
+
+res = s.assistants.cancel_run(run_id='string', thread_id='string')
+
+if res.run_object is not None:
+    # handle response
+    pass
+```
+<!-- End Authentication -->
+
+<!-- Placeholder for Future Speakeasy SDK Sections -->
+
+
 
 ### SDK Generated by [Speakeasy](https://docs.speakeasyapi.dev/docs/using-speakeasy/client-sdks)
