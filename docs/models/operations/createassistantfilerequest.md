@@ -1,0 +1,9 @@
+# CreateAssistantFileRequest
+
+
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                | Example                                                                                    |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `create_assistant_file_request`                                                            | [components.CreateAssistantFileRequest](../../models/shared/createassistantfilerequest.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |                                                                                            |
+| `assistant_id`                                                                             | *str*                                                                                      | :heavy_check_mark:                                                                         | The ID of the assistant for which to create a File.<br/>                                   | file-AF1WoRqd3aJAHsqc9NY7iL8F                                                              |

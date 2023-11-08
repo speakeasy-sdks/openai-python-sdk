@@ -1,19 +1,19 @@
 <!-- Start SDK Example Usage -->
+
+
 ```python
 import gpt
-from gpt.models import operations, shared
+from gpt.models import operations
 
-s = gpt.Gpt()
-   
-req = operations.CancelFineTuneRequest(
-    path_params=operations.CancelFineTunePathParams(
-        fine_tune_id="unde",
-    ),
+s = gpt.Gpt(
+    api_key_auth="",
 )
-    
-res = s.open_ai.cancel_fine_tune(req)
 
-if res.fine_tune is not None:
+
+res = s.assistants.cancel_run(run_id='string', thread_id='string')
+
+if res.run_object is not None:
     # handle response
+    pass
 ```
 <!-- End SDK Example Usage -->

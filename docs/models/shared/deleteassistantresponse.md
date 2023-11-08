@@ -1,0 +1,10 @@
+# DeleteAssistantResponse
+
+
+## Fields
+
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `deleted`                                                                                        | *bool*                                                                                           | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| `id`                                                                                             | *str*                                                                                            | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| `object`                                                                                         | [components.DeleteAssistantResponseObject](../../models/shared/deleteassistantresponseobject.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |

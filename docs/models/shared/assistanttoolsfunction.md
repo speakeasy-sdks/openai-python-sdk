@@ -1,0 +1,9 @@
+# AssistantToolsFunction
+
+
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `function`                                                                                         | [components.AssistantToolsFunctionFunction](../../models/shared/assistanttoolsfunctionfunction.md) | :heavy_check_mark:                                                                                 | The function definition.                                                                           |
+| `type`                                                                                             | [components.AssistantToolsFunctionType](../../models/shared/assistanttoolsfunctiontype.md)         | :heavy_check_mark:                                                                                 | The type of tool being defined: `function`                                                         |
