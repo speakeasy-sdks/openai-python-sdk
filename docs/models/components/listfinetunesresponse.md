@@ -1,0 +1,9 @@
+# ListFineTunesResponse
+
+
+## Fields
+
+| Field                                                                                            | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `data`                                                                                           | List[[components.FineTune](../../models/components/finetune.md)]                                 | :heavy_check_mark:                                                                               | N/A                                                                                              |
+| `object`                                                                                         | [components.ListFineTunesResponseObject](../../models/components/listfinetunesresponseobject.md) | :heavy_check_mark:                                                                               | N/A                                                                                              |
