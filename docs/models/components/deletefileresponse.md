@@ -1,0 +1,10 @@
+# DeleteFileResponse
+
+
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `deleted`                                                                                  | *bool*                                                                                     | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `id`                                                                                       | *str*                                                                                      | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `object`                                                                                   | [components.DeleteFileResponseObject](../../models/components/deletefileresponseobject.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
