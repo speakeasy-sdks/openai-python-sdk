@@ -1,0 +1,11 @@
+# ImageFile
+
+References an image [File](/docs/api-reference/files) in the content of a message.
+
+
+## Fields
+
+| Field                                                                                                                      | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `image_file`                                                                                                               | [components.SchemasImageFile](../../models/components/schemasimagefile.md)                                                 | :heavy_check_mark:                                                                                                         | N/A                                                                                                                        |
+| `type`                                                                                                                     | [components.SchemasMessageContentImageFileObjectType](../../models/components/schemasmessagecontentimagefileobjecttype.md) | :heavy_check_mark:                                                                                                         | Always `image_file`.                                                                                                       |

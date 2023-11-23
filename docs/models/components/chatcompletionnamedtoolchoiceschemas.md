@@ -1,0 +1,11 @@
+# ChatCompletionNamedToolChoiceSchemas
+
+Specifies a tool the model should use. Use to force the model to call a specific function.
+
+
+## Fields
+
+| Field                                                                                                                                | Type                                                                                                                                 | Required                                                                                                                             | Description                                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------ |
+| `function`                                                                                                                           | [Optional[components.Function]](../../models/components/function.md)                                                                 | :heavy_minus_sign:                                                                                                                   | N/A                                                                                                                                  |
+| `type`                                                                                                                               | [Optional[components.SchemasChatCompletionNamedToolChoiceType]](../../models/components/schemaschatcompletionnamedtoolchoicetype.md) | :heavy_minus_sign:                                                                                                                   | The type of the tool. Currently, only `function` is supported.                                                                       |
