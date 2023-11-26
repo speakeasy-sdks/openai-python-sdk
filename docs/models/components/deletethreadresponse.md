@@ -1,0 +1,10 @@
+# DeleteThreadResponse
+
+
+## Fields
+
+| Field                                                                                          | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `deleted`                                                                                      | *bool*                                                                                         | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `id`                                                                                           | *str*                                                                                          | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `object`                                                                                       | [components.DeleteThreadResponseObject](../../models/components/deletethreadresponseobject.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
