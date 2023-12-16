@@ -1,0 +1,11 @@
+# RunStepDetailsMessageCreationObject
+
+Details of the message creation by the run step.
+
+
+## Fields
+
+| Field                                                                                                                    | Type                                                                                                                     | Required                                                                                                                 | Description                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------ |
+| `message_creation`                                                                                                       | [components.MessageCreation](../../models/components/messagecreation.md)                                                 | :heavy_check_mark:                                                                                                       | N/A                                                                                                                      |
+| `type`                                                                                                                   | [components.RunStepDetailsMessageCreationObjectType](../../models/components/runstepdetailsmessagecreationobjecttype.md) | :heavy_check_mark:                                                                                                       | Always `message_creation`.                                                                                               |
