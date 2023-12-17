@@ -129,6 +129,7 @@ src/gpt/models/components/createchatcompletionresponse.py
 src/gpt/models/components/completionusage.py
 src/gpt/models/components/chatcompletionresponsemessage.py
 src/gpt/models/components/chatcompletionmessagetoolcall.py
+src/gpt/models/components/chatcompletiontokenlogprob.py
 src/gpt/models/components/createchatcompletionrequest.py
 src/gpt/models/components/chatcompletiontool.py
 src/gpt/models/components/chatcompletiontoolchoiceoption.py
@@ -412,8 +413,6 @@ docs/models/components/createtranslationrequest2.md
 docs/models/components/createtranslationrequestmodel.md
 docs/models/components/createtranslationrequest.md
 docs/models/components/finishreason.md
-docs/models/components/toplogprobs.md
-docs/models/components/createchatcompletionresponsecontent.md
 docs/models/components/logprobs.md
 docs/models/components/choices.md
 docs/models/components/createchatcompletionresponseobject.md
@@ -425,6 +424,8 @@ docs/models/components/chatcompletionresponsemessage.md
 docs/models/components/function.md
 docs/models/components/chatcompletionmessagetoolcalltype.md
 docs/models/components/chatcompletionmessagetoolcall.md
+docs/models/components/toplogprobs.md
+docs/models/components/chatcompletiontokenlogprob.md
 docs/models/components/createchatcompletionrequest1.md
 docs/models/components/createchatcompletionrequestfunctioncall.md
 docs/models/components/two.md

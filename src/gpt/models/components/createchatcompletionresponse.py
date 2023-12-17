@@ -3,6 +3,7 @@
 from __future__ import annotations
 import dataclasses
 from .chatcompletionresponsemessage import ChatCompletionResponseMessage
+from .chatcompletiontokenlogprob import ChatCompletionTokenLogprob
 from .completionusage import CompletionUsage
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
@@ -24,37 +25,9 @@ class FinishReason(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class TopLogprobs:
-    bytes: Optional[List[int]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bytes') }})
-    r"""A list of integers representing the UTF-8 bytes representation of the token. Useful in instances where characters are represented by multiple tokens and their byte representations must be combined to generate the correct text representation. Can be `null` if there is no bytes representation for the token."""
-    logprob: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('logprob'), 'exclude': lambda f: f is None }})
-    r"""The log probability of this token."""
-    token: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('token'), 'exclude': lambda f: f is None }})
-    r"""The token."""
-    
-
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
-class CreateChatCompletionResponseContent:
-    bytes: Optional[List[int]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bytes') }})
-    r"""A list of integers representing the UTF-8 bytes representation of the token. Useful in instances where characters are represented by multiple tokens and their byte representations must be combined to generate the correct text representation. Can be `null` if there is no bytes representation for the token."""
-    logprob: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('logprob') }})
-    r"""The log probability of this token."""
-    token: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('token') }})
-    r"""The token."""
-    top_logprobs: List[TopLogprobs] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('top_logprobs') }})
-    r"""List of the most likely tokens and their log probability, at this token position. In rare cases, there may be fewer than the number of requested `top_logprobs` returned."""
-    
-
-
-
-@dataclass_json(undefined=Undefined.EXCLUDE)
-@dataclasses.dataclass
 class Logprobs:
     r"""Log probability information for the choice."""
-    content: Optional[List[CreateChatCompletionResponseContent]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('content') }})
+    content: Optional[List[ChatCompletionTokenLogprob]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('content') }})
     r"""A list of message content tokens with log probability information."""
     
 
