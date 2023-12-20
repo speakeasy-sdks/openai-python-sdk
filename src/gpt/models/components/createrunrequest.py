@@ -22,8 +22,10 @@ class CreateRunRequestMetadata:
 class CreateRunRequest:
     assistant_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('assistant_id') }})
     r"""The ID of the [assistant](/docs/api-reference/assistants) to use to execute this run."""
+    additional_instructions: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('additional_instructions') }})
+    r"""Appends additional instructions at the end of the instructions for the run. This is useful for modifying the behavior on a per-run basis without overriding other instructions."""
     instructions: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('instructions') }})
-    r"""Override the default system message of the assistant. This is useful for modifying the behavior on a per-run basis."""
+    r"""Overrides the [instructions](/docs/api-reference/assistants/createAssistant) of the assistant. This is useful for modifying the behavior on a per-run basis."""
     metadata: Optional[CreateRunRequestMetadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata') }})
     r"""Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maxium of 512 characters long."""
     model: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model') }})

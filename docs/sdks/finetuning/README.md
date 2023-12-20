@@ -61,7 +61,7 @@ if res.fine_tuning_job is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## create_fine_tuning_job
 
@@ -114,7 +114,7 @@ if res.fine_tuning_job is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## list_fine_tuning_events
 
@@ -155,7 +155,7 @@ if res.list_fine_tuning_job_events_response is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## list_paginated_fine_tuning_jobs
 
@@ -195,7 +195,7 @@ if res.list_paginated_fine_tuning_jobs_response is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
 
 ## retrieve_fine_tuning_job
 
@@ -236,4 +236,4 @@ if res.fine_tuning_job is not None:
 
 | Error Object    | Status Code     | Content Type    |
 | --------------- | --------------- | --------------- |
-| errors.SDKError | 400-600         | */*             |
+| errors.SDKError | 4x-5xx          | */*             |
