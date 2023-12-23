@@ -16,7 +16,7 @@ class Categories:
     harassment_threatening: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('harassment/threatening') }})
     r"""Harassment content that also includes violence or serious harm towards any target."""
     hate: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hate') }})
-    r"""Content that expresses, incites, or promotes hate based on race, gender, ethnicity, religion, nationality, sexual orientation, disability status, or caste. Hateful content aimed at non-protected groups (e.g., chess players) is harrassment."""
+    r"""Content that expresses, incites, or promotes hate based on race, gender, ethnicity, religion, nationality, sexual orientation, disability status, or caste. Hateful content aimed at non-protected groups (e.g., chess players) is harassment."""
     hate_threatening: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hate/threatening') }})
     r"""Hateful content that also includes violence or serious harm towards the targeted group based on race, gender, ethnicity, religion, nationality, sexual orientation, disability status, or caste."""
     self_harm: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('self-harm') }})
