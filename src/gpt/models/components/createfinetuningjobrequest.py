@@ -19,7 +19,7 @@ class CreateFineTuningJobRequestSchemasHyperparameters1(str, Enum):
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class CreateFineTuningJobRequestHyperparameters:
+class Hyperparameters:
     r"""The hyperparameters used for the fine-tuning job."""
     batch_size: Optional[Union[CreateFineTuningJobRequest1, int]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('batch_size'), 'exclude': lambda f: f is None }})
     r"""Number of examples in each batch. A larger batch size means that model parameters
@@ -58,7 +58,7 @@ class CreateFineTuningJobRequest:
 
     See the [fine-tuning guide](/docs/guides/fine-tuning) for more details.
     """
-    hyperparameters: Optional[CreateFineTuningJobRequestHyperparameters] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hyperparameters'), 'exclude': lambda f: f is None }})
+    hyperparameters: Optional[Hyperparameters] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hyperparameters'), 'exclude': lambda f: f is None }})
     r"""The hyperparameters used for the fine-tuning job."""
     suffix: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('suffix') }})
     r"""A string of up to 18 characters that will be added to your fine-tuned model name.

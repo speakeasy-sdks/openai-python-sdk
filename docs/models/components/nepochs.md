@@ -1,16 +1,16 @@
 # NEpochs
 
-The number of epochs to train the model for. An epoch refers to one
-full cycle through the training dataset.
+The number of epochs to train the model for. An epoch refers to one full cycle
+through the training dataset.
 
 
 
 ## Supported Types
 
-### CreateFineTuneRequest1
+### CreateFineTuningJobRequestSchemasHyperparameters1
 
 ```python
-nEpochs: components.CreateFineTuneRequest1 = /* values here */
+nEpochs: components.CreateFineTuningJobRequestSchemasHyperparameters1 = /* values here */
 ```
 
 ### 

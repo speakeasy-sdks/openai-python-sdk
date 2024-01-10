@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 35bdeffa-af3f-4704-85cf-c9806b956990
 management:
-  docChecksum: 20d3cc86978da80cdf4bd1c649b0ebd7
+  docChecksum: 3650aae62d60640ad8bd28dcf1c0bda2
   docVersion: 2.0.0
   speakeasyVersion: internal
-  generationVersion: 2.228.1
-  releaseVersion: 2.0.4
-  configChecksum: d48629a383477e31631ca7ecae467773
+  generationVersion: 2.230.3
+  releaseVersion: 2.0.5
+  configChecksum: 2c159534ccfa9a0e63add81510a74b62
   repoURL: https://github.com/speakeasy-sdks/openai-python-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/openai-python-sdk.git
@@ -27,10 +27,8 @@ generatedFiles:
   - src/gpt/audio.py
   - src/gpt/chat.py
   - src/gpt/completions.py
-  - src/gpt/edits.py
   - src/gpt/embeddings.py
   - src/gpt/files.py
-  - src/gpt/fine_tunes.py
   - src/gpt/fine_tuning.py
   - src/gpt/images.py
   - src/gpt/models_.py
@@ -77,18 +75,12 @@ generatedFiles:
   - src/gpt/models/operations/createtranslation.py
   - src/gpt/models/operations/createchatcompletion.py
   - src/gpt/models/operations/createcompletion.py
-  - src/gpt/models/operations/createedit.py
   - src/gpt/models/operations/createembedding.py
   - src/gpt/models/operations/createfile.py
   - src/gpt/models/operations/deletefile.py
   - src/gpt/models/operations/downloadfile.py
   - src/gpt/models/operations/listfiles.py
   - src/gpt/models/operations/retrievefile.py
-  - src/gpt/models/operations/cancelfinetune.py
-  - src/gpt/models/operations/createfinetune.py
-  - src/gpt/models/operations/listfinetuneevents.py
-  - src/gpt/models/operations/listfinetunes.py
-  - src/gpt/models/operations/retrievefinetune.py
   - src/gpt/models/operations/cancelfinetuningjob.py
   - src/gpt/models/operations/createfinetuningjob.py
   - src/gpt/models/operations/listfinetuningevents.py
@@ -169,8 +161,6 @@ generatedFiles:
   - src/gpt/models/components/chatcompletionfunctioncalloption.py
   - src/gpt/models/components/createcompletionresponse.py
   - src/gpt/models/components/createcompletionrequest.py
-  - src/gpt/models/components/createeditresponse.py
-  - src/gpt/models/components/createeditrequest.py
   - src/gpt/models/components/createembeddingresponse.py
   - src/gpt/models/components/embedding.py
   - src/gpt/models/components/createembeddingrequest.py
@@ -178,11 +168,6 @@ generatedFiles:
   - src/gpt/models/components/createfilerequest.py
   - src/gpt/models/components/deletefileresponse.py
   - src/gpt/models/components/listfilesresponse.py
-  - src/gpt/models/components/finetune.py
-  - src/gpt/models/components/finetuneevent.py
-  - src/gpt/models/components/createfinetunerequest.py
-  - src/gpt/models/components/listfinetuneeventsresponse.py
-  - src/gpt/models/components/listfinetunesresponse.py
   - src/gpt/models/components/finetuningjob.py
   - src/gpt/models/components/createfinetuningjobrequest.py
   - src/gpt/models/components/listfinetuningjobeventsresponse.py
@@ -267,7 +252,6 @@ generatedFiles:
   - docs/models/operations/createtranslationresponse.md
   - docs/models/operations/createchatcompletionresponse.md
   - docs/models/operations/createcompletionresponse.md
-  - docs/models/operations/createeditresponse.md
   - docs/models/operations/createembeddingresponse.md
   - docs/models/operations/createfileresponse.md
   - docs/models/operations/deletefilerequest.md
@@ -278,14 +262,6 @@ generatedFiles:
   - docs/models/operations/listfilesresponse.md
   - docs/models/operations/retrievefilerequest.md
   - docs/models/operations/retrievefileresponse.md
-  - docs/models/operations/cancelfinetunerequest.md
-  - docs/models/operations/cancelfinetuneresponse.md
-  - docs/models/operations/createfinetuneresponse.md
-  - docs/models/operations/listfinetuneeventsrequest.md
-  - docs/models/operations/listfinetuneeventsresponse.md
-  - docs/models/operations/listfinetunesresponse.md
-  - docs/models/operations/retrievefinetunerequest.md
-  - docs/models/operations/retrievefinetuneresponse.md
   - docs/models/operations/cancelfinetuningjobrequest.md
   - docs/models/operations/cancelfinetuningjobresponse.md
   - docs/models/operations/createfinetuningjobresponse.md
@@ -497,13 +473,6 @@ generatedFiles:
   - docs/models/components/prompt.md
   - docs/models/components/createcompletionrequeststop.md
   - docs/models/components/createcompletionrequest.md
-  - docs/models/components/createeditresponsefinishreason.md
-  - docs/models/components/createeditresponsechoices.md
-  - docs/models/components/createeditresponseobject.md
-  - docs/models/components/createeditresponse.md
-  - docs/models/components/createeditrequest2.md
-  - docs/models/components/createeditrequestmodel.md
-  - docs/models/components/createeditrequest.md
   - docs/models/components/createembeddingresponseobject.md
   - docs/models/components/usage.md
   - docs/models/components/createembeddingresponse.md
@@ -525,21 +494,6 @@ generatedFiles:
   - docs/models/components/deletefileresponse.md
   - docs/models/components/listfilesresponseobject.md
   - docs/models/components/listfilesresponse.md
-  - docs/models/components/hyperparams.md
-  - docs/models/components/finetuneobject.md
-  - docs/models/components/finetune.md
-  - docs/models/components/finetuneeventobject.md
-  - docs/models/components/finetuneevent.md
-  - docs/models/components/createfinetunerequest1.md
-  - docs/models/components/nepochs.md
-  - docs/models/components/hyperparameters.md
-  - docs/models/components/createfinetunerequest2.md
-  - docs/models/components/createfinetunerequestmodel.md
-  - docs/models/components/createfinetunerequest.md
-  - docs/models/components/listfinetuneeventsresponseobject.md
-  - docs/models/components/listfinetuneeventsresponse.md
-  - docs/models/components/listfinetunesresponseobject.md
-  - docs/models/components/listfinetunesresponse.md
   - docs/models/components/error.md
   - docs/models/components/finetuningjob1.md
   - docs/models/components/finetuningjobnepochs.md
@@ -552,8 +506,8 @@ generatedFiles:
   - docs/models/components/createfinetuningjobrequestschemas1.md
   - docs/models/components/learningratemultiplier.md
   - docs/models/components/createfinetuningjobrequestschemashyperparameters1.md
-  - docs/models/components/createfinetuningjobrequestnepochs.md
-  - docs/models/components/createfinetuningjobrequesthyperparameters.md
+  - docs/models/components/nepochs.md
+  - docs/models/components/hyperparameters.md
   - docs/models/components/createfinetuningjobrequest2.md
   - docs/models/components/createfinetuningjobrequestmodel.md
   - docs/models/components/createfinetuningjobrequest.md
@@ -605,10 +559,8 @@ generatedFiles:
   - docs/sdks/audio/README.md
   - docs/sdks/chat/README.md
   - docs/sdks/completions/README.md
-  - docs/sdks/edits/README.md
   - docs/sdks/embeddings/README.md
   - docs/sdks/files/README.md
-  - docs/sdks/finetunes/README.md
   - docs/sdks/finetuning/README.md
   - docs/sdks/images/README.md
   - docs/sdks/models/README.md

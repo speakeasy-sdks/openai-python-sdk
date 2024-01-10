@@ -9,7 +9,7 @@ Manage fine-tuning jobs to tailor a model to your specific training data.
 
 * [cancel_fine_tuning_job](#cancel_fine_tuning_job) - Immediately cancel a fine-tune job.
 
-* [create_fine_tuning_job](#create_fine_tuning_job) - Creates a job that fine-tunes a specified model from a given dataset.
+* [create_fine_tuning_job](#create_fine_tuning_job) - Creates a fine-tuning job which begins the process of creating a new model from a given dataset.
 
 Response includes details of the enqueued job including job status and the name of the fine-tuned models once complete.
 
@@ -65,7 +65,7 @@ if res.fine_tuning_job is not None:
 
 ## create_fine_tuning_job
 
-Creates a job that fine-tunes a specified model from a given dataset.
+Creates a fine-tuning job which begins the process of creating a new model from a given dataset.
 
 Response includes details of the enqueued job including job status and the name of the fine-tuned models once complete.
 
@@ -83,7 +83,7 @@ s = gpt.Gpt(
 )
 
 req = components.CreateFineTuningJobRequest(
-    hyperparameters=components.CreateFineTuningJobRequestHyperparameters(
+    hyperparameters=components.Hyperparameters(
         batch_size=components.CreateFineTuningJobRequest1.AUTO,
         learning_rate_multiplier=components.CreateFineTuningJobRequestSchemas1.AUTO,
         n_epochs=components.CreateFineTuningJobRequestSchemasHyperparameters1.AUTO,

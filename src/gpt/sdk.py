@@ -5,10 +5,8 @@ from .assistants import Assistants
 from .audio import Audio
 from .chat import Chat
 from .completions import Completions
-from .edits import Edits
 from .embeddings import Embeddings
 from .files import Files
-from .fine_tunes import FineTunes
 from .fine_tuning import FineTuning
 from .images import Images
 from .models_ import Models
@@ -28,14 +26,10 @@ class Gpt:
     r"""Given a list of messages comprising a conversation, the model will return a response."""
     completions: Completions
     r"""Given a prompt, the model will return one or more predicted completions, and can also return the probabilities of alternative tokens at each position."""
-    edits: Edits
-    r"""Given a prompt and an instruction, the model will return an edited version of the prompt."""
     embeddings: Embeddings
     r"""Get a vector representation of a given input that can be easily consumed by machine learning models and algorithms."""
     files: Files
     r"""Files are used to upload documents that can be used with features like Assistants and Fine-tuning."""
-    fine_tunes: FineTunes
-    r"""Manage legacy fine-tuning jobs to tailor a model to your specific training data."""
     fine_tuning: FineTuning
     r"""Manage fine-tuning jobs to tailor a model to your specific training data."""
     images: Images
@@ -88,10 +82,8 @@ class Gpt:
         self.audio = Audio(self.sdk_configuration)
         self.chat = Chat(self.sdk_configuration)
         self.completions = Completions(self.sdk_configuration)
-        self.edits = Edits(self.sdk_configuration)
         self.embeddings = Embeddings(self.sdk_configuration)
         self.files = Files(self.sdk_configuration)
-        self.fine_tunes = FineTunes(self.sdk_configuration)
         self.fine_tuning = FineTuning(self.sdk_configuration)
         self.images = Images(self.sdk_configuration)
         self.models = Models(self.sdk_configuration)
