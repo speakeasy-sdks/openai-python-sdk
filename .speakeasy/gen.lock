@@ -4,7 +4,7 @@ management:
   docChecksum: 3650aae62d60640ad8bd28dcf1c0bda2
   docVersion: 2.0.0
   speakeasyVersion: internal
-  generationVersion: 2.230.3
+  generationVersion: 2.233.2
   releaseVersion: 2.0.5
   configChecksum: 2c159534ccfa9a0e63add81510a74b62
   repoURL: https://github.com/speakeasy-sdks/openai-python-sdk.git
