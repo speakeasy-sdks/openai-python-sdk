@@ -14,7 +14,7 @@ from .moderations import Moderations
 from .sdkconfiguration import SDKConfiguration
 from gpt import utils
 from gpt.models import components
-from typing import Dict
+from typing import Callable, Dict, Union
 
 class Gpt:
     r"""OpenAI API: The OpenAI REST API. Please see https://platform.openai.com/docs/api-reference for more details."""
@@ -42,7 +42,7 @@ class Gpt:
     sdk_configuration: SDKConfiguration
 
     def __init__(self,
-                 api_key_auth: str ,
+                 api_key_auth: Union[str, Callable[[], str]],
                  server_idx: int = None,
                  server_url: str = None,
                  url_params: Dict[str, str] = None,
@@ -52,7 +52,7 @@ class Gpt:
         """Instantiates the SDK configuring it with the provided parameters.
         
         :param api_key_auth: The api_key_auth required for authentication
-        :type api_key_auth: Union[str,Callable[[], str]]
+        :type api_key_auth: Union[str, Callable[[], str]]
         :param server_idx: The index of the server to use for all operations
         :type server_idx: int
         :param server_url: The server URL to use for all operations
@@ -67,7 +67,11 @@ class Gpt:
         if client is None:
             client = requests_http.Session()
         
-        security = components.Security(api_key_auth = api_key_auth)
+        if callable(api_key_auth):
+            def security():
+                return components.Security(api_key_auth = api_key_auth())
+        else:
+            security = components.Security(api_key_auth = api_key_auth)
         
         if server_url is not None:
             if url_params is not None:
