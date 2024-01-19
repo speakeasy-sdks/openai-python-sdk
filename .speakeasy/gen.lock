@@ -4,9 +4,9 @@ management:
   docChecksum: 3650aae62d60640ad8bd28dcf1c0bda2
   docVersion: 2.0.0
   speakeasyVersion: internal
-  generationVersion: 2.234.3
-  releaseVersion: 2.0.6
-  configChecksum: a2078cf30caf83531c13f88f280b9ede
+  generationVersion: 2.237.2
+  releaseVersion: 2.0.7
+  configChecksum: 3f13cad9b08046d6422052c8279088c4
   repoURL: https://github.com/speakeasy-sdks/openai-python-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/openai-python-sdk.git
@@ -18,7 +18,7 @@ features:
     deprecations: 2.81.1
     downloadStreams: 0.0.2
     flattening: 2.81.1
-    globalSecurity: 2.83.1
+    globalSecurity: 2.83.2
     globalServerURLs: 2.82.1
     unions: 2.82.5
 generatedFiles:
