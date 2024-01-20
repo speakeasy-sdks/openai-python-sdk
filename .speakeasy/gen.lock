@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 35bdeffa-af3f-4704-85cf-c9806b956990
 management:
-  docChecksum: 3650aae62d60640ad8bd28dcf1c0bda2
+  docChecksum: 59067621881faf553cf6bb2272133e9e
   docVersion: 2.0.0
   speakeasyVersion: internal
-  generationVersion: 2.237.2
-  releaseVersion: 2.0.7
-  configChecksum: 3f13cad9b08046d6422052c8279088c4
+  generationVersion: 2.237.3
+  releaseVersion: 2.0.8
+  configChecksum: 5859d2d44460a22f5b9fe8e77507df35
   repoURL: https://github.com/speakeasy-sdks/openai-python-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/openai-python-sdk.git
@@ -94,6 +94,7 @@ generatedFiles:
   - src/gpt/models/operations/retrievemodel.py
   - src/gpt/models/operations/createmoderation.py
   - src/gpt/models/components/runobject.py
+  - src/gpt/models/components/runcompletionusage.py
   - src/gpt/models/components/assistanttoolscode.py
   - src/gpt/models/components/assistanttoolsretrieval.py
   - src/gpt/models/components/assistanttoolsfunction.py
@@ -118,6 +119,7 @@ generatedFiles:
   - src/gpt/models/components/deletethreadresponse.py
   - src/gpt/models/components/messagefileobject.py
   - src/gpt/models/components/runstepobject.py
+  - src/gpt/models/components/runstepcompletionusage.py
   - src/gpt/models/components/runstepdetailsmessagecreationobject.py
   - src/gpt/models/components/runstepdetailstoolcallsobject.py
   - src/gpt/models/components/runstepdetailstoolcallscodeobject.py
@@ -290,6 +292,7 @@ generatedFiles:
   - docs/models/components/runobjectstatus.md
   - docs/models/components/runobjecttools.md
   - docs/models/components/runobject.md
+  - docs/models/components/runcompletionusage.md
   - docs/models/components/type.md
   - docs/models/components/assistanttoolscode.md
   - docs/models/components/assistanttoolsretrievaltype.md
@@ -358,6 +361,7 @@ generatedFiles:
   - docs/models/components/stepdetails.md
   - docs/models/components/runstepobjecttype.md
   - docs/models/components/runstepobject.md
+  - docs/models/components/runstepcompletionusage.md
   - docs/models/components/messagecreation.md
   - docs/models/components/runstepdetailsmessagecreationobjecttype.md
   - docs/models/components/runstepdetailsmessagecreationobject.md

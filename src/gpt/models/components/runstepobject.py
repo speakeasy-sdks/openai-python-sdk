@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
+from .runstepcompletionusage import RunStepCompletionUsage
 from .runstepdetailsmessagecreationobject import RunStepDetailsMessageCreationObject
 from .runstepdetailstoolcallsobject import RunStepDetailsToolCallsObject
 from dataclasses_json import Undefined, dataclass_json
@@ -85,5 +86,7 @@ class RunStepObject:
     r"""The ID of the [thread](/docs/api-reference/threads) that was run."""
     type: RunStepObjectType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     r"""The type of run step, which can be either `message_creation` or `tool_calls`."""
+    usage: Optional[RunStepCompletionUsage] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('usage') }})
+    r"""Usage statistics related to the run step. This value will be `null` while the run step's status is `in_progress`."""
     
 

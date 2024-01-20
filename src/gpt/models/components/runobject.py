@@ -5,6 +5,7 @@ import dataclasses
 from .assistanttoolscode import AssistantToolsCode
 from .assistanttoolsfunction import AssistantToolsFunction
 from .assistanttoolsretrieval import AssistantToolsRetrieval
+from .runcompletionusage import RunCompletionUsage
 from .runtoolcallobject import RunToolCallObject
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
@@ -117,5 +118,7 @@ class RunObject:
     r"""The ID of the [thread](/docs/api-reference/threads) that was executed on as a part of this run."""
     tools: List[Union[AssistantToolsCode, AssistantToolsRetrieval, AssistantToolsFunction]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tools') }})
     r"""The list of tools that the [assistant](/docs/api-reference/assistants) used for this run."""
+    usage: Optional[RunCompletionUsage] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('usage') }})
+    r"""Usage statistics related to the run. This value will be `null` if the run is not in a terminal state (i.e. `in_progress`, `queued`, etc.)."""
     
 
