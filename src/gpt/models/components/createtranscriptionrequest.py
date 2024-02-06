@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 from enum import Enum
-from typing import Optional, Union
+from typing import List, Optional, Union
 
 
 @dataclasses.dataclass
@@ -24,6 +24,10 @@ class CreateTranscriptionRequestResponseFormat(str, Enum):
     VERBOSE_JSON = 'verbose_json'
     VTT = 'vtt'
 
+class TimestampGranularities(str, Enum):
+    WORD = 'word'
+    SEGMENT = 'segment'
+
 
 @dataclasses.dataclass
 class CreateTranscriptionRequest:
@@ -39,5 +43,7 @@ class CreateTranscriptionRequest:
     r"""The format of the transcript output, in one of these options: `json`, `text`, `srt`, `verbose_json`, or `vtt`."""
     temperature: Optional[float] = dataclasses.field(default=0, metadata={'multipart_form': { 'field_name': 'temperature' }})
     r"""The sampling temperature, between 0 and 1. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. If set to 0, the model will use [log probability](https://en.wikipedia.org/wiki/Log_probability) to automatically increase the temperature until certain thresholds are hit."""
+    timestamp_granularities: Optional[List[TimestampGranularities]] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'timestamp_granularities[]' }})
+    r"""The timestamp granularities to populate for this transcription. Any of these options: `word`, or `segment`. Note: There is no additional latency for segment timestamps, but generating word timestamps incurs additional latency."""
     
 

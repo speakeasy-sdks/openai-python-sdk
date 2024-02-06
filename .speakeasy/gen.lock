@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 35bdeffa-af3f-4704-85cf-c9806b956990
 management:
-  docChecksum: fec080cc7b4b85f737f17928f5f6f306
+  docChecksum: 48d5059756953328026cfca7d15f0081
   docVersion: 2.0.0
   speakeasyVersion: internal
-  generationVersion: 2.248.1
-  releaseVersion: 3.0.0
-  configChecksum: 74f7f9dc18ac6845e067c8f2f0ab8231
+  generationVersion: 2.250.2
+  releaseVersion: 3.0.1
+  configChecksum: 3019d2cbe1649531de36e48698196b88
   repoURL: https://github.com/speakeasy-sdks/openai-python-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/openai-python-sdk.git
@@ -410,6 +410,7 @@ generatedFiles:
   - docs/models/components/createtranscriptionrequest2.md
   - docs/models/components/createtranscriptionrequestmodel.md
   - docs/models/components/createtranscriptionrequestresponseformat.md
+  - docs/models/components/timestampgranularities.md
   - docs/models/components/createtranscriptionrequest.md
   - docs/models/components/createtranslationresponse.md
   - docs/models/components/createtranslationrequestfile.md

@@ -38,6 +38,7 @@ class Two(str, Enum):
     GPT_3_5_TURBO_0301 = 'gpt-3.5-turbo-0301'
     GPT_3_5_TURBO_0613 = 'gpt-3.5-turbo-0613'
     GPT_3_5_TURBO_1106 = 'gpt-3.5-turbo-1106'
+    GPT_3_5_TURBO_0125 = 'gpt-3.5-turbo-0125'
     GPT_3_5_TURBO_16K_0613 = 'gpt-3.5-turbo-16k-0613'
 
 class CreateChatCompletionRequestType(str, Enum):
@@ -49,7 +50,7 @@ class CreateChatCompletionRequestType(str, Enum):
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class ResponseFormat:
-    r"""An object specifying the format that the model must output. Compatible with [GPT-4 Turbo](/docs/models/gpt-4-and-gpt-4-turbo) and `gpt-3.5-turbo-1106`.
+    r"""An object specifying the format that the model must output. Compatible with [GPT-4 Turbo](/docs/models/gpt-4-and-gpt-4-turbo) and all GPT-3.5 Turbo models newer than `gpt-3.5-turbo-1106`.
 
     Setting to `{ \"type\": \"json_object\" }` enables JSON mode, which guarantees the message the model generates is valid JSON.
 
@@ -112,7 +113,7 @@ class CreateChatCompletionRequest:
     [See more information about frequency and presence penalties.](/docs/guides/text-generation/parameter-details)
     """
     response_format: Optional[ResponseFormat] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('response_format'), 'exclude': lambda f: f is None }})
-    r"""An object specifying the format that the model must output. Compatible with [GPT-4 Turbo](/docs/models/gpt-4-and-gpt-4-turbo) and `gpt-3.5-turbo-1106`.
+    r"""An object specifying the format that the model must output. Compatible with [GPT-4 Turbo](/docs/models/gpt-4-and-gpt-4-turbo) and all GPT-3.5 Turbo models newer than `gpt-3.5-turbo-1106`.
 
     Setting to `{ \"type\": \"json_object\" }` enables JSON mode, which guarantees the message the model generates is valid JSON.
 
