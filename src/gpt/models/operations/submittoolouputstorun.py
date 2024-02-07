@@ -10,9 +10,9 @@ from typing import Optional
 
 @dataclasses.dataclass
 class SubmitToolOuputsToRunRequest:
+    submit_tool_outputs_run_request: components_submittooloutputsrunrequest.SubmitToolOutputsRunRequest = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     run_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'run_id', 'style': 'simple', 'explode': False }})
     r"""The ID of the run that requires the tool output submission."""
-    submit_tool_outputs_run_request: components_submittooloutputsrunrequest.SubmitToolOutputsRunRequest = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     thread_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'thread_id', 'style': 'simple', 'explode': False }})
     r"""The ID of the [thread](/docs/api-reference/threads) to which this run belongs."""
     
@@ -23,10 +23,10 @@ class SubmitToolOuputsToRunRequest:
 class SubmitToolOuputsToRunResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
-    raw_response: requests_http.Response = dataclasses.field()
-    r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     run_object: Optional[components_runobject.RunObject] = dataclasses.field(default=None)
     r"""OK"""
     

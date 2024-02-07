@@ -83,13 +83,13 @@ s = gpt.Gpt(
 )
 
 req = components.CreateFineTuningJobRequest(
+    model=components.CreateFineTuningJobRequest2.GPT_3_5_TURBO,
+    training_file='file-abc123',
     hyperparameters=components.Hyperparameters(
         batch_size=components.CreateFineTuningJobRequest1.AUTO,
         learning_rate_multiplier=components.CreateFineTuningJobRequestSchemas1.AUTO,
         n_epochs=components.CreateFineTuningJobRequestSchemasHyperparameters1.AUTO,
     ),
-    model=components.CreateFineTuningJobRequest2.GPT_3_5_TURBO,
-    training_file='file-abc123',
     validation_file='file-abc123',
 )
 

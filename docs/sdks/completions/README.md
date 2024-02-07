@@ -24,13 +24,13 @@ s = gpt.Gpt(
 )
 
 req = components.CreateCompletionRequest(
+    model='string',
+    prompt='This is a test.',
     logit_bias={
-        'key': 160667,
+        'key': 242695,
     },
     max_tokens=16,
-    model='string',
     n=1,
-    prompt='This is a test.',
     stop='
 ',
     suffix='test.',

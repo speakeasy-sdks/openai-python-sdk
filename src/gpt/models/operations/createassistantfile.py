@@ -10,9 +10,9 @@ from typing import Optional
 
 @dataclasses.dataclass
 class CreateAssistantFileRequest:
+    create_assistant_file_request: components_createassistantfilerequest.CreateAssistantFileRequest = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     assistant_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'assistant_id', 'style': 'simple', 'explode': False }})
     r"""The ID of the assistant for which to create a File."""
-    create_assistant_file_request: components_createassistantfilerequest.CreateAssistantFileRequest = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     
 
 
@@ -21,10 +21,10 @@ class CreateAssistantFileRequest:
 class CreateAssistantFileResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
-    raw_response: requests_http.Response = dataclasses.field()
-    r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     assistant_file_object: Optional[components_assistantfileobject.AssistantFileObject] = dataclasses.field(default=None)
     r"""OK"""
     

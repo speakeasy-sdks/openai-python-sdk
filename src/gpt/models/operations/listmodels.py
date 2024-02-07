@@ -11,10 +11,10 @@ from typing import Optional
 class ListModelsResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
-    raw_response: requests_http.Response = dataclasses.field()
-    r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     list_models_response: Optional[components_listmodelsresponse.ListModelsResponse] = dataclasses.field(default=None)
     r"""OK"""
     

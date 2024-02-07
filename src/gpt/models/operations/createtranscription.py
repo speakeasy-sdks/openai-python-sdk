@@ -11,10 +11,10 @@ from typing import Optional
 class CreateTranscriptionResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
-    raw_response: requests_http.Response = dataclasses.field()
-    r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     create_transcription_response: Optional[components_createtranscriptionresponse.CreateTranscriptionResponse] = dataclasses.field(default=None)
     r"""OK"""
     

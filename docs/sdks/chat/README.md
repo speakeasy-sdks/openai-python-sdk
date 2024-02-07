@@ -24,6 +24,14 @@ s = gpt.Gpt(
 )
 
 req = components.CreateChatCompletionRequest(
+    messages=[
+        components.ChatCompletionRequestToolMessage(
+            content='string',
+            role=components.ChatCompletionRequestToolMessageRole.TOOL,
+            tool_call_id='string',
+        ),
+    ],
+    model=components.Two.GPT_3_5_TURBO,
     functions=[
         components.ChatCompletionFunctions(
             name='string',
@@ -33,24 +41,8 @@ req = components.CreateChatCompletionRequest(
         ),
     ],
     logit_bias={
-        'key': 770726,
+        'key': 544683,
     },
-    messages=[
-        components.ChatCompletionRequestAssistantMessage(
-            role=components.Role.ASSISTANT,
-            tool_calls=[
-                components.ChatCompletionMessageToolCall(
-                    function=components.Function(
-                        arguments='string',
-                        name='string',
-                    ),
-                    id='<ID>',
-                    type=components.ChatCompletionMessageToolCallType.FUNCTION,
-                ),
-            ],
-        ),
-    ],
-    model=components.Two.GPT_3_5_TURBO,
     n=1,
     response_format=components.ResponseFormat(
         type=components.CreateChatCompletionRequestType.JSON_OBJECT,

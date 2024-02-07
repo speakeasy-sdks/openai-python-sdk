@@ -10,9 +10,9 @@ from typing import Optional
 
 @dataclasses.dataclass
 class ModifyMessageRequest:
+    modify_message_request: components_modifymessagerequest.ModifyMessageRequest = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     message_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'message_id', 'style': 'simple', 'explode': False }})
     r"""The ID of the message to modify."""
-    modify_message_request: components_modifymessagerequest.ModifyMessageRequest = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     thread_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'thread_id', 'style': 'simple', 'explode': False }})
     r"""The ID of the thread to which this message belongs."""
     
@@ -23,10 +23,10 @@ class ModifyMessageRequest:
 class ModifyMessageResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
-    raw_response: requests_http.Response = dataclasses.field()
-    r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     message_object: Optional[components_messageobject.MessageObject] = dataclasses.field(default=None)
     r"""OK"""
     

@@ -10,9 +10,9 @@ from typing import Optional
 
 @dataclasses.dataclass
 class ModifyAssistantRequest:
+    modify_assistant_request: components_modifyassistantrequest.ModifyAssistantRequest = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     assistant_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'assistant_id', 'style': 'simple', 'explode': False }})
     r"""The ID of the assistant to modify."""
-    modify_assistant_request: components_modifyassistantrequest.ModifyAssistantRequest = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     
 
 
@@ -21,10 +21,10 @@ class ModifyAssistantRequest:
 class ModifyAssistantResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
-    raw_response: requests_http.Response = dataclasses.field()
-    r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     assistant_object: Optional[components_assistantobject.AssistantObject] = dataclasses.field(default=None)
     r"""OK"""
     

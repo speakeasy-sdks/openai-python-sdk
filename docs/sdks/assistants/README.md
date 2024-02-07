@@ -91,11 +91,11 @@ s = gpt.Gpt(
 )
 
 req = components.CreateAssistantRequest(
+    model='XTS',
     file_ids=[
         'string',
     ],
     metadata=components.CreateAssistantRequestMetadata(),
-    model='XTS',
     tools=[
         components.AssistantToolsRetrieval(
             type=components.AssistantToolsRetrievalType.RETRIEVAL,
@@ -184,11 +184,11 @@ s = gpt.Gpt(
 
 res = s.assistants.create_message(create_message_request=components.CreateMessageRequest(
     content='string',
+    role=components.CreateMessageRequestRole.USER,
     file_ids=[
         'string',
     ],
     metadata=components.CreateMessageRequestMetadata(),
-    role=components.CreateMessageRequestRole.USER,
 ), thread_id='string')
 
 if res.message_object is not None:
@@ -278,11 +278,11 @@ req = components.CreateThreadRequest(
     messages=[
         components.CreateMessageRequest(
             content='string',
+            role=components.CreateMessageRequestRole.USER,
             file_ids=[
                 'string',
             ],
             metadata=components.CreateMessageRequestMetadata(),
-            role=components.CreateMessageRequestRole.USER,
         ),
     ],
     metadata=components.CreateThreadRequestMetadata(),
@@ -332,11 +332,11 @@ req = components.CreateThreadAndRunRequest(
         messages=[
             components.CreateMessageRequest(
                 content='string',
+                role=components.CreateMessageRequestRole.USER,
                 file_ids=[
                     'string',
                 ],
                 metadata=components.CreateMessageRequestMetadata(),
-                role=components.CreateMessageRequestRole.USER,
             ),
         ],
         metadata=components.CreateThreadRequestMetadata(),

@@ -33,10 +33,10 @@ class ListRunsRequest:
 class ListRunsResponse:
     content_type: str = dataclasses.field()
     r"""HTTP response content type for this operation"""
-    raw_response: requests_http.Response = dataclasses.field()
-    r"""Raw HTTP response; suitable for custom response parsing"""
     status_code: int = dataclasses.field()
     r"""HTTP response status code for this operation"""
+    raw_response: requests_http.Response = dataclasses.field()
+    r"""Raw HTTP response; suitable for custom response parsing"""
     list_runs_response: Optional[components_listrunsresponse.ListRunsResponse] = dataclasses.field(default=None)
     r"""OK"""
     

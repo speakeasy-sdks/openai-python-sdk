@@ -24,9 +24,9 @@ s = gpt.Gpt(
 )
 
 req = components.CreateEmbeddingRequest(
-    encoding_format=components.EncodingFormat.FLOAT,
     input='The quick brown fox jumped over the lazy dog',
     model=components.CreateEmbeddingRequest2.TEXT_EMBEDDING_3_SMALL,
+    encoding_format=components.EncodingFormat.FLOAT,
     user='user-1234',
 )
 
