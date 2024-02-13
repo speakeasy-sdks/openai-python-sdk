@@ -36,7 +36,6 @@ Authorization: Bearer YOUR_API_KEY
 
 ```python
 import gpt
-from gpt.models import operations
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",
@@ -166,7 +165,7 @@ Handling errors in this SDK should largely match your expectations.  All operati
 
 ```python
 import gpt
-from gpt.models import operations
+from gpt.models import errors
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",
@@ -177,7 +176,7 @@ res = None
 try:
     res = s.assistants.cancel_run(run_id='string', thread_id='string')
 except errors.SDKError as e:
-    print(e)  # handle exception
+    # handle exception
     raise(e)
 
 if res.run_object is not None:
@@ -201,7 +200,6 @@ You can override the default server globally by passing a server index to the `s
 
 ```python
 import gpt
-from gpt.models import operations
 
 s = gpt.Gpt(
     server_idx=0,
@@ -222,7 +220,6 @@ if res.run_object is not None:
 The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
 ```python
 import gpt
-from gpt.models import operations
 
 s = gpt.Gpt(
     server_url="https://api.openai.com/v1",
@@ -268,7 +265,6 @@ This SDK supports the following security scheme globally:
 To authenticate with the API the `api_key_auth` parameter must be set when initializing the SDK client instance. For example:
 ```python
 import gpt
-from gpt.models import operations
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",

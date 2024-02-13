@@ -30,9 +30,10 @@ class CreateImageVariationRequestSize(str, Enum):
 
 @dataclasses.dataclass
 class CreateImageVariationRequest:
+    UNSET='__SPEAKEASY_UNSET__'
     image: CreateImageVariationRequestImage = dataclasses.field(metadata={'multipart_form': { 'file': True }})
     r"""The image to use as the basis for the variation(s). Must be a valid PNG file, less than 4MB, and square."""
-    model: Optional[Union[str, CreateImageVariationRequest2]] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'model' }})
+    model: Optional[Union[str, CreateImageVariationRequest2]] = dataclasses.field(default=UNSET, metadata={'multipart_form': { 'field_name': 'model' }})
     r"""The model to use for image generation. Only `dall-e-2` is supported at this time."""
     n: Optional[int] = dataclasses.field(default=1, metadata={'multipart_form': { 'field_name': 'n' }})
     r"""The number of images to generate. Must be between 1 and 10. For `dall-e-3`, only `n=1` is supported."""

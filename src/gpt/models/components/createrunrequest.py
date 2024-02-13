@@ -20,17 +20,18 @@ class CreateRunRequestMetadata:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateRunRequest:
+    UNSET='__SPEAKEASY_UNSET__'
     assistant_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('assistant_id') }})
     r"""The ID of the [assistant](/docs/api-reference/assistants) to use to execute this run."""
-    additional_instructions: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('additional_instructions') }})
+    additional_instructions: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('additional_instructions'), 'exclude': lambda f: f is CreateRunRequest.UNSET }})
     r"""Appends additional instructions at the end of the instructions for the run. This is useful for modifying the behavior on a per-run basis without overriding other instructions."""
-    instructions: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('instructions') }})
+    instructions: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('instructions'), 'exclude': lambda f: f is CreateRunRequest.UNSET }})
     r"""Overrides the [instructions](/docs/api-reference/assistants/createAssistant) of the assistant. This is useful for modifying the behavior on a per-run basis."""
-    metadata: Optional[CreateRunRequestMetadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata') }})
+    metadata: Optional[CreateRunRequestMetadata] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is CreateRunRequest.UNSET }})
     r"""Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maxium of 512 characters long."""
-    model: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model') }})
+    model: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model'), 'exclude': lambda f: f is CreateRunRequest.UNSET }})
     r"""The ID of the [Model](/docs/api-reference/models) to be used to execute this run. If a value is provided here, it will override the model associated with the assistant. If not, the model associated with the assistant will be used."""
-    tools: Optional[List[Union[AssistantToolsCode, AssistantToolsRetrieval, AssistantToolsFunction]]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tools') }})
+    tools: Optional[List[Union[AssistantToolsCode, AssistantToolsRetrieval, AssistantToolsFunction]]] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tools'), 'exclude': lambda f: f is CreateRunRequest.UNSET }})
     r"""Override the tools the assistant can use for this run. This is useful for modifying the behavior on a per-run basis."""
     
 

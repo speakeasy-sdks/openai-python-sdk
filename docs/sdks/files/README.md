@@ -76,7 +76,6 @@ Delete a file.
 
 ```python
 import gpt
-from gpt.models import operations
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",
@@ -114,7 +113,6 @@ Returns the contents of the specified file.
 
 ```python
 import gpt
-from gpt.models import operations
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",
@@ -152,7 +150,6 @@ Returns a list of files that belong to the user's organization.
 
 ```python
 import gpt
-from gpt.models import operations
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",
@@ -190,7 +187,6 @@ Returns information about a specific file.
 
 ```python
 import gpt
-from gpt.models import operations
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",

@@ -21,16 +21,17 @@ class CreateThreadAndRunRequestMetadata:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateThreadAndRunRequest:
+    UNSET='__SPEAKEASY_UNSET__'
     assistant_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('assistant_id') }})
     r"""The ID of the [assistant](/docs/api-reference/assistants) to use to execute this run."""
-    instructions: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('instructions') }})
+    instructions: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('instructions'), 'exclude': lambda f: f is CreateThreadAndRunRequest.UNSET }})
     r"""Override the default system message of the assistant. This is useful for modifying the behavior on a per-run basis."""
-    metadata: Optional[CreateThreadAndRunRequestMetadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata') }})
+    metadata: Optional[CreateThreadAndRunRequestMetadata] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is CreateThreadAndRunRequest.UNSET }})
     r"""Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maxium of 512 characters long."""
-    model: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model') }})
+    model: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model'), 'exclude': lambda f: f is CreateThreadAndRunRequest.UNSET }})
     r"""The ID of the [Model](/docs/api-reference/models) to be used to execute this run. If a value is provided here, it will override the model associated with the assistant. If not, the model associated with the assistant will be used."""
     thread: Optional[CreateThreadRequest] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('thread'), 'exclude': lambda f: f is None }})
-    tools: Optional[List[Union[AssistantToolsCode, AssistantToolsRetrieval, AssistantToolsFunction]]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tools') }})
+    tools: Optional[List[Union[AssistantToolsCode, AssistantToolsRetrieval, AssistantToolsFunction]]] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tools'), 'exclude': lambda f: f is CreateThreadAndRunRequest.UNSET }})
     r"""Override the tools the assistant can use for this run. This is useful for modifying the behavior on a per-run basis."""
     
 

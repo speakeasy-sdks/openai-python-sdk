@@ -32,40 +32,8 @@ req = components.CreateChatCompletionRequest(
         ),
     ],
     model=components.Two.GPT_3_5_TURBO,
-    functions=[
-        components.ChatCompletionFunctions(
-            name='string',
-            parameters={
-                'key': 'string',
-            },
-        ),
-    ],
-    logit_bias={
-        'key': 544683,
-    },
     n=1,
-    response_format=components.ResponseFormat(
-        type=components.CreateChatCompletionRequestType.JSON_OBJECT,
-    ),
-    stop='string',
     temperature=1,
-    tool_choice=components.ChatCompletionNamedToolChoice(
-    function=components.ChatCompletionNamedToolChoiceFunction(
-        name='string',
-    ),
-    type=components.ChatCompletionNamedToolChoiceType.FUNCTION,
-),
-    tools=[
-        components.ChatCompletionTool(
-            function=components.FunctionObject(
-                name='string',
-                parameters={
-                    'key': 'string',
-                },
-            ),
-            type=components.ChatCompletionToolType.FUNCTION,
-        ),
-    ],
     top_p=1,
     user='user-1234',
 )

@@ -26,13 +26,8 @@ s = gpt.Gpt(
 req = components.CreateCompletionRequest(
     model='string',
     prompt='This is a test.',
-    logit_bias={
-        'key': 242695,
-    },
     max_tokens=16,
     n=1,
-    stop='
-',
     suffix='test.',
     temperature=1,
     top_p=1,

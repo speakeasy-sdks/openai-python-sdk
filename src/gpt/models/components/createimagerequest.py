@@ -38,19 +38,20 @@ class Style(str, Enum):
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateImageRequest:
+    UNSET='__SPEAKEASY_UNSET__'
     prompt: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('prompt') }})
     r"""A text description of the desired image(s). The maximum length is 1000 characters for `dall-e-2` and 4000 characters for `dall-e-3`."""
-    model: Optional[Union[str, CreateImageRequest2]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model') }})
+    model: Optional[Union[str, CreateImageRequest2]] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model'), 'exclude': lambda f: f is CreateImageRequest.UNSET }})
     r"""The model to use for image generation."""
-    n: Optional[int] = dataclasses.field(default=1, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('n') }})
+    n: Optional[int] = dataclasses.field(default=1, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('n'), 'exclude': lambda f: f is CreateImageRequest.UNSET }})
     r"""The number of images to generate. Must be between 1 and 10. For `dall-e-3`, only `n=1` is supported."""
     quality: Optional[Quality] = dataclasses.field(default=Quality.STANDARD, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('quality'), 'exclude': lambda f: f is None }})
     r"""The quality of the image that will be generated. `hd` creates images with finer details and greater consistency across the image. This param is only supported for `dall-e-3`."""
-    response_format: Optional[CreateImageRequestResponseFormat] = dataclasses.field(default=CreateImageRequestResponseFormat.URL, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('response_format') }})
+    response_format: Optional[CreateImageRequestResponseFormat] = dataclasses.field(default=CreateImageRequestResponseFormat.URL, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('response_format'), 'exclude': lambda f: f is CreateImageRequest.UNSET }})
     r"""The format in which the generated images are returned. Must be one of `url` or `b64_json`."""
-    size: Optional[CreateImageRequestSize] = dataclasses.field(default=CreateImageRequestSize.ONE_THOUSAND_AND_TWENTY_FOURX1024, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('size') }})
+    size: Optional[CreateImageRequestSize] = dataclasses.field(default=CreateImageRequestSize.ONE_THOUSAND_AND_TWENTY_FOURX1024, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('size'), 'exclude': lambda f: f is CreateImageRequest.UNSET }})
     r"""The size of the generated images. Must be one of `256x256`, `512x512`, or `1024x1024` for `dall-e-2`. Must be one of `1024x1024`, `1792x1024`, or `1024x1792` for `dall-e-3` models."""
-    style: Optional[Style] = dataclasses.field(default=Style.VIVID, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('style') }})
+    style: Optional[Style] = dataclasses.field(default=Style.VIVID, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('style'), 'exclude': lambda f: f is CreateImageRequest.UNSET }})
     r"""The style of the generated images. Must be one of `vivid` or `natural`. Vivid causes the model to lean towards generating hyper-real and dramatic images. Natural causes the model to produce more natural, less hyper-real looking images. This param is only supported for `dall-e-3`."""
     user: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('user'), 'exclude': lambda f: f is None }})
     r"""A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. [Learn more](/docs/guides/safety-best-practices/end-user-ids)."""

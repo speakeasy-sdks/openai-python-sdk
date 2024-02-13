@@ -1,7 +1,6 @@
 <!-- Start SDK Example Usage [usage] -->
 ```python
 import gpt
-from gpt.models import operations
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",

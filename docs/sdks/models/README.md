@@ -19,7 +19,6 @@ Delete a fine-tuned model. You must have the Owner role in your organization to 
 
 ```python
 import gpt
-from gpt.models import operations
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",
@@ -88,7 +87,6 @@ Retrieves a model instance, providing basic information about the model such as 
 
 ```python
 import gpt
-from gpt.models import operations
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",

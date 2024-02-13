@@ -18,9 +18,10 @@ class CreateThreadRequestMetadata:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateThreadRequest:
+    UNSET='__SPEAKEASY_UNSET__'
     messages: Optional[List[CreateMessageRequest]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('messages'), 'exclude': lambda f: f is None }})
     r"""A list of [messages](/docs/api-reference/messages) to start the thread with."""
-    metadata: Optional[CreateThreadRequestMetadata] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata') }})
+    metadata: Optional[CreateThreadRequestMetadata] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata'), 'exclude': lambda f: f is CreateThreadRequest.UNSET }})
     r"""Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maxium of 512 characters long."""
     
 

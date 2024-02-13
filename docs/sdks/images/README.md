@@ -79,10 +79,6 @@ req = components.CreateImageEditRequest(
         file_name='facilitator_gosh_hatchback.mpe',
     ),
     prompt='A cute baby sea otter wearing a beret',
-    mask=components.Mask(
-        content='0xFC5456e4eC'.encode(),
-        file_name='electric_cambridgeshire.jpeg',
-    ),
     model=components.CreateImageEditRequest2.DALL_E_2,
     n=1,
     response_format=components.CreateImageEditRequestResponseFormat.URL,

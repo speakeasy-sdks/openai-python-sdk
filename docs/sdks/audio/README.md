@@ -74,9 +74,6 @@ req = components.CreateTranscriptionRequest(
         file_name='buckinghamshire.gif',
     ),
     model=components.CreateTranscriptionRequest2.WHISPER_1,
-    timestamp_granularities=[
-        components.TimestampGranularities.SEGMENT,
-    ],
 )
 
 res = s.audio.create_transcription(req)

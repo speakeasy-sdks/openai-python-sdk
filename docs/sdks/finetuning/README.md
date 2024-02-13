@@ -33,7 +33,6 @@ Immediately cancel a fine-tune job.
 
 ```python
 import gpt
-from gpt.models import operations
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",
@@ -85,11 +84,6 @@ s = gpt.Gpt(
 req = components.CreateFineTuningJobRequest(
     model=components.CreateFineTuningJobRequest2.GPT_3_5_TURBO,
     training_file='file-abc123',
-    hyperparameters=components.Hyperparameters(
-        batch_size=components.CreateFineTuningJobRequest1.AUTO,
-        learning_rate_multiplier=components.CreateFineTuningJobRequestSchemas1.AUTO,
-        n_epochs=components.CreateFineTuningJobRequestSchemasHyperparameters1.AUTO,
-    ),
     validation_file='file-abc123',
 )
 
@@ -125,7 +119,6 @@ Get status updates for a fine-tuning job.
 
 ```python
 import gpt
-from gpt.models import operations
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",
@@ -166,7 +159,6 @@ List your organization's fine-tuning jobs
 
 ```python
 import gpt
-from gpt.models import operations
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",
@@ -208,7 +200,6 @@ Get info about a fine-tuning job.
 
 ```python
 import gpt
-from gpt.models import operations
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",

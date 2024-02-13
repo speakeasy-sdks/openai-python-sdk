@@ -45,6 +45,7 @@ class CreateFineTuningJobRequest2(str, Enum):
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateFineTuningJobRequest:
+    UNSET='__SPEAKEASY_UNSET__'
     model: Union[str, CreateFineTuningJobRequest2] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model') }})
     r"""The name of the model to fine-tune. You can select one of the
     [supported models](/docs/guides/fine-tuning/what-models-can-be-fine-tuned).
@@ -60,12 +61,12 @@ class CreateFineTuningJobRequest:
     """
     hyperparameters: Optional[Hyperparameters] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hyperparameters'), 'exclude': lambda f: f is None }})
     r"""The hyperparameters used for the fine-tuning job."""
-    suffix: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('suffix') }})
+    suffix: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('suffix'), 'exclude': lambda f: f is CreateFineTuningJobRequest.UNSET }})
     r"""A string of up to 18 characters that will be added to your fine-tuned model name.
 
     For example, a `suffix` of \"custom-model-name\" would produce a model name like `ft:gpt-3.5-turbo:openai:custom-model-name:7p4lURel`.
     """
-    validation_file: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validation_file') }})
+    validation_file: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('validation_file'), 'exclude': lambda f: f is CreateFineTuningJobRequest.UNSET }})
     r"""The ID of an uploaded file that contains validation data.
 
     If you provide this file, the data is used to generate validation

@@ -25,8 +25,8 @@ s = gpt.Gpt(
 
 req = components.CreateModerationRequest(
     input=[
-    'I want to kill them.',
-],
+        'I want to kill them.',
+    ],
     model=components.CreateModerationRequest2.TEXT_MODERATION_STABLE,
 )
 

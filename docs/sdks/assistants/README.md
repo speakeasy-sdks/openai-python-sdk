@@ -45,7 +45,6 @@ Cancels a run that is `in_progress`.
 
 ```python
 import gpt
-from gpt.models import operations
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",
@@ -92,15 +91,6 @@ s = gpt.Gpt(
 
 req = components.CreateAssistantRequest(
     model='XTS',
-    file_ids=[
-        'string',
-    ],
-    metadata=components.CreateAssistantRequestMetadata(),
-    tools=[
-        components.AssistantToolsRetrieval(
-            type=components.AssistantToolsRetrievalType.RETRIEVAL,
-        ),
-    ],
 )
 
 res = s.assistants.create_assistant(req)
@@ -134,7 +124,7 @@ Create an assistant file by attaching a [File](/docs/api-reference/files) to an 
 
 ```python
 import gpt
-from gpt.models import components, operations
+from gpt.models import components
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",
@@ -175,7 +165,7 @@ Create a message.
 
 ```python
 import gpt
-from gpt.models import components, operations
+from gpt.models import components
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",
@@ -185,10 +175,6 @@ s = gpt.Gpt(
 res = s.assistants.create_message(create_message_request=components.CreateMessageRequest(
     content='string',
     role=components.CreateMessageRequestRole.USER,
-    file_ids=[
-        'string',
-    ],
-    metadata=components.CreateMessageRequestMetadata(),
 ), thread_id='string')
 
 if res.message_object is not None:
@@ -221,7 +207,7 @@ Create a run.
 
 ```python
 import gpt
-from gpt.models import components, operations
+from gpt.models import components
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",
@@ -230,12 +216,6 @@ s = gpt.Gpt(
 
 res = s.assistants.create_run(create_run_request=components.CreateRunRequest(
     assistant_id='string',
-    metadata=components.CreateRunRequestMetadata(),
-    tools=[
-        components.AssistantToolsCode(
-            type=components.Type.CODE_INTERPRETER,
-        ),
-    ],
 ), thread_id='string')
 
 if res.run_object is not None:
@@ -274,19 +254,7 @@ s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
-req = components.CreateThreadRequest(
-    messages=[
-        components.CreateMessageRequest(
-            content='string',
-            role=components.CreateMessageRequestRole.USER,
-            file_ids=[
-                'string',
-            ],
-            metadata=components.CreateMessageRequestMetadata(),
-        ),
-    ],
-    metadata=components.CreateThreadRequestMetadata(),
-)
+req = components.CreateThreadRequest()
 
 res = s.assistants.create_thread(req)
 
@@ -327,31 +295,6 @@ s = gpt.Gpt(
 
 req = components.CreateThreadAndRunRequest(
     assistant_id='string',
-    metadata=components.CreateThreadAndRunRequestMetadata(),
-    thread=components.CreateThreadRequest(
-        messages=[
-            components.CreateMessageRequest(
-                content='string',
-                role=components.CreateMessageRequestRole.USER,
-                file_ids=[
-                    'string',
-                ],
-                metadata=components.CreateMessageRequestMetadata(),
-            ),
-        ],
-        metadata=components.CreateThreadRequestMetadata(),
-    ),
-    tools=[
-        components.AssistantToolsFunction(
-            function=components.FunctionObject(
-                name='string',
-                parameters={
-                    'key': 'string',
-                },
-            ),
-            type=components.AssistantToolsFunctionType.FUNCTION,
-        ),
-    ],
 )
 
 res = s.assistants.create_thread_and_run(req)
@@ -385,7 +328,6 @@ Delete an assistant.
 
 ```python
 import gpt
-from gpt.models import operations
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",
@@ -423,7 +365,6 @@ Delete an assistant file.
 
 ```python
 import gpt
-from gpt.models import operations
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",
@@ -462,7 +403,6 @@ Delete a thread.
 
 ```python
 import gpt
-from gpt.models import operations
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",
@@ -500,7 +440,6 @@ Retrieves an assistant.
 
 ```python
 import gpt
-from gpt.models import operations
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",
@@ -538,7 +477,6 @@ Retrieves an AssistantFile.
 
 ```python
 import gpt
-from gpt.models import operations
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",
@@ -577,7 +515,6 @@ Retrieve a message.
 
 ```python
 import gpt
-from gpt.models import operations
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",
@@ -616,7 +553,6 @@ Retrieves a message file.
 
 ```python
 import gpt
-from gpt.models import operations
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",
@@ -656,7 +592,6 @@ Retrieves a run.
 
 ```python
 import gpt
-from gpt.models import operations
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",
@@ -695,7 +630,6 @@ Retrieves a run step.
 
 ```python
 import gpt
-from gpt.models import operations
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",
@@ -735,7 +669,6 @@ Retrieves a thread.
 
 ```python
 import gpt
-from gpt.models import operations
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",
@@ -1021,24 +954,14 @@ Modifies an assistant.
 
 ```python
 import gpt
-from gpt.models import components, operations
+from gpt.models import components
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
 
-res = s.assistants.modify_assistant(modify_assistant_request=components.ModifyAssistantRequest(
-    file_ids=[
-        'string',
-    ],
-    metadata=components.ModifyAssistantRequestMetadata(),
-    tools=[
-        components.AssistantToolsCode(
-            type=components.Type.CODE_INTERPRETER,
-        ),
-    ],
-), assistant_id='string')
+res = s.assistants.modify_assistant(modify_assistant_request=components.ModifyAssistantRequest(), assistant_id='string')
 
 if res.assistant_object is not None:
     # handle response
@@ -1070,16 +993,14 @@ Modifies a message.
 
 ```python
 import gpt
-from gpt.models import components, operations
+from gpt.models import components
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
 
-res = s.assistants.modify_message(modify_message_request=components.ModifyMessageRequest(
-    metadata=components.ModifyMessageRequestMetadata(),
-), message_id='string', thread_id='string')
+res = s.assistants.modify_message(modify_message_request=components.ModifyMessageRequest(), message_id='string', thread_id='string')
 
 if res.message_object is not None:
     # handle response
@@ -1112,16 +1033,14 @@ Modifies a run.
 
 ```python
 import gpt
-from gpt.models import components, operations
+from gpt.models import components
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
 
-res = s.assistants.modify_run(modify_run_request=components.ModifyRunRequest(
-    metadata=components.ModifyRunRequestMetadata(),
-), run_id='string', thread_id='string')
+res = s.assistants.modify_run(modify_run_request=components.ModifyRunRequest(), run_id='string', thread_id='string')
 
 if res.run_object is not None:
     # handle response
@@ -1154,16 +1073,14 @@ Modifies a thread.
 
 ```python
 import gpt
-from gpt.models import components, operations
+from gpt.models import components
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",
 )
 
 
-res = s.assistants.modify_thread(modify_thread_request=components.ModifyThreadRequest(
-    metadata=components.ModifyThreadRequestMetadata(),
-), thread_id='string')
+res = s.assistants.modify_thread(modify_thread_request=components.ModifyThreadRequest(), thread_id='string')
 
 if res.thread_object is not None:
     # handle response
@@ -1196,7 +1113,7 @@ When a run has the `status: "requires_action"` and `required_action.type` is `su
 
 ```python
 import gpt
-from gpt.models import components, operations
+from gpt.models import components
 
 s = gpt.Gpt(
     api_key_auth="<YOUR_BEARER_TOKEN_HERE>",

@@ -38,13 +38,14 @@ class Size(str, Enum):
 
 @dataclasses.dataclass
 class CreateImageEditRequest:
+    UNSET='__SPEAKEASY_UNSET__'
     image: CreateImageEditRequestImage = dataclasses.field(metadata={'multipart_form': { 'file': True }})
     r"""The image to edit. Must be a valid PNG file, less than 4MB, and square. If mask is not provided, image must have transparency, which will be used as the mask."""
     prompt: str = dataclasses.field(metadata={'multipart_form': { 'field_name': 'prompt' }})
     r"""A text description of the desired image(s). The maximum length is 1000 characters."""
     mask: Optional[Mask] = dataclasses.field(default=None, metadata={'multipart_form': { 'file': True }})
     r"""An additional image whose fully transparent areas (e.g. where alpha is zero) indicate where `image` should be edited. Must be a valid PNG file, less than 4MB, and have the same dimensions as `image`."""
-    model: Optional[Union[str, CreateImageEditRequest2]] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'model' }})
+    model: Optional[Union[str, CreateImageEditRequest2]] = dataclasses.field(default=UNSET, metadata={'multipart_form': { 'field_name': 'model' }})
     r"""The model to use for image generation. Only `dall-e-2` is supported at this time."""
     n: Optional[int] = dataclasses.field(default=1, metadata={'multipart_form': { 'field_name': 'n' }})
     r"""The number of images to generate. Must be between 1 and 10."""
