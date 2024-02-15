@@ -26,7 +26,7 @@ s = gpt.Gpt(
 )
 
 req = components.CreateSpeechRequest(
-    input='string',
+    input='<value>',
     model=components.CreateSpeechRequest2.TTS_1,
     voice=components.Voice.FABLE,
 )

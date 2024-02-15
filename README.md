@@ -42,7 +42,7 @@ s = gpt.Gpt(
 )
 
 
-res = s.assistants.cancel_run(run_id='string', thread_id='string')
+res = s.assistants.cancel_run(run_id='<value>', thread_id='<value>')
 
 if res.run_object is not None:
     # handle response
@@ -174,7 +174,7 @@ s = gpt.Gpt(
 
 res = None
 try:
-    res = s.assistants.cancel_run(run_id='string', thread_id='string')
+    res = s.assistants.cancel_run(run_id='<value>', thread_id='<value>')
 except errors.SDKError as e:
     # handle exception
     raise(e)
@@ -207,7 +207,7 @@ s = gpt.Gpt(
 )
 
 
-res = s.assistants.cancel_run(run_id='string', thread_id='string')
+res = s.assistants.cancel_run(run_id='<value>', thread_id='<value>')
 
 if res.run_object is not None:
     # handle response
@@ -227,7 +227,7 @@ s = gpt.Gpt(
 )
 
 
-res = s.assistants.cancel_run(run_id='string', thread_id='string')
+res = s.assistants.cancel_run(run_id='<value>', thread_id='<value>')
 
 if res.run_object is not None:
     # handle response
@@ -271,7 +271,7 @@ s = gpt.Gpt(
 )
 
 
-res = s.assistants.cancel_run(run_id='string', thread_id='string')
+res = s.assistants.cancel_run(run_id='<value>', thread_id='<value>')
 
 if res.run_object is not None:
     # handle response

@@ -26,9 +26,9 @@ s = gpt.Gpt(
 req = components.CreateChatCompletionRequest(
     messages=[
         components.ChatCompletionRequestToolMessage(
-            content='string',
+            content='<value>',
             role=components.ChatCompletionRequestToolMessageRole.TOOL,
-            tool_call_id='string',
+            tool_call_id='<value>',
         ),
     ],
     model=components.Two.GPT_3_5_TURBO,

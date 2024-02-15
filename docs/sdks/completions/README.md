@@ -24,7 +24,7 @@ s = gpt.Gpt(
 )
 
 req = components.CreateCompletionRequest(
-    model='string',
+    model='<value>',
     prompt='This is a test.',
     max_tokens=16,
     n=1,

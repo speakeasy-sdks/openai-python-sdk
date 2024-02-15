@@ -82,7 +82,7 @@ s = gpt.Gpt(
 )
 
 
-res = s.files.delete_file(file_id='string')
+res = s.files.delete_file(file_id='<value>')
 
 if res.delete_file_response is not None:
     # handle response
@@ -119,7 +119,7 @@ s = gpt.Gpt(
 )
 
 
-res = s.files.download_file(file_id='string')
+res = s.files.download_file(file_id='<value>')
 
 if res.res is not None:
     # handle response
@@ -156,7 +156,7 @@ s = gpt.Gpt(
 )
 
 
-res = s.files.list_files(purpose='string')
+res = s.files.list_files(purpose='<value>')
 
 if res.list_files_response is not None:
     # handle response
@@ -193,7 +193,7 @@ s = gpt.Gpt(
 )
 
 
-res = s.files.retrieve_file(file_id='string')
+res = s.files.retrieve_file(file_id='<value>')
 
 if res.open_ai_file is not None:
     # handle response

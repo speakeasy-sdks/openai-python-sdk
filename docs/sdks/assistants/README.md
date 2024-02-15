@@ -51,7 +51,7 @@ s = gpt.Gpt(
 )
 
 
-res = s.assistants.cancel_run(run_id='string', thread_id='string')
+res = s.assistants.cancel_run(run_id='<value>', thread_id='<value>')
 
 if res.run_object is not None:
     # handle response
@@ -132,7 +132,7 @@ s = gpt.Gpt(
 
 
 res = s.assistants.create_assistant_file(create_assistant_file_request=components.CreateAssistantFileRequest(
-    file_id='string',
+    file_id='<value>',
 ), assistant_id='file-abc123')
 
 if res.assistant_file_object is not None:
@@ -173,9 +173,9 @@ s = gpt.Gpt(
 
 
 res = s.assistants.create_message(create_message_request=components.CreateMessageRequest(
-    content='string',
+    content='<value>',
     role=components.CreateMessageRequestRole.USER,
-), thread_id='string')
+), thread_id='<value>')
 
 if res.message_object is not None:
     # handle response
@@ -215,8 +215,8 @@ s = gpt.Gpt(
 
 
 res = s.assistants.create_run(create_run_request=components.CreateRunRequest(
-    assistant_id='string',
-), thread_id='string')
+    assistant_id='<value>',
+), thread_id='<value>')
 
 if res.run_object is not None:
     # handle response
@@ -294,7 +294,7 @@ s = gpt.Gpt(
 )
 
 req = components.CreateThreadAndRunRequest(
-    assistant_id='string',
+    assistant_id='<value>',
 )
 
 res = s.assistants.create_thread_and_run(req)
@@ -334,7 +334,7 @@ s = gpt.Gpt(
 )
 
 
-res = s.assistants.delete_assistant(assistant_id='string')
+res = s.assistants.delete_assistant(assistant_id='<value>')
 
 if res.delete_assistant_response is not None:
     # handle response
@@ -371,7 +371,7 @@ s = gpt.Gpt(
 )
 
 
-res = s.assistants.delete_assistant_file(assistant_id='string', file_id='string')
+res = s.assistants.delete_assistant_file(assistant_id='<value>', file_id='<value>')
 
 if res.delete_assistant_file_response is not None:
     # handle response
@@ -409,7 +409,7 @@ s = gpt.Gpt(
 )
 
 
-res = s.assistants.delete_thread(thread_id='string')
+res = s.assistants.delete_thread(thread_id='<value>')
 
 if res.delete_thread_response is not None:
     # handle response
@@ -446,7 +446,7 @@ s = gpt.Gpt(
 )
 
 
-res = s.assistants.get_assistant(assistant_id='string')
+res = s.assistants.get_assistant(assistant_id='<value>')
 
 if res.assistant_object is not None:
     # handle response
@@ -483,7 +483,7 @@ s = gpt.Gpt(
 )
 
 
-res = s.assistants.get_assistant_file(assistant_id='string', file_id='string')
+res = s.assistants.get_assistant_file(assistant_id='<value>', file_id='<value>')
 
 if res.assistant_file_object is not None:
     # handle response
@@ -521,7 +521,7 @@ s = gpt.Gpt(
 )
 
 
-res = s.assistants.get_message(message_id='string', thread_id='string')
+res = s.assistants.get_message(message_id='<value>', thread_id='<value>')
 
 if res.message_object is not None:
     # handle response
@@ -598,7 +598,7 @@ s = gpt.Gpt(
 )
 
 
-res = s.assistants.get_run(run_id='string', thread_id='string')
+res = s.assistants.get_run(run_id='<value>', thread_id='<value>')
 
 if res.run_object is not None:
     # handle response
@@ -636,7 +636,7 @@ s = gpt.Gpt(
 )
 
 
-res = s.assistants.get_run_step(run_id='string', step_id='string', thread_id='string')
+res = s.assistants.get_run_step(run_id='<value>', step_id='<value>', thread_id='<value>')
 
 if res.run_step_object is not None:
     # handle response
@@ -675,7 +675,7 @@ s = gpt.Gpt(
 )
 
 
-res = s.assistants.get_thread(thread_id='string')
+res = s.assistants.get_thread(thread_id='<value>')
 
 if res.thread_object is not None:
     # handle response
@@ -713,7 +713,7 @@ s = gpt.Gpt(
 )
 
 req = operations.ListAssistantFilesRequest(
-    assistant_id='string',
+    assistant_id='<value>',
 )
 
 res = s.assistants.list_assistant_files(req)
@@ -754,7 +754,7 @@ s = gpt.Gpt(
 )
 
 
-res = s.assistants.list_assistants(after='string', before='string', limit=948776, order=operations.QueryParamOrder.ASC)
+res = s.assistants.list_assistants(after='<value>', before='<value>', limit=948776, order=operations.QueryParamOrder.ASC)
 
 if res.list_assistants_response is not None:
     # handle response
@@ -795,8 +795,8 @@ s = gpt.Gpt(
 )
 
 req = operations.ListMessageFilesRequest(
-    message_id='string',
-    thread_id='string',
+    message_id='<value>',
+    thread_id='<value>',
 )
 
 res = s.assistants.list_message_files(req)
@@ -837,7 +837,7 @@ s = gpt.Gpt(
 )
 
 req = operations.ListMessagesRequest(
-    thread_id='string',
+    thread_id='<value>',
 )
 
 res = s.assistants.list_messages(req)
@@ -878,8 +878,8 @@ s = gpt.Gpt(
 )
 
 req = operations.ListRunStepsRequest(
-    run_id='string',
-    thread_id='string',
+    run_id='<value>',
+    thread_id='<value>',
 )
 
 res = s.assistants.list_run_steps(req)
@@ -920,7 +920,7 @@ s = gpt.Gpt(
 )
 
 req = operations.ListRunsRequest(
-    thread_id='string',
+    thread_id='<value>',
 )
 
 res = s.assistants.list_runs(req)
@@ -961,7 +961,7 @@ s = gpt.Gpt(
 )
 
 
-res = s.assistants.modify_assistant(modify_assistant_request=components.ModifyAssistantRequest(), assistant_id='string')
+res = s.assistants.modify_assistant(modify_assistant_request=components.ModifyAssistantRequest(), assistant_id='<value>')
 
 if res.assistant_object is not None:
     # handle response
@@ -1000,7 +1000,7 @@ s = gpt.Gpt(
 )
 
 
-res = s.assistants.modify_message(modify_message_request=components.ModifyMessageRequest(), message_id='string', thread_id='string')
+res = s.assistants.modify_message(modify_message_request=components.ModifyMessageRequest(), message_id='<value>', thread_id='<value>')
 
 if res.message_object is not None:
     # handle response
@@ -1040,7 +1040,7 @@ s = gpt.Gpt(
 )
 
 
-res = s.assistants.modify_run(modify_run_request=components.ModifyRunRequest(), run_id='string', thread_id='string')
+res = s.assistants.modify_run(modify_run_request=components.ModifyRunRequest(), run_id='<value>', thread_id='<value>')
 
 if res.run_object is not None:
     # handle response
@@ -1080,7 +1080,7 @@ s = gpt.Gpt(
 )
 
 
-res = s.assistants.modify_thread(modify_thread_request=components.ModifyThreadRequest(), thread_id='string')
+res = s.assistants.modify_thread(modify_thread_request=components.ModifyThreadRequest(), thread_id='<value>')
 
 if res.thread_object is not None:
     # handle response
@@ -1124,7 +1124,7 @@ res = s.assistants.submit_tool_ouputs_to_run(submit_tool_outputs_run_request=com
     tool_outputs=[
         components.ToolOutputs(),
     ],
-), run_id='string', thread_id='string')
+), run_id='<value>', thread_id='<value>')
 
 if res.run_object is not None:
     # handle response
