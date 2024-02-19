@@ -94,8 +94,6 @@ class CreateChatCompletionRequest:
 
     Deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
     """
-    instance_id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('instance_id'), 'exclude': lambda f: f is CreateChatCompletionRequest.UNSET }})
-    r"""An unique identifier to a custom instance to execute the request. The requesting organization is required to have access to the instance."""
     logit_bias: Optional[Dict[str, int]] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('logit_bias'), 'exclude': lambda f: f is CreateChatCompletionRequest.UNSET }})
     r"""Modify the likelihood of specified tokens appearing in the completion.
 

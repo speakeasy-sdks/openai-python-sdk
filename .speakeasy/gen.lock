@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 35bdeffa-af3f-4704-85cf-c9806b956990
 management:
-  docChecksum: fc72a6cb6d13a3b462587faec01dd645
+  docChecksum: 48d5059756953328026cfca7d15f0081
   docVersion: 2.0.0
   speakeasyVersion: internal
-  generationVersion: 2.258.2
-  releaseVersion: 4.0.2
-  configChecksum: 2b2d3bff90cf227805865039dc504a84
+  generationVersion: 2.262.2
+  releaseVersion: 4.0.3
+  configChecksum: 2f0cb11d6f641b0863695ca1cab0bb95
   repoURL: https://github.com/speakeasy-sdks/openai-python-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/openai-python-sdk.git
