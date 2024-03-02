@@ -125,7 +125,7 @@ s = gpt.Gpt(
 )
 
 
-res = s.fine_tuning.list_fine_tuning_events(fine_tuning_job_id='ft-AF1WoRqd3aJAHsqc9NY7iL8F', after='<value>', limit=896841)
+res = s.fine_tuning.list_fine_tuning_events(fine_tuning_job_id='ft-AF1WoRqd3aJAHsqc9NY7iL8F', after='<value>', limit=20)
 
 if res.list_fine_tuning_job_events_response is not None:
     # handle response
@@ -165,7 +165,7 @@ s = gpt.Gpt(
 )
 
 
-res = s.fine_tuning.list_paginated_fine_tuning_jobs(after='<value>', limit=385496)
+res = s.fine_tuning.list_paginated_fine_tuning_jobs(after='<value>', limit=20)
 
 if res.list_paginated_fine_tuning_jobs_response is not None:
     # handle response

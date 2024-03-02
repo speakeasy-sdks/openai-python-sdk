@@ -754,7 +754,7 @@ s = gpt.Gpt(
 )
 
 
-res = s.assistants.list_assistants(after='<value>', before='<value>', limit=948776, order=operations.QueryParamOrder.ASC)
+res = s.assistants.list_assistants(after='<value>', before='<value>', limit=20, order=operations.QueryParamOrder.DESC)
 
 if res.list_assistants_response is not None:
     # handle response
