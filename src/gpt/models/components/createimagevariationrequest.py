@@ -17,7 +17,7 @@ class CreateImageVariationRequest2(str, Enum):
     DALL_E_2 = 'dall-e-2'
 
 class CreateImageVariationRequestResponseFormat(str, Enum):
-    r"""The format in which the generated images are returned. Must be one of `url` or `b64_json`."""
+    r"""The format in which the generated images are returned. Must be one of `url` or `b64_json`. URLs are only valid for 60 minutes after the image has been generated."""
     URL = 'url'
     B64_JSON = 'b64_json'
 
@@ -38,7 +38,7 @@ class CreateImageVariationRequest:
     n: Optional[int] = dataclasses.field(default=1, metadata={'multipart_form': { 'field_name': 'n' }})
     r"""The number of images to generate. Must be between 1 and 10. For `dall-e-3`, only `n=1` is supported."""
     response_format: Optional[CreateImageVariationRequestResponseFormat] = dataclasses.field(default=CreateImageVariationRequestResponseFormat.URL, metadata={'multipart_form': { 'field_name': 'response_format' }})
-    r"""The format in which the generated images are returned. Must be one of `url` or `b64_json`."""
+    r"""The format in which the generated images are returned. Must be one of `url` or `b64_json`. URLs are only valid for 60 minutes after the image has been generated."""
     size: Optional[CreateImageVariationRequestSize] = dataclasses.field(default=CreateImageVariationRequestSize.ONE_THOUSAND_AND_TWENTY_FOURX1024, metadata={'multipart_form': { 'field_name': 'size' }})
     r"""The size of the generated images. Must be one of `256x256`, `512x512`, or `1024x1024`."""
     user: Optional[str] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'user' }})

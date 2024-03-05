@@ -8,7 +8,7 @@ from gpt.models import components, errors, operations
 from typing import Optional
 
 class Moderations:
-    r"""Given a input text, outputs if the model classifies it as violating OpenAI's content policy."""
+    r"""Given a input text, outputs if the model classifies it as potentially harmful."""
     sdk_configuration: SDKConfiguration
 
     def __init__(self, sdk_config: SDKConfiguration) -> None:
@@ -17,7 +17,7 @@ class Moderations:
     
     
     def create_moderation(self, request: components.CreateModerationRequest) -> operations.CreateModerationResponse:
-        r"""Classifies if text violates OpenAI's Content Policy"""
+        r"""Classifies if text is potentially harmful."""
         hook_ctx = HookContext(operation_id='createModeration', oauth2_scopes=[], security_source=self.sdk_configuration.security)
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         

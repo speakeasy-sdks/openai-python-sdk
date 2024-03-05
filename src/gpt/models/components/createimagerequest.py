@@ -17,7 +17,7 @@ class Quality(str, Enum):
     HD = 'hd'
 
 class CreateImageRequestResponseFormat(str, Enum):
-    r"""The format in which the generated images are returned. Must be one of `url` or `b64_json`."""
+    r"""The format in which the generated images are returned. Must be one of `url` or `b64_json`. URLs are only valid for 60 minutes after the image has been generated."""
     URL = 'url'
     B64_JSON = 'b64_json'
 
@@ -48,7 +48,7 @@ class CreateImageRequest:
     quality: Optional[Quality] = dataclasses.field(default=Quality.STANDARD, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('quality'), 'exclude': lambda f: f is None }})
     r"""The quality of the image that will be generated. `hd` creates images with finer details and greater consistency across the image. This param is only supported for `dall-e-3`."""
     response_format: Optional[CreateImageRequestResponseFormat] = dataclasses.field(default=CreateImageRequestResponseFormat.URL, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('response_format'), 'exclude': lambda f: f is CreateImageRequest.UNSET }})
-    r"""The format in which the generated images are returned. Must be one of `url` or `b64_json`."""
+    r"""The format in which the generated images are returned. Must be one of `url` or `b64_json`. URLs are only valid for 60 minutes after the image has been generated."""
     size: Optional[CreateImageRequestSize] = dataclasses.field(default=CreateImageRequestSize.ONE_THOUSAND_AND_TWENTY_FOURX1024, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('size'), 'exclude': lambda f: f is CreateImageRequest.UNSET }})
     r"""The size of the generated images. Must be one of `256x256`, `512x512`, or `1024x1024` for `dall-e-2`. Must be one of `1024x1024`, `1792x1024`, or `1024x1792` for `dall-e-3` models."""
     style: Optional[Style] = dataclasses.field(default=Style.VIVID, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('style'), 'exclude': lambda f: f is CreateImageRequest.UNSET }})

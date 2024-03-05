@@ -5,7 +5,7 @@ from .sdkconfiguration import SDKConfiguration
 from gpt import utils
 from gpt._hooks import HookContext
 from gpt.models import components, errors, operations
-from typing import Optional
+from typing import Optional, Union
 
 class Audio:
     r"""Learn how to turn audio into text or text into audio."""
@@ -122,8 +122,8 @@ class Audio:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[components.CreateTranscriptionResponse])
-                res.create_transcription_response = out
+                out = utils.unmarshal_json(http_res.text, Optional[Union[components.CreateTranscriptionResponseJSON, components.CreateTranscriptionResponseVerboseJSON]])
+                res.one_of = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -180,8 +180,8 @@ class Audio:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[components.CreateTranslationResponse])
-                res.create_translation_response = out
+                out = utils.unmarshal_json(http_res.text, Optional[Union[components.CreateTranslationResponseJSON, components.CreateTranslationResponseVerboseJSON]])
+                res.one_of = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:

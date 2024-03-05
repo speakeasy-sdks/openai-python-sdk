@@ -3,8 +3,9 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from ...models.components import createtranslationresponse as components_createtranslationresponse
-from typing import Optional
+from ...models.components import createtranslationresponsejson as components_createtranslationresponsejson
+from ...models.components import createtranslationresponseverbosejson as components_createtranslationresponseverbosejson
+from typing import Optional, Union
 
 
 @dataclasses.dataclass
@@ -15,7 +16,7 @@ class CreateTranslationResponse:
     r"""HTTP response status code for this operation"""
     raw_response: requests_http.Response = dataclasses.field()
     r"""Raw HTTP response; suitable for custom response parsing"""
-    create_translation_response: Optional[components_createtranslationresponse.CreateTranslationResponse] = dataclasses.field(default=None)
+    one_of: Optional[Union[components_createtranslationresponsejson.CreateTranslationResponseJSON, components_createtranslationresponseverbosejson.CreateTranslationResponseVerboseJSON]] = dataclasses.field(default=None)
     r"""OK"""
     
 

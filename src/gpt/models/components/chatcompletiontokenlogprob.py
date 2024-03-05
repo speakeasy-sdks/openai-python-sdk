@@ -13,7 +13,7 @@ class TopLogprobs:
     bytes: Optional[List[int]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bytes') }})
     r"""A list of integers representing the UTF-8 bytes representation of the token. Useful in instances where characters are represented by multiple tokens and their byte representations must be combined to generate the correct text representation. Can be `null` if there is no bytes representation for the token."""
     logprob: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('logprob') }})
-    r"""The log probability of this token."""
+    r"""The log probability of this token, if it is within the top 20 most likely tokens. Otherwise, the value `-9999.0` is used to signify that the token is very unlikely."""
     token: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('token') }})
     r"""The token."""
     
@@ -26,7 +26,7 @@ class ChatCompletionTokenLogprob:
     bytes: Optional[List[int]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bytes') }})
     r"""A list of integers representing the UTF-8 bytes representation of the token. Useful in instances where characters are represented by multiple tokens and their byte representations must be combined to generate the correct text representation. Can be `null` if there is no bytes representation for the token."""
     logprob: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('logprob') }})
-    r"""The log probability of this token."""
+    r"""The log probability of this token, if it is within the top 20 most likely tokens. Otherwise, the value `-9999.0` is used to signify that the token is very unlikely."""
     token: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('token') }})
     r"""The token."""
     top_logprobs: List[TopLogprobs] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('top_logprobs') }})

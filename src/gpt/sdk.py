@@ -38,7 +38,7 @@ class Gpt:
     models: Models
     r"""List and describe the various models available in the API."""
     moderations: Moderations
-    r"""Given a input text, outputs if the model classifies it as violating OpenAI's content policy."""
+    r"""Given a input text, outputs if the model classifies it as potentially harmful."""
 
     sdk_configuration: SDKConfiguration
 

@@ -1,4 +1,4 @@
-# CreateTranslationResponse
+# CreateTranslationResponseJSON
 
 
 ## Fields

@@ -12,17 +12,13 @@ class CreateSpeechRequest2(str, Enum):
     TTS_1_HD = 'tts-1-hd'
 
 class CreateSpeechRequestResponseFormat(str, Enum):
-    r"""The format to return audio in.
-    Supported formats are `mp3`, `opus`, `aac`, `flac`, `pcm`, and `wav`. 
-
-    The `pcm` audio format, similar to `wav` but without a header, utilizes a 24kHz sample rate, mono channel, and 16-bit depth in signed little-endian format.
-    """
+    r"""The format to audio in. Supported formats are `mp3`, `opus`, `aac`, `flac`, `wav`, and `pcm`."""
     MP3 = 'mp3'
     OPUS = 'opus'
     AAC = 'aac'
     FLAC = 'flac'
-    PCM = 'pcm'
     WAV = 'wav'
+    PCM = 'pcm'
 
 class Voice(str, Enum):
     r"""The voice to use when generating the audio. Supported voices are `alloy`, `echo`, `fable`, `onyx`, `nova`, and `shimmer`. Previews of the voices are available in the [Text to speech guide](/docs/guides/text-to-speech/voice-options)."""
@@ -44,11 +40,7 @@ class CreateSpeechRequest:
     voice: Voice = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('voice') }})
     r"""The voice to use when generating the audio. Supported voices are `alloy`, `echo`, `fable`, `onyx`, `nova`, and `shimmer`. Previews of the voices are available in the [Text to speech guide](/docs/guides/text-to-speech/voice-options)."""
     response_format: Optional[CreateSpeechRequestResponseFormat] = dataclasses.field(default=CreateSpeechRequestResponseFormat.MP3, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('response_format'), 'exclude': lambda f: f is None }})
-    r"""The format to return audio in.
-    Supported formats are `mp3`, `opus`, `aac`, `flac`, `pcm`, and `wav`. 
-
-    The `pcm` audio format, similar to `wav` but without a header, utilizes a 24kHz sample rate, mono channel, and 16-bit depth in signed little-endian format.
-    """
+    r"""The format to audio in. Supported formats are `mp3`, `opus`, `aac`, `flac`, `wav`, and `pcm`."""
     speed: Optional[float] = dataclasses.field(default=1, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('speed'), 'exclude': lambda f: f is None }})
     r"""The speed of the generated audio. Select a value from `0.25` to `4.0`. `1.0` is the default."""
     

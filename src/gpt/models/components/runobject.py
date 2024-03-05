@@ -13,9 +13,10 @@ from gpt import utils
 from typing import List, Optional, Union
 
 class Code(str, Enum):
-    r"""One of `server_error` or `rate_limit_exceeded`."""
+    r"""One of `server_error`, `rate_limit_exceeded`, or `invalid_prompt`."""
     SERVER_ERROR = 'server_error'
     RATE_LIMIT_EXCEEDED = 'rate_limit_exceeded'
+    INVALID_PROMPT = 'invalid_prompt'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -23,7 +24,7 @@ class Code(str, Enum):
 class LastError:
     r"""The last error associated with this run. Will be `null` if there are no errors."""
     code: Code = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('code') }})
-    r"""One of `server_error` or `rate_limit_exceeded`."""
+    r"""One of `server_error`, `rate_limit_exceeded`, or `invalid_prompt`."""
     message: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message') }})
     r"""A human-readable description of the error."""
     

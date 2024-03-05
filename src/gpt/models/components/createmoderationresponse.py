@@ -75,7 +75,7 @@ class Results:
     category_scores: CategoryScores = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('category_scores') }})
     r"""A list of the categories along with their scores as predicted by model."""
     flagged: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('flagged') }})
-    r"""Whether the content violates [OpenAI's usage policies](/policies/usage-policies)."""
+    r"""Whether any of the below categories are flagged."""
     
 
 
@@ -83,7 +83,7 @@ class Results:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class CreateModerationResponse:
-    r"""Represents policy compliance report by OpenAI's content moderation model against a given input."""
+    r"""Represents if a given text input is potentially harmful."""
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""The unique identifier for the moderation request."""
     model: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model') }})

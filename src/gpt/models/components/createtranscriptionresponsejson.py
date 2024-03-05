@@ -8,7 +8,9 @@ from gpt import utils
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class CreateTranscriptionResponse:
+class CreateTranscriptionResponseJSON:
+    r"""Represents a transcription response returned by model, based on the provided input."""
     text: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('text') }})
+    r"""The transcribed text."""
     
 

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 35bdeffa-af3f-4704-85cf-c9806b956990
 management:
-  docChecksum: a69f499fa6cae6acc1c4d0e467f207d3
+  docChecksum: 0f1a105489b43417f5ab6cd2c8614d36
   docVersion: 2.0.0
   speakeasyVersion: internal
   generationVersion: 2.277.0
-  releaseVersion: 4.1.1
-  configChecksum: 513b09ca44bba5093edba61e8e07342e
+  releaseVersion: 4.1.2
+  configChecksum: 32d069762aaeec286ba0a8cbf6d9172f
   repoURL: https://github.com/speakeasy-sdks/openai-python-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/openai-python-sdk.git
@@ -139,9 +139,13 @@ generatedFiles:
   - src/gpt/models/components/modifythreadrequest.py
   - src/gpt/models/components/submittooloutputsrunrequest.py
   - src/gpt/models/components/createspeechrequest.py
-  - src/gpt/models/components/createtranscriptionresponse.py
+  - src/gpt/models/components/createtranscriptionresponsejson.py
+  - src/gpt/models/components/createtranscriptionresponseverbosejson.py
+  - src/gpt/models/components/transcriptionword.py
+  - src/gpt/models/components/transcriptionsegment.py
   - src/gpt/models/components/createtranscriptionrequest.py
-  - src/gpt/models/components/createtranslationresponse.py
+  - src/gpt/models/components/createtranslationresponsejson.py
+  - src/gpt/models/components/createtranslationresponseverbosejson.py
   - src/gpt/models/components/createtranslationrequest.py
   - src/gpt/models/components/createchatcompletionresponse.py
   - src/gpt/models/components/completionusage.py
@@ -250,7 +254,9 @@ generatedFiles:
   - docs/models/operations/submittoolouputstorunrequest.md
   - docs/models/operations/submittoolouputstorunresponse.md
   - docs/models/operations/createspeechresponse.md
+  - docs/models/operations/createtranscriptionresponsebody.md
   - docs/models/operations/createtranscriptionresponse.md
+  - docs/models/operations/createtranslationresponsebody.md
   - docs/models/operations/createtranslationresponse.md
   - docs/models/operations/createchatcompletionresponse.md
   - docs/models/operations/createcompletionresponse.md
@@ -405,14 +411,18 @@ generatedFiles:
   - docs/models/components/createspeechrequestresponseformat.md
   - docs/models/components/voice.md
   - docs/models/components/createspeechrequest.md
-  - docs/models/components/createtranscriptionresponse.md
+  - docs/models/components/createtranscriptionresponsejson.md
+  - docs/models/components/createtranscriptionresponseverbosejson.md
+  - docs/models/components/transcriptionword.md
+  - docs/models/components/transcriptionsegment.md
   - docs/models/components/createtranscriptionrequestfile.md
   - docs/models/components/createtranscriptionrequest2.md
   - docs/models/components/createtranscriptionrequestmodel.md
   - docs/models/components/createtranscriptionrequestresponseformat.md
   - docs/models/components/timestampgranularities.md
   - docs/models/components/createtranscriptionrequest.md
-  - docs/models/components/createtranslationresponse.md
+  - docs/models/components/createtranslationresponsejson.md
+  - docs/models/components/createtranslationresponseverbosejson.md
   - docs/models/components/createtranslationrequestfile.md
   - docs/models/components/createtranslationrequest2.md
   - docs/models/components/createtranslationrequestmodel.md

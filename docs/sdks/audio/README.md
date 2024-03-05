@@ -78,7 +78,7 @@ req = components.CreateTranscriptionRequest(
 
 res = s.audio.create_transcription(req)
 
-if res.create_transcription_response is not None:
+if res.one_of is not None:
     # handle response
     pass
 ```
@@ -123,7 +123,7 @@ req = components.CreateTranslationRequest(
 
 res = s.audio.create_translation(req)
 
-if res.create_translation_response is not None:
+if res.one_of is not None:
     # handle response
     pass
 ```

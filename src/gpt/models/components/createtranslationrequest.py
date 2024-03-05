@@ -22,7 +22,7 @@ class CreateTranslationRequest:
     file: CreateTranslationRequestFile = dataclasses.field(metadata={'multipart_form': { 'file': True }})
     r"""The audio file object (not file name) translate, in one of these formats: flac, mp3, mp4, mpeg, mpga, m4a, ogg, wav, or webm."""
     model: Union[str, CreateTranslationRequest2] = dataclasses.field(metadata={'multipart_form': { 'field_name': 'model' }})
-    r"""ID of the model to use. Only `whisper-1` is currently available."""
+    r"""ID of the model to use. Only `whisper-1` (which is powered by our open source Whisper V2 model) is currently available."""
     prompt: Optional[str] = dataclasses.field(default=None, metadata={'multipart_form': { 'field_name': 'prompt' }})
     r"""An optional text to guide the model's style or continue a previous audio segment. The [prompt](/docs/guides/speech-to-text/prompting) should be in English."""
     response_format: Optional[str] = dataclasses.field(default='json', metadata={'multipart_form': { 'field_name': 'response_format' }})
