@@ -27,20 +27,20 @@ class Assistants:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.CancelRunRequest, base_url, '/threads/{thread_id}/runs/{run_id}/cancel', request)
-        headers = {}
-        headers['Accept'] = 'application/json'
-        headers['user-agent'] = self.sdk_configuration.user_agent
         
         if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
         else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
         
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = self.sdk_configuration.user_agent
+        client = self.sdk_configuration.client
         
         try:
             req = self.sdk_configuration.get_hooks().before_request(
                 hook_ctx, 
-                requests_http.Request('POST', url, headers=headers).prepare(),
+                requests_http.Request('POST', url, params=query_params, headers=headers).prepare(),
             )
             http_res = client.send(req)
         except Exception as e:
@@ -57,18 +57,20 @@ class Assistants:
                 raise result
             http_res = result
         
-        content_type = http_res.headers.get('Content-Type')
         
-        res = operations.CancelRunResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.CancelRunResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
         
         if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
+            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, Optional[components.RunObject])
                 res.run_object = out
             else:
+                content_type = http_res.headers.get('Content-Type')
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
             raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -80,7 +82,12 @@ class Assistants:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/assistants'
-        headers = {}
+        
+        if callable(self.sdk_configuration.security):
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
+        else:
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
+        
         req_content_type, data, form = utils.serialize_request_body(request, components.CreateAssistantRequest, "request", False, False, 'json')
         if req_content_type is not None and req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
@@ -88,17 +95,12 @@ class Assistants:
             raise Exception('request body is required')
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
-        
-        if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
-        else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
-        
+        client = self.sdk_configuration.client
         
         try:
             req = self.sdk_configuration.get_hooks().before_request(
                 hook_ctx, 
-                requests_http.Request('POST', url, data=data, files=form, headers=headers).prepare(),
+                requests_http.Request('POST', url, params=query_params, data=data, files=form, headers=headers).prepare(),
             )
             http_res = client.send(req)
         except Exception as e:
@@ -115,18 +117,20 @@ class Assistants:
                 raise result
             http_res = result
         
-        content_type = http_res.headers.get('Content-Type')
         
-        res = operations.CreateAssistantResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.CreateAssistantResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
         
         if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
+            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, Optional[components.AssistantObject])
                 res.assistant_object = out
             else:
+                content_type = http_res.headers.get('Content-Type')
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
             raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -143,7 +147,12 @@ class Assistants:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.CreateAssistantFileRequest, base_url, '/assistants/{assistant_id}/files', request)
-        headers = {}
+        
+        if callable(self.sdk_configuration.security):
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
+        else:
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
+        
         req_content_type, data, form = utils.serialize_request_body(request, operations.CreateAssistantFileRequest, "create_assistant_file_request", False, False, 'json')
         if req_content_type is not None and req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
@@ -151,17 +160,12 @@ class Assistants:
             raise Exception('request body is required')
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
-        
-        if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
-        else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
-        
+        client = self.sdk_configuration.client
         
         try:
             req = self.sdk_configuration.get_hooks().before_request(
                 hook_ctx, 
-                requests_http.Request('POST', url, data=data, files=form, headers=headers).prepare(),
+                requests_http.Request('POST', url, params=query_params, data=data, files=form, headers=headers).prepare(),
             )
             http_res = client.send(req)
         except Exception as e:
@@ -178,18 +182,20 @@ class Assistants:
                 raise result
             http_res = result
         
-        content_type = http_res.headers.get('Content-Type')
         
-        res = operations.CreateAssistantFileResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.CreateAssistantFileResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
         
         if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
+            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, Optional[components.AssistantFileObject])
                 res.assistant_file_object = out
             else:
+                content_type = http_res.headers.get('Content-Type')
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
             raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -206,7 +212,12 @@ class Assistants:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.CreateMessageRequest, base_url, '/threads/{thread_id}/messages', request)
-        headers = {}
+        
+        if callable(self.sdk_configuration.security):
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
+        else:
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
+        
         req_content_type, data, form = utils.serialize_request_body(request, operations.CreateMessageRequest, "create_message_request", False, False, 'json')
         if req_content_type is not None and req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
@@ -214,17 +225,12 @@ class Assistants:
             raise Exception('request body is required')
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
-        
-        if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
-        else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
-        
+        client = self.sdk_configuration.client
         
         try:
             req = self.sdk_configuration.get_hooks().before_request(
                 hook_ctx, 
-                requests_http.Request('POST', url, data=data, files=form, headers=headers).prepare(),
+                requests_http.Request('POST', url, params=query_params, data=data, files=form, headers=headers).prepare(),
             )
             http_res = client.send(req)
         except Exception as e:
@@ -241,18 +247,20 @@ class Assistants:
                 raise result
             http_res = result
         
-        content_type = http_res.headers.get('Content-Type')
         
-        res = operations.CreateMessageResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.CreateMessageResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
         
         if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
+            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, Optional[components.MessageObject])
                 res.message_object = out
             else:
+                content_type = http_res.headers.get('Content-Type')
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
             raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -269,7 +277,12 @@ class Assistants:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.CreateRunRequest, base_url, '/threads/{thread_id}/runs', request)
-        headers = {}
+        
+        if callable(self.sdk_configuration.security):
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
+        else:
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
+        
         req_content_type, data, form = utils.serialize_request_body(request, operations.CreateRunRequest, "create_run_request", False, False, 'json')
         if req_content_type is not None and req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
@@ -277,17 +290,12 @@ class Assistants:
             raise Exception('request body is required')
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
-        
-        if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
-        else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
-        
+        client = self.sdk_configuration.client
         
         try:
             req = self.sdk_configuration.get_hooks().before_request(
                 hook_ctx, 
-                requests_http.Request('POST', url, data=data, files=form, headers=headers).prepare(),
+                requests_http.Request('POST', url, params=query_params, data=data, files=form, headers=headers).prepare(),
             )
             http_res = client.send(req)
         except Exception as e:
@@ -304,18 +312,20 @@ class Assistants:
                 raise result
             http_res = result
         
-        content_type = http_res.headers.get('Content-Type')
         
-        res = operations.CreateRunResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.CreateRunResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
         
         if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
+            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, Optional[components.RunObject])
                 res.run_object = out
             else:
+                content_type = http_res.headers.get('Content-Type')
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
             raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -327,23 +337,23 @@ class Assistants:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/threads'
-        headers = {}
+        
+        if callable(self.sdk_configuration.security):
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
+        else:
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
+        
         req_content_type, data, form = utils.serialize_request_body(request, Optional[components.CreateThreadRequest], "request", False, True, 'json')
         if req_content_type is not None and req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
-        
-        if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
-        else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
-        
+        client = self.sdk_configuration.client
         
         try:
             req = self.sdk_configuration.get_hooks().before_request(
                 hook_ctx, 
-                requests_http.Request('POST', url, data=data, files=form, headers=headers).prepare(),
+                requests_http.Request('POST', url, params=query_params, data=data, files=form, headers=headers).prepare(),
             )
             http_res = client.send(req)
         except Exception as e:
@@ -360,18 +370,20 @@ class Assistants:
                 raise result
             http_res = result
         
-        content_type = http_res.headers.get('Content-Type')
         
-        res = operations.CreateThreadResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.CreateThreadResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
         
         if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
+            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, Optional[components.ThreadObject])
                 res.thread_object = out
             else:
+                content_type = http_res.headers.get('Content-Type')
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
             raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -383,7 +395,12 @@ class Assistants:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/threads/runs'
-        headers = {}
+        
+        if callable(self.sdk_configuration.security):
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
+        else:
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
+        
         req_content_type, data, form = utils.serialize_request_body(request, components.CreateThreadAndRunRequest, "request", False, False, 'json')
         if req_content_type is not None and req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
@@ -391,17 +408,12 @@ class Assistants:
             raise Exception('request body is required')
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
-        
-        if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
-        else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
-        
+        client = self.sdk_configuration.client
         
         try:
             req = self.sdk_configuration.get_hooks().before_request(
                 hook_ctx, 
-                requests_http.Request('POST', url, data=data, files=form, headers=headers).prepare(),
+                requests_http.Request('POST', url, params=query_params, data=data, files=form, headers=headers).prepare(),
             )
             http_res = client.send(req)
         except Exception as e:
@@ -418,18 +430,20 @@ class Assistants:
                 raise result
             http_res = result
         
-        content_type = http_res.headers.get('Content-Type')
         
-        res = operations.CreateThreadAndRunResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.CreateThreadAndRunResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
         
         if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
+            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, Optional[components.RunObject])
                 res.run_object = out
             else:
+                content_type = http_res.headers.get('Content-Type')
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
             raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -445,20 +459,20 @@ class Assistants:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.DeleteAssistantRequest, base_url, '/assistants/{assistant_id}', request)
-        headers = {}
-        headers['Accept'] = 'application/json'
-        headers['user-agent'] = self.sdk_configuration.user_agent
         
         if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
         else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
         
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = self.sdk_configuration.user_agent
+        client = self.sdk_configuration.client
         
         try:
             req = self.sdk_configuration.get_hooks().before_request(
                 hook_ctx, 
-                requests_http.Request('DELETE', url, headers=headers).prepare(),
+                requests_http.Request('DELETE', url, params=query_params, headers=headers).prepare(),
             )
             http_res = client.send(req)
         except Exception as e:
@@ -475,18 +489,20 @@ class Assistants:
                 raise result
             http_res = result
         
-        content_type = http_res.headers.get('Content-Type')
         
-        res = operations.DeleteAssistantResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.DeleteAssistantResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
         
         if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
+            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, Optional[components.DeleteAssistantResponse])
                 res.delete_assistant_response = out
             else:
+                content_type = http_res.headers.get('Content-Type')
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
             raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -503,20 +519,20 @@ class Assistants:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.DeleteAssistantFileRequest, base_url, '/assistants/{assistant_id}/files/{file_id}', request)
-        headers = {}
-        headers['Accept'] = 'application/json'
-        headers['user-agent'] = self.sdk_configuration.user_agent
         
         if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
         else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
         
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = self.sdk_configuration.user_agent
+        client = self.sdk_configuration.client
         
         try:
             req = self.sdk_configuration.get_hooks().before_request(
                 hook_ctx, 
-                requests_http.Request('DELETE', url, headers=headers).prepare(),
+                requests_http.Request('DELETE', url, params=query_params, headers=headers).prepare(),
             )
             http_res = client.send(req)
         except Exception as e:
@@ -533,18 +549,20 @@ class Assistants:
                 raise result
             http_res = result
         
-        content_type = http_res.headers.get('Content-Type')
         
-        res = operations.DeleteAssistantFileResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.DeleteAssistantFileResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
         
         if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
+            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, Optional[components.DeleteAssistantFileResponse])
                 res.delete_assistant_file_response = out
             else:
+                content_type = http_res.headers.get('Content-Type')
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
             raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -560,20 +578,20 @@ class Assistants:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.DeleteThreadRequest, base_url, '/threads/{thread_id}', request)
-        headers = {}
-        headers['Accept'] = 'application/json'
-        headers['user-agent'] = self.sdk_configuration.user_agent
         
         if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
         else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
         
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = self.sdk_configuration.user_agent
+        client = self.sdk_configuration.client
         
         try:
             req = self.sdk_configuration.get_hooks().before_request(
                 hook_ctx, 
-                requests_http.Request('DELETE', url, headers=headers).prepare(),
+                requests_http.Request('DELETE', url, params=query_params, headers=headers).prepare(),
             )
             http_res = client.send(req)
         except Exception as e:
@@ -590,18 +608,20 @@ class Assistants:
                 raise result
             http_res = result
         
-        content_type = http_res.headers.get('Content-Type')
         
-        res = operations.DeleteThreadResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.DeleteThreadResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
         
         if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
+            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, Optional[components.DeleteThreadResponse])
                 res.delete_thread_response = out
             else:
+                content_type = http_res.headers.get('Content-Type')
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
             raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -617,418 +637,15 @@ class Assistants:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.GetAssistantRequest, base_url, '/assistants/{assistant_id}', request)
-        headers = {}
-        headers['Accept'] = 'application/json'
-        headers['user-agent'] = self.sdk_configuration.user_agent
         
         if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
         else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
         
-        
-        try:
-            req = self.sdk_configuration.get_hooks().before_request(
-                hook_ctx, 
-                requests_http.Request('GET', url, headers=headers).prepare(),
-            )
-            http_res = client.send(req)
-        except Exception as e:
-            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
-            raise e
-
-        if utils.match_status_codes(['4XX','5XX'], http_res.status_code):
-            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
-            if e:
-                raise e
-        else:
-            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
-            if isinstance(result, Exception):
-                raise result
-            http_res = result
-        
-        content_type = http_res.headers.get('Content-Type')
-        
-        res = operations.GetAssistantResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[components.AssistantObject])
-                res.assistant_object = out
-            else:
-                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
-            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
-
-        return res
-
-    
-    
-    def get_assistant_file(self, assistant_id: str, file_id: str) -> operations.GetAssistantFileResponse:
-        r"""Retrieves an AssistantFile."""
-        hook_ctx = HookContext(operation_id='getAssistantFile', oauth2_scopes=[], security_source=self.sdk_configuration.security)
-        request = operations.GetAssistantFileRequest(
-            assistant_id=assistant_id,
-            file_id=file_id,
-        )
-        
-        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
-        
-        url = utils.generate_url(operations.GetAssistantFileRequest, base_url, '/assistants/{assistant_id}/files/{file_id}', request)
-        headers = {}
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
-        
-        if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
-        else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
-        
-        
-        try:
-            req = self.sdk_configuration.get_hooks().before_request(
-                hook_ctx, 
-                requests_http.Request('GET', url, headers=headers).prepare(),
-            )
-            http_res = client.send(req)
-        except Exception as e:
-            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
-            raise e
-
-        if utils.match_status_codes(['4XX','5XX'], http_res.status_code):
-            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
-            if e:
-                raise e
-        else:
-            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
-            if isinstance(result, Exception):
-                raise result
-            http_res = result
-        
-        content_type = http_res.headers.get('Content-Type')
-        
-        res = operations.GetAssistantFileResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[components.AssistantFileObject])
-                res.assistant_file_object = out
-            else:
-                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
-            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
-
-        return res
-
-    
-    
-    def get_message(self, message_id: str, thread_id: str) -> operations.GetMessageResponse:
-        r"""Retrieve a message."""
-        hook_ctx = HookContext(operation_id='getMessage', oauth2_scopes=[], security_source=self.sdk_configuration.security)
-        request = operations.GetMessageRequest(
-            message_id=message_id,
-            thread_id=thread_id,
-        )
-        
-        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
-        
-        url = utils.generate_url(operations.GetMessageRequest, base_url, '/threads/{thread_id}/messages/{message_id}', request)
-        headers = {}
-        headers['Accept'] = 'application/json'
-        headers['user-agent'] = self.sdk_configuration.user_agent
-        
-        if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
-        else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
-        
-        
-        try:
-            req = self.sdk_configuration.get_hooks().before_request(
-                hook_ctx, 
-                requests_http.Request('GET', url, headers=headers).prepare(),
-            )
-            http_res = client.send(req)
-        except Exception as e:
-            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
-            raise e
-
-        if utils.match_status_codes(['4XX','5XX'], http_res.status_code):
-            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
-            if e:
-                raise e
-        else:
-            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
-            if isinstance(result, Exception):
-                raise result
-            http_res = result
-        
-        content_type = http_res.headers.get('Content-Type')
-        
-        res = operations.GetMessageResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[components.MessageObject])
-                res.message_object = out
-            else:
-                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
-            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
-
-        return res
-
-    
-    
-    def get_message_file(self, file_id: str, message_id: str, thread_id: str) -> operations.GetMessageFileResponse:
-        r"""Retrieves a message file."""
-        hook_ctx = HookContext(operation_id='getMessageFile', oauth2_scopes=[], security_source=self.sdk_configuration.security)
-        request = operations.GetMessageFileRequest(
-            file_id=file_id,
-            message_id=message_id,
-            thread_id=thread_id,
-        )
-        
-        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
-        
-        url = utils.generate_url(operations.GetMessageFileRequest, base_url, '/threads/{thread_id}/messages/{message_id}/files/{file_id}', request)
-        headers = {}
-        headers['Accept'] = 'application/json'
-        headers['user-agent'] = self.sdk_configuration.user_agent
-        
-        if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
-        else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
-        
-        
-        try:
-            req = self.sdk_configuration.get_hooks().before_request(
-                hook_ctx, 
-                requests_http.Request('GET', url, headers=headers).prepare(),
-            )
-            http_res = client.send(req)
-        except Exception as e:
-            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
-            raise e
-
-        if utils.match_status_codes(['4XX','5XX'], http_res.status_code):
-            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
-            if e:
-                raise e
-        else:
-            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
-            if isinstance(result, Exception):
-                raise result
-            http_res = result
-        
-        content_type = http_res.headers.get('Content-Type')
-        
-        res = operations.GetMessageFileResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[components.MessageFileObject])
-                res.message_file_object = out
-            else:
-                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
-            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
-
-        return res
-
-    
-    
-    def get_run(self, run_id: str, thread_id: str) -> operations.GetRunResponse:
-        r"""Retrieves a run."""
-        hook_ctx = HookContext(operation_id='getRun', oauth2_scopes=[], security_source=self.sdk_configuration.security)
-        request = operations.GetRunRequest(
-            run_id=run_id,
-            thread_id=thread_id,
-        )
-        
-        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
-        
-        url = utils.generate_url(operations.GetRunRequest, base_url, '/threads/{thread_id}/runs/{run_id}', request)
-        headers = {}
-        headers['Accept'] = 'application/json'
-        headers['user-agent'] = self.sdk_configuration.user_agent
-        
-        if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
-        else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
-        
-        
-        try:
-            req = self.sdk_configuration.get_hooks().before_request(
-                hook_ctx, 
-                requests_http.Request('GET', url, headers=headers).prepare(),
-            )
-            http_res = client.send(req)
-        except Exception as e:
-            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
-            raise e
-
-        if utils.match_status_codes(['4XX','5XX'], http_res.status_code):
-            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
-            if e:
-                raise e
-        else:
-            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
-            if isinstance(result, Exception):
-                raise result
-            http_res = result
-        
-        content_type = http_res.headers.get('Content-Type')
-        
-        res = operations.GetRunResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[components.RunObject])
-                res.run_object = out
-            else:
-                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
-            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
-
-        return res
-
-    
-    
-    def get_run_step(self, run_id: str, step_id: str, thread_id: str) -> operations.GetRunStepResponse:
-        r"""Retrieves a run step."""
-        hook_ctx = HookContext(operation_id='getRunStep', oauth2_scopes=[], security_source=self.sdk_configuration.security)
-        request = operations.GetRunStepRequest(
-            run_id=run_id,
-            step_id=step_id,
-            thread_id=thread_id,
-        )
-        
-        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
-        
-        url = utils.generate_url(operations.GetRunStepRequest, base_url, '/threads/{thread_id}/runs/{run_id}/steps/{step_id}', request)
-        headers = {}
-        headers['Accept'] = 'application/json'
-        headers['user-agent'] = self.sdk_configuration.user_agent
-        
-        if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
-        else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
-        
-        
-        try:
-            req = self.sdk_configuration.get_hooks().before_request(
-                hook_ctx, 
-                requests_http.Request('GET', url, headers=headers).prepare(),
-            )
-            http_res = client.send(req)
-        except Exception as e:
-            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
-            raise e
-
-        if utils.match_status_codes(['4XX','5XX'], http_res.status_code):
-            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
-            if e:
-                raise e
-        else:
-            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
-            if isinstance(result, Exception):
-                raise result
-            http_res = result
-        
-        content_type = http_res.headers.get('Content-Type')
-        
-        res = operations.GetRunStepResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[components.RunStepObject])
-                res.run_step_object = out
-            else:
-                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
-            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
-
-        return res
-
-    
-    
-    def get_thread(self, thread_id: str) -> operations.GetThreadResponse:
-        r"""Retrieves a thread."""
-        hook_ctx = HookContext(operation_id='getThread', oauth2_scopes=[], security_source=self.sdk_configuration.security)
-        request = operations.GetThreadRequest(
-            thread_id=thread_id,
-        )
-        
-        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
-        
-        url = utils.generate_url(operations.GetThreadRequest, base_url, '/threads/{thread_id}', request)
-        headers = {}
-        headers['Accept'] = 'application/json'
-        headers['user-agent'] = self.sdk_configuration.user_agent
-        
-        if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
-        else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
-        
-        
-        try:
-            req = self.sdk_configuration.get_hooks().before_request(
-                hook_ctx, 
-                requests_http.Request('GET', url, headers=headers).prepare(),
-            )
-            http_res = client.send(req)
-        except Exception as e:
-            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
-            raise e
-
-        if utils.match_status_codes(['4XX','5XX'], http_res.status_code):
-            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
-            if e:
-                raise e
-        else:
-            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
-            if isinstance(result, Exception):
-                raise result
-            http_res = result
-        
-        content_type = http_res.headers.get('Content-Type')
-        
-        res = operations.GetThreadResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-        if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[components.ThreadObject])
-                res.thread_object = out
-            else:
-                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
-        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
-            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
-
-        return res
-
-    
-    
-    def list_assistant_files(self, request: operations.ListAssistantFilesRequest) -> operations.ListAssistantFilesResponse:
-        r"""Returns a list of assistant files."""
-        hook_ctx = HookContext(operation_id='listAssistantFiles', oauth2_scopes=[], security_source=self.sdk_configuration.security)
-        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
-        
-        url = utils.generate_url(operations.ListAssistantFilesRequest, base_url, '/assistants/{assistant_id}/files', request)
-        headers = {}
-        query_params = utils.get_query_params(operations.ListAssistantFilesRequest, request)
-        headers['Accept'] = 'application/json'
-        headers['user-agent'] = self.sdk_configuration.user_agent
-        
-        if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
-        else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
-        
+        client = self.sdk_configuration.client
         
         try:
             req = self.sdk_configuration.get_hooks().before_request(
@@ -1050,18 +667,437 @@ class Assistants:
                 raise result
             http_res = result
         
-        content_type = http_res.headers.get('Content-Type')
         
-        res = operations.ListAssistantFilesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.GetAssistantResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
         
         if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[components.ListAssistantFilesResponse])
-                res.list_assistant_files_response = out
+            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
+                out = utils.unmarshal_json(http_res.text, Optional[components.AssistantObject])
+                res.assistant_object = out
             else:
+                content_type = http_res.headers.get('Content-Type')
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
             raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    
+    def get_assistant_file(self, assistant_id: str, file_id: str) -> operations.GetAssistantFileResponse:
+        r"""Retrieves an AssistantFile."""
+        hook_ctx = HookContext(operation_id='getAssistantFile', oauth2_scopes=[], security_source=self.sdk_configuration.security)
+        request = operations.GetAssistantFileRequest(
+            assistant_id=assistant_id,
+            file_id=file_id,
+        )
+        
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = utils.generate_url(operations.GetAssistantFileRequest, base_url, '/assistants/{assistant_id}/files/{file_id}', request)
+        
+        if callable(self.sdk_configuration.security):
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
+        else:
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
+        
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = self.sdk_configuration.user_agent
+        client = self.sdk_configuration.client
+        
+        try:
+            req = self.sdk_configuration.get_hooks().before_request(
+                hook_ctx, 
+                requests_http.Request('GET', url, params=query_params, headers=headers).prepare(),
+            )
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
+            raise e
+
+        if utils.match_status_codes(['4XX','5XX'], http_res.status_code):
+            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
+            if e:
+                raise e
+        else:
+            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
+            if isinstance(result, Exception):
+                raise result
+            http_res = result
+        
+        
+        res = operations.GetAssistantFileResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
+                out = utils.unmarshal_json(http_res.text, Optional[components.AssistantFileObject])
+                res.assistant_file_object = out
+            else:
+                content_type = http_res.headers.get('Content-Type')
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    
+    def get_message(self, message_id: str, thread_id: str) -> operations.GetMessageResponse:
+        r"""Retrieve a message."""
+        hook_ctx = HookContext(operation_id='getMessage', oauth2_scopes=[], security_source=self.sdk_configuration.security)
+        request = operations.GetMessageRequest(
+            message_id=message_id,
+            thread_id=thread_id,
+        )
+        
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = utils.generate_url(operations.GetMessageRequest, base_url, '/threads/{thread_id}/messages/{message_id}', request)
+        
+        if callable(self.sdk_configuration.security):
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
+        else:
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
+        
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = self.sdk_configuration.user_agent
+        client = self.sdk_configuration.client
+        
+        try:
+            req = self.sdk_configuration.get_hooks().before_request(
+                hook_ctx, 
+                requests_http.Request('GET', url, params=query_params, headers=headers).prepare(),
+            )
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
+            raise e
+
+        if utils.match_status_codes(['4XX','5XX'], http_res.status_code):
+            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
+            if e:
+                raise e
+        else:
+            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
+            if isinstance(result, Exception):
+                raise result
+            http_res = result
+        
+        
+        res = operations.GetMessageResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
+                out = utils.unmarshal_json(http_res.text, Optional[components.MessageObject])
+                res.message_object = out
+            else:
+                content_type = http_res.headers.get('Content-Type')
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    
+    def get_message_file(self, file_id: str, message_id: str, thread_id: str) -> operations.GetMessageFileResponse:
+        r"""Retrieves a message file."""
+        hook_ctx = HookContext(operation_id='getMessageFile', oauth2_scopes=[], security_source=self.sdk_configuration.security)
+        request = operations.GetMessageFileRequest(
+            file_id=file_id,
+            message_id=message_id,
+            thread_id=thread_id,
+        )
+        
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = utils.generate_url(operations.GetMessageFileRequest, base_url, '/threads/{thread_id}/messages/{message_id}/files/{file_id}', request)
+        
+        if callable(self.sdk_configuration.security):
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
+        else:
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
+        
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = self.sdk_configuration.user_agent
+        client = self.sdk_configuration.client
+        
+        try:
+            req = self.sdk_configuration.get_hooks().before_request(
+                hook_ctx, 
+                requests_http.Request('GET', url, params=query_params, headers=headers).prepare(),
+            )
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
+            raise e
+
+        if utils.match_status_codes(['4XX','5XX'], http_res.status_code):
+            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
+            if e:
+                raise e
+        else:
+            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
+            if isinstance(result, Exception):
+                raise result
+            http_res = result
+        
+        
+        res = operations.GetMessageFileResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
+                out = utils.unmarshal_json(http_res.text, Optional[components.MessageFileObject])
+                res.message_file_object = out
+            else:
+                content_type = http_res.headers.get('Content-Type')
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    
+    def get_run(self, run_id: str, thread_id: str) -> operations.GetRunResponse:
+        r"""Retrieves a run."""
+        hook_ctx = HookContext(operation_id='getRun', oauth2_scopes=[], security_source=self.sdk_configuration.security)
+        request = operations.GetRunRequest(
+            run_id=run_id,
+            thread_id=thread_id,
+        )
+        
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = utils.generate_url(operations.GetRunRequest, base_url, '/threads/{thread_id}/runs/{run_id}', request)
+        
+        if callable(self.sdk_configuration.security):
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
+        else:
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
+        
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = self.sdk_configuration.user_agent
+        client = self.sdk_configuration.client
+        
+        try:
+            req = self.sdk_configuration.get_hooks().before_request(
+                hook_ctx, 
+                requests_http.Request('GET', url, params=query_params, headers=headers).prepare(),
+            )
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
+            raise e
+
+        if utils.match_status_codes(['4XX','5XX'], http_res.status_code):
+            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
+            if e:
+                raise e
+        else:
+            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
+            if isinstance(result, Exception):
+                raise result
+            http_res = result
+        
+        
+        res = operations.GetRunResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
+                out = utils.unmarshal_json(http_res.text, Optional[components.RunObject])
+                res.run_object = out
+            else:
+                content_type = http_res.headers.get('Content-Type')
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    
+    def get_run_step(self, run_id: str, step_id: str, thread_id: str) -> operations.GetRunStepResponse:
+        r"""Retrieves a run step."""
+        hook_ctx = HookContext(operation_id='getRunStep', oauth2_scopes=[], security_source=self.sdk_configuration.security)
+        request = operations.GetRunStepRequest(
+            run_id=run_id,
+            step_id=step_id,
+            thread_id=thread_id,
+        )
+        
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = utils.generate_url(operations.GetRunStepRequest, base_url, '/threads/{thread_id}/runs/{run_id}/steps/{step_id}', request)
+        
+        if callable(self.sdk_configuration.security):
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
+        else:
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
+        
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = self.sdk_configuration.user_agent
+        client = self.sdk_configuration.client
+        
+        try:
+            req = self.sdk_configuration.get_hooks().before_request(
+                hook_ctx, 
+                requests_http.Request('GET', url, params=query_params, headers=headers).prepare(),
+            )
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
+            raise e
+
+        if utils.match_status_codes(['4XX','5XX'], http_res.status_code):
+            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
+            if e:
+                raise e
+        else:
+            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
+            if isinstance(result, Exception):
+                raise result
+            http_res = result
+        
+        
+        res = operations.GetRunStepResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
+                out = utils.unmarshal_json(http_res.text, Optional[components.RunStepObject])
+                res.run_step_object = out
+            else:
+                content_type = http_res.headers.get('Content-Type')
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    
+    def get_thread(self, thread_id: str) -> operations.GetThreadResponse:
+        r"""Retrieves a thread."""
+        hook_ctx = HookContext(operation_id='getThread', oauth2_scopes=[], security_source=self.sdk_configuration.security)
+        request = operations.GetThreadRequest(
+            thread_id=thread_id,
+        )
+        
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = utils.generate_url(operations.GetThreadRequest, base_url, '/threads/{thread_id}', request)
+        
+        if callable(self.sdk_configuration.security):
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
+        else:
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
+        
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = self.sdk_configuration.user_agent
+        client = self.sdk_configuration.client
+        
+        try:
+            req = self.sdk_configuration.get_hooks().before_request(
+                hook_ctx, 
+                requests_http.Request('GET', url, params=query_params, headers=headers).prepare(),
+            )
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
+            raise e
+
+        if utils.match_status_codes(['4XX','5XX'], http_res.status_code):
+            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
+            if e:
+                raise e
+        else:
+            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
+            if isinstance(result, Exception):
+                raise result
+            http_res = result
+        
+        
+        res = operations.GetThreadResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
+                out = utils.unmarshal_json(http_res.text, Optional[components.ThreadObject])
+                res.thread_object = out
+            else:
+                content_type = http_res.headers.get('Content-Type')
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    
+    def list_assistant_files(self, request: operations.ListAssistantFilesRequest) -> operations.ListAssistantFilesResponse:
+        r"""Returns a list of assistant files."""
+        hook_ctx = HookContext(operation_id='listAssistantFiles', oauth2_scopes=[], security_source=self.sdk_configuration.security)
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = utils.generate_url(operations.ListAssistantFilesRequest, base_url, '/assistants/{assistant_id}/files', request)
+        
+        if callable(self.sdk_configuration.security):
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
+        else:
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
+        
+        query_params = { **utils.get_query_params(operations.ListAssistantFilesRequest, request), **query_params }
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = self.sdk_configuration.user_agent
+        client = self.sdk_configuration.client
+        
+        try:
+            req = self.sdk_configuration.get_hooks().before_request(
+                hook_ctx, 
+                requests_http.Request('GET', url, params=query_params, headers=headers).prepare(),
+            )
+            http_res = client.send(req)
+        except Exception as e:
+            _, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, None, e)
+            raise e
+
+        if utils.match_status_codes(['4XX','5XX'], http_res.status_code):
+            http_res, e = self.sdk_configuration.get_hooks().after_error(hook_ctx, http_res, None)
+            if e:
+                raise e
+        else:
+            result = self.sdk_configuration.get_hooks().after_success(hook_ctx, http_res)
+            if isinstance(result, Exception):
+                raise result
+            http_res = result
+        
+        
+        res = operations.ListAssistantFilesResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
+                out = utils.unmarshal_json(http_res.text, Optional[components.ListAssistantFilesResponse])
+                res.list_assistant_files_response = out
+            else:
+                content_type = http_res.headers.get('Content-Type')
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -1080,16 +1116,16 @@ class Assistants:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/assistants'
-        headers = {}
-        query_params = utils.get_query_params(operations.ListAssistantsRequest, request)
-        headers['Accept'] = 'application/json'
-        headers['user-agent'] = self.sdk_configuration.user_agent
         
         if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
         else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
         
+        query_params = { **utils.get_query_params(operations.ListAssistantsRequest, request), **query_params }
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = self.sdk_configuration.user_agent
+        client = self.sdk_configuration.client
         
         try:
             req = self.sdk_configuration.get_hooks().before_request(
@@ -1111,18 +1147,20 @@ class Assistants:
                 raise result
             http_res = result
         
-        content_type = http_res.headers.get('Content-Type')
         
-        res = operations.ListAssistantsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.ListAssistantsResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
         
         if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
+            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, Optional[components.ListAssistantsResponse])
                 res.list_assistants_response = out
             else:
+                content_type = http_res.headers.get('Content-Type')
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
             raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -1134,16 +1172,16 @@ class Assistants:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.ListMessageFilesRequest, base_url, '/threads/{thread_id}/messages/{message_id}/files', request)
-        headers = {}
-        query_params = utils.get_query_params(operations.ListMessageFilesRequest, request)
-        headers['Accept'] = 'application/json'
-        headers['user-agent'] = self.sdk_configuration.user_agent
         
         if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
         else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
         
+        query_params = { **utils.get_query_params(operations.ListMessageFilesRequest, request), **query_params }
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = self.sdk_configuration.user_agent
+        client = self.sdk_configuration.client
         
         try:
             req = self.sdk_configuration.get_hooks().before_request(
@@ -1165,18 +1203,20 @@ class Assistants:
                 raise result
             http_res = result
         
-        content_type = http_res.headers.get('Content-Type')
         
-        res = operations.ListMessageFilesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.ListMessageFilesResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
         
         if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
+            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, Optional[components.ListMessageFilesResponse])
                 res.list_message_files_response = out
             else:
+                content_type = http_res.headers.get('Content-Type')
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
             raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -1188,16 +1228,16 @@ class Assistants:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.ListMessagesRequest, base_url, '/threads/{thread_id}/messages', request)
-        headers = {}
-        query_params = utils.get_query_params(operations.ListMessagesRequest, request)
-        headers['Accept'] = 'application/json'
-        headers['user-agent'] = self.sdk_configuration.user_agent
         
         if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
         else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
         
+        query_params = { **utils.get_query_params(operations.ListMessagesRequest, request), **query_params }
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = self.sdk_configuration.user_agent
+        client = self.sdk_configuration.client
         
         try:
             req = self.sdk_configuration.get_hooks().before_request(
@@ -1219,18 +1259,20 @@ class Assistants:
                 raise result
             http_res = result
         
-        content_type = http_res.headers.get('Content-Type')
         
-        res = operations.ListMessagesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.ListMessagesResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
         
         if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
+            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, Optional[components.ListMessagesResponse])
                 res.list_messages_response = out
             else:
+                content_type = http_res.headers.get('Content-Type')
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
             raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -1242,16 +1284,16 @@ class Assistants:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.ListRunStepsRequest, base_url, '/threads/{thread_id}/runs/{run_id}/steps', request)
-        headers = {}
-        query_params = utils.get_query_params(operations.ListRunStepsRequest, request)
-        headers['Accept'] = 'application/json'
-        headers['user-agent'] = self.sdk_configuration.user_agent
         
         if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
         else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
         
+        query_params = { **utils.get_query_params(operations.ListRunStepsRequest, request), **query_params }
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = self.sdk_configuration.user_agent
+        client = self.sdk_configuration.client
         
         try:
             req = self.sdk_configuration.get_hooks().before_request(
@@ -1273,18 +1315,20 @@ class Assistants:
                 raise result
             http_res = result
         
-        content_type = http_res.headers.get('Content-Type')
         
-        res = operations.ListRunStepsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.ListRunStepsResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
         
         if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
+            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, Optional[components.ListRunStepsResponse])
                 res.list_run_steps_response = out
             else:
+                content_type = http_res.headers.get('Content-Type')
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
             raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -1296,16 +1340,16 @@ class Assistants:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.ListRunsRequest, base_url, '/threads/{thread_id}/runs', request)
-        headers = {}
-        query_params = utils.get_query_params(operations.ListRunsRequest, request)
-        headers['Accept'] = 'application/json'
-        headers['user-agent'] = self.sdk_configuration.user_agent
         
         if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
         else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
         
+        query_params = { **utils.get_query_params(operations.ListRunsRequest, request), **query_params }
+        headers['Accept'] = 'application/json'
+        headers['user-agent'] = self.sdk_configuration.user_agent
+        client = self.sdk_configuration.client
         
         try:
             req = self.sdk_configuration.get_hooks().before_request(
@@ -1327,18 +1371,20 @@ class Assistants:
                 raise result
             http_res = result
         
-        content_type = http_res.headers.get('Content-Type')
         
-        res = operations.ListRunsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.ListRunsResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
         
         if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
+            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, Optional[components.ListRunsResponse])
                 res.list_runs_response = out
             else:
+                content_type = http_res.headers.get('Content-Type')
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
             raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -1355,7 +1401,12 @@ class Assistants:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.ModifyAssistantRequest, base_url, '/assistants/{assistant_id}', request)
-        headers = {}
+        
+        if callable(self.sdk_configuration.security):
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
+        else:
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
+        
         req_content_type, data, form = utils.serialize_request_body(request, operations.ModifyAssistantRequest, "modify_assistant_request", False, False, 'json')
         if req_content_type is not None and req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
@@ -1363,17 +1414,12 @@ class Assistants:
             raise Exception('request body is required')
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
-        
-        if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
-        else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
-        
+        client = self.sdk_configuration.client
         
         try:
             req = self.sdk_configuration.get_hooks().before_request(
                 hook_ctx, 
-                requests_http.Request('POST', url, data=data, files=form, headers=headers).prepare(),
+                requests_http.Request('POST', url, params=query_params, data=data, files=form, headers=headers).prepare(),
             )
             http_res = client.send(req)
         except Exception as e:
@@ -1390,18 +1436,20 @@ class Assistants:
                 raise result
             http_res = result
         
-        content_type = http_res.headers.get('Content-Type')
         
-        res = operations.ModifyAssistantResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.ModifyAssistantResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
         
         if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
+            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, Optional[components.AssistantObject])
                 res.assistant_object = out
             else:
+                content_type = http_res.headers.get('Content-Type')
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
             raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -1419,7 +1467,12 @@ class Assistants:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.ModifyMessageRequest, base_url, '/threads/{thread_id}/messages/{message_id}', request)
-        headers = {}
+        
+        if callable(self.sdk_configuration.security):
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
+        else:
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
+        
         req_content_type, data, form = utils.serialize_request_body(request, operations.ModifyMessageRequest, "modify_message_request", False, False, 'json')
         if req_content_type is not None and req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
@@ -1427,17 +1480,12 @@ class Assistants:
             raise Exception('request body is required')
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
-        
-        if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
-        else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
-        
+        client = self.sdk_configuration.client
         
         try:
             req = self.sdk_configuration.get_hooks().before_request(
                 hook_ctx, 
-                requests_http.Request('POST', url, data=data, files=form, headers=headers).prepare(),
+                requests_http.Request('POST', url, params=query_params, data=data, files=form, headers=headers).prepare(),
             )
             http_res = client.send(req)
         except Exception as e:
@@ -1454,18 +1502,20 @@ class Assistants:
                 raise result
             http_res = result
         
-        content_type = http_res.headers.get('Content-Type')
         
-        res = operations.ModifyMessageResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.ModifyMessageResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
         
         if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
+            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, Optional[components.MessageObject])
                 res.message_object = out
             else:
+                content_type = http_res.headers.get('Content-Type')
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
             raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -1483,7 +1533,12 @@ class Assistants:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.ModifyRunRequest, base_url, '/threads/{thread_id}/runs/{run_id}', request)
-        headers = {}
+        
+        if callable(self.sdk_configuration.security):
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
+        else:
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
+        
         req_content_type, data, form = utils.serialize_request_body(request, operations.ModifyRunRequest, "modify_run_request", False, False, 'json')
         if req_content_type is not None and req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
@@ -1491,17 +1546,12 @@ class Assistants:
             raise Exception('request body is required')
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
-        
-        if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
-        else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
-        
+        client = self.sdk_configuration.client
         
         try:
             req = self.sdk_configuration.get_hooks().before_request(
                 hook_ctx, 
-                requests_http.Request('POST', url, data=data, files=form, headers=headers).prepare(),
+                requests_http.Request('POST', url, params=query_params, data=data, files=form, headers=headers).prepare(),
             )
             http_res = client.send(req)
         except Exception as e:
@@ -1518,18 +1568,20 @@ class Assistants:
                 raise result
             http_res = result
         
-        content_type = http_res.headers.get('Content-Type')
         
-        res = operations.ModifyRunResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.ModifyRunResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
         
         if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
+            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, Optional[components.RunObject])
                 res.run_object = out
             else:
+                content_type = http_res.headers.get('Content-Type')
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
             raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -1546,7 +1598,12 @@ class Assistants:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.ModifyThreadRequest, base_url, '/threads/{thread_id}', request)
-        headers = {}
+        
+        if callable(self.sdk_configuration.security):
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
+        else:
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
+        
         req_content_type, data, form = utils.serialize_request_body(request, operations.ModifyThreadRequest, "modify_thread_request", False, False, 'json')
         if req_content_type is not None and req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
@@ -1554,17 +1611,12 @@ class Assistants:
             raise Exception('request body is required')
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
-        
-        if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
-        else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
-        
+        client = self.sdk_configuration.client
         
         try:
             req = self.sdk_configuration.get_hooks().before_request(
                 hook_ctx, 
-                requests_http.Request('POST', url, data=data, files=form, headers=headers).prepare(),
+                requests_http.Request('POST', url, params=query_params, data=data, files=form, headers=headers).prepare(),
             )
             http_res = client.send(req)
         except Exception as e:
@@ -1581,18 +1633,20 @@ class Assistants:
                 raise result
             http_res = result
         
-        content_type = http_res.headers.get('Content-Type')
         
-        res = operations.ModifyThreadResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.ModifyThreadResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
         
         if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
+            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, Optional[components.ThreadObject])
                 res.thread_object = out
             else:
+                content_type = http_res.headers.get('Content-Type')
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
             raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -1610,7 +1664,12 @@ class Assistants:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = utils.generate_url(operations.SubmitToolOuputsToRunRequest, base_url, '/threads/{thread_id}/runs/{run_id}/submit_tool_outputs', request)
-        headers = {}
+        
+        if callable(self.sdk_configuration.security):
+            headers, query_params = utils.get_security(self.sdk_configuration.security())
+        else:
+            headers, query_params = utils.get_security(self.sdk_configuration.security)
+        
         req_content_type, data, form = utils.serialize_request_body(request, operations.SubmitToolOuputsToRunRequest, "submit_tool_outputs_run_request", False, False, 'json')
         if req_content_type is not None and req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
@@ -1618,17 +1677,12 @@ class Assistants:
             raise Exception('request body is required')
         headers['Accept'] = 'application/json'
         headers['user-agent'] = self.sdk_configuration.user_agent
-        
-        if callable(self.sdk_configuration.security):
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security())
-        else:
-            client = utils.configure_security_client(self.sdk_configuration.client, self.sdk_configuration.security)
-        
+        client = self.sdk_configuration.client
         
         try:
             req = self.sdk_configuration.get_hooks().before_request(
                 hook_ctx, 
-                requests_http.Request('POST', url, data=data, files=form, headers=headers).prepare(),
+                requests_http.Request('POST', url, params=query_params, data=data, files=form, headers=headers).prepare(),
             )
             http_res = client.send(req)
         except Exception as e:
@@ -1645,18 +1699,20 @@ class Assistants:
                 raise result
             http_res = result
         
-        content_type = http_res.headers.get('Content-Type')
         
-        res = operations.SubmitToolOuputsToRunResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        res = operations.SubmitToolOuputsToRunResponse(status_code=http_res.status_code, content_type=http_res.headers.get('Content-Type'), raw_response=http_res)
         
         if http_res.status_code == 200:
-            if utils.match_content_type(content_type, 'application/json'):
+            if utils.match_content_type(http_res.headers.get('Content-Type'), 'application/json'):                
                 out = utils.unmarshal_json(http_res.text, Optional[components.RunObject])
                 res.run_object = out
             else:
+                content_type = http_res.headers.get('Content-Type')
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
             raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+        else:
+            raise errors.SDKError('unknown status code received', http_res.status_code, http_res.text, http_res)
 
         return res
 

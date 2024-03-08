@@ -44,6 +44,7 @@ res = s.fine_tuning.cancel_fine_tuning_job(fine_tuning_job_id='ft-AF1WoRqd3aJAHs
 if res.fine_tuning_job is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -92,6 +93,7 @@ res = s.fine_tuning.create_fine_tuning_job(req)
 if res.fine_tuning_job is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -130,6 +132,7 @@ res = s.fine_tuning.list_fine_tuning_events(fine_tuning_job_id='ft-AF1WoRqd3aJAH
 if res.list_fine_tuning_job_events_response is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -170,6 +173,7 @@ res = s.fine_tuning.list_paginated_fine_tuning_jobs(after='<value>', limit=20)
 if res.list_paginated_fine_tuning_jobs_response is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -211,6 +215,7 @@ res = s.fine_tuning.retrieve_fine_tuning_job(fine_tuning_job_id='ft-AF1WoRqd3aJA
 if res.fine_tuning_job is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters

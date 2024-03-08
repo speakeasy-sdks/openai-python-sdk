@@ -30,6 +30,7 @@ res = s.models.delete_model(model='ft:gpt-3.5-turbo:acemeco:suffix:abc123')
 if res.delete_model_response is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -67,6 +68,7 @@ res = s.models.list_models()
 if res.list_models_response is not None:
     # handle response
     pass
+
 ```
 
 
@@ -98,6 +100,7 @@ res = s.models.retrieve_model(model='gpt-3.5-turbo')
 if res.model is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters

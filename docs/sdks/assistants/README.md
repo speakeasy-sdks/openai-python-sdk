@@ -56,6 +56,7 @@ res = s.assistants.cancel_run(run_id='<value>', thread_id='<value>')
 if res.run_object is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -98,6 +99,7 @@ res = s.assistants.create_assistant(req)
 if res.assistant_object is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -138,6 +140,7 @@ res = s.assistants.create_assistant_file(create_assistant_file_request=component
 if res.assistant_file_object is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -180,6 +183,7 @@ res = s.assistants.create_message(create_message_request=components.CreateMessag
 if res.message_object is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -221,6 +225,7 @@ res = s.assistants.create_run(create_run_request=components.CreateRunRequest(
 if res.run_object is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -261,6 +266,7 @@ res = s.assistants.create_thread(req)
 if res.thread_object is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -302,6 +308,7 @@ res = s.assistants.create_thread_and_run(req)
 if res.run_object is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -339,6 +346,7 @@ res = s.assistants.delete_assistant(assistant_id='<value>')
 if res.delete_assistant_response is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -376,6 +384,7 @@ res = s.assistants.delete_assistant_file(assistant_id='<value>', file_id='<value
 if res.delete_assistant_file_response is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -414,6 +423,7 @@ res = s.assistants.delete_thread(thread_id='<value>')
 if res.delete_thread_response is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -451,6 +461,7 @@ res = s.assistants.get_assistant(assistant_id='<value>')
 if res.assistant_object is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -488,6 +499,7 @@ res = s.assistants.get_assistant_file(assistant_id='<value>', file_id='<value>')
 if res.assistant_file_object is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -526,6 +538,7 @@ res = s.assistants.get_message(message_id='<value>', thread_id='<value>')
 if res.message_object is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -564,6 +577,7 @@ res = s.assistants.get_message_file(file_id='file-abc123', message_id='msg_abc12
 if res.message_file_object is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -603,6 +617,7 @@ res = s.assistants.get_run(run_id='<value>', thread_id='<value>')
 if res.run_object is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -641,6 +656,7 @@ res = s.assistants.get_run_step(run_id='<value>', step_id='<value>', thread_id='
 if res.run_step_object is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -680,6 +696,7 @@ res = s.assistants.get_thread(thread_id='<value>')
 if res.thread_object is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -721,6 +738,7 @@ res = s.assistants.list_assistant_files(req)
 if res.list_assistant_files_response is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -759,6 +777,7 @@ res = s.assistants.list_assistants(after='<value>', before='<value>', limit=20, 
 if res.list_assistants_response is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -804,6 +823,7 @@ res = s.assistants.list_message_files(req)
 if res.list_message_files_response is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -845,6 +865,7 @@ res = s.assistants.list_messages(req)
 if res.list_messages_response is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -887,6 +908,7 @@ res = s.assistants.list_run_steps(req)
 if res.list_run_steps_response is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -928,6 +950,7 @@ res = s.assistants.list_runs(req)
 if res.list_runs_response is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -966,6 +989,7 @@ res = s.assistants.modify_assistant(modify_assistant_request=components.ModifyAs
 if res.assistant_object is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -1005,6 +1029,7 @@ res = s.assistants.modify_message(modify_message_request=components.ModifyMessag
 if res.message_object is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -1045,6 +1070,7 @@ res = s.assistants.modify_run(modify_run_request=components.ModifyRunRequest(), 
 if res.run_object is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -1085,6 +1111,7 @@ res = s.assistants.modify_thread(modify_thread_request=components.ModifyThreadRe
 if res.thread_object is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -1129,6 +1156,7 @@ res = s.assistants.submit_tool_ouputs_to_run(submit_tool_outputs_run_request=com
 if res.run_object is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters

@@ -50,6 +50,7 @@ res = s.files.create_file(req)
 if res.open_ai_file is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -87,6 +88,7 @@ res = s.files.delete_file(file_id='<value>')
 if res.delete_file_response is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -121,9 +123,10 @@ s = gpt.Gpt(
 
 res = s.files.download_file(file_id='<value>')
 
-if res.res is not None:
+if res.string is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -161,6 +164,7 @@ res = s.files.list_files(purpose='<value>')
 if res.list_files_response is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -198,6 +202,7 @@ res = s.files.retrieve_file(file_id='<value>')
 if res.open_ai_file is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters

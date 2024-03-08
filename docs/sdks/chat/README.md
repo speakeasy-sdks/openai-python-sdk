@@ -43,6 +43,7 @@ res = s.chat.create_chat_completion(req)
 if res.create_chat_completion_response is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters

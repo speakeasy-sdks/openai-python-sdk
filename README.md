@@ -47,6 +47,7 @@ res = s.assistants.cancel_run(run_id='<value>', thread_id='<value>')
 if res.run_object is not None:
     # handle response
     pass
+
 ```
 <!-- End SDK Example Usage [usage] -->
 
@@ -182,6 +183,7 @@ except errors.SDKError as e:
 if res.run_object is not None:
     # handle response
     pass
+
 ```
 <!-- End Error Handling [errors] -->
 
@@ -212,6 +214,7 @@ res = s.assistants.cancel_run(run_id='<value>', thread_id='<value>')
 if res.run_object is not None:
     # handle response
     pass
+
 ```
 
 
@@ -232,6 +235,7 @@ res = s.assistants.cancel_run(run_id='<value>', thread_id='<value>')
 if res.run_object is not None:
     # handle response
     pass
+
 ```
 <!-- End Server Selection [server] -->
 
@@ -276,6 +280,7 @@ res = s.assistants.cancel_run(run_id='<value>', thread_id='<value>')
 if res.run_object is not None:
     # handle response
     pass
+
 ```
 <!-- End Authentication [security] -->
 

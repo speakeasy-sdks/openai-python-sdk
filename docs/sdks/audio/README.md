@@ -36,6 +36,7 @@ res = s.audio.create_speech(req)
 if res.stream is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -81,6 +82,7 @@ res = s.audio.create_transcription(req)
 if res.one_of is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -126,6 +128,7 @@ res = s.audio.create_translation(req)
 if res.one_of is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters

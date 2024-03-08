@@ -41,6 +41,7 @@ res = s.images.create_image(req)
 if res.images_response is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -91,6 +92,7 @@ res = s.images.create_image_edit(req)
 if res.images_response is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
@@ -140,6 +142,7 @@ res = s.images.create_image_variation(req)
 if res.images_response is not None:
     # handle response
     pass
+
 ```
 
 ### Parameters
