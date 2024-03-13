@@ -301,3 +301,13 @@ Based on:
 - [python v4.2.0] .
 ### Releases
 - [PyPI v4.2.0] https://pypi.org/project/openai-python/4.2.0 - .
+
+## 2024-03-13 00:51:06
+### Changes
+Based on:
+- OpenAPI Doc 2.0.0 https://raw.githubusercontent.com/openai/openai-openapi/master/openapi.yaml
+- Speakeasy CLI 1.207.1 (2.280.6) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [python v4.2.1] .
+### Releases
+- [PyPI v4.2.1] https://pypi.org/project/openai-python/4.2.1 - .
