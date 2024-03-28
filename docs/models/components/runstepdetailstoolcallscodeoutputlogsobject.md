@@ -1,0 +1,11 @@
+# RunStepDetailsToolCallsCodeOutputLogsObject
+
+Text output from the Code Interpreter tool call as part of a run step.
+
+
+## Fields
+
+| Field                                                                                                                                    | Type                                                                                                                                     | Required                                                                                                                                 | Description                                                                                                                              |
+| ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| `logs`                                                                                                                                   | *str*                                                                                                                                    | :heavy_check_mark:                                                                                                                       | The text output from the Code Interpreter tool call.                                                                                     |
+| `type`                                                                                                                                   | [components.RunStepDetailsToolCallsCodeOutputLogsObjectType](../../models/components/runstepdetailstoolcallscodeoutputlogsobjecttype.md) | :heavy_check_mark:                                                                                                                       | Always `logs`.                                                                                                                           |

@@ -1,0 +1,12 @@
+# DeleteAssistantFileResponse
+
+Deletes the association between the assistant and the file, but does not delete the [File](/docs/api-reference/files) object itself.
+
+
+## Fields
+
+| Field                                                                                                        | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `deleted`                                                                                                    | *bool*                                                                                                       | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
+| `id`                                                                                                         | *str*                                                                                                        | :heavy_check_mark:                                                                                           | N/A                                                                                                          |
+| `object`                                                                                                     | [components.DeleteAssistantFileResponseObject](../../models/components/deleteassistantfileresponseobject.md) | :heavy_check_mark:                                                                                           | N/A                                                                                                          |

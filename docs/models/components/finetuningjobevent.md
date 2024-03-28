@@ -1,0 +1,14 @@
+# FineTuningJobEvent
+
+Fine-tuning job event object
+
+
+## Fields
+
+| Field                                                                                      | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `created_at`                                                                               | *int*                                                                                      | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `id`                                                                                       | *str*                                                                                      | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `level`                                                                                    | [components.Level](../../models/components/level.md)                                       | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `message`                                                                                  | *str*                                                                                      | :heavy_check_mark:                                                                         | N/A                                                                                        |
+| `object`                                                                                   | [components.FineTuningJobEventObject](../../models/components/finetuningjobeventobject.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |

@@ -1,0 +1,9 @@
+# ListFineTuningJobEventsResponse
+
+
+## Fields
+
+| Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `data`                                                                                                               | List[[components.FineTuningJobEvent](../../models/components/finetuningjobevent.md)]                                 | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |
+| `object`                                                                                                             | [components.ListFineTuningJobEventsResponseObject](../../models/components/listfinetuningjobeventsresponseobject.md) | :heavy_check_mark:                                                                                                   | N/A                                                                                                                  |

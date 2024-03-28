@@ -1,0 +1,12 @@
+# ListRunsResponse
+
+
+## Fields
+
+| Field                                                              | Type                                                               | Required                                                           | Description                                                        | Example                                                            |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `data`                                                             | List[[components.RunObject](../../models/components/runobject.md)] | :heavy_check_mark:                                                 | N/A                                                                |                                                                    |
+| `first_id`                                                         | *str*                                                              | :heavy_check_mark:                                                 | N/A                                                                | run_abc123                                                         |
+| `has_more`                                                         | *bool*                                                             | :heavy_check_mark:                                                 | N/A                                                                | false                                                              |
+| `last_id`                                                          | *str*                                                              | :heavy_check_mark:                                                 | N/A                                                                | run_abc456                                                         |
+| `object`                                                           | *str*                                                              | :heavy_check_mark:                                                 | N/A                                                                | list                                                               |

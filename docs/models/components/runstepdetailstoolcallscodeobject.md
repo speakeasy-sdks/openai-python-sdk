@@ -1,0 +1,12 @@
+# RunStepDetailsToolCallsCodeObject
+
+Details of the Code Interpreter tool call the run step was involved in.
+
+
+## Fields
+
+| Field                                                                                                                | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `code_interpreter`                                                                                                   | [components.CodeInterpreter](../../models/components/codeinterpreter.md)                                             | :heavy_check_mark:                                                                                                   | The Code Interpreter tool call definition.                                                                           |
+| `id`                                                                                                                 | *str*                                                                                                                | :heavy_check_mark:                                                                                                   | The ID of the tool call.                                                                                             |
+| `type`                                                                                                               | [components.RunStepDetailsToolCallsCodeObjectType](../../models/components/runstepdetailstoolcallscodeobjecttype.md) | :heavy_check_mark:                                                                                                   | The type of tool call. This is always going to be `code_interpreter` for this type of tool call.                     |
