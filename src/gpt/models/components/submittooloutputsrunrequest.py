@@ -21,7 +21,10 @@ class ToolOutputs:
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
 class SubmitToolOutputsRunRequest:
+    UNSET='__SPEAKEASY_UNSET__'
     tool_outputs: List[ToolOutputs] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tool_outputs') }})
     r"""A list of tools for which the outputs are being submitted."""
+    stream: Optional[bool] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('stream'), 'exclude': lambda f: f is SubmitToolOutputsRunRequest.UNSET }})
+    r"""If `true`, returns a stream of events that happen during the Run as server-sent events, terminating when the Run enters a terminal state with a `data: [DONE]` message."""
     
 

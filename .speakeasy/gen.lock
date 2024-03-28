@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: 35bdeffa-af3f-4704-85cf-c9806b956990
 management:
-  docChecksum: 0f1a105489b43417f5ab6cd2c8614d36
+  docChecksum: 04b9085be828615e92aa35273c14fd35
   docVersion: 2.0.0
-  speakeasyVersion: 1.227.0
-  generationVersion: 2.291.0
-  releaseVersion: 4.2.2
-  configChecksum: f7447f6c933bf6e19b587cd38be39f50
+  speakeasyVersion: 1.228.1
+  generationVersion: 2.292.0
+  releaseVersion: 4.2.3
+  configChecksum: 144b134d0d588c54001abf74ca6ce01e
   repoURL: https://github.com/speakeasy-sdks/openai-python-sdk.git
   repoSubDirectory: .
   installationURL: https://github.com/speakeasy-sdks/openai-python-sdk.git
@@ -322,9 +322,12 @@ generatedFiles:
   - docs/models/components/assistantfileobject.md
   - docs/models/components/createassistantfilerequest.md
   - docs/models/components/messageobjectcontent.md
+  - docs/models/components/reason.md
+  - docs/models/components/incompletedetails.md
   - docs/models/components/messageobjectmetadata.md
   - docs/models/components/messageobjectobject.md
   - docs/models/components/messageobjectrole.md
+  - docs/models/components/messageobjectstatus.md
   - docs/models/components/messageobject.md
   - docs/models/components/imagefile.md
   - docs/models/components/messagecontentimagefileobjecttype.md

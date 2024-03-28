@@ -321,3 +321,13 @@ Based on:
 - [python v4.2.2] .
 ### Releases
 - [PyPI v4.2.2] https://pypi.org/project/openai-python/4.2.2 - .
+
+## 2024-03-28 00:32:17
+### Changes
+Based on:
+- OpenAPI Doc 2.0.0 https://raw.githubusercontent.com/openai/openai-openapi/master/openapi.yaml
+- Speakeasy CLI 1.228.1 (2.292.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [python v4.2.3] .
+### Releases
+- [PyPI v4.2.3] https://pypi.org/project/openai-python/4.2.3 - .

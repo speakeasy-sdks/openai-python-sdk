@@ -75,7 +75,10 @@ class CreateCompletionRequest:
     stream: Optional[bool] = dataclasses.field(default=False, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('stream'), 'exclude': lambda f: f is CreateCompletionRequest.UNSET }})
     r"""Whether to stream back partial progress. If set, tokens will be sent as data-only [server-sent events](https://developer.mozilla.org/en-US/docs/Web/API/Server-sent_events/Using_server-sent_events#Event_stream_format) as they become available, with the stream terminated by a `data: [DONE]` message. [Example Python code](https://cookbook.openai.com/examples/how_to_stream_completions)."""
     suffix: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('suffix'), 'exclude': lambda f: f is CreateCompletionRequest.UNSET }})
-    r"""The suffix that comes after a completion of inserted text."""
+    r"""The suffix that comes after a completion of inserted text.
+
+    This parameter is only supported for `gpt-3.5-turbo-instruct`.
+    """
     temperature: Optional[float] = dataclasses.field(default=1, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('temperature'), 'exclude': lambda f: f is CreateCompletionRequest.UNSET }})
     r"""What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic.
 

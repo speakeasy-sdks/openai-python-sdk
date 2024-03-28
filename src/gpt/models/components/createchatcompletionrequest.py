@@ -143,7 +143,7 @@ class CreateChatCompletionRequest:
     `none` is the default when no functions are present. `auto` is the default if functions are present.
     """
     tools: Optional[List[ChatCompletionTool]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tools'), 'exclude': lambda f: f is None }})
-    r"""A list of tools the model may call. Currently, only functions are supported as a tool. Use this to provide a list of functions the model may generate JSON inputs for."""
+    r"""A list of tools the model may call. Currently, only functions are supported as a tool. Use this to provide a list of functions the model may generate JSON inputs for. A max of 128 functions are supported."""
     top_logprobs: Optional[int] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('top_logprobs'), 'exclude': lambda f: f is CreateChatCompletionRequest.UNSET }})
     r"""An integer between 0 and 20 specifying the number of most likely tokens to return at each token position, each with an associated log probability. `logprobs` must be set to `true` if this parameter is used."""
     top_p: Optional[float] = dataclasses.field(default=1, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('top_p'), 'exclude': lambda f: f is CreateChatCompletionRequest.UNSET }})

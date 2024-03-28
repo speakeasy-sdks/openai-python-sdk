@@ -91,7 +91,7 @@ class RunObject:
     r"""The Unix timestamp (in seconds) for when the run was completed."""
     created_at: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created_at') }})
     r"""The Unix timestamp (in seconds) for when the run was created."""
-    expires_at: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('expires_at') }})
+    expires_at: Optional[int] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('expires_at') }})
     r"""The Unix timestamp (in seconds) for when the run will expire."""
     failed_at: Optional[int] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('failed_at') }})
     r"""The Unix timestamp (in seconds) for when the run failed."""

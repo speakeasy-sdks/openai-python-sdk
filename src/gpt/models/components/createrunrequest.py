@@ -31,6 +31,8 @@ class CreateRunRequest:
     r"""Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maxium of 512 characters long."""
     model: Optional[str] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model'), 'exclude': lambda f: f is CreateRunRequest.UNSET }})
     r"""The ID of the [Model](/docs/api-reference/models) to be used to execute this run. If a value is provided here, it will override the model associated with the assistant. If not, the model associated with the assistant will be used."""
+    stream: Optional[bool] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('stream'), 'exclude': lambda f: f is CreateRunRequest.UNSET }})
+    r"""If `true`, returns a stream of events that happen during the Run as server-sent events, terminating when the Run enters a terminal state with a `data: [DONE]` message."""
     tools: Optional[List[Union[AssistantToolsCode, AssistantToolsRetrieval, AssistantToolsFunction]]] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tools'), 'exclude': lambda f: f is CreateRunRequest.UNSET }})
     r"""Override the tools the assistant can use for this run. This is useful for modifying the behavior on a per-run basis."""
     

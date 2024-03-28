@@ -9,6 +9,24 @@ from enum import Enum
 from gpt import utils
 from typing import List, Optional, Union
 
+class Reason(str, Enum):
+    r"""The reason the message is incomplete."""
+    CONTENT_FILTER = 'content_filter'
+    MAX_TOKENS = 'max_tokens'
+    RUN_CANCELLED = 'run_cancelled'
+    RUN_EXPIRED = 'run_expired'
+    RUN_FAILED = 'run_failed'
+
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+@dataclasses.dataclass
+class IncompleteDetails:
+    r"""On an incomplete message, details about why the message is incomplete."""
+    reason: Reason = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('reason') }})
+    r"""The reason the message is incomplete."""
+    
+
+
 
 @dataclasses.dataclass
 class MessageObjectMetadata:
@@ -25,6 +43,12 @@ class MessageObjectRole(str, Enum):
     USER = 'user'
     ASSISTANT = 'assistant'
 
+class MessageObjectStatus(str, Enum):
+    r"""The status of the message, which can be either `in_progress`, `incomplete`, or `completed`."""
+    IN_PROGRESS = 'in_progress'
+    INCOMPLETE = 'incomplete'
+    COMPLETED = 'completed'
+
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
@@ -32,6 +56,8 @@ class MessageObject:
     r"""Represents a message within a [thread](/docs/api-reference/threads)."""
     assistant_id: Optional[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('assistant_id') }})
     r"""If applicable, the ID of the [assistant](/docs/api-reference/assistants) that authored this message."""
+    completed_at: Optional[int] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('completed_at') }})
+    r"""The Unix timestamp (in seconds) for when the message was completed."""
     content: List[Union[MessageContentImageFileObject, MessageContentTextObject]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('content') }})
     r"""The content of the message in array of text and/or images."""
     created_at: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('created_at') }})
@@ -40,6 +66,10 @@ class MessageObject:
     r"""A list of [file](/docs/api-reference/files) IDs that the assistant should use. Useful for tools like retrieval and code_interpreter that can access files. A maximum of 10 files can be attached to a message."""
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     r"""The identifier, which can be referenced in API endpoints."""
+    incomplete_at: Optional[int] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('incomplete_at') }})
+    r"""The Unix timestamp (in seconds) for when the message was marked as incomplete."""
+    incomplete_details: Optional[IncompleteDetails] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('incomplete_details') }})
+    r"""On an incomplete message, details about why the message is incomplete."""
     metadata: Optional[MessageObjectMetadata] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('metadata') }})
     r"""Set of 16 key-value pairs that can be attached to an object. This can be useful for storing additional information about the object in a structured format. Keys can be a maximum of 64 characters long and values can be a maxium of 512 characters long."""
     object: MessageObjectObject = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('object') }})
@@ -48,6 +78,8 @@ class MessageObject:
     r"""The entity that produced the message. One of `user` or `assistant`."""
     run_id: Optional[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('run_id') }})
     r"""If applicable, the ID of the [run](/docs/api-reference/runs) associated with the authoring of this message."""
+    status: MessageObjectStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
+    r"""The status of the message, which can be either `in_progress`, `incomplete`, or `completed`."""
     thread_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('thread_id') }})
     r"""The [thread](/docs/api-reference/threads) ID that this message belongs to."""
     
