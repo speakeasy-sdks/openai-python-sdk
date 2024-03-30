@@ -77,7 +77,7 @@ class MessageObject:
     role: MessageObjectRole = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('role') }})
     r"""The entity that produced the message. One of `user` or `assistant`."""
     run_id: Optional[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('run_id') }})
-    r"""If applicable, the ID of the [run](/docs/api-reference/runs) associated with the authoring of this message."""
+    r"""The ID of the [run](/docs/api-reference/runs) associated with the creation of this message. Value is `null` when messages are created manually using the create message or create thread endpoints."""
     status: MessageObjectStatus = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('status') }})
     r"""The status of the message, which can be either `in_progress`, `incomplete`, or `completed`."""
     thread_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('thread_id') }})

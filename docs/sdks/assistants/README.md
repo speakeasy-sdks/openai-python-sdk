@@ -220,6 +220,7 @@ s = gpt.Gpt(
 
 res = s.assistants.create_run(create_run_request=components.CreateRunRequest(
     assistant_id='<value>',
+    temperature=1,
 ), thread_id='<value>')
 
 if res.run_object is not None:
@@ -301,6 +302,7 @@ s = gpt.Gpt(
 
 req = components.CreateThreadAndRunRequest(
     assistant_id='<value>',
+    temperature=1,
 )
 
 res = s.assistants.create_thread_and_run(req)

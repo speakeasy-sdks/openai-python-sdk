@@ -83,6 +83,7 @@ class RunObjectStatus(str, Enum):
 @dataclasses.dataclass
 class RunObject:
     r"""Represents an execution run on a [thread](/docs/api-reference/threads)."""
+    UNSET='__SPEAKEASY_UNSET__'
     assistant_id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('assistant_id') }})
     r"""The ID of the [assistant](/docs/api-reference/assistants) used for execution of this run."""
     cancelled_at: Optional[int] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('cancelled_at') }})
@@ -121,5 +122,7 @@ class RunObject:
     r"""The list of tools that the [assistant](/docs/api-reference/assistants) used for this run."""
     usage: Optional[RunCompletionUsage] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('usage') }})
     r"""Usage statistics related to the run. This value will be `null` if the run is not in a terminal state (i.e. `in_progress`, `queued`, etc.)."""
+    temperature: Optional[float] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('temperature'), 'exclude': lambda f: f is RunObject.UNSET }})
+    r"""The sampling temperature used for this run. If not set, defaults to 1."""
     
 

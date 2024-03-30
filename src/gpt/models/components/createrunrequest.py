@@ -33,6 +33,8 @@ class CreateRunRequest:
     r"""The ID of the [Model](/docs/api-reference/models) to be used to execute this run. If a value is provided here, it will override the model associated with the assistant. If not, the model associated with the assistant will be used."""
     stream: Optional[bool] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('stream'), 'exclude': lambda f: f is CreateRunRequest.UNSET }})
     r"""If `true`, returns a stream of events that happen during the Run as server-sent events, terminating when the Run enters a terminal state with a `data: [DONE]` message."""
+    temperature: Optional[float] = dataclasses.field(default=1, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('temperature'), 'exclude': lambda f: f is CreateRunRequest.UNSET }})
+    r"""What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic."""
     tools: Optional[List[Union[AssistantToolsCode, AssistantToolsRetrieval, AssistantToolsFunction]]] = dataclasses.field(default=UNSET, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('tools'), 'exclude': lambda f: f is CreateRunRequest.UNSET }})
     r"""Override the tools the assistant can use for this run. This is useful for modifying the behavior on a per-run basis."""
     
