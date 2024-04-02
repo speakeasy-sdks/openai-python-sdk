@@ -25,6 +25,8 @@ class ListMessagesRequest:
     r"""A limit on the number of objects to be returned. Limit can range between 1 and 100, and the default is 20."""
     order: Optional[ListMessagesQueryParamOrder] = dataclasses.field(default=ListMessagesQueryParamOrder.DESC, metadata={'query_param': { 'field_name': 'order', 'style': 'form', 'explode': True }})
     r"""Sort order by the `created_at` timestamp of the objects. `asc` for ascending order and `desc` for descending order."""
+    run_id: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'run_id', 'style': 'form', 'explode': True }})
+    r"""Filter messages by the run ID that generated them."""
     
 
 
